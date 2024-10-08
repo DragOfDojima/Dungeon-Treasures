@@ -7122,7 +7122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267b9122875a97e49bd58dfe039a5e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 20
+  Hp: 100
 --- !u!65 &647914368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20736,6 +20736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponDamage: 10
   hitbox: {fileID: 2047765724}
+  ComboBouns: 1.1
+  MaxCombo: 3
 --- !u!1 &2048004185
 GameObject:
   m_ObjectHideFlags: 0

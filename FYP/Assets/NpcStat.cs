@@ -8,6 +8,7 @@ public class NpcStat : MonoBehaviour
 
     public void Damage(float dam)
     {
+        Debug.Log(dam);
         Hp-=dam;
         if (Hp <= 0)
         {
