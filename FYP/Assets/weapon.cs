@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class weapon : MonoBehaviour
 {
@@ -16,39 +17,45 @@ public class weapon : MonoBehaviour
         
         if (other.tag == "hitable")
         {
-            if (Vector3.Magnitude(rb.velocity) > 10)
+            if (speed > 5)
             {
-                Debug.Log(Vector3.Magnitude(rb.velocity));
                 other.GetComponent<NpcStat>().Damage(WeaponDamage+combo*ComboBouns);
                 combo++;
                 if(combo > MaxCombo)
                 {
                     combo=0;
                 }
-                timer=0;
+                timer=3;
             }
         }
     }
 
-    float timer=0;
-    float time=0;
+    float timer=3;
+    Vector3 lastPosition = Vector3.zero;
     private void Update()
     {
         Debug.Log("timer="+timer);
-        Debug.Log("time=" + time);
-        Debug.Log("speed=" + Vector3.Magnitude(rb.velocity));
-        time = Time.time;
+        Debug.Log("c=" + combo);
         if (combo > 0)
         {
-            timer += Time.deltaTime;
-            timer -= time;
+            timer -= Time.time;
         }
-        if (timer >= 3&&combo>0)
+        
+        if (timer <= 0.0f && combo > 0)
         {
+            Debug.Log("WWWW");
             combo=0;
-            timer=0;
+            timer = 3;
         }
         
         
+        
+    }
+    float speed;
+    private void FixedUpdate()
+    {
+        speed = Vector3.Distance(transform.position, lastPosition) / Time.deltaTime;
+        lastPosition = transform.position;
+
     }
 }
