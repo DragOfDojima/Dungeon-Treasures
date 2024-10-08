@@ -11,7 +11,7 @@ public class weapon : MonoBehaviour
     {
         if (other.tag == "hitable")
         {
-
+            other.GetComponent<NpcStat>().Damage(WeaponDamage);
         }
     }
 }
