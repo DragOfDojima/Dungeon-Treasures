@@ -21,10 +21,6 @@ public class weapon : MonoBehaviour
             {
                 other.GetComponent<NpcStat>().Damage(WeaponDamage+combo*ComboBouns);
                 combo++;
-                if(combo > MaxCombo)
-                {
-                    combo=0;
-                }
                 timer=3;
             }
         }
@@ -34,16 +30,14 @@ public class weapon : MonoBehaviour
     Vector3 lastPosition = Vector3.zero;
     private void Update()
     {
-        Debug.Log("timer="+timer);
         Debug.Log("c=" + combo);
         if (combo > 0)
         {
-            timer -= Time.time;
+            timer -= Time.deltaTime;
         }
         
         if (timer <= 0.0f && combo > 0)
         {
-            Debug.Log("WWWW");
             combo=0;
             timer = 3;
         }
