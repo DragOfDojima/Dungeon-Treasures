@@ -20,6 +20,7 @@ public class weapon : MonoBehaviour
             if (speed > 5)
             {
                 other.GetComponent<NpcStat>().Damage(WeaponDamage+combo*ComboBouns);
+                if(combo<MaxCombo)
                 combo++;
                 timer=3;
             }

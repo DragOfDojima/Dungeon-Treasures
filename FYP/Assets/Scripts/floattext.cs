@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class floattext : MonoBehaviour
 {
@@ -9,10 +10,10 @@ public class floattext : MonoBehaviour
     TMP_Text DText;
     void Start()
     {
-        //DText = GetComponent<TextMeshProUGUI>();
-        float i = 2.5f;
+        DText = GetComponent<TMP_Text>();
+        DText.text = i.ToString();
         Destroy(gameObject,3f);
-        //DText.text = Mathf.Ceil(i).ToString("0");
+        transform.position = transform.position + -Camera.main.transform.forward *o ;
     }
     
     // Update is called once per frame
@@ -20,10 +21,16 @@ public class floattext : MonoBehaviour
     {
         transform.rotation = Quaternion.LookRotation(transform.position-Camera.main.transform.position);
         transform.position = new Vector3(transform.position.x, transform.position.y+Time.deltaTime/2, transform.position.z);
+        
     }
-
-    public void setText(float i)
+    int i=0;
+    public void setText(int i)
     {
-        gameObject.GetComponent<TextMeshProUGUI>().text =Mathf.Ceil(i).ToString("0");
+        this.i=i;
+    }
+    float o = 0;
+    public void setOffset(float o)
+    {
+        this.o = o;
     }
 }

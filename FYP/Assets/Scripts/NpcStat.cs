@@ -5,22 +5,31 @@ using UnityEngine;
 public class NpcStat : MonoBehaviour
 {
     [SerializeField] private float Hp;
-    [SerializeField] private GameObject floatDam;
-    [SerializeField] private int floatDamOffset;
+    private Object floatDam;
+    [SerializeField] private float floatDamOffset=0.5f;
     bool iframe= false;
+
+    private void Start()
+    {
+        floatDam = Resources.Load("damageText");
+    }
     public void Damage(float dam)
     {
         if (!iframe)
         {
+            int Damage = (int)Mathf.Ceil(dam);
             iframe = true;
-            Hp -= dam;
-            GameObject floatdam = Instantiate(floatDam, transform.position, transform.rotation);
-            floatdam.GetComponent<floattext>().setText(dam);
+            Hp -= Damage;
+            var floatdam = Instantiate(floatDam, transform.position, transform.rotation)as GameObject;
+            Debug.Log(floatdam);
+            Debug.Log(floatdam.GetComponent<floattext>());
+            floatdam.GetComponent<floattext>().setText(Damage);
+            floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
             if (Hp <= 0)
             {
                 Destroy(gameObject);
             }
-            Invoke("iframeEnd", 0.3f);
+            Invoke("iframeEnd", 0.3f);  
         }
         
     }
