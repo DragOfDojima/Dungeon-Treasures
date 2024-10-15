@@ -6,6 +6,7 @@ public class SlimeAI : MonoBehaviour
 {
     public NavMeshAgent agent;
     public  float speed=1;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {

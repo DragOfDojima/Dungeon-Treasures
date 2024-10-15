@@ -1435,6 +1435,7 @@ MonoBehaviour:
   minEdgeDistance: 0.3
   spawnLabels: 4
   normalOffset: 1
+  maxSpawn: 5
 --- !u!4 &109250218
 Transform:
   m_ObjectHideFlags: 0
