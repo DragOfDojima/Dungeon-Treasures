@@ -161,8 +161,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2515164848537683700}
-  - component: {fileID: 2616220889675642351}
-  - component: {fileID: 4958505883506972371}
   - component: {fileID: 5519838498396705276}
   m_Layer: 0
   m_Name: slime Variant
@@ -188,41 +186,6 @@ Transform:
   - {fileID: 7180545611193655780}
   m_Father: {fileID: 3853303368423768731}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &2616220889675642351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7214687981188091227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267b9122875a97e49bd58dfe039a5e91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hp: 20
-  floatDamOffset: 0.5
---- !u!65 &4958505883506972371
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7214687981188091227}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.2857866, y: 1.7902598, z: 2.0801191}
-  m_Center: {x: 0.02918613, y: 0.6824355, z: 0.0064866543}
 --- !u!95 &5519838498396705276
 Animator:
   serializedVersion: 5
@@ -255,9 +218,11 @@ GameObject:
   - component: {fileID: 3853303368423768731}
   - component: {fileID: 6011933892011907786}
   - component: {fileID: 5074078999476555943}
+  - component: {fileID: 2731805340706850051}
+  - component: {fileID: 4741046153765495512}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: hitable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,3 +279,38 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2731805340706850051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756028829101424105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267b9122875a97e49bd58dfe039a5e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 20
+  floatDamOffset: 0.5
+--- !u!65 &4741046153765495512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756028829101424105}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
