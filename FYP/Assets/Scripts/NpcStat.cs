@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class NpcStat : MonoBehaviour
 {
-    [SerializeField] private float Hp;
+    [SerializeField] private float MaxHp;
+    private float Hp;
     private Object floatDam;
     [SerializeField] private float floatDamOffset=0.5f;
     bool iframe= false;
+    [SerializeField] private HealthBar healthBar;
 
     private void Start()
     {
+        Hp = MaxHp;
+        healthBar.UpdateHealthBar(MaxHp,Hp);
         floatDam = Resources.Load("damageText");
     }
     public void Damage(float dam)
