@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class NpcStat : MonoBehaviour
 {
     [SerializeField] private float Hp;
+    private float CurrentHP;
     private Object floatDam;
     [SerializeField] private float floatDamOffset=0.5f;
     bool iframe= false;
+    [SerializeField] private HealthBar healthBar;
 
     private void Start()
     {
+        CurrentHP = Hp;
+        healthBar.UpdateHealthBar(Hp, CurrentHP);
         floatDam = Resources.Load("damageText");
     }
     public void Damage(float dam)
