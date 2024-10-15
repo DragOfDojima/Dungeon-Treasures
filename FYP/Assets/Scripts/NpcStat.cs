@@ -33,6 +33,7 @@ public class NpcStat : MonoBehaviour
             if (Hp <= 0)
             {
                 Destroy(gameObject);
+                GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
             }
             Invoke("iframeEnd", 0.3f);  
         }
