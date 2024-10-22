@@ -15,7 +15,7 @@ public class NpcStat : MonoBehaviour
     private void Start()
     {
         CurrentHP = Hp;
-        healthBar.UpdateHealthBar(Hp, CurrentHP);
+        healthBar.UpdateHealthBar(CurrentHP, Hp);
         floatDam = Resources.Load("damageText");
     }
     public void Damage(float dam)
@@ -24,12 +24,13 @@ public class NpcStat : MonoBehaviour
         {
             int Damage = (int)Mathf.Ceil(dam);
             iframe = true;
-            Hp -= Damage;
+            CurrentHP -= Damage;
             var floatdam = Instantiate(floatDam, transform.position, transform.rotation)as GameObject;
             Debug.Log(floatdam);
             Debug.Log(floatdam.GetComponent<floattext>());
             floatdam.GetComponent<floattext>().setText(Damage);
             floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
+            healthBar.UpdateHealthBar(CurrentHP, Hp);
             if (Hp <= 0)
             {
                 Destroy(gameObject);
