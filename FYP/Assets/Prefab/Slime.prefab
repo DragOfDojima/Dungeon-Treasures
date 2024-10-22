@@ -258,6 +258,11 @@ MonoBehaviour:
   agent: {fileID: 5074078999476555943}
   speed: 1
   animator: {fileID: 5519838498396705276}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  sightRange: 5
+  playerInSightRange: 0
 --- !u!195 &5074078999476555943
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -294,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 20
   floatDamOffset: 0.5
+  healthBar: {fileID: 0}
 --- !u!65 &4741046153765495512
 BoxCollider:
   m_ObjectHideFlags: 0
