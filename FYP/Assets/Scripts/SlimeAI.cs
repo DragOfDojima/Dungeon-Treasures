@@ -1,32 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.AI;
 public class SlimeAI : MonoBehaviour
 {
     public NavMeshAgent agent;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     public  float speed;
 =======
     public float speed;
 >>>>>>> Stashed changes
+=======
+    public  float speed=1;
+>>>>>>> parent of 37f27d1 (new ai)
     public Animator animator;
-    public LayerMask whatIsPlayer;
-    public float sightRange;
-    public bool playerInSightRange;
+    // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         agent.angularSpeed=360;
 =======
         agent.angularSpeed = 360;
 >>>>>>> Stashed changes
+=======
+        
+>>>>>>> parent of 37f27d1 (new ai)
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
 <<<<<<< Updated upstream
         if(playerInSightRange ) ChasePlayer();
@@ -59,10 +65,11 @@ public class SlimeAI : MonoBehaviour
         }
         else { agent.speed = speed; }
     }
+=======
+        Vector3 targetPosition =  Camera.main.transform.position;
+>>>>>>> parent of 37f27d1 (new ai)
 
-    private void Patroling()
-    {
-        animator.SetBool("jump", false);
-        agent.speed = 0;
+        agent.SetDestination(targetPosition);
+        agent.speed = speed;
     }
 }

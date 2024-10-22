@@ -31,7 +31,7 @@ public class NpcStat : MonoBehaviour
             floatdam.GetComponent<floattext>().setText(Damage);
             floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
             healthBar.UpdateHealthBar(CurrentHP, Hp);
-            if (CurrentHP <= 0)
+            if (Hp <= 0)
             {
                 Destroy(gameObject);
                 GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
