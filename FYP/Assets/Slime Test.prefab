@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 6974794196965650469}
+  reduceSpeed: 2
 --- !u!1 &4199268874010373268
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +244,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6942299054882623196}
   speed: 1
-  animator: {fileID: 0}
+  animator: {fileID: 217682668731418747}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  sightRange: 8
+  playerInSightRange: 0
 --- !u!195 &6942299054882623196
 NavMeshAgent:
   m_ObjectHideFlags: 0
