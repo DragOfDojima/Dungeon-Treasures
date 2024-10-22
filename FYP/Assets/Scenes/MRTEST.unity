@@ -1957,8 +1957,13 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!136 &143374415
 CapsuleCollider:
+=======
+--- !u!1 &143928981
+GameObject:
+>>>>>>> 552bb6f159b895ed6840ae65c8055708f5f93a0b
 =======
 --- !u!1 &143928981
 GameObject:
@@ -1967,6 +1972,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 143374409}
   m_Material: {fileID: 0}
@@ -1986,6 +1992,8 @@ GameObject:
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 =======
+=======
+>>>>>>> 552bb6f159b895ed6840ae65c8055708f5f93a0b
   serializedVersion: 6
   m_Component:
   - component: {fileID: 143928982}
@@ -2026,6 +2034,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: 66
   _axis2D: 5
+<<<<<<< HEAD
+>>>>>>> 552bb6f159b895ed6840ae65c8055708f5f93a0b
+=======
 >>>>>>> 552bb6f159b895ed6840ae65c8055708f5f93a0b
 --- !u!1 &150850432
 GameObject:
