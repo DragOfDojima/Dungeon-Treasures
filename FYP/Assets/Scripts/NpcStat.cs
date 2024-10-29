@@ -11,9 +11,13 @@ public class NpcStat : MonoBehaviour
     [SerializeField] private float floatDamOffset=0.5f;
     bool iframe= false;
     [SerializeField] private HealthBar healthBar;
-
+    [SerializeField] private Material deadMat;
+    [SerializeField] private GameObject MainObject;
+    [SerializeField] private Animator deadanimation;
     private void Start()
     {
+        //deadanimation.enabled = true;
+        //Destroy(MainObject.GetComponent<SkinnedMeshRenderer>().material);
         CurrentHP = Hp;
         healthBar.UpdateHealthBar(CurrentHP, Hp);
         floatDam = Resources.Load("damageText");
@@ -33,7 +37,7 @@ public class NpcStat : MonoBehaviour
             healthBar.UpdateHealthBar(CurrentHP, Hp);
             if (CurrentHP <= 0)
             {
-                Destroy(gameObject);
+                StartCoroutine(Dead());
                 GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
             }
             Invoke("iframeEnd", 0.3f);  
@@ -41,8 +45,30 @@ public class NpcStat : MonoBehaviour
         
     }
 
+    public float getHP()
+    {
+        return CurrentHP;
+    }
     private void iframeEnd()
     {
         iframe = false;
     }
+    bool deaded;
+    IEnumerator Dead()
+    {
+        deaded=true;
+        
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
+    }
+    public bool getDead()
+    {
+        return deaded;
+    }
+    private void Update()
+    {
+        //Debug.Log(MainObject.GetComponent<SkinnedMeshRenderer>().materials[1]);
+
+    }
+
 }

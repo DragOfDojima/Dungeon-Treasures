@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private float reduceSpeed = 2;
     private float target = 1;
+    [SerializeField] GameObject targetOb;
 
     public void UpdateHealthBar(float currentHealth, float maxHealth){
     

@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: e4a7ca81ac529a44d92472de0213fffd
+guid: c7850894f9dae094996673093b04f93b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: core_mat
-    second: {fileID: 2100000, guid: 28cdb69874183e0449259bed4c882b4b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: gold
-    second: {fileID: 2100000, guid: a52dc2e12802c0542b07b20aebdc7ccf, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ruby
-    second: {fileID: 2100000, guid: dc983a74cf394a743804d7acf773142c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: slime_eyes
-    second: {fileID: 2100000, guid: f4abc8aa9e1fdf4438a8f570f938f9dd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: slime_mat
-    second: {fileID: 2100000, guid: 75295adde051d3a4998a5fe96b1497a7, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
