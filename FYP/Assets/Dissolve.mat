@@ -7,8 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Name: Dissolve
+  m_Shader: {fileID: -6465566751694194690, guid: aeae83a8afb73eb40adffb298b4db03d,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -17,8 +18,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -83,7 +83,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Boolean_707F4C21: 1
-    - Vector1_36B9162F: 50
+    - Vector1_36B9162F: 25
     - Vector1_5C4FEA22: 0.05
     - Vector1_9C074DA1: 1
     - Vector1_C8E292BE: 100
@@ -92,7 +92,6 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BlendOp: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -121,14 +120,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_7E097FF4: {r: 0, g: 1, b: 0.8819144, a: 1}
-    - Color_87DA54D1: {r: 0.19999999, g: 0.99200404, b: 1, a: 1}
-    - _BaseColor: {r: 0, g: 1, b: 0.9903991, a: 1}
-    - _Color: {r: 0, g: 1, b: 0.99039906, a: 1}
+    - Color_7E097FF4: {r: 0, g: 1, b: 0.79118633, a: 1}
+    - Color_87DA54D1: {r: 0.16509432, g: 0.9754439, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8830149050674969232
+--- !u!114 &8644632917636849190
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
