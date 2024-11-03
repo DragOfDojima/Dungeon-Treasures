@@ -35,28 +35,35 @@ public class NpcStat : MonoBehaviour
         healthBar.UpdateHealthBar(CurrentHP, Hp);
         floatDam = Resources.Load("damageText");
         deadmatList = smr.materials;
-        deadmatList[0] = deadMat;
+        for (int i = 0; i < deadmatList.Length; i++)
+        {
+            deadmatList[i] = deadMat;
+        }
     }
     public void Damage(float dam)
     {
-        if (!iframe)
+        if (!deaded)
         {
-            int Damage = (int)Mathf.Ceil(dam);
-            iframe = true;
-            CurrentHP -= Damage;
-            var floatdam = Instantiate(floatDam, transform.position, transform.rotation)as GameObject;
-            Debug.Log(floatdam);
-            Debug.Log(floatdam.GetComponent<floattext>());
-            floatdam.GetComponent<floattext>().setText(Damage);
-            floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
-            healthBar.UpdateHealthBar(CurrentHP, Hp);
-            if (CurrentHP <= 0)
+            if (!iframe)
             {
-                StartCoroutine(Dead());
-                GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
+                int Damage = (int)Mathf.Ceil(dam);
+                iframe = true;
+                CurrentHP -= Damage;
+                var floatdam = Instantiate(floatDam, transform.position, transform.rotation) as GameObject;
+                Debug.Log(floatdam);
+                Debug.Log(floatdam.GetComponent<floattext>());
+                floatdam.GetComponent<floattext>().setText(Damage);
+                floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
+                healthBar.UpdateHealthBar(CurrentHP, Hp);
+                if (CurrentHP <= 0)
+                {
+                    StartCoroutine(Dead());
+                    GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
+                }
+                Invoke("iframeEnd", 0.3f);
             }
-            Invoke("iframeEnd", 0.3f);  
         }
+        
         
     }
 
@@ -73,7 +80,10 @@ public class NpcStat : MonoBehaviour
     {
         Debug.Log("deading");
         deaded=true;
+        healthBar.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
         smr.materials = deadmatList;
+        deadanimation.enabled = true;
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
