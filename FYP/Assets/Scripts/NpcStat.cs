@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class NpcStat : MonoBehaviour
 {
@@ -14,13 +16,26 @@ public class NpcStat : MonoBehaviour
     [SerializeField] private Material deadMat;
     [SerializeField] private GameObject MainObject;
     [SerializeField] private Animator deadanimation;
+    SkinnedMeshRenderer smr;
+    Material[] deadmatList;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartCoroutine(Dead());
+        }
+    }
     private void Start()
     {
+        smr = MainObject.GetComponent<SkinnedMeshRenderer>();
         //deadanimation.enabled = true;
         //Destroy(MainObject.GetComponent<SkinnedMeshRenderer>().material);
         CurrentHP = Hp;
         healthBar.UpdateHealthBar(CurrentHP, Hp);
         floatDam = Resources.Load("damageText");
+        deadmatList = smr.materials;
+        deadmatList[0] = deadMat;
     }
     public void Damage(float dam)
     {
@@ -56,8 +71,9 @@ public class NpcStat : MonoBehaviour
     bool deaded;
     IEnumerator Dead()
     {
+        Debug.Log("deading");
         deaded=true;
-        
+        smr.materials = deadmatList;
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
@@ -65,10 +81,6 @@ public class NpcStat : MonoBehaviour
     {
         return deaded;
     }
-    private void Update()
-    {
-        //Debug.Log(MainObject.GetComponent<SkinnedMeshRenderer>().materials[1]);
-
-    }
+    
 
 }

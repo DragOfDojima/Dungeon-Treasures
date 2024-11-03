@@ -31,7 +31,7 @@ public class weapon : MonoBehaviour
     Vector3 lastPosition = Vector3.zero;
     private void Update()
     {
-        Debug.Log("c=" + combo);
+        //Debug.Log("c=" + combo);
         if (combo > 0)
         {
             timer -= Time.deltaTime;
