@@ -84,7 +84,7 @@ public class NpcStat : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         smr.materials = deadmatList;
         deadanimation.enabled = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
     public bool getDead()
