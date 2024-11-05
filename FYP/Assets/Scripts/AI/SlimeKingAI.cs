@@ -37,7 +37,7 @@ public class SlimeKingAI : MonoBehaviour
     private void AtkPlayer()
     {
         Vector3 targetPosition = Camera.main.transform.position;
-        CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position,0f);
+        CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position,2f);
         animator.SetBool("jump", true);
         agent.SetDestination(targetPosition);
     }
@@ -84,7 +84,7 @@ public class SlimeKingAI : MonoBehaviour
             var enemy = Instantiate(slimeKingAtk, spawnPos, Quaternion.identity) as GameObject;
 
             /* Rotate the enemy to face towards player */
-            enemy.transform.LookAt(-point);
+            enemy.transform.LookAt(point);
 
             /* Adjust height */
             enemy.transform.Translate(new Vector3(0, enemy.transform.localScale.y / 2, 0));
