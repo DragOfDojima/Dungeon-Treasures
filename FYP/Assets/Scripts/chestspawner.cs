@@ -33,15 +33,21 @@ public class chestspawner : MonoBehaviour
             timer-=spawnTimer;
             spawnCount++;
         }
+        
     }
 
     public void Spawn()
     {
-        MRUKRoom room =MRUK.Instance.GetCurrentRoom();
+        GameObject[] chestSpawnerList = GameObject.FindGameObjectsWithTag("chestSpawn");
+        for(int i =0; i < chestSpawnerList.Length; i++)
+        {
+            Instantiate(prefabToSpawn, chestSpawnerList[i].transform);
+        }
+        /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
         room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
         Vector3 randomPositionNormalOffset = pos + norm* normalOffset;
         randomPositionNormalOffset.y=0;
-        Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); 
+        Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); */
     }
 
     public void killedMob()

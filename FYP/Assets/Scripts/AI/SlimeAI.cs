@@ -9,6 +9,7 @@ public class SlimeAI : MonoBehaviour
     public float speed;
     public Animator animator;
     bool playerInSightRange;
+    bool playerInCloseRange;
     public float sightRange;
     public LayerMask whatIsPlayer;
     [SerializeField]private SkinnedMeshRenderer bodySkinnedMeshRenderer;
@@ -23,7 +24,12 @@ public class SlimeAI : MonoBehaviour
         Lasthp = npcStat.getHP();
         bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 100);
     }
-
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, sightRange);
+    }
     // Update is called once per frame
     float Lasthp;
     void Update()
@@ -55,6 +61,9 @@ public class SlimeAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        playerInCloseRange = Physics.CheckSphere(transform.position, 0.6f, whatIsPlayer);
+        if (playerInCloseRange) agent.updatePosition = false;
+        else agent.updatePosition = true;
         Vector3 targetPosition = Camera.main.transform.position;
 
         animator.SetBool("jump", true);

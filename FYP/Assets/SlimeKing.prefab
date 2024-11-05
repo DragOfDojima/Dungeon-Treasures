@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 38810125359668873}
-  - component: {fileID: 7770311628353221848}
   - component: {fileID: 7606077298109407756}
   - component: {fileID: 3489475425772998246}
   m_Layer: 0
@@ -33,26 +32,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5579015468879167205}
+  - {fileID: 570429777010917302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7770311628353221848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8400659593540927824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267b9122875a97e49bd58dfe039a5e91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hp: 0
-  floatDamOffset: 0.5
-  healthBar: {fileID: 0}
-  deadMat: {fileID: 2100000, guid: b3b691dc909091240836c64e28945e36, type: 2}
-  MainObject: {fileID: 706682383852135219}
-  deadanimation: {fileID: 710652480093637543}
 --- !u!195 &7606077298109407756
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -89,10 +71,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7606077298109407756}
   speed: 0
-  animator: {fileID: 710652480093637543}
+  animator: {fileID: 670931566100160389}
   slimeKingAtk: {fileID: 1914554985611528609, guid: d77efee9576fe454f80f647f59f895da,
     type: 3}
-  npcStat: {fileID: 7770311628353221848}
+  slimeKingAtkSpawner: {fileID: 9201488452609981582}
+  npcStat: {fileID: 6582726332710086975}
+--- !u!1 &9201488452609981582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 570429777010917302}
+  m_Layer: 0
+  m_Name: atkspawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &570429777010917302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201488452609981582}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1786623, y: 1.6000242, z: -0.9647057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 38810125359668873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5397032539201132814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,6 +207,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 485476644767039675}
+    - targetCorrespondingSourceObject: {fileID: -639857631024967548, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6582726332710086975}
     - targetCorrespondingSourceObject: {fileID: -4384043553416365507, guid: e4a7ca81ac529a44d92472de0213fffd,
         type: 3}
       insertIndex: -1
@@ -252,6 +270,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.022002863, y: 0.01530171, z: 0.021222938}
   m_Center: {x: -0.000058176516, y: 0.0059538656, z: -0.0000951345}
+--- !u!114 &6582726332710086975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465557212372257162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267b9122875a97e49bd58dfe039a5e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 0
+  floatDamOffset: 0.5
+  healthBar: {fileID: 0}
+  deadMat: {fileID: 2100000, guid: b3b691dc909091240836c64e28945e36, type: 2}
+  MainObject: {fileID: 706682383852135219}
+  deadanimation: {fileID: 710652480093637543}
+  NPC: {fileID: 8400659593540927824}
 --- !u!1 &5055138497070097503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e4a7ca81ac529a44d92472de0213fffd,
