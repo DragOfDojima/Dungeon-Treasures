@@ -18,6 +18,7 @@ public class NpcStat : MonoBehaviour
     [SerializeField] private Animator deadanimation;
     SkinnedMeshRenderer smr;
     Material[] deadmatList;
+    public GameObject NPC;
 
     private void Update()
     {

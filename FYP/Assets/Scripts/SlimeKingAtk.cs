@@ -8,7 +8,8 @@ public class SlimeKingAtk : MonoBehaviour
     Rigidbody rb;
     void Start()
     {
-        rb.AddForce(transform.forward*5,ForceMode.Impulse);
+        rb= GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward   * 5);
     }
 
     // Update is called once per frame

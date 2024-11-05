@@ -677,11 +677,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 855277274141692286, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 855277274141692286, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3489475425772998246, guid: 650e92e73ef4f3640afe3172ec6d97b9,
         type: 3}
       propertyPath: agent
       value: 
       objectReference: {fileID: 1873249606}
+    - target: {fileID: 3489475425772998246, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2028411417}
     - target: {fileID: 3489475425772998246, guid: 650e92e73ef4f3640afe3172ec6d97b9,
         type: 3}
       propertyPath: slimeKingAtkSpawner
@@ -796,6 +811,12 @@ NavMeshAgent:
 --- !u!4 &1873249609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1873249603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2028411417 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 670931566100160389, guid: 650e92e73ef4f3640afe3172ec6d97b9,
     type: 3}
   m_PrefabInstance: {fileID: 1873249603}
   m_PrefabAsset: {fileID: 0}

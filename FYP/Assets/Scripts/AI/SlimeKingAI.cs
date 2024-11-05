@@ -15,11 +15,14 @@ public class SlimeKingAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator.SetBool("jump", true);
+
         Lasthp = npcStat.getHP();
     }
 
     // Update is called once per frame
     float Lasthp;
+    bool atking=false;
     void Update()
     {
         if (!npcStat.getDead())
@@ -31,14 +34,26 @@ public class SlimeKingAI : MonoBehaviour
             gameObject.tag="Untagged";
             animator.enabled = false; 
         }
-        
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position, 1f);
+        }
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked"&&!atking)
+        {
+            atking=true;
+            StartCoroutine(attack());
+        }
     }
 
+    IEnumerator attack()
+    {
+        yield return new WaitForSeconds(1.1f);
+        CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position, 1f);
+    }
     private void AtkPlayer()
     {
         Vector3 targetPosition = Camera.main.transform.position;
-        CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position,2f);
-        animator.SetBool("jump", true);
+        //CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position,2f);
         agent.SetDestination(targetPosition);
     }
     int p;
@@ -88,6 +103,7 @@ public class SlimeKingAI : MonoBehaviour
 
             /* Adjust height */
             enemy.transform.Translate(new Vector3(0, enemy.transform.localScale.y / 2, 0));
+            enemy.GetComponent<Rigidbody>().AddForce(-enemy.transform.forward * 500);
         }
     }
 }
