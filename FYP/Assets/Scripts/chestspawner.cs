@@ -25,7 +25,7 @@ public class chestspawner : MonoBehaviour
     {
         if (!spawned)
         {
-            spawned=true;
+            spawned=false;
             Spawn();
         }
         
@@ -36,6 +36,7 @@ public class chestspawner : MonoBehaviour
         GameObject[] chestSpawnerList = GameObject.FindGameObjectsWithTag("chestSpawn");
         for(int i =0; i < chestSpawnerList.Length; i++)
         {
+            Debug.Log("spaw");
             Instantiate(prefabToSpawn, chestSpawnerList[i].transform.position,Quaternion.identity);
         }
         /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
