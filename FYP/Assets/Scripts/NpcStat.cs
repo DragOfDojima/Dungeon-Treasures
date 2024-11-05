@@ -86,7 +86,7 @@ public class NpcStat : MonoBehaviour
         smr.materials = deadmatList;
         deadanimation.enabled = true;
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
+        Destroy(NPC);
     }
     public bool getDead()
     {
