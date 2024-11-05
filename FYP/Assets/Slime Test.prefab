@@ -474,6 +474,7 @@ MonoBehaviour:
   deadMat: {fileID: 2100000, guid: b3b691dc909091240836c64e28945e36, type: 2}
   MainObject: {fileID: 8667496203025191869}
   deadanimation: {fileID: 623450810602296387}
+  NPC: {fileID: 4199268874010373268}
 --- !u!1 &8667496203025191869
 GameObject:
   m_ObjectHideFlags: 0
