@@ -19,19 +19,14 @@ public class chestspawner : MonoBehaviour
         
     }
     int spawnCount=0;
+    bool spawned;
     // Update is called once per frame
     void Update()
     {
-        if(!MRUK.Instance&&!MRUK.Instance.IsInitialized)
-            return;
-        if(spawnCount >= maxSpawn)
-            return;
-        timer+=Time.deltaTime;
-        if(timer > spawnTimer)
+        if (!spawned)
         {
+            spawned=true;
             Spawn();
-            timer-=spawnTimer;
-            spawnCount++;
         }
         
     }
@@ -41,7 +36,7 @@ public class chestspawner : MonoBehaviour
         GameObject[] chestSpawnerList = GameObject.FindGameObjectsWithTag("chestSpawn");
         for(int i =0; i < chestSpawnerList.Length; i++)
         {
-            Instantiate(prefabToSpawn, chestSpawnerList[i].transform);
+            Instantiate(prefabToSpawn, chestSpawnerList[i].transform.position,Quaternion.identity);
         }
         /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
         room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
