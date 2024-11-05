@@ -241,6 +241,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &1007705431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1007705432}
+  m_Layer: 0
+  m_Name: SlimeKingAtkSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1007705432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007705431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1873249609}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1069718760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -588,6 +619,186 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &1873249603
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489475425772998246, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1873249606}
+    - target: {fileID: 3489475425772998246, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: slimeKingAtkSpawner
+      value: 
+      objectReference: {fileID: 1007705431}
+    - target: {fileID: 5055138497070097503, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: hitable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579015468879167205, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579015468879167205, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579015468879167205, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579015468879167205, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579015468879167205, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_Name
+      value: SlimeKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: hitable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1007705432}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873249606}
+    - targetCorrespondingSourceObject: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873249605}
+  m_SourcePrefab: {fileID: 100100000, guid: 650e92e73ef4f3640afe3172ec6d97b9, type: 3}
+--- !u!1 &1873249604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1873249603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1873249605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873249604}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4838228, y: 2.2233543, z: 2.0886014}
+  m_Center: {x: 0.026878834, y: 0.8560691, z: -0.03359878}
+--- !u!195 &1873249606
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873249604}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.92
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!4 &1873249609 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 38810125359668873, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1873249603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143492453
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,3 +935,4 @@ SceneRoots:
   - {fileID: 1237917854}
   - {fileID: 2143492458}
   - {fileID: 1069718760}
+  - {fileID: 1873249603}
