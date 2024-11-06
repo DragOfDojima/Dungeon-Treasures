@@ -9,6 +9,8 @@ public class chest : MonoBehaviour
 {
     Animator chestLid;
     bool isOpen = false;
+    public WeightedRandomList<Transform> lootTable;
+    public Transform itemHolder;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class chest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
+
         }
     }
 
@@ -34,14 +37,35 @@ public class chest : MonoBehaviour
             Debug.Log("Open Chest");
             if (isOpen == false) { 
             chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
+             ShowItem();
             isOpen=true; 
             }
             
         else {
             chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
-            isOpen=false;
+            HideItem();
+            isOpen =false;
         }
        }
-   }
+
+    void HideItem()
+        {
+            itemHolder.localScale = Vector3.zero;
+            itemHolder.gameObject.SetActive(false);
+
+            foreach (Transform child in itemHolder)
+            {
+                Destroy(child.gameObject);
+            }
+            
+        }
+
+        void ShowItem(){
+            Transform item = lootTable.GetRandom();
+            Instantiate(item, itemHolder);
+            itemHolder.gameObject.SetActive(true);
+            Debug.Log("item shown");
+        }
+    }
 }
 
