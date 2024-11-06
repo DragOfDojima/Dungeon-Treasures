@@ -46,7 +46,7 @@ public class Mobspawner : MonoBehaviour
             else if(KingSlimeCount > 0) { 
                 Spawn(prefabToSpawn_KingSlime);
             }
-            else { 
+            else if(!WaveMenu.activeSelf){ 
                 WaveClear();    
             }
         }
