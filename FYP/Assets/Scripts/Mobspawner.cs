@@ -18,6 +18,7 @@ public class Mobspawner : MonoBehaviour
     public int maxSpawn=5;
     private int SlimeCount;
     private int KingSlimeCount;
+    private int toBeSpawn;
     void Start()
     {
         
@@ -27,6 +28,7 @@ public class Mobspawner : MonoBehaviour
     {
         SlimeCount = Slime;
         KingSlimeCount = kingSlime;
+        toBeSpawn = SlimeCount + KingSlimeCount;
     }
 
     int spawnCount=0;
@@ -42,13 +44,16 @@ public class Mobspawner : MonoBehaviour
         {
             if(SlimeCount > 0) {
                 Spawn(prefabToSpawn_slime);
+                toBeSpawn-=1;
             }
             else if(KingSlimeCount > 0) { 
                 Spawn(prefabToSpawn_KingSlime);
+                toBeSpawn -= 1;
             }
-            else if(!WaveMenu.activeSelf){ 
+            else if(!WaveMenu.activeSelf || spawnCount==0){ 
                 WaveClear();    
             }
+            timer -= spawnTimer;
         }
     }
 
@@ -59,7 +64,6 @@ public class Mobspawner : MonoBehaviour
         Vector3 randomPositionNormalOffset = pos + norm* normalOffset;
         randomPositionNormalOffset.y=0;
         Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); 
-        timer-=spawnTimer;
         spawnCount++;
     }
 
