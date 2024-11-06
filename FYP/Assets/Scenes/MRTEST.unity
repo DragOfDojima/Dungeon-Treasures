@@ -1085,6 +1085,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1718348170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &79721063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3372193876021508423, guid: ead29a34e355f3248b3a1b7eb5f23560,
+    type: 3}
+  m_PrefabInstance: {fileID: 463996696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &84397623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,14 +1486,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 1
-  prefabToSpawn_slime: {fileID: 0}
-  prefabToSpawn_KingSlime: {fileID: 0}
+  prefabToSpawn_slime: {fileID: 4199268874010373268, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
+    type: 3}
+  prefabToSpawn_KingSlime: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+    type: 3}
+  WaveMenu: {fileID: 79721063}
   minEdgeDistance: 0.3
   spawnLabels: 4
   normalOffset: 1
   maxSpawn: 5
-  SlimeCount: 0
-  KingSlimeCount: 0
 --- !u!4 &109250218
 Transform:
   m_ObjectHideFlags: 0
@@ -3600,6 +3607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobspawner: {fileID: 109250217}
+  WaveMenu: {fileID: 79721063}
 --- !u!1 &245951088
 GameObject:
   m_ObjectHideFlags: 0
@@ -6062,7 +6070,7 @@ PrefabInstance:
     - target: {fileID: 3372193876021508423, guid: ead29a34e355f3248b3a1b7eb5f23560,
         type: 3}
       propertyPath: m_Name
-      value: UI_temp
+      value: WaveMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5215651086808781025, guid: ead29a34e355f3248b3a1b7eb5f23560,
         type: 3}

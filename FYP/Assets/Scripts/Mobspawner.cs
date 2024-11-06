@@ -8,6 +8,7 @@ public class Mobspawner : MonoBehaviour
     public float spawnTimer = 1;
     public GameObject prefabToSpawn_slime;
     public GameObject prefabToSpawn_KingSlime;
+    [SerializeField] GameObject WaveMenu;
 
     private float timer;
 
@@ -15,8 +16,8 @@ public class Mobspawner : MonoBehaviour
     public MRUKAnchor.SceneLabels spawnLabels;
     public float normalOffset;
     public int maxSpawn=5;
-    [SerializeField] int SlimeCount;
-    [SerializeField] int KingSlimeCount;
+    private int SlimeCount;
+    private int KingSlimeCount;
     void Start()
     {
         
@@ -45,6 +46,9 @@ public class Mobspawner : MonoBehaviour
             else if(KingSlimeCount > 0) { 
                 Spawn(prefabToSpawn_KingSlime);
             }
+            else { 
+                WaveClear();    
+            }
         }
     }
 
@@ -62,5 +66,10 @@ public class Mobspawner : MonoBehaviour
     public void killedMob()
     {
         spawnCount--;
+    }
+
+    public void WaveClear()
+    {
+        WaveMenu.SetActive(true);
     }
 }
