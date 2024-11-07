@@ -39,9 +39,7 @@ public class weapon : MonoBehaviour
     Vector3 lastPosition = Vector3.zero;
     private void Update()
     {
-        if (speed > 0) {
-            animator.enabled = false;
-            }
+        
         //Debug.Log("c=" + combo);
         if (combo > 0)
         {

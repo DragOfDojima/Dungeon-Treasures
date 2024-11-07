@@ -14,6 +14,7 @@ public class chestspawner : MonoBehaviour
     public MRUKAnchor.SceneLabels spawnLabels;
     public float normalOffset;
     public int maxSpawn=5;
+    public float ChestRespawnTime;
     void Start()
     {
         
@@ -25,7 +26,7 @@ public class chestspawner : MonoBehaviour
     {
         if (!spawned)
         {
-            spawned=true;
+            spawned=false;
             Spawn();
         }
         
@@ -36,8 +37,14 @@ public class chestspawner : MonoBehaviour
         GameObject[] chestSpawnerList = GameObject.FindGameObjectsWithTag("chestSpawn");
         for(int i =0; i < chestSpawnerList.Length; i++)
         {
+            chestSpawnerList[i].GetComponent<CheckChest>().setWaitTime(ChestRespawnTime);
             Debug.Log("spaw");
-            Instantiate(prefabToSpawn, chestSpawnerList[i].transform.position,Quaternion.identity);
+            if (!chestSpawnerList[i].GetComponent<CheckChest>().getHaveChest())
+            {
+                Debug.Log("Chest Spawned!!!!!!!!!!!!!!!!!!!!!!!");
+                Instantiate(prefabToSpawn, chestSpawnerList[i].transform.position, Quaternion.identity);
+            }
+            
         }
         /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
         room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);

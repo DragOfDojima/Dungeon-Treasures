@@ -1,30 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
-using Unity.VisualScripting;
 using UnityEditor.Animations;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class chest : MonoBehaviour
 {
-    MeshRenderer smr;
-    public MeshRenderer smt;
+    public MeshRenderer mr;
     Animator chestLid;
     Animator animator;
     bool isOpen = false;
     public WeightedRandomList<Transform> lootTable;
     public Transform itemHolder;
     Material[] deadmatList;
-    [SerializeField] private AnimatorController deadanimation;
+    [SerializeField] private Animator deadanimation;
     [SerializeField] private Material deadMat;
+    public GameObject fullChest;
 
     // Start is called before the first frame update
     void Start()
     {
         chestLid = GetComponent<Animator>();
-        smr = GetComponent<MeshRenderer>();
-        deadmatList = smr.materials;
+        deadmatList = mr.materials;
         for (int i = 0; i < deadmatList.Length; i++)
         {
             deadmatList[i] = deadMat;
@@ -56,14 +51,22 @@ public class chest : MonoBehaviour
             }
             
             else {
-                chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
-                HideItem();
-                isOpen =false;
-                smr.materials = deadmatList;
-                smt.materials = deadmatList;
-                Debug.Log("Chest Closed");
+                StartCoroutine(close());
                 }
        }
+
+    IEnumerator close()
+        {
+            chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
+            HideItem();
+            isOpen = false;
+            yield return new WaitForSeconds(1);
+            fullChest.SetActive(true);
+            gameObject.SetActive(false);
+            mr.materials = deadmatList;
+            deadanimation.enabled = true;
+            Debug.Log("Chest Closed");
+        }
 
     void HideItem()
         {
@@ -80,9 +83,8 @@ public class chest : MonoBehaviour
             Transform item = lootTable.GetRandom();
             itemHolder.gameObject.SetActive(true);
             var s = Instantiate(item, itemHolder);
-            animator = s.GetComponent<Animator>();
-            animator.Play("spawn");
-
+            s.GetComponent<Animator>().enabled=true;
+            s.GetComponent<Animator>().Play("spawn");
             Debug.Log("item shown");
         }
     }
