@@ -25,7 +25,7 @@ public class chestspawner : MonoBehaviour
     {
         if (!spawned)
         {
-            spawned=false;
+            spawned=true;
             Spawn();
         }
         

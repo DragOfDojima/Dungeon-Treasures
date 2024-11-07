@@ -5,12 +5,20 @@ using UnityEngine.UIElements;
 
 public class weapon : MonoBehaviour
 {
+    Animator animator;
     [SerializeField] private float WeaponDamage;
     [SerializeField] private Collider hitbox;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float ComboBouns;
     [SerializeField] private int MaxCombo;
     private int combo = 0;
+
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,6 +39,9 @@ public class weapon : MonoBehaviour
     Vector3 lastPosition = Vector3.zero;
     private void Update()
     {
+        if (speed > 0) {
+            animator.enabled = false;
+            }
         //Debug.Log("c=" + combo);
         if (combo > 0)
         {
@@ -51,6 +62,7 @@ public class weapon : MonoBehaviour
     {
         speed = Vector3.Distance(transform.position, lastPosition) / Time.deltaTime;
         lastPosition = transform.position;
-
+        
     }
+
 }
