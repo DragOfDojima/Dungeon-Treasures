@@ -11,13 +11,19 @@ public class SlimeKingAI : MonoBehaviour
     public GameObject slimeKingAtk;
     public GameObject slimeKingAtkSpawner;
     [SerializeField]private NpcStat npcStat;
+    bool playerInCloseRange;
+    public LayerMask whatIsPlayer;
+
 
     // Start is called before the first frame update
     void Start()
     {
         animator.SetBool("jump", true);
-        agent.updatePosition = false;
+        //agent.updatePosition = false;
         Lasthp = npcStat.getHP();
+        agent.avoidancePriority = 10;
+        agent.speed = speed;
+
     }
 
     // Update is called once per frame
@@ -38,7 +44,10 @@ public class SlimeKingAI : MonoBehaviour
         {
             CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position, 1f);
         }
-        
+
+        playerInCloseRange = Physics.CheckSphere(transform.position, 0.6f, whatIsPlayer);
+        if (playerInCloseRange) agent.updatePosition = false;
+
     }
 
     IEnumerator attack()
