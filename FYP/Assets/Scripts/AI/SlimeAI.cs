@@ -7,6 +7,7 @@ public class SlimeAI : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float speed;
+    [SerializeField] private float knockBackPower;
     public Animator animator;
     bool playerInSightRange;
     bool playerInCloseRange;
@@ -24,6 +25,8 @@ public class SlimeAI : MonoBehaviour
         Lasthp = npcStat.getHP();
         bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 100);
         agent.avoidancePriority = 10;
+        npcStat.SetKnockBack(knockBackPower);
+
     }
     void OnDrawGizmosSelected()
     {
@@ -40,7 +43,6 @@ public class SlimeAI : MonoBehaviour
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             if (playerInSightRange) ChasePlayer();
             else Patroling();
-            Vector3 targetPosition = Camera.main.transform.position;
             if (Lasthp != npcStat.getHP())
             {
                 hurt();
@@ -62,37 +64,55 @@ public class SlimeAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        Vector3 targetPosition = Camera.main.transform.position;
         playerInCloseRange = Physics.CheckSphere(transform.position, 0.6f, whatIsPlayer);
         if (playerInCloseRange)
         {
             agent.updatePosition = false;
             agent.speed = 0;
+            agent.updateRotation = false;
+            FaceTarget(targetPosition);
         }
         else
         {
-            agent.updatePosition = true;
-            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_idel2jump_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_Idel_baked")
+            if(agent.enabled == true)
             {
-                agent.speed = 0;
+                agent.SetDestination(targetPosition);
+                agent.updateRotation = true;
+                agent.updatePosition = true;
+                if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_idel2jump_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_Idel_baked")
+                {
+                    agent.speed = 0;
+                }
+                else
+                {
+                    agent.speed = speed;
+                }
             }
-            else
-            {
-                agent.speed = speed;
-            }
+                
+            
+            
         }
-        Vector3 targetPosition = Camera.main.transform.position;
 
-        animator.SetBool("jump", true);
-        agent.SetDestination(targetPosition);
+        if (agent.enabled == true)
+        {
+            agent.SetDestination(targetPosition);
+        }
+            animator.SetBool("jump", true);
+        
         if (!hurted)
         {
             bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 0);
             bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 0);
             bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 0);
         }
-        
-        
-
+    }
+    private void FaceTarget(Vector3 destination)
+    {
+        Vector3 lookPos = destination - transform.position;
+        lookPos.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.035f);
     }
     int p;
     bool roll=false;

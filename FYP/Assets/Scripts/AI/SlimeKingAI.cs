@@ -7,6 +7,7 @@ public class SlimeKingAI : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float speed;
+    [SerializeField] private float knockBackPower;
     public Animator animator;
     public GameObject slimeKingAtk;
     public GameObject slimeKingAtkSpawner;
@@ -23,7 +24,7 @@ public class SlimeKingAI : MonoBehaviour
         Lasthp = npcStat.getHP();
         agent.avoidancePriority = 10;
         agent.speed = speed;
-
+        npcStat.SetKnockBack(knockBackPower);
     }
 
     // Update is called once per frame
@@ -42,11 +43,9 @@ public class SlimeKingAI : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position, 1f);
         }
 
-        playerInCloseRange = Physics.CheckSphere(transform.position, 0.6f, whatIsPlayer);
-        if (playerInCloseRange) agent.updatePosition = false;
+        
 
     }
 
@@ -58,13 +57,38 @@ public class SlimeKingAI : MonoBehaviour
     private void AtkPlayer()
     {
         Vector3 targetPosition = Camera.main.transform.position;
-        //CreateSlimeKingAtk(8, slimeKingAtkSpawner.transform.position,2f);
-        agent.SetDestination(targetPosition);
-        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked" && !atking)
+        
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked" && !atking && !npcStat.getDead())
         {
             atking = true;
             StartCoroutine(attack());
         }
+        playerInCloseRange = Physics.CheckSphere(transform.position, 3f, whatIsPlayer);
+        if (playerInCloseRange)
+        {
+            agent.updatePosition = false;
+            agent.speed = 0;
+            agent.updateRotation = false;
+            FaceTarget(targetPosition);
+        }
+        else
+        {
+            if (agent.enabled == true)
+            {
+                agent.SetDestination(targetPosition);
+                agent.updatePosition = true;
+                agent.updateRotation = true;
+                agent.speed = speed;
+            }
+            
+        }
+    }
+    private void FaceTarget(Vector3 destination)
+    {
+        Vector3 lookPos = destination - transform.position;
+        lookPos.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.035f);
     }
     int p;
     bool roll=false;
@@ -80,12 +104,15 @@ public class SlimeKingAI : MonoBehaviour
     public void hurt()
     {
         hurted=true;
-        Invoke("resetHurt",2);
+        StartCoroutine(resetHurt());
     }
-    void resetHurt()
+    IEnumerator resetHurt()
     {
-        hurted=false;
+        yield return new WaitForSeconds(0.15f);
+        hurted = false;
     }
+
+
 
     public void CreateSlimeKingAtk(int num, Vector3 point, float radius)
     {
