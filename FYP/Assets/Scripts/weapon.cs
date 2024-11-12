@@ -1,3 +1,5 @@
+using Oculus.Interaction;
+using Oculus.Interaction.HandGrab;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +14,7 @@ public class weapon : MonoBehaviour
     [SerializeField] private float ComboBouns;
     [SerializeField] private int MaxCombo;
     [SerializeField] private GameObject hitEffect;
+
     private int combo = 0;
 
 
