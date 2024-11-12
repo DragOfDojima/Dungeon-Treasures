@@ -6,7 +6,7 @@ public class CheckChest : MonoBehaviour
 {
     bool haveChest=false;
     bool hc = false;
-
+    bool waitSpawn=false;
     public LayerMask whatIsChest;
     float WaitTime=10f;
 
@@ -26,7 +26,12 @@ public class CheckChest : MonoBehaviour
         }
         else
         {
-            StartCoroutine(chestRespawnTime());
+            if (!waitSpawn)
+            {
+                waitSpawn=true;
+                StartCoroutine(chestRespawnTime());
+            }
+            
         }
     }
 

@@ -82,7 +82,7 @@ public class chest : MonoBehaviour
         void ShowItem(){
             Transform item = lootTable.GetRandom();
             itemHolder.gameObject.SetActive(true);
-            var s = Instantiate(item, itemHolder);
+            var s = Instantiate(item,new Vector3(itemHolder.position.x, itemHolder.position.y, itemHolder.position.z), Quaternion.identity);
             s.GetComponent<Animator>().enabled=true;
             s.GetComponent<Animator>().Play("spawn");
             Debug.Log("item shown");
