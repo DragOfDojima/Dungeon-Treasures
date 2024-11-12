@@ -421,7 +421,7 @@ PrefabInstance:
     - target: {fileID: 4199268874010373268, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309817816277345093, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
@@ -441,37 +441,37 @@ PrefabInstance:
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.908592
+      value: -2.8286502
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.861401
+      value: 2.2123837
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.414751
+      value: 5.3302383
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.734791
+      value: -0.74330336
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.023165768
+      value: 0.0142651675
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.677562
+      value: 0.66867936
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02133672
+      value: 0.012833634
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}

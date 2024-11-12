@@ -11,6 +11,7 @@ public class weapon : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float ComboBouns;
     [SerializeField] private int MaxCombo;
+    [SerializeField] private GameObject hitEffect;
     private int combo = 0;
 
 
@@ -27,6 +28,8 @@ public class weapon : MonoBehaviour
         {
             if (speed > 5)
             {
+                var hitPoint = other.ClosestPoint(transform.position);
+                Instantiate(hitEffect, hitPoint, Quaternion.identity);
                 other.GetComponent<NpcStat>().Damage(WeaponDamage+combo*ComboBouns);
                 if(combo<MaxCombo)
                 combo++;
