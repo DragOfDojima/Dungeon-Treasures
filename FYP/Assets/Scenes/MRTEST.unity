@@ -2578,15 +2578,6 @@ MonoBehaviour:
     Scaling: 0
     Alignment: 0
     IgnorePrefabSize: 0
-  - Labels: 1
-    Prefabs:
-    - {fileID: 1005073891919078669, guid: 857a7f2aaacfff4429c569abdbbc4bf7, type: 3}
-    PrefabSelection: 0
-    MatchAspectRatio: 0
-    CalculateFacingDirection: 0
-    Scaling: 0
-    Alignment: 0
-    IgnorePrefabSize: 0
 --- !u!1 &113416746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,7 +3062,7 @@ Transform:
   m_GameObject: {fileID: 143374409}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.556, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11037,7 +11028,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641834378}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -18742,7 +18733,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076703732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4d77f8ddc3b37446b6409bccf9d6f93, type: 3}
   m_Name: 
@@ -18753,6 +18744,7 @@ MonoBehaviour:
   ComboBouns: 1.1
   MaxCombo: 5
   hitEffect: {fileID: 0}
+  grabbable: {fileID: 0}
 --- !u!54 &1076703738
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32453,7 +32445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e477b940c8a084ab4f2dda703b49ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handVisual: {fileID: 0}
+  _handVisual: {fileID: 2038198058}
   _hand: {fileID: 235204872}
   _jointsRadiusFeature: {fileID: 460779613}
   _asTriggers: 0
@@ -34079,7 +34071,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131307766}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4d77f8ddc3b37446b6409bccf9d6f93, type: 3}
   m_Name: 
@@ -34090,6 +34082,7 @@ MonoBehaviour:
   ComboBouns: 1.1
   MaxCombo: 5
   hitEffect: {fileID: 0}
+  grabbable: {fileID: 0}
 --- !u!54 &2131307772
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34207,7 +34200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e477b940c8a084ab4f2dda703b49ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handVisual: {fileID: 0}
+  _handVisual: {fileID: 2132988173}
   _hand: {fileID: 926274591}
   _jointsRadiusFeature: {fileID: 460779613}
   _asTriggers: 0
@@ -34590,7 +34583,7 @@ PrefabInstance:
     - target: {fileID: 924107273479502687, guid: 686160321286343498e1ddf1988371cb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3630605
+      value: 0.256
       objectReference: {fileID: 0}
     - target: {fileID: 924107273479502687, guid: 686160321286343498e1ddf1988371cb,
         type: 3}
@@ -34631,6 +34624,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 88.066
+      objectReference: {fileID: 0}
+    - target: {fileID: 3087846373150280373, guid: 686160321286343498e1ddf1988371cb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480628969236625323, guid: 686160321286343498e1ddf1988371cb,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480628969236625323, guid: 686160321286343498e1ddf1988371cb,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8115955266104995264, guid: 686160321286343498e1ddf1988371cb,
         type: 3}

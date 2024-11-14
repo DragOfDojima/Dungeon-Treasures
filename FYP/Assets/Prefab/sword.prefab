@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 3c10f7fb-0f16-4626-8af3-5e41353a0566
+  instanceId: b37ac923-4ef2-44ed-89b4-35d0c99937e7
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1063,6 +1063,7 @@ MonoBehaviour:
   MaxCombo: 3
   hitEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b,
     type: 3}
+  grabbable: {fileID: 4831573653466995308}
 --- !u!95 &-1652764661748611298
 Animator:
   serializedVersion: 5

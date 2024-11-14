@@ -14,6 +14,7 @@ public class weapon : MonoBehaviour
     [SerializeField] private float ComboBouns;
     [SerializeField] private int MaxCombo;
     [SerializeField] private GameObject hitEffect;
+    [SerializeField] private Grabbable grabbable;
 
     private int combo = 0;
 
@@ -21,6 +22,7 @@ public class weapon : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
     }
 
 
@@ -40,12 +42,31 @@ public class weapon : MonoBehaviour
             }
         }
     }
-
+    bool isgrabing;
+    bool setup;
+    bool setup2;
     float timer=3;
     Vector3 lastPosition = Vector3.zero;
     private void Update()
     {
-        
+        if(grabbable.SelectingPoints.Count > 0)
+        {
+            isgrabing = true;
+            if (!setup)
+            {
+                setup = true;
+                Setup();
+            }
+        }
+        else
+        {
+            isgrabing= false;
+            if (setup&&!setup2)
+            {
+                setup2 = true;
+                Setup();
+            }
+        }
         //Debug.Log("c=" + combo);
         if (combo > 0)
         {
@@ -60,6 +81,14 @@ public class weapon : MonoBehaviour
         
         
         
+    }
+
+    void Setup()
+    {
+        animator.enabled = false;
+        rb.isKinematic = false;
+        rb.useGravity = true;
+        hitbox.isTrigger = false;
     }
     float speed;
     private void FixedUpdate()
