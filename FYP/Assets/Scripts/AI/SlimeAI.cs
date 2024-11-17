@@ -65,7 +65,7 @@ public class SlimeAI : MonoBehaviour
     private void ChasePlayer()
     {
         Vector3 targetPosition = Camera.main.transform.position;
-        playerInCloseRange = Physics.CheckSphere(transform.position, 0.6f, whatIsPlayer);
+        playerInCloseRange = Physics.CheckSphere(transform.position, 1.2f, whatIsPlayer);
         if (playerInCloseRange)
         {
             agent.updatePosition = false;
