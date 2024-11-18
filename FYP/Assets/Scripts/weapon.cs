@@ -16,8 +16,10 @@ public class weapon : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private Grabbable grabbable;
 
+    [SerializeField] private GameObject[] matObjects;
     private int combo = 0;
-
+    public bool NotWeapon=false;
+    bool isIdel=true;
 
     void Start()
     {
@@ -51,6 +53,7 @@ public class weapon : MonoBehaviour
     {
         if(grabbable.SelectingPoints.Count > 0)
         {
+            isIdel = false;
             isgrabing = true;
             if (!setup)
             {
@@ -60,6 +63,10 @@ public class weapon : MonoBehaviour
         }
         else
         {
+            if (isgrabing == true)
+            {
+                Invoke("setIdel",3f);
+            }
             isgrabing= false;
             if (setup&&!setup2)
             {
@@ -83,6 +90,15 @@ public class weapon : MonoBehaviour
         
     }
 
+    public bool getIdel()
+    {
+        return isIdel;
+    }
+    void setIdel()
+    {
+        isIdel = true;
+    }
+
     void Setup()
     {
         animator.enabled = false;
@@ -98,4 +114,18 @@ public class weapon : MonoBehaviour
         
     }
 
+    public bool getIsGrabing()
+    {
+        return isgrabing;
+    }
+
+    public GameObject[] getMatObjects()
+    {
+        return matObjects;
+    }
+
+    public bool getNotWeapon()
+    {
+        return NotWeapon;
+    }
 }
