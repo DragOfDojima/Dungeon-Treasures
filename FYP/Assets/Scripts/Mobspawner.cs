@@ -18,7 +18,8 @@ public class Mobspawner : MonoBehaviour
     public int maxSpawn=5;
     private int SlimeCount;
     private int KingSlimeCount;
-    private int toBeSpawn;
+    //private int toBeSpawn;
+    private int remain;
     void Start()
     {
         
@@ -28,7 +29,8 @@ public class Mobspawner : MonoBehaviour
     {
         SlimeCount = Slime;
         KingSlimeCount = kingSlime;
-        toBeSpawn = SlimeCount + KingSlimeCount;
+        //toBeSpawn = SlimeCount + KingSlimeCount;
+        remain=Slime + kingSlime;
     }
 
     int spawnCount=0;
@@ -45,12 +47,12 @@ public class Mobspawner : MonoBehaviour
             if(SlimeCount > 0) {
                 Spawn(prefabToSpawn_slime);
                 SlimeCount-=1;
-                toBeSpawn-=1;
+                //toBeSpawn-=1;
             }
             else if(KingSlimeCount > 0) { 
                 Spawn(prefabToSpawn_KingSlime);
                 KingSlimeCount-=1;
-                toBeSpawn -= 1;
+                //toBeSpawn -= 1;
             }
             else if(!WaveMenu.activeSelf || spawnCount==0){ 
                 WaveClear();    
@@ -72,11 +74,12 @@ public class Mobspawner : MonoBehaviour
     public void killedMob()
     {
         spawnCount--;
+        remain--;
     }
 
     public int getSpawnCount()
     {
-        return SlimeCount+KingSlimeCount; 
+        return remain; 
     }
 
     public void WaveClear()
