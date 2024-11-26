@@ -8942,7 +8942,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnOnStart: 1
   SeedValue: 0
-  PrefabsToSpawn: []
+  PrefabsToSpawn:
+  - Labels: 4
+    Prefabs:
+    - {fileID: 7917061909163267786, guid: 2798b09b825154147b59d5da441a9048, type: 3}
+    PrefabSelection: 0
+    MatchAspectRatio: 0
+    CalculateFacingDirection: 0
+    Scaling: 0
+    Alignment: 0
+    IgnorePrefabSize: 0
 --- !u!4 &478319270
 Transform:
   m_ObjectHideFlags: 0
@@ -21399,7 +21408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 1
-  prefabToSpawn: {fileID: 6107524752988289295, guid: 6ddc93b6a1303914695a51116a0f6757,
+  prefabToSpawn: {fileID: 7117614079299205996, guid: d990b32057f2f8b4690d5dbfad398a90,
     type: 3}
   minEdgeDistance: 0.3
   spawnLabels: 0

@@ -8,6 +8,7 @@ TagManager:
   - chestSpawn
   - chest
   - Arrow
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class Wave : MonoBehaviour
 {
     public Mobspawner mobspawner;
     private int waveCount = 0;
-    [SerializeField] GameObject WaveMenu;
+    GameObject WaveMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +39,9 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (WaveMenu == null)
+        {
+            WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
+        }
     }
 }
