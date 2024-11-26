@@ -15,10 +15,11 @@ public class SlimeAI : MonoBehaviour
     public LayerMask whatIsPlayer;
     [SerializeField]private SkinnedMeshRenderer bodySkinnedMeshRenderer;
     [SerializeField]private NpcStat npcStat;
+    [SerializeField] GameObject impactDamage;
     string Smile = "smile";
     string Hurt = "hurt";
     string Dead = "dead";
-
+    [SerializeField] private float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +62,7 @@ public class SlimeAI : MonoBehaviour
         }
         
     }
-
+    bool atk;
     private void ChasePlayer()
     {
         Vector3 targetPosition = Camera.main.transform.position;
@@ -72,6 +73,16 @@ public class SlimeAI : MonoBehaviour
             agent.speed = 0;
             agent.updateRotation = false;
             FaceTarget(targetPosition);
+            if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked"&&!atk)
+            {
+                atk=true;
+                var id = Instantiate(impactDamage,gameObject.transform.position, Quaternion.identity)as GameObject;
+                id.GetComponent<DealDamage>().setDamage(damage);
+            }
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Slime_jump2idel_baked")
+            {
+                atk=false;
+            }
         }
         else
         {

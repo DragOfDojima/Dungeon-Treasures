@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 38810125359668873}
   - component: {fileID: 7606077298109407756}
   - component: {fileID: 3489475425772998246}
-  - component: {fileID: 2478759045698570511}
-  m_Layer: 0
+  - component: {fileID: 5332390644346450284}
+  m_Layer: 13
   m_Name: SlimeKing
   m_TagString: hitable
   m_Icon: {fileID: 0}
@@ -81,7 +81,10 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
---- !u!54 &2478759045698570511
+  impactDamage: {fileID: 198592327235008425, guid: 6f923e3c6f2fb6f46bbaf610c50f35d2,
+    type: 3}
+  damage: 10
+--- !u!54 &5332390644346450284
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570429777010917302}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: atkspawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,6 +200,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5151492872390713093, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -4896332150761962198, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -4384043553416365507, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: -687774434937223100, guid: e4a7ca81ac529a44d92472de0213fffd,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[0]
@@ -209,6 +227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -639857631024967548, guid: e4a7ca81ac529a44d92472de0213fffd,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -639857631024967548, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
       propertyPath: m_TagString
       value: hitable
       objectReference: {fileID: 0}
@@ -216,6 +239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: slimeKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4436805663696350335, guid: e4a7ca81ac529a44d92472de0213fffd,
         type: 3}
@@ -236,6 +264,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233112405309087440, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543084463178402448, guid: e4a7ca81ac529a44d92472de0213fffd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -376,6 +414,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5579015468879167205}
     m_Modifications:
+    - target: {fileID: 4385939660774947673, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5189301838342532439, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -490,6 +533,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HP
+      objectReference: {fileID: 0}
+    - target: {fileID: 5199826567372551903, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597418006164912342, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

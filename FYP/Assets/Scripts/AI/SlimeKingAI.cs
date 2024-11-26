@@ -14,6 +14,8 @@ public class SlimeKingAI : MonoBehaviour
     [SerializeField]private NpcStat npcStat;
     bool playerInCloseRange;
     public LayerMask whatIsPlayer;
+    [SerializeField] GameObject impactDamage;
+    [SerializeField] private float damage;
 
 
     // Start is called before the first frame update
@@ -48,7 +50,7 @@ public class SlimeKingAI : MonoBehaviour
         
 
     }
-
+    bool atk;
     IEnumerator attack()
     {
         yield return new WaitForSeconds(1.1f);
@@ -81,6 +83,17 @@ public class SlimeKingAI : MonoBehaviour
                 agent.speed = speed;
             }
             
+        }
+
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked" && !atk)
+        {
+            atk = true;
+            var id = Instantiate(impactDamage, gameObject.transform.position, Quaternion.identity) as GameObject;
+            id.GetComponent<DealDamage>().setDamage(damage);
+        }
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Slime_jump2idel_baked")
+        {
+            atk = false;
         }
     }
     private void FaceTarget(Vector3 destination)

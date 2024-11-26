@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 1405541958631403292}
   - component: {fileID: 6942299054882623196}
   - component: {fileID: 1384618578001157372}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Slime
   m_TagString: hitable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6133410446634617141
 Transform:
   m_ObjectHideFlags: 0
@@ -57,6 +57,9 @@ MonoBehaviour:
     m_Bits: 128
   bodySkinnedMeshRenderer: {fileID: 5309817816277345093}
   npcStat: {fileID: 1070051793721142248}
+  impactDamage: {fileID: 198592327235008425, guid: 6f923e3c6f2fb6f46bbaf610c50f35d2,
+    type: 3}
+  damage: 10
 --- !u!195 &6942299054882623196
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -116,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562758697440716923}
   - component: {fileID: 217682668731418747}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: slime Variant
   m_TagString: hitable
   m_Icon: {fileID: 0}
@@ -173,7 +176,7 @@ GameObject:
   - component: {fileID: 749381737777659272}
   - component: {fileID: 2375462413707438636}
   - component: {fileID: 1070051793721142248}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone
   m_TagString: hitable
   m_Icon: {fileID: 0}
@@ -246,7 +249,7 @@ GameObject:
   - component: {fileID: 351344014949658469}
   - component: {fileID: 5309817816277345093}
   - component: {fileID: 623450810602296387}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2912638076539828315}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,6 +391,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1562758697440716923}
     m_Modifications:
+    - target: {fileID: 4385939660774947673, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5189301838342532439, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -507,6 +515,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HP
+      objectReference: {fileID: 0}
+    - target: {fileID: 5199826567372551903, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597418006164912342, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8165081273792578687, guid: 6f54509cb0aa2ef45a1fa80f2de6d60f,
         type: 3}

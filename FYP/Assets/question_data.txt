@@ -1,0 +1,2 @@
+What is the capital of France?,Paris,HongKong,China,US
+Who painted the Mona Lisa?,Leonardo da Vinci,lol,olo,ioi

@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9150968784823905426}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Wave, Assembly-CSharp
+        m_MethodName: waveStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3086483285753188488
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +282,7 @@ GameObject:
   - component: {fileID: 6611212884371032210}
   - component: {fileID: 6029472462173388447}
   - component: {fileID: 5480177483048630147}
+  - component: {fileID: 7765857396861935241}
   m_Layer: 5
   m_Name: UI_temp
   m_TagString: Untagged
@@ -286,7 +299,7 @@ RectTransform:
   m_GameObject: {fileID: 3372193876021508423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.14263, y: 0.14263, z: 0.14263}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8911482591082248609}
@@ -342,7 +355,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6029472462173388447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +392,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &7765857396861935241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372193876021508423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127fea7fa514e014e825a92d6fcc8564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5411503971561781759
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +415,7 @@ GameObject:
   - component: {fileID: 4342224257019030958}
   - component: {fileID: 5828172908079935996}
   - component: {fileID: 6494428772807436219}
+  - component: {fileID: 6660671129972606105}
   m_Layer: 5
   m_Name: Wave
   m_TagString: Untagged
@@ -513,6 +539,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6660671129972606105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411503971561781759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c191844f0c1b8b43833c54a3cd35ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave: {fileID: 0}
+  textMeshPro: {fileID: 6494428772807436219}
 --- !u!1 &8246452354977813344
 GameObject:
   m_ObjectHideFlags: 0

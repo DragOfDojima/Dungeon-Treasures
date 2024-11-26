@@ -15,10 +15,11 @@ public class Mobspawner : MonoBehaviour
     public float minEdgeDistance = 0.3f;
     public MRUKAnchor.SceneLabels spawnLabels;
     public float normalOffset;
-    public int maxSpawn=5;
+    public int maxSpawn=3;
     private int SlimeCount;
     private int KingSlimeCount;
-    private int toBeSpawn;
+    //private int toBeSpawn;
+    private int remain;
     void Start()
     {
         
@@ -28,7 +29,8 @@ public class Mobspawner : MonoBehaviour
     {
         SlimeCount = Slime;
         KingSlimeCount = kingSlime;
-        toBeSpawn = SlimeCount + KingSlimeCount;
+        //toBeSpawn = SlimeCount + KingSlimeCount;
+        remain=Slime + kingSlime;
     }
 
     int spawnCount=0;
@@ -44,13 +46,15 @@ public class Mobspawner : MonoBehaviour
         {
             if(SlimeCount > 0) {
                 Spawn(prefabToSpawn_slime);
-                toBeSpawn-=1;
+                SlimeCount-=1;
+                //toBeSpawn-=1;
             }
             else if(KingSlimeCount > 0) { 
                 Spawn(prefabToSpawn_KingSlime);
-                toBeSpawn -= 1;
+                KingSlimeCount-=1;
+                //toBeSpawn -= 1;
             }
-            else if(!WaveMenu.activeSelf || spawnCount==0){ 
+            else if(!WaveMenu.activeSelf || remain==0){ 
                 WaveClear();    
             }
             timer -= spawnTimer;
@@ -70,6 +74,12 @@ public class Mobspawner : MonoBehaviour
     public void killedMob()
     {
         spawnCount--;
+        remain--;
+    }
+
+    public int getSpawnCount()
+    {
+        return remain; 
     }
 
     public void WaveClear()

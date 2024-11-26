@@ -11,7 +11,7 @@ public class SlimeKingAtk : MonoBehaviour
         rb= GetComponent<Rigidbody>();
         rb.AddForce(transform.forward   * 5);
         Destroy(gameObject, 5f);
-
+    
     }
 
     // Update is called once per frame

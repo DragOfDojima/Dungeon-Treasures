@@ -14,6 +14,9 @@ public class chest : MonoBehaviour
     [SerializeField] private Animator deadanimation;
     [SerializeField] private Material deadMat;
     public GameObject fullChest;
+    public GameObject Question;
+    public QuestionGame QuestionGame;
+    public bool QuestStart = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +43,10 @@ public class chest : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {   
+        Question.SetActive(true);
+        if(QuestStart = true) {
         if (other.gameObject.tag == "Player") { 
             Debug.Log("Open Chest");
             if (isOpen == false) { 
@@ -53,6 +58,7 @@ public class chest : MonoBehaviour
             else {
                 StartCoroutine(close());
                 }
+            }
        }
 
     IEnumerator close()
