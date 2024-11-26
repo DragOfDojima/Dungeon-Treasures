@@ -54,7 +54,7 @@ public class Mobspawner : MonoBehaviour
                 KingSlimeCount-=1;
                 //toBeSpawn -= 1;
             }
-            else if(!WaveMenu.activeSelf || spawnCount==0){ 
+            else if(!WaveMenu.activeSelf || remain==0){ 
                 WaveClear();    
             }
             timer -= spawnTimer;
