@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Wave : MonoBehaviour
 {
     public Mobspawner mobspawner;
-    private int waveCount = 1;
+    private int waveCount = 0;
     [SerializeField] GameObject WaveMenu;
     // Start is called before the first frame update
     void Start()
@@ -17,13 +17,13 @@ public class Wave : MonoBehaviour
     public void waveStart()
     {
         switch (waveCount) { 
-            case 1:
+            case 0:
                 mobspawner.SetMobSpawn(20, 0);
-                waveCount = 2;
+                waveCount = 1;
                 break;
-            case 2:
+            case 1:
                 mobspawner.SetMobSpawn(0, 1);
-                waveCount = 3;
+                waveCount = 2;
                 break;
             default:
                 Debug.Log("Invalid Wave");
