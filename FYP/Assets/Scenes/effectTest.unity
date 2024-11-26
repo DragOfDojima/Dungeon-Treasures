@@ -163,6 +163,8 @@ MonoBehaviour:
   - {fileID: 1979838749}
   Wrong_ans: {fileID: 2071700835}
   QuestionP: {fileID: 841275932}
+  UL: {fileID: 46949834}
+  chest: {fileID: 805850782}
 --- !u!114 &46949831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,15 +287,60 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1666225220731770207, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666225220731770207, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666225220731770207, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454292541077600394, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454292541077600394, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454292541077600394, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454292541077600394, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989229429974460004, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: Question
+      value: 
+      objectReference: {fileID: 841275932}
+    - target: {fileID: 2989229429974460004, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: QuestionGame
+      value: 
+      objectReference: {fileID: 46949830}
     - target: {fileID: 4111930485351474230, guid: d990b32057f2f8b4690d5dbfad398a90,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5167905781923390375, guid: d990b32057f2f8b4690d5dbfad398a90,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5688965401327218653, guid: d990b32057f2f8b4690d5dbfad398a90,
         type: 3}
@@ -359,6 +406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033180838506490110, guid: d990b32057f2f8b4690d5dbfad398a90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 8083665432033663749, guid: d990b32057f2f8b4690d5dbfad398a90,
         type: 3}
@@ -617,8 +669,8 @@ Transform:
   m_GameObject: {fileID: 740318911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.87, y: 1.04, z: 6.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.483, y: 0.319, z: 3.246}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -650,6 +702,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &805850782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2989229429974460004, guid: d990b32057f2f8b4690d5dbfad398a90,
+    type: 3}
+  m_PrefabInstance: {fileID: 201701716}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7525a937d050e14e8b49057f2d69828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &841275932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4111930485351474230, guid: d990b32057f2f8b4690d5dbfad398a90,
@@ -2089,7 +2153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.027, y: 0.49}
+  m_AnchoredPosition: {x: 0.027, y: 0.65}
   m_SizeDelta: {x: 5, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2143492453

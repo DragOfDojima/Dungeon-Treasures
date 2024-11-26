@@ -83,7 +83,7 @@ public class QuestionGame : MonoBehaviour
             questionIndex++;
             DisplayQuestion(questionIndex);
             QuestionP.SetActive(false);
-            chest.QuestStart = false;
+            chest.QuestStart = true;
 
         }
         else
