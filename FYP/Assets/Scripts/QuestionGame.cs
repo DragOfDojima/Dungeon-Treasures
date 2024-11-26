@@ -10,6 +10,8 @@ public class QuestionGame : MonoBehaviour
     public Button[] answerButtons;
     public GameObject Wrong_ans;
     public GameObject QuestionP;
+    public UnlockTimer UL;
+    public chest chest;
 
 
 
@@ -81,12 +83,14 @@ public class QuestionGame : MonoBehaviour
             questionIndex++;
             DisplayQuestion(questionIndex);
             QuestionP.SetActive(false);
+            chest.QuestStart = false;
 
         }
         else
         {   
             QuestionP.SetActive(false);
             Wrong_ans.SetActive(true);
+            UL.Timer_on();
 
         }
 

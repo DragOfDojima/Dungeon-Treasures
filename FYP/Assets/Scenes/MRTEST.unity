@@ -1106,6 +1106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4199268874010373268, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1570,6 +1575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SlimeKing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27974,6 +27984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199268874010373268, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
