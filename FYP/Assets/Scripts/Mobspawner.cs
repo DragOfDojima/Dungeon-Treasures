@@ -22,9 +22,12 @@ public class Mobspawner : MonoBehaviour
     private int remain;
     void Start()
     {
-        
     }
 
+    public void setWaveMenu(GameObject w)
+    {
+        WaveMenu = w;
+    }
     public void SetMobSpawn(int Slime, int kingSlime)
     {
         SlimeCount = Slime;
@@ -37,7 +40,12 @@ public class Mobspawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!MRUK.Instance&&!MRUK.Instance.IsInitialized)
+        if (WaveMenu == null)
+        {
+            return;
+        }
+        
+        if (!MRUK.Instance&&!MRUK.Instance.IsInitialized)
             return;
         if(spawnCount >= maxSpawn)
             return;

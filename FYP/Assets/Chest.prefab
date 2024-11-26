@@ -1406,6 +1406,9 @@ MonoBehaviour:
   deadanimation: {fileID: 2405588584428806809}
   deadMat: {fileID: 2100000, guid: b3b691dc909091240836c64e28945e36, type: 2}
   fullChest: {fileID: 1678036887097239828}
+  Question: {fileID: 4111930485351474230}
+  QuestionGame: {fileID: 0}
+  QuestStart: 0
 --- !u!54 &5664043315027244264
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -46,6 +46,7 @@ public class Wave : MonoBehaviour
         if (WaveMenu == null)
         {
             WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
+            mobspawner.setWaveMenu(GetComponent<StartMenuToCenter>().getStartMenu());
         }
     }
 }

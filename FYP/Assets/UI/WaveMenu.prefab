@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 192827981030311192}
   - component: {fileID: 521073742429613770}
   - component: {fileID: 4905125075131432140}
-  - component: {fileID: 1463646240884897639}
   m_Layer: 5
   m_Name: Wave
   m_TagString: Untagged
@@ -271,20 +270,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1463646240884897639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3878343821790633190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c191844f0c1b8b43833c54a3cd35ca7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wave: {fileID: 0}
-  textMeshPro: {fileID: 4905125075131432140}
 --- !u!1 &3881867969804412044
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +494,7 @@ GameObject:
   - component: {fileID: 6063814084176975036}
   - component: {fileID: 1983683745426997139}
   - component: {fileID: 7165360848556051381}
+  - component: {fileID: 4719503241817861421}
   m_Layer: 5
   m_Name: WaveMenu
   m_TagString: Untagged
@@ -581,7 +567,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6063814084176975036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,3 +616,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127fea7fa514e014e825a92d6fcc8564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4719503241817861421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6471302474112038754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c191844f0c1b8b43833c54a3cd35ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave: {fileID: 0}
+  textMeshPro: {fileID: 4905125075131432140}
