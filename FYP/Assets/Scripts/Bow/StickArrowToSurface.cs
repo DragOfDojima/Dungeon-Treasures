@@ -26,6 +26,7 @@ public class StickArrowToSurface : MonoBehaviour
         {
             arrow.transform.parent = collision.collider.attachedRigidbody.transform;
         }
+        Destroy(arrow, 5f);
 
         //collision.collider.GetComponent<IHittable>()?.GetHit();
 
