@@ -72,6 +72,11 @@ public class Mobspawner : MonoBehaviour
         spawnCount--;
     }
 
+    public int getSpawnCount()
+    {
+        return spawnCount; 
+    }
+
     public void WaveClear()
     {
         WaveMenu.SetActive(true);
