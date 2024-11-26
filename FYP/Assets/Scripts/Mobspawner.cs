@@ -15,7 +15,7 @@ public class Mobspawner : MonoBehaviour
     public float minEdgeDistance = 0.3f;
     public MRUKAnchor.SceneLabels spawnLabels;
     public float normalOffset;
-    public int maxSpawn=5;
+    public int maxSpawn=3;
     private int SlimeCount;
     private int KingSlimeCount;
     //private int toBeSpawn;

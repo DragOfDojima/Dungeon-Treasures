@@ -12,15 +12,16 @@ public class UnlockTimer : MonoBehaviour
     public TMP_Text TimerTXT;
     public GameObject WrongP;
 
-    void OnEnable()
-    {
-        TimerOn = true;
-    }
+
 
     void Start()
     {
     }
 
+    public void Timer_on() {
+        TimerOn = true;
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -34,6 +35,8 @@ public class UnlockTimer : MonoBehaviour
                 Debug.Log("answer unlock");
                 TimeLeft = 10f;
                 TimerOn = false;
+                QuestionP.SetActive(true);
+                WrongP.SetActive(false);
             }
             float seconds = Mathf.FloorToInt(TimeLeft%60);
         TimerTXT.text = "Wrong Answer!\r\nChest Locked" + "\n" + "Unlock Time: " + seconds;
