@@ -21402,7 +21402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 1
-  prefabToSpawn: {fileID: 6107524752988289295, guid: 6ddc93b6a1303914695a51116a0f6757,
+  prefabToSpawn: {fileID: 7117614079299205996, guid: d990b32057f2f8b4690d5dbfad398a90,
     type: 3}
   minEdgeDistance: 0.3
   spawnLabels: 0
