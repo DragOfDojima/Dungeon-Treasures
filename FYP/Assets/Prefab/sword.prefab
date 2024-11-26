@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 80826470-5d92-4632-8ccd-69898ab97cc3
+  instanceId: 022123f6-6fa6-4b27-b29f-6c52534a50c9
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -973,6 +973,7 @@ GameObject:
   - component: {fileID: -1652764661748611298}
   - component: {fileID: 1846014650852750379}
   - component: {fileID: 5780769100598256173}
+  - component: {fileID: -2337733965926537919}
   m_Layer: 11
   m_Name: sword
   m_TagString: Untagged
@@ -1057,20 +1058,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponDamage: 10
-  hitbox: {fileID: 3087846373150280373}
-  rb: {fileID: 4480628969236625323}
   ComboBouns: 1.1
   MaxCombo: 3
   hitEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b,
     type: 3}
-  grabbable: {fileID: 4831573653466995308}
-  matObjects:
-  - {fileID: 5026385425549817729}
-  - {fileID: 4425251439965174382}
-  - {fileID: 3963938135213183147}
-  - {fileID: 3091407140633811279}
-  - {fileID: 4075258277959917041}
-  - {fileID: 256732113493819119}
 --- !u!95 &-1652764661748611298
 Animator:
   serializedVersion: 5
@@ -1138,3 +1129,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3467638, y: 0.21893978, z: 0.31501654}
   m_Center: {x: 0.0034438819, y: -1.661409, z: -0.008353423}
+--- !u!114 &-2337733965926537919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115955266104995264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69c17ef2c4c884baac6334a9ca46ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4480628969236625323}
+  grabbable: {fileID: 4831573653466995308}
+  cols:
+  - {fileID: 5780769100598256173}
+  - {fileID: 3087846373150280373}
+  matObjects:
+  - {fileID: 5026385425549817729}
+  - {fileID: 4425251439965174382}
+  - {fileID: 3963938135213183147}
+  - {fileID: 3091407140633811279}
+  - {fileID: 4075258277959917041}
+  - {fileID: 256732113493819119}

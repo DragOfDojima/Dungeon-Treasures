@@ -36,7 +36,7 @@ public class CustomSocket : MonoBehaviour
             HoverObject();
 
             //If Target Object is grabbed and not actual in soket ( it would activate itself )
-            if (Target.GetComponentInParent<weapon>().getIsGrabing()&& wasInSoket == true)
+            if (Target.GetComponentInParent<MyGrabable>().getIsGrabing()&& wasInSoket == true)
             {
                 count = 0;
                 SelectExit.Invoke();
@@ -50,7 +50,7 @@ public class CustomSocket : MonoBehaviour
             }
 
             //If Target Object get released in target area
-            if (!(Target.GetComponentInParent<weapon>().getIsGrabing()) && !Target.GetComponent<weapon>().getIdel())
+            if (!(Target.GetComponent<MyGrabable>().getIsGrabing()) && !Target.GetComponent<MyGrabable>().getIdel())
             {
                 PlaceAtSoket();
             }
@@ -84,12 +84,12 @@ public class CustomSocket : MonoBehaviour
     //Create an instance of the target Object
     private void HoverObject()
     {
-        if (hoverObject == null && wasInSoket == false && !Target.GetComponent<weapon>().getIdel())
+        if (hoverObject == null && wasInSoket == false && !Target.GetComponent<MyGrabable>().getIdel())
         {
             //Debug.LogError("Hover Active");
             
             hoverObject = Instantiate(Target, Attach.transform.position, Attach.transform.rotation);
-            if (hoverObject.GetComponent<weapon>().getNotWeapon() == false)
+            if (hoverObject.GetComponent<weapon>() != null)
             {
                 hoverObject.GetComponent<MeleeWeaponTrail>().enabled = false;
             }
@@ -108,7 +108,7 @@ public class CustomSocket : MonoBehaviour
             //MeshRenderer[] ren;
             //ren = hoverObject.GetComponents<MeshRenderer>();
             
-           foreach (GameObject go in hoverObject.GetComponent<weapon>().getMatObjects())
+           foreach (GameObject go in hoverObject.GetComponent<MyGrabable>().getMatObjects())
            {
                foreach (MeshRenderer rend in go.GetComponents<MeshRenderer>())
                {
@@ -158,11 +158,11 @@ public class CustomSocket : MonoBehaviour
 
     public void Update()
     {
-        if (Attach.GetComponentInChildren<weapon>() != null)
+        if (Attach.GetComponentInChildren<MyGrabable>() != null)
         {
-            if (Attach.GetComponentInChildren<weapon>().getIsGrabing())
+            if (Attach.GetComponentInChildren<MyGrabable>().getIsGrabing())
             {
-                Attach.GetComponentInChildren<weapon>().gameObject.transform.parent = null;
+                Attach.GetComponentInChildren<MyGrabable>().gameObject.transform.parent = null;
             }
         }
     }
