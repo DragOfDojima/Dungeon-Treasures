@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7868166436314595755}
   - component: {fileID: -8589360952432469960}
   - component: {fileID: 9008066882503792982}
+  - component: {fileID: 1613060027152526160}
   m_Layer: 0
   m_Name: SlimeKingAtk
   m_TagString: Untagged
@@ -46,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d852f639b5a64488bec4b18ab9a832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dealDanage: 10
+  enemy:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!54 &9008066882503792982
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73,6 +78,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1613060027152526160
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914554985611528609}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4088161, y: 0.36339313, z: 0.5665637}
+  m_Center: {x: 0.0007656589, y: -0.0009837449, z: 0.07864034}
 --- !u!1001 &455986277236136029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,11 +190,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c7850894f9dae094996673093b04f93b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8775869183110036210}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7850894f9dae094996673093b04f93b, type: 3}
 --- !u!4 &133212873485828022 stripped
 Transform:
@@ -176,30 +198,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 455986277236136029}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &761834888877958412 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c7850894f9dae094996673093b04f93b,
-    type: 3}
-  m_PrefabInstance: {fileID: 455986277236136029}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &8775869183110036210
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761834888877958412}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.030266084, y: 0.02109751, z: 0.020959152}
-  m_Center: {x: -0.004461668, y: -0.0000066622174, z: 0.000000045169156}

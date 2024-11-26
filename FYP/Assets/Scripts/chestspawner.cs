@@ -38,10 +38,9 @@ public class chestspawner : MonoBehaviour
         for(int i =0; i < chestSpawnerList.Length; i++)
         {
             chestSpawnerList[i].GetComponent<CheckChest>().setWaitTime(ChestRespawnTime);
-            Debug.Log("spaw");
+
             if (!chestSpawnerList[i].GetComponent<CheckChest>().getHaveChest())
             {
-                Debug.Log("Chest Spawned!!!!!!!!!!!!!!!!!!!!!!!");
                 Instantiate(prefabToSpawn, chestSpawnerList[i].transform.position, Quaternion.identity);
             }
             
