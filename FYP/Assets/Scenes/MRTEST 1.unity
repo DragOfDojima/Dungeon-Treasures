@@ -29824,6 +29824,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 108074118642548238, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1726712781}
+    - target: {fileID: 179314387386093729, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
+      propertyPath: wave
+      value: 
+      objectReference: {fileID: 245128836}
+    - target: {fileID: 179314387386093729, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
+      propertyPath: mobspawner
+      value: 
+      objectReference: {fileID: 109250217}
     - target: {fileID: 1325573764232926106, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
