@@ -27,6 +27,7 @@ public class chest : MonoBehaviour
         {
             deadmatList[i] = deadMat;
         }
+        StartCoroutine(WaitUntilTrue());
     }
 
     // Update is called once per frame
@@ -34,65 +35,91 @@ public class chest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            chestLid.Play("TreasureChest_OPEN",0,0.1f);
+            chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
 
         }
+
+       
     }
 
     public void OnTriggerEnter(Collider other)
-    {   
-        Question.SetActive(true);
-        if(QuestStart = true) {
-        if (other.gameObject.tag == "Player") { 
-            Debug.Log("Open Chest");
-            if (isOpen == false) { 
-            chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
-             ShowItem();
-            isOpen=true; 
-            }
-            
-            else {
-                StartCoroutine(close());
-                }
-            }
-       }
-
-    IEnumerator close()
+    {
+        if (isOpen == false)
         {
-            chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
-            HideItem();
-            isOpen = false;
-            yield return new WaitForSeconds(1);
-            fullChest.SetActive(true);
-            gameObject.SetActive(false);
-            mr.materials = deadmatList;
-            deadanimation.enabled = true;
-            Debug.Log("Chest Closed");
-        }
-
-    void HideItem()
-        {
-            itemHolder.gameObject.SetActive(false);
-
-            foreach (Transform child in itemHolder)
+            if (other.gameObject.tag == "Player")
             {
-                Destroy(child.gameObject);
+                Question.SetActive(true);
             }
-            
         }
-
-        void ShowItem(){
-            Transform item = lootTable.GetRandom();
-            itemHolder.gameObject.SetActive(true);
-            var s = Instantiate(item,new Vector3(itemHolder.position.x, itemHolder.position.y, itemHolder.position.z), Quaternion.identity);
-            s.GetComponent<Animator>().enabled=true;
-            s.GetComponent<Animator>().Play("spawn");
-            Debug.Log("item shown");
+        else {
+            StartCoroutine(close());
         }
     }
-}
 
+    public void open() {
+        if (isOpen == false)
+        {
+            chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
+            ShowItem();
+            isOpen = true;
+        }
+        else
+        {
+            StartCoroutine(close());
+        }
+
+    }
+
+    public IEnumerator close()
+    {
+        chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
+        HideItem();
+        isOpen = false;
+        yield return new WaitForSeconds(1);
+        fullChest.SetActive(true);
+        gameObject.SetActive(false);
+        mr.materials = deadmatList;
+        deadanimation.enabled = true;
+        Debug.Log("Chest Closed");
+    }
+
+    public void HideItem()
+    {
+        itemHolder.gameObject.SetActive(false);
+
+        foreach (Transform child in itemHolder)
+        {
+            Destroy(child.gameObject);
+        }
+
+    }
+
+    public void ShowItem()
+    {
+        Transform item = lootTable.GetRandom();
+        itemHolder.gameObject.SetActive(true);
+        var s = Instantiate(item, new Vector3(itemHolder.position.x, itemHolder.position.y, itemHolder.position.z), Quaternion.identity);
+        s.GetComponent<Animator>().enabled = true;
+        s.GetComponent<Animator>().Play("spawn");
+        Debug.Log("item shown");
+    }
+
+    public IEnumerator WaitUntilTrue()
+    {
+        while (!QuestStart)
+        {
+            yield return null;
+        }
+        ProceedToNextStep();
+    }
+
+    public void ProceedToNextStep()
+    {
+        open();
+        Debug.Log("Next step executed.");
+    }
+}
