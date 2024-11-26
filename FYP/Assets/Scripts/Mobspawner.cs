@@ -44,10 +44,12 @@ public class Mobspawner : MonoBehaviour
         {
             if(SlimeCount > 0) {
                 Spawn(prefabToSpawn_slime);
+                SlimeCount-=1;
                 toBeSpawn-=1;
             }
             else if(KingSlimeCount > 0) { 
                 Spawn(prefabToSpawn_KingSlime);
+                KingSlimeCount-=1;
                 toBeSpawn -= 1;
             }
             else if(!WaveMenu.activeSelf || spawnCount==0){ 
@@ -74,7 +76,7 @@ public class Mobspawner : MonoBehaviour
 
     public int getSpawnCount()
     {
-        return spawnCount; 
+        return SlimeCount+KingSlimeCount; 
     }
 
     public void WaveClear()
