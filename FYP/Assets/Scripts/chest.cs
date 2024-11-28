@@ -17,6 +17,8 @@ public class chest : MonoBehaviour
     public GameObject Question;
     public QuestionGame QuestionGame;
     public bool QuestStart = false;
+    GameObject spawnItem;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,11 @@ public class chest : MonoBehaviour
             chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
 
         }
-
+        if (spawnItem != null) {
+            if (spawnItem.GetComponent<MyGrabable>().getIsGrabing()) {
+                StartCoroutine(close());
+            }
+        }
        
     }
 
@@ -56,7 +62,7 @@ public class chest : MonoBehaviour
             }
         }
         else {
-            StartCoroutine(close());
+            
         }
     }
 
@@ -69,7 +75,7 @@ public class chest : MonoBehaviour
         }
         else
         {
-            StartCoroutine(close());
+            
         }
 
     }
@@ -105,6 +111,7 @@ public class chest : MonoBehaviour
         var s = Instantiate(item, new Vector3(itemHolder.position.x, itemHolder.position.y, itemHolder.position.z), Quaternion.identity);
         s.GetComponent<Animator>().enabled = true;
         s.GetComponent<Animator>().Play("spawn");
+        spawnItem = s.gameObject;
         Debug.Log("item shown");
     }
 
