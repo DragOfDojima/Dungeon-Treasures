@@ -9,4 +9,9 @@ public class ToPlayer : MonoBehaviour
     {
         return player;
     }
+
+    public void setplayer(Player player)
+    {
+        this.player = player;
+    }
 }

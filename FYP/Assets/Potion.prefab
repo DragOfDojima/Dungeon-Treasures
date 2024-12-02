@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &71507848967039955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36179310664383120}
+  m_Layer: 12
+  m_Name: rotateDetect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &36179310664383120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71507848967039955}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2167045922365110862}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &481688325546428841
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 481688325546428841}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.0198, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -101,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 3467526177476746077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0083, z: 0.0914}
+  m_LocalPosition: {x: -0.023, y: -0.0184, z: -0.0403}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -240,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418d54035a2648645964c63346bd8ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxWobble: 0.003
+  MaxWobble: 0.006
   WobbleSpeed: 1
   Recovery: 1
 --- !u!1 &5565972068303649721
@@ -275,7 +306,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5566690835575534720}
   m_Father: {fileID: 4593924782019364714}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4506305135626833819
@@ -405,7 +437,7 @@ Transform:
   m_GameObject: {fileID: 5569457590569507417}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -0.0598, y: 0, z: 0.0694}
+  m_LocalPosition: {x: -0.0598, y: -0.0201, z: 0.0694}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -425,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 60844279-4bfe-4c53-9ce7-f628da130148
+  instanceId: aec593c8-3403-4e14-85e6-78fd0dd95fae
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -567,6 +599,7 @@ GameObject:
   - component: {fileID: 4292059806758018120}
   - component: {fileID: 1403331244539996703}
   - component: {fileID: 2333027646051476428}
+  - component: {fileID: 2469614422630318541}
   m_Layer: 12
   m_Name: Potion
   m_TagString: Untagged
@@ -590,7 +623,8 @@ Transform:
   - {fileID: 4593924782019364714}
   - {fileID: 1204435693470168548}
   - {fileID: 9099200980691954378}
-  - {fileID: 5566690835575534720}
+  - {fileID: 1108680697511701168}
+  - {fileID: 36179310664383120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1662971213978501077
@@ -658,6 +692,7 @@ MonoBehaviour:
   plug: {fileID: 5565972068303649721}
   plugGrab: {fileID: 8358012813908234425}
   mg: {fileID: 2333027646051476428}
+  liquid: {fileID: 3827226151508041414}
 --- !u!95 &1403331244539996703
 Animator:
   serializedVersion: 5
@@ -699,6 +734,23 @@ MonoBehaviour:
   - {fileID: 7140885746025684531}
   - {fileID: 5565972068303649721}
   - {fileID: 3827226151508041414}
+--- !u!114 &2469614422630318541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618867102305552324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0813991d784af499cdd6ccd3aac477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pourThreshold: 20
+  origin: {fileID: 1108680697511701168}
+  streamPrefab: {fileID: 5238570228697279498, guid: 687fe5b6c1388c34882009636030b3c7,
+    type: 3}
+  rotationDetector: {fileID: 36179310664383120}
 --- !u!1 &7140885746025684531
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +860,7 @@ Transform:
   m_GameObject: {fileID: 7586068081982462652}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.0598, y: 0.0887, z: 0.0753}
+  m_LocalPosition: {x: 0.0904, y: -0.0506, z: 0.0894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -864,7 +916,7 @@ GameObject:
   - component: {fileID: 3946765170227764948}
   - component: {fileID: 5019971510004091598}
   - component: {fileID: 8155706913492655806}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: '[BuildingBlock] HandGrab (1)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 7a57ee2a-f78a-44a9-afc5-1ebbacaf81db
+  instanceId: ef281750-07ae-4cf7-aa13-b1f5f45bc268
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -923,11 +975,11 @@ MonoBehaviour:
   _forwardElement: {fileID: 0}
   _oneGrabTransformer: {fileID: 0}
   _twoGrabTransformer: {fileID: 0}
-  _targetTransform: {fileID: 5566690835575534720}
+  _targetTransform: {fileID: 9108526294229427137}
   _maxGrabPoints: -1
   _rigidbody: {fileID: 3249150917900654895}
   _kinematicWhileSelected: 1
-  _throwWhenUnselected: 1
+  _throwWhenUnselected: 0
 --- !u!114 &5019971510004091598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,13 +1037,44 @@ MonoBehaviour:
   _maxInteractors: -1
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
-  _pointableElement: {fileID: 0}
+  _pointableElement: {fileID: 3946765170227764948}
   _rigidbody: {fileID: 3249150917900654895}
   _grabSource: {fileID: 0}
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
   _physicsGrabbable: {fileID: 0}
+--- !u!1 &8924830069201969790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108680697511701168}
+  m_Layer: 12
+  m_Name: Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108680697511701168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924830069201969790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0968, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2167045922365110862}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8937402801532791588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +1086,7 @@ GameObject:
   - component: {fileID: 5566690835575534720}
   - component: {fileID: 3249150917900654895}
   - component: {fileID: 5479610373633402578}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PlugGrab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,13 +1101,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8937402801532791588}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1195, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5975002}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9108526294229427137}
-  m_Father: {fileID: 2167045922365110862}
+  m_Father: {fileID: 963937038716975940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3249150917900654895
 Rigidbody:

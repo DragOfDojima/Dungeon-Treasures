@@ -12,14 +12,14 @@ public class Player : MonoBehaviour
     public float bodyHeightMin = 0.5f;
     public float bodyHeightMax = 2f;
 
-    private float hp = 100;
+    private float hp = 00;
     private void FixedUpdate()
     {
         bodyCollider.height=Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin,bodyHeightMax);
         bodyCollider.center = new Vector3(playerHead.localPosition.x,bodyCollider.height/2,playerHead.localPosition.z);
     }
 
-    public void setHp(float p)
+    public void increaseHp(float p)
     {
         if(hp + p > 100)
         {

@@ -21,7 +21,7 @@ public class StartMenuToCenter : MonoBehaviour
             // Ensure there are walls to calculate the center point
             if (wallObjects.Length == 0)
             {
-                Debug.LogError("No game objects with the tag 'Wall' found to calculate the center point.");
+                Debug.Log("No game objects with the tag 'Wall' found to calculate the center point.");
                 return;
             }
 

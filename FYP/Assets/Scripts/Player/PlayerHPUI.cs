@@ -12,11 +12,10 @@ public class PlayerHPUI : MonoBehaviour
     [SerializeField] Player player;
     Coroutine hpanmiation;
     float curhp=100;
-    float fakehp;
+    float fakehp=100;
     void Start()
     {
-        fakehp = player.getHp();
-        curhp = player.getHp();
+
     }
 
     // Update is called once per frame

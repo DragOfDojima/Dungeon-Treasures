@@ -85,7 +85,7 @@ public class MyGrabable : MonoBehaviour
 
         for(int i = 0;i <matObjects.Count;i++)
         {
-            if (matObjects[i].name != name)
+            if (matObjects[i].name == name)
             {
                 matObjects.Remove(matObjects[i]);
             }

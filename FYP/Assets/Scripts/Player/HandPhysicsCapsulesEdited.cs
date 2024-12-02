@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Oculus.Interaction.Input
@@ -68,6 +69,9 @@ namespace Oculus.Interaction.Input
         private HandFingerJointFlags _mask = HandFingerJointFlags.All;
 
         private Action _whenCapsulesGenerated = delegate { };
+
+        public bool left;
+        public bool right;
         public event Action WhenCapsulesGenerated
         {
             add
@@ -153,6 +157,8 @@ namespace Oculus.Interaction.Input
             _holder.localPosition = Vector3.zero;
             _holder.localRotation = Quaternion.identity;
             _holder.gameObject.layer = _useLayer;
+            _holder.AddComponent<ToPlayer>();
+            _holder.GetComponent<ToPlayer>().setplayer(GetComponentInParent<Player>());
 
             int capsulesCount = Constants.NUM_HAND_JOINTS;
             _capsules = new List<BoneCapsule>(capsulesCount);
@@ -192,7 +198,22 @@ namespace Oculus.Interaction.Input
                 _capsules.Add(capsule);
 
             }
-
+            GameObject handOverAll = new GameObject("HandOverAll");
+            handOverAll.transform.parent = _holder.GetChild(0);
+            handOverAll.transform.localPosition = new Vector3(0,0,0);
+            handOverAll.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            handOverAll.AddComponent<BoxCollider>();
+            handOverAll.AddComponent<Rigidbody>();
+            handOverAll.GetComponent<BoxCollider>().isTrigger=true;
+            handOverAll.GetComponent<BoxCollider>().size = new Vector3(0.1f, 0.05f, 0.1f);
+            if(left)
+            handOverAll.GetComponent<BoxCollider>().center = new Vector3(-0.06f, 0.01f, 0f);
+            if(right)
+            handOverAll.GetComponent<BoxCollider>().center = new Vector3(0.07f, -0.018f, 0f);
+            handOverAll.GetComponent<Rigidbody>().useGravity=false;
+            handOverAll.GetComponent<Rigidbody>().isKinematic = true;
+            handOverAll.tag = "Player";
+            
             IgnoreSelfCollisions();
             _capsulesGenerated = true;
             _whenCapsulesGenerated.Invoke();

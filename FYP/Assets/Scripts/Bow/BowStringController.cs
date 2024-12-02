@@ -33,6 +33,9 @@ public class BowStringController : MonoBehaviour
 
     public UnityEvent OnBowPulled;
     public UnityEvent<float> OnBowReleased;
+
+    public GameObject midPoint;
+    
     private void Awake()
     {
         interactable = midPointGrabObject.GetComponent<Grabbable>();
@@ -65,42 +68,53 @@ public class BowStringController : MonoBehaviour
         interactor = midPointGrabObject.transform;
         OnBowPulled?.Invoke();
     }
-    bool getIsgrabing()
-    {
-        return isgrabing;
-    }
+   
     private void Update()
     {
-        if (interactable.SelectingPoints.Count > 0)
+        if (GetComponent<MyGrabable>().getIsGrabing())
         {
-            isgrabing = true;
-            PrepareBowString();
+            midPoint.SetActive(true);
+            if (interactable.SelectingPoints.Count > 0)
+            {
+                isgrabing = true;
+                PrepareBowString();
+            }
+            if (isgrabing && !(interactable.SelectingPoints.Count > 0))
+            {
+                isgrabing = false;
+                ResetBowString();
+            }
+
+            if (interactor != null)
+            {
+                //convert bow string mid point position to the local space of the MidPoint
+                Vector3 midPointLocalSpace =
+                    midPointParent.InverseTransformPoint(midPointGrabObject.position); // localPosition
+
+                //get the offset
+                float midPointLocalZAbs = Mathf.Abs(midPointLocalSpace.x);
+
+                previousStrength = strength;
+
+                HandleStringPushedBackToStart(midPointLocalSpace);
+
+                HandleStringPulledBackTolimit(midPointLocalZAbs, midPointLocalSpace);
+
+                HandlePullingString(midPointLocalZAbs, midPointLocalSpace);
+
+                bowStringRenderer.CreateString(midPointVisualObject.position);
+            }
         }
-        if (isgrabing&& !(interactable.SelectingPoints.Count > 0))
+        else
         {
-            isgrabing = false;
-            ResetBowString();
+            midPoint.SetActive(false);
+            if (isgrabing)
+            {
+                isgrabing = false;
+                ResetBowString();
+            }
         }
         
-        if (interactor != null)
-        {
-            //convert bow string mid point position to the local space of the MidPoint
-            Vector3 midPointLocalSpace =
-                midPointParent.InverseTransformPoint(midPointGrabObject.position); // localPosition
-
-            //get the offset
-            float midPointLocalZAbs = Mathf.Abs(midPointLocalSpace.x);
-
-            previousStrength = strength;
-
-            HandleStringPushedBackToStart(midPointLocalSpace);
-
-            HandleStringPulledBackTolimit(midPointLocalZAbs, midPointLocalSpace);
-
-            HandlePullingString(midPointLocalZAbs, midPointLocalSpace);
-
-            bowStringRenderer.CreateString(midPointVisualObject.position);
-        }
     }
 
     private void HandlePullingString(float midPointLocalZAbs, Vector3 midPointLocalSpace)
