@@ -62,6 +62,7 @@ public class chest : MonoBehaviour
                 if (SG == false) { 
                     Question.SetActive(true);
                     SG= true; 
+                    
                 }
             }
         }
