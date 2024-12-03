@@ -20,9 +20,12 @@ public class SlimeAI : MonoBehaviour
     string Hurt = "hurt";
     string Dead = "dead";
     [SerializeField] private float damage;
+    AudioSource audioSource;
+    bool jumpSound;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource=GetComponent<AudioSource>();
         Lasthp = npcStat.getHP();
         bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 100);
         agent.avoidancePriority = 10;
@@ -50,6 +53,19 @@ public class SlimeAI : MonoBehaviour
                 Lasthp = npcStat.getHP();
             }
             Lasthp = npcStat.getHP();
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked")
+            {
+                if (!jumpSound)
+                {
+                    audioSource.Play();
+                    jumpSound = true;
+                }
+            }
+            else
+            {
+                jumpSound=false;
+            }
+
         }
         else
         {
