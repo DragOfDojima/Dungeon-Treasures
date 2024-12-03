@@ -12,9 +12,14 @@ public class WaveCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject gameM = GameObject.Find("GameM");
+        wave = gameM.GetComponent<Wave>();
     }
 
+    public void StartWave()
+    {
+        wave.waveStart();
+    }
     // Update is called once per frame
     void Update()
     {

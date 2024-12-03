@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6942299054882623196}
   speed: 2
-  knockBackPower: 0
+  knockBackPower: 5
   animator: {fileID: 217682668731418747}
   sightRange: 100
   whatIsPlayer:
@@ -61,6 +61,7 @@ MonoBehaviour:
   impactDamage: {fileID: 198592327235008425, guid: 6f923e3c6f2fb6f46bbaf610c50f35d2,
     type: 3}
   damage: 10
+  deadSound: {fileID: 8300000, guid: 07c3f6712844d3b428c2d61f2c1e8c9c, type: 3}
 --- !u!195 &6942299054882623196
 NavMeshAgent:
   m_ObjectHideFlags: 0

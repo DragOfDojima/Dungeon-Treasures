@@ -10,6 +10,8 @@ public class Mobspawner : MonoBehaviour
     public GameObject prefabToSpawn_KingSlime;
     [SerializeField] GameObject WaveMenu;
     [SerializeField] GameObject WaveCounter;
+    [SerializeField] GameObject WIN;
+    public Wave wave;
     private float timer;
 
     public float minEdgeDistance = 0.3f;
@@ -45,8 +47,21 @@ public class Mobspawner : MonoBehaviour
             return;
         }
 
-        if (remain <= 0) WaveCounter.SetActive(false);
-        else WaveCounter.SetActive(true);
+        if (remain <= 0) {
+            wait(3);
+            WaveCounter.SetActive(false);
+            if (wave.getWaveCount()==4)
+            {
+                WIN.SetActive(true);
+                wave.resetWaveCount();
+                wait(3);
+                WIN.SetActive(false);
+            }
+
+        }
+        else { 
+            WaveCounter.SetActive(true); 
+        }
         
         if (!MRUK.Instance&&!MRUK.Instance.IsInitialized)
             return;
@@ -96,5 +111,10 @@ public class Mobspawner : MonoBehaviour
     public void WaveClear()
     {
         WaveMenu.SetActive(true);
+    }
+
+    IEnumerator wait(int time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

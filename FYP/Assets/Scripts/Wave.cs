@@ -8,6 +8,7 @@ public class Wave : MonoBehaviour
     public Mobspawner mobspawner;
     private int waveCount = 0;
     GameObject WaveMenu;
+    Button button;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,5 +49,10 @@ public class Wave : MonoBehaviour
             WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
             mobspawner.setWaveMenu(GetComponent<StartMenuToCenter>().getStartMenu());
         }
+    }
+
+    public void resetWaveCount()
+    {
+        waveCount=0;
     }
 }

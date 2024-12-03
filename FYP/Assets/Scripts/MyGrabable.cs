@@ -14,7 +14,7 @@ public class MyGrabable : MonoBehaviour
     [SerializeField] private List<GameObject> matObjects = new List<GameObject>();
     bool isIdel = true;
     bool ishover;
-
+    [SerializeField] private Vector3 weaponscale= new Vector3(1,1,1);
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,6 +26,11 @@ public class MyGrabable : MonoBehaviour
     bool setup2;
     private void Update()
     {
+       //if (transform.localScale != weaponscale)
+        //{
+            //gameObject.transform.localScale = weaponscale;
+
+        //}
         if (grabbable.SelectingPoints.Count > 0)
         {
             isIdel = false;
@@ -62,7 +67,7 @@ public class MyGrabable : MonoBehaviour
 
     void Setup()
     {
-        animator.enabled = false;
+        animator.SetBool("end",true);
         rb.isKinematic = false;
         rb.useGravity = true;
         for(int i = 0; i < cols.Length; i++)
