@@ -17,6 +17,7 @@ public class chest : MonoBehaviour
     public GameObject Question;
     public QuestionGame QuestionGame;
     public bool QuestStart = false;
+    public bool SG=false;
     GameObject spawnItem;
     
 
@@ -58,7 +59,10 @@ public class chest : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
-                Question.SetActive(true);
+                if (SG == false) { 
+                    Question.SetActive(true);
+                    SG= true; 
+                }
             }
         }
         else {

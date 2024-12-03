@@ -18,6 +18,14 @@ public class QuestionGame : MonoBehaviour
     private List<string[]> questionsAndAnswers;
     private int questionIndex;
 
+    private void Update()
+    {
+        if (chest.QuestStart == true) { 
+            questionIndex++;
+            }
+
+    }
+
     void Start()
     {
         LoadQuestionData();
@@ -80,7 +88,6 @@ public class QuestionGame : MonoBehaviour
 
         if (selectedAnswer == questionsAndAnswers[questionIndex][1])
         {
-            questionIndex++;
             DisplayQuestion(questionIndex);
             QuestionP.SetActive(false);
             chest.QuestStart = true;
