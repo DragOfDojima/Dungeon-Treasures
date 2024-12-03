@@ -734,6 +734,7 @@ MonoBehaviour:
   - {fileID: 7140885746025684531}
   - {fileID: 5565972068303649721}
   - {fileID: 3827226151508041414}
+  weaponscale: {x: 1, y: 1, z: 1}
 --- !u!114 &2469614422630318541
 MonoBehaviour:
   m_ObjectHideFlags: 0
