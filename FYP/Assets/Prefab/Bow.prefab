@@ -1301,6 +1301,7 @@ MonoBehaviour:
   matObjects:
   - {fileID: 1377650564810390371}
   - {fileID: 7076528491214052401}
+  weaponscale: {x: 1, y: 1, z: 1}
 --- !u!95 &2076876954563851095
 Animator:
   serializedVersion: 5
