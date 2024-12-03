@@ -2267,6 +2267,7 @@ MonoBehaviour:
   prefabToSpawn_KingSlime: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
     type: 3}
   WaveMenu: {fileID: 0}
+  WaveCounter: {fileID: 1820639431}
   minEdgeDistance: 0.3
   spawnLabels: 4
   normalOffset: 1
@@ -3063,6 +3064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHead: {fileID: 1726712780}
   bodyCollider: {fileID: 2071924933}
+  Gameover: {fileID: 0}
   bodyHeightMin: 0.5
   bodyHeightMax: 2
 --- !u!1 &143928981
@@ -29320,6 +29322,12 @@ PrefabInstance:
       addedObject: {fileID: 479097248}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ae3efedd11d36845bb35cfc303bd3c9, type: 3}
+--- !u!1 &1820639431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4879075145014353043, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1820639430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1822062589
 GameObject:
   m_ObjectHideFlags: 0
