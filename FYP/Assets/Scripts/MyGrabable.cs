@@ -27,6 +27,11 @@ public class MyGrabable : MonoBehaviour
     bool setup2;
     private void Update()
     {
+        if (transform.localScale != scale)
+        {
+            gameObject.transform.localScale = scale;
+
+        }
         if (grabbable.SelectingPoints.Count > 0)
         {
             isIdel = false;
@@ -66,7 +71,6 @@ public class MyGrabable : MonoBehaviour
         animator.enabled = false;
         rb.isKinematic = false;
         rb.useGravity = true;
-        gameObject.transform.localScale = scale;
         for(int i = 0; i < cols.Length; i++)
         {
             cols[i].isTrigger = false;
