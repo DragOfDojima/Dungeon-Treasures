@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float bodyHeightMin = 0.5f;
     public float bodyHeightMax = 2f;
 
-    private float hp = 00;
+    private float hp = 100;
     private void FixedUpdate()
     {
         bodyCollider.height=Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin,bodyHeightMax);

@@ -9,11 +9,12 @@ public class Stream : MonoBehaviour
 
     private Coroutine pourRoutine;
     private Vector3 targetPosition = Vector3.zero;
-
+    LayerMask layerToIgnore;
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
         splashParticle = GetComponentInChildren<ParticleSystem>();
+        layerToIgnore = 14;
     }
 
     private void Start()
@@ -65,7 +66,7 @@ public class Stream : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(transform.position, Vector3.down);
 
-        Physics.Raycast(ray, out hit,1.0f);
+        Physics.Raycast(ray, out hit,1.0f,~layerToIgnore);
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
         if(hit.collider != null)
         {

@@ -91,6 +91,7 @@ public class CustomSocket : MonoBehaviour
             hoverObject = Instantiate(Target, Attach.transform.position, Attach.transform.rotation);
             if (hoverObject.GetComponent<weapon>() != null)
             {
+                if(hoverObject.GetComponent<MeleeWeaponTrail>()!=null)
                 hoverObject.GetComponent<MeleeWeaponTrail>().enabled = false;
             }
             hoverObject.transform.parent = Attach.transform;
@@ -107,7 +108,7 @@ public class CustomSocket : MonoBehaviour
             //Replace all Materials with the hover Material
             //MeshRenderer[] ren;
             //ren = hoverObject.GetComponents<MeshRenderer>();
-            
+            Target.GetComponent<MyGrabable>().isHovering(true);
            foreach (GameObject go in hoverObject.GetComponent<MyGrabable>().getMatObjects())
            {
                foreach (MeshRenderer rend in go.GetComponents<MeshRenderer>())
@@ -121,10 +122,6 @@ public class CustomSocket : MonoBehaviour
                }
            }
             
-            
-
-
-
         }
 
     }
@@ -135,6 +132,7 @@ public class CustomSocket : MonoBehaviour
         if (hoverObject)
         {
             //Debug.LogError("Hover Inactive");
+            Target.GetComponent<MyGrabable>().isHovering(false);
             Destroy(hoverObject);
         }
     }

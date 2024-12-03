@@ -11,8 +11,9 @@ public class MyGrabable : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Grabbable grabbable;
     [SerializeField] private Collider[] cols;
-    [SerializeField] private List<GameObject> matObjects;
+    [SerializeField] private List<GameObject> matObjects = new List<GameObject>();
     bool isIdel = true;
+    bool ishover;
 
     void Start()
     {
@@ -83,13 +84,25 @@ public class MyGrabable : MonoBehaviour
     public void removeMatObject(string name)
     {
 
-        for(int i = 0;i <matObjects.Count;i++)
+        StartCoroutine(RemoveMatObject(name));
+    }
+
+    IEnumerator RemoveMatObject(string name)
+    {
+        while (ishover)
         {
-            if (matObjects[i].name == name)
+            yield return null;
+        }
+        for (int i = matObjects.Count - 1; i >= 0; i--)
+        {
+            if (matObjects[i] != null && matObjects[i].name == name)
             {
-                matObjects.Remove(matObjects[i]);
+                matObjects.RemoveAt(i);
             }
         }
     }
-
+    public void isHovering(bool h)
+    {
+        ishover = h;
+    }
 }

@@ -64,7 +64,7 @@ public class PourDetector : MonoBehaviour
     }
     private float CalculatePourAngle()
     {
-        if ((lastAngle - rotationDetector.up.y * Mathf.Rad2Deg) > 25f)
+        if ((lastAngle - rotationDetector.up.y * Mathf.Rad2Deg) > 20f)
         {
             lastAngle = rotationDetector.up.y * Mathf.Rad2Deg;
             return -rotationDetector.up.y * Mathf.Rad2Deg;

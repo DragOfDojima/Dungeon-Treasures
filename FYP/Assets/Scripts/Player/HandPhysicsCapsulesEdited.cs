@@ -60,7 +60,7 @@ namespace Oculus.Interaction.Input
         /// </summary>
         [SerializeField]
         [Tooltip("Capsules will be generated in this layer. The default layer is 0.")]
-        private int _useLayer = 0;
+        private int _useLayer = 14;
         /// <summary>
         /// A joint. Capsules reaching this joint will not be generated.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Oculus.Interaction.Input
             _holder.SetParent(transform, false);
             _holder.localPosition = Vector3.zero;
             _holder.localRotation = Quaternion.identity;
-            _holder.gameObject.layer = _useLayer;
+            _holder.gameObject.layer = 14;
             _holder.AddComponent<ToPlayer>();
             _holder.GetComponent<ToPlayer>().setplayer(GetComponentInParent<Player>());
 

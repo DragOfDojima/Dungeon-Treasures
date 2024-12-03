@@ -49,6 +49,7 @@ public class Potion : MonoBehaviour
                     plug.transform.parent = null;
                     GetComponent<MyGrabable>().removeMatObject("plug");
                     isopened = true;
+                    capacity = 100;
                 }
             }
             if(isopened&&plugGrab!=null)
@@ -65,7 +66,7 @@ public class Potion : MonoBehaviour
         if(ispouring)
         {
             if(capacity > 0)
-            capacity -= (48f * Time.deltaTime);
+            capacity -= (38f * Time.deltaTime);
             
             capacity = Mathf.Max(capacity, 0);
             liquid.GetComponent<Renderer>().material.SetFloat("_fill", capacity/200);
