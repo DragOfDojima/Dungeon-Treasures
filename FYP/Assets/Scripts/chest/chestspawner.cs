@@ -26,7 +26,6 @@ public class chestspawner : MonoBehaviour
     {
         if (!spawned)
         {
-            spawned=false;
             Spawn();
         }
         
@@ -42,9 +41,11 @@ public class chestspawner : MonoBehaviour
             if (!chestSpawnerList[i].GetComponent<CheckChest>().getHaveChest())
             {
                 Instantiate(prefabToSpawn, chestSpawnerList[i].transform.position, Quaternion.identity);
+                spawned = true;
             }
             
         }
+
         /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
         room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
         Vector3 randomPositionNormalOffset = pos + norm* normalOffset;
