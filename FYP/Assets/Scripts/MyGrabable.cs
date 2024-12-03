@@ -67,7 +67,7 @@ public class MyGrabable : MonoBehaviour
 
     void Setup()
     {
-        animator.speed = 0;
+        animator.SetBool("end",true);
         rb.isKinematic = false;
         rb.useGravity = true;
         for(int i = 0; i < cols.Length; i++)
