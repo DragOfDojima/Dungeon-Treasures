@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     public Transform playerHead;
     public CapsuleCollider bodyCollider;
-    
+    [SerializeField] GameObject Gameover;
+
     public float bodyHeightMin = 0.5f;
     public float bodyHeightMax = 2f;
 
@@ -47,5 +48,17 @@ public class Player : MonoBehaviour
         {
             hp = hp +15;
         }
+
+        if (hp<=0) { 
+            Gameover.SetActive(true);
+            hp=100;
+            wait(3);
+            Gameover.SetActive(false);
+        }
+    }
+
+    IEnumerator wait(int time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

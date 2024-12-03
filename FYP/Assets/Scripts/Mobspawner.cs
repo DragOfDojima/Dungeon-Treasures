@@ -9,7 +9,7 @@ public class Mobspawner : MonoBehaviour
     public GameObject prefabToSpawn_slime;
     public GameObject prefabToSpawn_KingSlime;
     [SerializeField] GameObject WaveMenu;
-
+    [SerializeField] GameObject WaveCounter;
     private float timer;
 
     public float minEdgeDistance = 0.3f;
@@ -44,6 +44,9 @@ public class Mobspawner : MonoBehaviour
         {
             return;
         }
+
+        if (remain <= 0) WaveCounter.SetActive(false);
+        else WaveCounter.SetActive(true);
         
         if (!MRUK.Instance&&!MRUK.Instance.IsInitialized)
             return;
