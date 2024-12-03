@@ -32,6 +32,7 @@ public class MyGrabable : MonoBehaviour
     {
        if (isSpawner&& grabbable.SelectingPoints.Count > 0)
         {
+            isgrabing = true;
             spawnWeapon();
         }
         if (grabbable.SelectingPoints.Count > 0)
@@ -117,6 +118,6 @@ public class MyGrabable : MonoBehaviour
     public void spawnWeapon()
     {
         Instantiate(spawnPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
