@@ -14,9 +14,10 @@ public class MyGrabable : MonoBehaviour
     [SerializeField] private List<GameObject> matObjects = new List<GameObject>();
     bool isIdel = true;
     bool ishover;
-
+    Vector3 scale;
     void Start()
     {
+        scale=transform.localScale;
         animator = GetComponent<Animator>();
 
     }
@@ -65,6 +66,7 @@ public class MyGrabable : MonoBehaviour
         animator.enabled = false;
         rb.isKinematic = false;
         rb.useGravity = true;
+        gameObject.transform.localScale = scale;
         for(int i = 0; i < cols.Length; i++)
         {
             cols[i].isTrigger = false;
