@@ -54,5 +54,6 @@ public class Wave : MonoBehaviour
     public void resetWaveCount()
     {
         waveCount=0;
+
     }
 }
