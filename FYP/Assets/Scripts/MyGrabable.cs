@@ -26,11 +26,11 @@ public class MyGrabable : MonoBehaviour
     bool setup2;
     private void Update()
     {
-        if (transform.localScale != weaponscale)
-        {
-            gameObject.transform.localScale = weaponscale;
+       //if (transform.localScale != weaponscale)
+        //{
+            //gameObject.transform.localScale = weaponscale;
 
-        }
+        //}
         if (grabbable.SelectingPoints.Count > 0)
         {
             isIdel = false;
@@ -67,7 +67,7 @@ public class MyGrabable : MonoBehaviour
 
     void Setup()
     {
-        animator.enabled = false;
+        animator.speed = 0;
         rb.isKinematic = false;
         rb.useGravity = true;
         for(int i = 0; i < cols.Length; i++)
