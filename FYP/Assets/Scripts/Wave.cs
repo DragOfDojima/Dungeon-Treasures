@@ -50,4 +50,9 @@ public class Wave : MonoBehaviour
             mobspawner.setWaveMenu(GetComponent<StartMenuToCenter>().getStartMenu());
         }
     }
+
+    public void resetWaveCount()
+    {
+        waveCount = 0;
+    }
 }

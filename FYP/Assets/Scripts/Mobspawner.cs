@@ -11,6 +11,8 @@ public class Mobspawner : MonoBehaviour
     [SerializeField] GameObject WaveMenu;
     [SerializeField] GameObject WaveCounter;
     private float timer;
+    [SerializeField] GameObject WIN;
+    public Wave wave;
 
     public float minEdgeDistance = 0.3f;
     public MRUKAnchor.SceneLabels spawnLabels;
@@ -45,9 +47,16 @@ public class Mobspawner : MonoBehaviour
             return;
         }
 
-        if (remain <= 0) WaveCounter.SetActive(false);
-        else WaveCounter.SetActive(true);
-        
+        if (remain <= 0)
+        {
+            StartCoroutine(wait());
+
+        }
+        else
+        {
+            WaveCounter.SetActive(true);
+        }
+
         if (!MRUK.Instance&&!MRUK.Instance.IsInitialized)
             return;
         if(spawnCount >= maxSpawn)
@@ -96,5 +105,20 @@ public class Mobspawner : MonoBehaviour
     public void WaveClear()
     {
         WaveMenu.SetActive(true);
+    }
+
+    
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(3);
+        WaveCounter.SetActive(false);
+        if (wave.getWaveCount() == 4)
+        {
+            WIN.SetActive(true);
+            yield return new WaitForSeconds(3);
+            wave.resetWaveCount();
+
+        }
     }
 }

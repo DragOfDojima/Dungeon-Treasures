@@ -9,11 +9,12 @@ public class Player : MonoBehaviour
     public Transform playerHead;
     public CapsuleCollider bodyCollider;
     [SerializeField] GameObject Gameover;
+    public Wave wave;
 
     public float bodyHeightMin = 0.5f;
     public float bodyHeightMax = 2f;
 
-    private float hp = 100;
+    private float hp = 50;
     private void FixedUpdate()
     {
         bodyCollider.height=Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin,bodyHeightMax);
@@ -51,14 +52,18 @@ public class Player : MonoBehaviour
 
         if (hp<=0) { 
             Gameover.SetActive(true);
-            hp=100;
-            wait(3);
-            Gameover.SetActive(false);
+            Debug.Log("gameover");
+            wave.resetWaveCount();
+            StartCoroutine (wait(3));
+            //hp = 100;
+            //Gameover.SetActive(false);
         }
     }
 
     IEnumerator wait(int time)
     {
         yield return new WaitForSeconds(time);
+        hp = 100;
+        Gameover.SetActive(false);
     }
 }

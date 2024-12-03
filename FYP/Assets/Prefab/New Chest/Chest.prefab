@@ -1123,9 +1123,12 @@ MonoBehaviour:
   lootTable:
     list:
     - item: {fileID: 924107273479502687, guid: 686160321286343498e1ddf1988371cb, type: 3}
-      weight: 4
+      weight: 0
     - item: {fileID: 207931503323614335, guid: 30ddf7934227c3349983971a342529be, type: 3}
       weight: 0
+    - item: {fileID: 6747764645238425707, guid: 0ef382d51dc11474d85cbd2561e3493e,
+        type: 3}
+      weight: 4
   itemHolder: {fileID: 2031765016138311665}
   deadanimation: {fileID: 7022405614622995346}
   deadMat: {fileID: 2100000, guid: b3b691dc909091240836c64e28945e36, type: 2}
@@ -1133,6 +1136,7 @@ MonoBehaviour:
   Question: {fileID: 2814977182301086745}
   QuestionGame: {fileID: 8160591053904740019}
   QuestStart: 0
+  SG: 0
 --- !u!54 &7705891800575543956
 Rigidbody:
   m_ObjectHideFlags: 0
