@@ -17,7 +17,9 @@ public class SlimeKingAI : MonoBehaviour
     [SerializeField] GameObject impactDamage;
     [SerializeField] private float damage;
     AudioSource audioSource;
+    [SerializeField] private AudioClip deadSound;
     bool jumpSound;
+    bool dead;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,8 +55,15 @@ public class SlimeKingAI : MonoBehaviour
         }
         else
         {
-            gameObject.tag="Untagged";
-            animator.enabled = false; 
+            if (!dead)
+            {
+                dead = true;
+                audioSource.clip = deadSound;
+                audioSource.Play();
+                gameObject.tag = "Untagged";
+                animator.enabled = false;
+            }
+            
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -142,12 +151,12 @@ public class SlimeKingAI : MonoBehaviour
 
     public void CreateSlimeKingAtk(int num, Vector3 point, float radius)
     {
-
+        float randomRotationOffset = UnityEngine.Random.Range(0f, 60f * Mathf.Deg2Rad);
         for (int i = 0; i < num; i++)
         {
 
             /* Distance around the circle */
-            var radians = 2 * MathF.PI / num * i;
+            var radians = 2 * MathF.PI / num * i+ randomRotationOffset;
 
             /* Get the vector direction */
             var vertical = MathF.Sin(radians);
@@ -157,7 +166,7 @@ public class SlimeKingAI : MonoBehaviour
 
             /* Get the spawn position */
             var spawnPos = point + spawnDir * radius; // Radius is just the distance away from the point
-
+           
             /* Now spawn */
             var enemy = Instantiate(slimeKingAtk, spawnPos, Quaternion.identity) as GameObject;
 

@@ -20,8 +20,10 @@ public class SlimeAI : MonoBehaviour
     string Hurt = "hurt";
     string Dead = "dead";
     [SerializeField] private float damage;
+    [SerializeField] private AudioClip deadSound;
     AudioSource audioSource;
     bool jumpSound;
+    bool dead;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,12 +71,17 @@ public class SlimeAI : MonoBehaviour
         }
         else
         {
-            gameObject.tag="Untagged";
-            animator.enabled = false;
-            bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 0);
-            bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 0);
-            bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 100);
-            
+            if (!dead)
+            {
+                dead=true;
+                gameObject.tag = "Untagged";
+                animator.enabled = false;
+                audioSource.clip = deadSound;
+                audioSource.Play();
+                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 0);
+                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 0);
+                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 100);
+            }
         }
         
     }

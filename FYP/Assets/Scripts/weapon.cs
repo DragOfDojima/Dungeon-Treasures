@@ -12,8 +12,13 @@ public class weapon : MonoBehaviour
     [SerializeField] private int MaxCombo;
     [SerializeField] private GameObject hitEffect;
 
+    AudioSource audioSource;
     private int combo = 0;
 
+    private void Start()
+    {
+        audioSource=GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         
@@ -23,6 +28,7 @@ public class weapon : MonoBehaviour
             {
                 var hitPoint = other.ClosestPoint(transform.position);
                 Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                audioSource.Play();
                 other.GetComponent<NpcStat>().Damage(WeaponDamage+combo*ComboBouns);
                 if(combo<MaxCombo)
                 combo++;

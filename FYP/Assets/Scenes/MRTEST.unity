@@ -20932,7 +20932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 1
-  prefabToSpawn: {fileID: 7117614079299205996, guid: d990b32057f2f8b4690d5dbfad398a90,
+  prefabToSpawn: {fileID: 2090820957469814555, guid: 3ef509772f69db245b5ee46d3b4373ce,
     type: 3}
   minEdgeDistance: 0.3
   spawnLabels: 0
@@ -27104,6 +27104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199268874010373268, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6133410446634617141, guid: 93a84a0e4bfde6f4aa40f00a61c82710,
         type: 3}
