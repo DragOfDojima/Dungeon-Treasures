@@ -6,7 +6,7 @@ public class StartMenuToCenter : MonoBehaviour
 {
     public GameObject canvasPrefab; // Reference to the 3D canvas prefab
     GameObject StartMenu;
-    GameObject[] wallObjects;
+    List<GameObject> wallObjects = new List<GameObject>();
     void Start()
     {
         
@@ -14,12 +14,12 @@ public class StartMenuToCenter : MonoBehaviour
 
     private void Update()
     {
-        if (wallObjects == null)
+        if (wallObjects.Count==0)
         {
-            wallObjects = GameObject.FindGameObjectsWithTag("Wall");
+            wallObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag("Wall"));
 
             // Ensure there are walls to calculate the center point
-            if (wallObjects.Length == 0)
+            if (wallObjects.Count == 0)
             {
                 Debug.Log("No game objects with the tag 'Wall' found to calculate the center point.");
                 return;
@@ -31,7 +31,7 @@ public class StartMenuToCenter : MonoBehaviour
             {
                 centroid += wallObject.transform.position;
             }
-            centroid /= wallObjects.Length;
+            centroid /= wallObjects.Count;
             Vector3 cameraPosition = Camera.main.transform.position;
 
             // Calculate the center point as the centroid of all walls

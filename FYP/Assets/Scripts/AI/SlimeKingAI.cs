@@ -16,11 +16,12 @@ public class SlimeKingAI : MonoBehaviour
     public LayerMask whatIsPlayer;
     [SerializeField] GameObject impactDamage;
     [SerializeField] private float damage;
-
-
+    AudioSource audioSource;
+    bool jumpSound;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource=GetComponent<AudioSource>();
         animator.SetBool("jump", true);
         //agent.updatePosition = false;
         Lasthp = npcStat.getHP();
@@ -37,6 +38,18 @@ public class SlimeKingAI : MonoBehaviour
         if (!npcStat.getDead())
         {
             AtkPlayer();
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked")
+            {
+                if (!jumpSound)
+                {
+                    audioSource.Play();
+                    jumpSound = true;
+                }
+            }
+            else
+            {
+                jumpSound = false;
+            }
         }
         else
         {
