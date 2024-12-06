@@ -108,12 +108,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299774030261761547}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0051607974, y: -0.022305982, z: -0.98299205, w: -0.18221523}
-  m_LocalPosition: {x: 0.1330654, y: -0.006328422, z: -0.2477933}
+  m_LocalRotation: {x: -0.07490166, y: -0.012904321, z: -0.9781021, w: -0.1937514}
+  m_LocalPosition: {x: 0.173, y: 0.013, z: 0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5007373959066720435}
+  m_Father: {fileID: 4216062510610673537}
   m_LocalEulerAnglesHint: {x: 0.217, y: 8.715, z: -202.393}
 --- !u!114 &2475120473491087705
 MonoBehaviour:
@@ -177,12 +177,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313910371768430009}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.9725965, y: 0.21061628, z: -0.074100524, w: 0.06485392}
-  m_LocalPosition: {x: 0.12343671, y: 0.008755944, z: -0.2649498}
+  m_LocalRotation: {x: 0.9633033, y: 0.21520694, z: -0.15323639, w: 0.04744715}
+  m_LocalPosition: {x: 0.0861, y: 0.0134, z: 0.6348}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5007373959066720435}
+  m_Father: {fileID: 6126517341618830281}
   m_LocalEulerAnglesHint: {x: 9.054, y: 196.157, z: 156.101}
 --- !u!114 &6758574839017813299
 MonoBehaviour:
@@ -251,9 +251,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.021780971, y: -0.066609494, z: 0.013835173, w: 0.99744546}
   m_LocalPosition: {x: -0.04242646, y: -0.019253472, z: -0.25793806}
-  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 4999242505547464081}
   m_Father: {fileID: 5007373959066720435}
   m_LocalEulerAnglesHint: {x: -2.385, y: -7.678, z: 1.749}
 --- !u!114 &3445878133314890371
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 0a200d0f-94d6-4043-85d8-a66ec9f18a98
+  instanceId: 35fbb238-6edc-4719-b4da-1b4eb85d7891
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -388,9 +389,9 @@ Transform:
   m_GameObject: {fileID: 887393333961810094}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.41, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.039, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5043027939718966374}
   - {fileID: 4626056913138890867}
@@ -399,9 +400,7 @@ Transform:
   - {fileID: 2590524187259142937}
   - {fileID: 1199524879725784245}
   - {fileID: 4216062510610673537}
-  - {fileID: 4999242505547464081}
   - {fileID: 6126517341618830281}
-  - {fileID: 5633117252772758776}
   - {fileID: 8217313135157686084}
   - {fileID: 7983808305130634824}
   m_Father: {fileID: 924107273479502687}
@@ -911,9 +910,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.08161978, z: -0, w: 0.9966636}
   m_LocalPosition: {x: 0.14819717, y: 0.0020488712, z: -0.8882968}
-  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.10000001}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 5633117252772758776}
   m_Father: {fileID: 5007373959066720435}
   m_LocalEulerAnglesHint: {x: 0, y: -9.363, z: 0}
 --- !u!114 &3628288408596367989
@@ -974,6 +974,7 @@ GameObject:
   - component: {fileID: 5780769100598256173}
   - component: {fileID: -2337733965926537919}
   - component: {fileID: 2582153123977585327}
+  - component: {fileID: -3737225885313068184}
   m_Layer: 11
   m_Name: sword
   m_TagString: Untagged
@@ -990,8 +991,8 @@ Transform:
   m_GameObject: {fileID: 8115955266104995264}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.041, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0.15, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5007373959066720435}
@@ -1016,8 +1017,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.51176834, y: 8.529492, z: 0.26162294}
-  m_Center: {x: 0.037748523, y: 0.8290547, z: -0.0071264524}
+  m_Size: {x: 0.059758157, y: 0.86632776, z: 0.03289731}
+  m_Center: {x: 0.002164945, y: 0.084563196, z: -0.0011715321}
 --- !u!54 &4480628969236625323
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1106,8 +1107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3467638, y: 0.21893978, z: 0.31501654}
-  m_Center: {x: 0.0034438819, y: -1.661409, z: -0.008353423}
+  m_Size: {x: 0.14809746, y: 0.024432838, z: 0.034487747}
+  m_Center: {x: 0.00022745132, y: -0.16760698, z: -0.0013670735}
 --- !u!114 &-2337733965926537919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,7 +1135,6 @@ MonoBehaviour:
   - {fileID: 256732113493819119}
   spawnPrefab: {fileID: 0}
   isSpawner: 0
-  weaponscale: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!82 &2582153123977585327
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1231,3 +1231,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &-3737225885313068184
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115955266104995264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 161909c902bb0dc479d076a2cae00d23, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

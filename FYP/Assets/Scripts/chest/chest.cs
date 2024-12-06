@@ -115,7 +115,6 @@ public class chest : MonoBehaviour
         itemHolder.gameObject.SetActive(true);
         var s = Instantiate(item, new Vector3(itemHolder.position.x, itemHolder.position.y, itemHolder.position.z), Quaternion.identity);
         s.GetComponent<Animator>().enabled = true;
-        s.GetComponent<Animator>().Play("spawn");
         spawnItem = s.gameObject;
         Debug.Log("item shown");
     }

@@ -13,15 +13,12 @@ public class MyGrabable : MonoBehaviour
     [SerializeField] private Grabbable grabbable;
     [SerializeField] private Collider[] cols;
     [SerializeField] private List<GameObject> matObjects = new List<GameObject>();
-    [SerializeField] private GameObject spawnPrefab;
-    [SerializeField] private bool isSpawner;
     bool isIdel = true;
     bool ishover;
-    //[SerializeField] private Vector3 weaponscale= new Vector3(1,1,1);
     void Start()
     {
-        //if(GetComponent<Animator>()!=null)
-        //animator = GetComponent<Animator>();
+        if(GetComponent<Animator>()!=null)
+        animator = GetComponent<Animator>();
 
     }
 
@@ -30,11 +27,7 @@ public class MyGrabable : MonoBehaviour
     bool setup2;
     private void Update()
     {
-       if (isSpawner&& grabbable.SelectingPoints.Count > 0)
-        {
-            isgrabing = true;
-            spawnWeapon();
-        }
+
         if (grabbable.SelectingPoints.Count > 0)
         {
             isIdel = false;
@@ -71,7 +64,7 @@ public class MyGrabable : MonoBehaviour
 
     void Setup()
     {
-        //animator.enabled = false;
+        animator.enabled = false;
         rb.isKinematic = false;
         rb.useGravity = true;
         for(int i = 0; i < cols.Length; i++)
@@ -115,9 +108,4 @@ public class MyGrabable : MonoBehaviour
         ishover = h;
     }
 
-    public void spawnWeapon()
-    {
-        Instantiate(spawnPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        Destroy(gameObject);
-    }
 }
