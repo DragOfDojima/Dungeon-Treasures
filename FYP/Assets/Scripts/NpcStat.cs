@@ -64,6 +64,8 @@ public class NpcStat : MonoBehaviour
                     StartCoroutine(Dead());
                     GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
                 }
+                NPC.GetComponent<NavMeshAgent>().enabled = false;
+                MainObject.GetComponent<Animator>().enabled = false;
                 StartCoroutine(iframeEnd());
             }
         }
@@ -72,7 +74,9 @@ public class NpcStat : MonoBehaviour
     }
     IEnumerator iframeEnd()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.6f);
+        NPC.GetComponent<NavMeshAgent>().enabled = true;
+        MainObject.GetComponent<Animator>().enabled = true;
         iframe = false;
     }
     public float getHP()
@@ -136,5 +140,10 @@ public class NpcStat : MonoBehaviour
     public void SetKnockBack(float k)
     {
         knockbackPower = k;
+    }
+
+    public void kys()
+    {
+        Damage(CurrentHP);
     }
 }

@@ -39,7 +39,7 @@ public class Wave : MonoBehaviour
 
     public int getWaveCount()
     {
-        return waveCount+1;
+        return waveCount;
     }
     // Update is called once per frame
     void Update()
@@ -49,10 +49,23 @@ public class Wave : MonoBehaviour
             WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
             mobspawner.setWaveMenu(GetComponent<StartMenuToCenter>().getStartMenu());
         }
+
+        if(Input.GetKeyDown(KeyCode.B)) {
+            NpcStat[] scripts = FindObjectsOfType<NpcStat>();
+            foreach (NpcStat script in scripts)
+            {
+                script.kys();
+            }
+        }
     }
 
     public void resetWaveCount()
     {
         waveCount = 0;
+        NpcStat[] scripts = FindObjectsOfType<NpcStat>();
+        foreach (NpcStat script in scripts)
+        {
+            script.kys();
+        }
     }
 }

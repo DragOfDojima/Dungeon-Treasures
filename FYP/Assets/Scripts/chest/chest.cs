@@ -19,11 +19,15 @@ public class chest : MonoBehaviour
     public bool QuestStart = false;
     public bool SG=false;
     GameObject spawnItem;
+    AudioSource audioSource;
+    [SerializeField] AudioClip opens;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         chestLid = GetComponent<Animator>();
         deadmatList = mr.materials;
         for (int i = 0; i < deadmatList.Length; i++)
@@ -38,13 +42,9 @@ public class chest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
+            ShowItem();
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
-
-        }
+        
         if (spawnItem != null) {
             if (spawnItem.GetComponent<MyGrabable>().getIsGrabing()) {
                 StartCoroutine(close());
@@ -59,21 +59,19 @@ public class chest : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
-                if (SG == false) { 
+                if (SG == false) {
+                    SG = true;
                     Question.SetActive(true);
-                    SG= true; 
-                    
                 }
             }
-        }
-        else {
-            
         }
     }
 
     public void open() {
         if (isOpen == false)
         {
+            audioSource.clip = opens;
+            audioSource.Play();
             chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
             ShowItem();
             isOpen = true;

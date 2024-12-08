@@ -12,10 +12,11 @@ public class PourDetector : MonoBehaviour
     private Stream currentStream = null;
     private Potion potion;
     float lastAngle;
-
+    AudioSource audioSource;
     private void Start()
     {
         potion = GetComponent<Potion>();
+        audioSource = GetComponent<AudioSource>();
         lastAngle = rotationDetector.up.y * Mathf.Rad2Deg;
     }
     private void Update()
@@ -49,6 +50,7 @@ public class PourDetector : MonoBehaviour
 
     private void StartPour()
     {
+        audioSource.Play();
         print("start");
         potion.setIspouring(true);
         currentStream = CreateStream();
@@ -57,6 +59,7 @@ public class PourDetector : MonoBehaviour
 
     private void EndPour()
     {
+        audioSource.Stop();
         print("End");
         potion.setIspouring(false);
         currentStream.End();

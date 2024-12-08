@@ -32,10 +32,11 @@ public class Mobspawner : MonoBehaviour
     }
     public void SetMobSpawn(int Slime, int kingSlime)
     {
+        remain = Slime + kingSlime;
         SlimeCount = Slime;
         KingSlimeCount = kingSlime;
         //toBeSpawn = SlimeCount + KingSlimeCount;
-        remain=Slime + kingSlime;
+        
     }
 
     int spawnCount=0;
@@ -112,13 +113,18 @@ public class Mobspawner : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
-        WaveCounter.SetActive(false);
-        if (wave.getWaveCount() == 4)
+        if (remain <= 0)
         {
-            WIN.SetActive(true);
-            yield return new WaitForSeconds(3);
-            wave.resetWaveCount();
+            WaveCounter.SetActive(false);
+            if (wave.getWaveCount() == 3)
+            {
+                WIN.SetActive(true);
+                GetComponent<AudioSource>().Play();
+                yield return new WaitForSeconds(3);
+                wave.resetWaveCount();
 
+            }
         }
+        
     }
 }

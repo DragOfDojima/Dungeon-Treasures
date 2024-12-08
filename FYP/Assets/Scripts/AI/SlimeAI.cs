@@ -55,19 +55,21 @@ public class SlimeAI : MonoBehaviour
                 Lasthp = npcStat.getHP();
             }
             Lasthp = npcStat.getHP();
-            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked")
+            if (animator.enabled == true)
             {
-                if (!jumpSound)
+                if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked")
                 {
-                    audioSource.Play();
-                    jumpSound = true;
+                    if (!jumpSound)
+                    {
+                        audioSource.Play();
+                        jumpSound = true;
+                    }
+                }
+                else
+                {
+                    jumpSound = false;
                 }
             }
-            else
-            {
-                jumpSound=false;
-            }
-
         }
         else
         {
@@ -83,14 +85,14 @@ public class SlimeAI : MonoBehaviour
                 bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 100);
             }
         }
-        
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
     bool atk;
     private void ChasePlayer()
     {
         Vector3 targetPosition = Camera.main.transform.position;
         playerInCloseRange = Physics.CheckSphere(transform.position, 1.2f, whatIsPlayer);
-        if (playerInCloseRange)
+        if (playerInCloseRange&& agent.enabled == true&& animator.enabled == true)
         {
             agent.updatePosition = false;
             agent.speed = 0;
@@ -109,7 +111,7 @@ public class SlimeAI : MonoBehaviour
         }
         else
         {
-            if(agent.enabled == true)
+            if(agent.enabled == true&& animator.enabled == true)
             {
                 agent.SetDestination(targetPosition);
                 agent.updateRotation = true;
@@ -132,6 +134,7 @@ public class SlimeAI : MonoBehaviour
         {
             agent.SetDestination(targetPosition);
         }
+        if(animator.enabled == true)
             animator.SetBool("jump", true);
         
         if (!hurted)
@@ -156,6 +159,7 @@ public class SlimeAI : MonoBehaviour
     }
     private void Patroling()
     {
+        if(agent.enabled == true)
         agent.speed = 0;
         animator.SetBool("jump", false);
         

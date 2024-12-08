@@ -18,6 +18,9 @@ public class QuestionGame : MonoBehaviour
     private List<string[]> questionsAndAnswers;
     private int questionIndex;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip correct;
+    [SerializeField] AudioClip wrong;
     private void Update()
     {
         if (chest.QuestStart == true) { 
@@ -28,6 +31,7 @@ public class QuestionGame : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         LoadQuestionData();
         DisplayQuestion(questionIndex);
 
@@ -89,12 +93,16 @@ public class QuestionGame : MonoBehaviour
         if (selectedAnswer == questionsAndAnswers[questionIndex][1])
         {
             DisplayQuestion(questionIndex);
+            audioSource.clip = correct;
+            audioSource.Play();
             QuestionP.SetActive(false);
             chest.QuestStart = true;
 
         }
         else
-        {   
+        {
+            audioSource.clip = wrong;
+            audioSource.Play();
             QuestionP.SetActive(false);
             Wrong_ans.SetActive(true);
             UL.Timer_on();

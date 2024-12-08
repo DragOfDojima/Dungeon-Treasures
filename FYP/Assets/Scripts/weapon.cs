@@ -28,6 +28,7 @@ public class weapon : MonoBehaviour
             {
                 var hitPoint = other.ClosestPoint(transform.position);
                 Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.Play();
                 other.GetComponent<NpcStat>().Damage(WeaponDamage+combo*ComboBouns);
                 if(combo<MaxCombo)

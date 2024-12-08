@@ -15,6 +15,7 @@ public class MyGrabable : MonoBehaviour
     [SerializeField] private List<GameObject> matObjects = new List<GameObject>();
     bool isIdel = true;
     bool ishover;
+    [SerializeField] AudioSource dropaudioSource;
     void Start()
     {
         if(GetComponent<Animator>()!=null)
@@ -106,6 +107,12 @@ public class MyGrabable : MonoBehaviour
     public void isHovering(bool h)
     {
         ishover = h;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        dropaudioSource.pitch = Random.Range(0.9f, 1.1f);
+        dropaudioSource.Play();
     }
 
 }
