@@ -11,10 +11,14 @@ public class Wave : MonoBehaviour
     GameObject WaveMenu;
     Button button;
     bool rest = false;
+    AudioSource audioSource;
+    [SerializeField] AudioClip nonCombat;
+    [SerializeField] AudioClip inCombat;
+    [SerializeField] AudioClip boss;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void waveStart()
@@ -46,7 +50,7 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mobspawner.getSpawnCount() == 0)
+        if(mobspawner.getSpawnCount() <= 0)
         {
             rest = true;
         }
@@ -67,6 +71,8 @@ public class Wave : MonoBehaviour
                 script.kys();
             }
         }
+
+        UpdateAudioState();
     }
 
     public void resetWaveCount()
@@ -102,6 +108,33 @@ public class Wave : MonoBehaviour
             Destroy(script.gameObject);
         }
 
+    }
+    private void UpdateAudioState()
+    {
+        
+  
+
+        AudioClip newClip;
+
+        if (rest)
+        {
+            newClip = nonCombat;
+        }
+        else if (mobspawner.spwanedking)
+        {
+            newClip = boss;
+        }
+        else
+        {
+            newClip = inCombat;
+        }
+
+        // Play the new clip if it's different from the current clip
+        if (audioSource.clip != newClip)
+        {
+            audioSource.clip = newClip;
+            audioSource.Play();
+        }
     }
 
     public bool isRest()

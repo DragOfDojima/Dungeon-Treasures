@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2832476227155352882}
   m_Layer: 9
   m_Name: col
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 1308542337478113981}
   m_Layer: 9
   m_Name: col (1)
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 45617155-8cb5-4458-b062-01c02683b3e0
+  instanceId: 455fdfac-035d-4aa8-838b-5fb9020910e5
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: -7794697176513024309}
   m_Layer: 9
   m_Name: Bow
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -79,14 +79,13 @@ public class Player : MonoBehaviour
         }
 
         if (hp<=0&&!dead) {
+            wave.resetWaveCount();
             dead = true;
             audioSource.Stop();
             audioSource.clip = lose;
             audioSource.pitch = 1;
             audioSource.Play();
             Gameover.SetActive(true);
-            Debug.Log("gameover");
-            wave.resetWaveCount();
             StartCoroutine (wait(3));
 
             //hp = 100;

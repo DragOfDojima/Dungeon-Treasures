@@ -75,7 +75,6 @@ public class PlayerHPUI : MonoBehaviour
             curhp = Mathf.MoveTowards(curhp, targetValue, rate * Time.deltaTime);
             slider.value = curhp;
             text.text = ((int)curhp).ToString();
-            Debug.Log("workingggggg");
             yield return null;
         }
     }

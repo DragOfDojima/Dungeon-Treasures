@@ -24,13 +24,16 @@ public class SlimeAI : MonoBehaviour
     AudioSource audioSource;
     bool jumpSound;
     bool dead;
+    bool startup;
+    float Lasthp;
     // Start is called before the first frame update
+
     void Start()
     {
         audioSource=GetComponent<AudioSource>();
-        Lasthp = npcStat.getHP();
         bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 100);
         agent.avoidancePriority = 10;
+        Lasthp = npcStat.getHP();
         npcStat.SetKnockBack(knockBackPower);
 
     }
@@ -41,9 +44,20 @@ public class SlimeAI : MonoBehaviour
         Gizmos.DrawSphere(transform.position, sightRange);
     }
     // Update is called once per frame
-    float Lasthp;
+
     void Update()
     {
+        if (!startup)
+        {
+            Lasthp = npcStat.getHP();
+            if(Lasthp == npcStat.getHP())
+            {
+                startup = true;
+                return;
+            }
+            
+        }
+        Debug.Log("slimehp"+(Lasthp == npcStat.getHP()));
         if (!npcStat.getDead())
         {
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -198,7 +212,8 @@ public class SlimeAI : MonoBehaviour
     bool hurted;
     public void hurt()
     {
-        hurted=true;
+        sightRange = 100;
+        hurted =true;
         bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 0);
         bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 100);
         bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 0);

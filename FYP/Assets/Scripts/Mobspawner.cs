@@ -22,6 +22,9 @@ public class Mobspawner : MonoBehaviour
     private int KingSlimeCount;
     //private int toBeSpawn;
     private int remain;
+    public bool spwanedking;
+    bool endWave;
+    bool started;
     void Start()
     {
     }
@@ -35,8 +38,13 @@ public class Mobspawner : MonoBehaviour
         remain = Slime + kingSlime;
         SlimeCount = Slime;
         KingSlimeCount = kingSlime;
+        endWave = false;
+        started = true;
+        WIN.SetActive(false);
+        GetComponent<AudioSource>().Stop();
+        WaveCounter.SetActive(true);
         //toBeSpawn = SlimeCount + KingSlimeCount;
-        
+
     }
 
     int spawnCount=0;
@@ -48,15 +56,12 @@ public class Mobspawner : MonoBehaviour
             return;
         }
 
-        if (remain <= 0)
+        if (remain <= 0&&!endWave&&started)
         {
+            endWave = true;
             StartCoroutine(wait());
-
         }
-        else
-        {
-            WaveCounter.SetActive(true);
-        }
+        
 
         if (!MRUK.Instance&&!MRUK.Instance.IsInitialized)
             return;
@@ -72,11 +77,9 @@ public class Mobspawner : MonoBehaviour
             }
             else if(KingSlimeCount > 0) { 
                 Spawn(prefabToSpawn_KingSlime);
+                spwanedking = true;
                 KingSlimeCount-=1;
                 //toBeSpawn -= 1;
-            }
-            else if(!WaveMenu.activeSelf || remain==0){ 
-                WaveClear();    
             }
             timer -= spawnTimer;
         }
@@ -113,18 +116,22 @@ public class Mobspawner : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
-        if (remain <= 0)
+        WaveCounter.SetActive(false);
+        if (wave.getWaveCount() == 3)
         {
-            WaveCounter.SetActive(false);
-            if (wave.getWaveCount() == 3)
-            {
-                WIN.SetActive(true);
-                GetComponent<AudioSource>().Play();
-                yield return new WaitForSeconds(3);
-                wave.resetWaveCount();
-
-            }
+            WIN.SetActive(true);
+            GetComponent<AudioSource>().Play();
+            StartCoroutine(endWin());
+            yield return new WaitForSeconds(3);
+            wave.resetWaveCount();
+            
         }
-        
+        WaveClear();
+    }
+
+    IEnumerator endWin()
+    {
+        yield return new WaitForSeconds(26);
+        WIN.SetActive(false);
     }
 }

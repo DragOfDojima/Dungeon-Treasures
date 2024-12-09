@@ -118,7 +118,6 @@ public class chest : MonoBehaviour
         var s = Instantiate(item, new Vector3(itemHolder.position.x, itemHolder.position.y, itemHolder.position.z), Quaternion.identity);
         s.GetComponent<Animator>().enabled = true;
         spawnItem = s.gameObject;
-        Debug.Log("item shown");
     }
 
     public IEnumerator WaitUntilTrue()
@@ -133,7 +132,6 @@ public class chest : MonoBehaviour
     public void ProceedToNextStep()
     {
         open();
-        Debug.Log("Next step executed.");
     }
 
     public void closeChest()

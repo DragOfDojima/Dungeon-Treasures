@@ -54,8 +54,6 @@ public class NpcStat : MonoBehaviour
                 iframe = true;
                 CurrentHP -= Damage;
                 var floatdam = Instantiate(floatDam, transform.position, transform.rotation) as GameObject;
-                Debug.Log(floatdam);
-                Debug.Log(floatdam.GetComponent<floattext>());
                 floatdam.GetComponent<floattext>().setText(Damage);
                 floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
                 healthBar.UpdateHealthBar(CurrentHP, Hp);
@@ -87,7 +85,6 @@ public class NpcStat : MonoBehaviour
     bool deaded;
     IEnumerator Dead()
     {
-        Debug.Log("deading");
         deaded=true;
         healthBar.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.2f);
@@ -97,17 +94,7 @@ public class NpcStat : MonoBehaviour
         Destroy(NPC);
     }
 
-    public IEnumerator Hurt()
-    {
-        Debug.Log("hurting");
-        Material[] tempMat = smr.materials;
-        for (int i = 0; i < tempMat.Length; i++)
-        {
-
-        }
-        yield return new WaitForSeconds(2f);
-
-    }
+  
     public bool getDead()
     {
         return deaded;

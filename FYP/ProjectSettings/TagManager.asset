@@ -9,6 +9,7 @@ TagManager:
   - chest
   - Arrow
   - Wall
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -29,7 +29,11 @@ public class chestspawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(rest!= wave.isRest()&&!wave.isRest())
+        if (scripts.Length == 0)
+        {
+            scripts = FindObjectsOfType<CheckChest>();
+        }
+        if (rest!= wave.isRest()&&!wave.isRest())
         {
             foreach (CheckChest script in scripts)
             {
@@ -38,10 +42,7 @@ public class chestspawner : MonoBehaviour
             }
         }
         rest = wave.isRest();
-        if(scripts == null)
-        {
-            scripts = FindObjectsOfType<CheckChest>();
-        }
+        
         if (!wave.isRest())
         {
             Spawn();

@@ -31,6 +31,8 @@ public class MyGrabable : MonoBehaviour
 
         if (grabbable.SelectingPoints.Count > 0)
         {
+            transform.localScale = Vector3.one;
+
             isIdel = false;
             isgrabing = true;
             if (!setup)
@@ -66,12 +68,14 @@ public class MyGrabable : MonoBehaviour
     void Setup()
     {
         animator.enabled = false;
+        //animator.SetBool("end", true);
         rb.isKinematic = false;
         rb.useGravity = true;
         for(int i = 0; i < cols.Length; i++)
         {
             cols[i].isTrigger = false;
         }
+        transform.localScale = Vector3.one;
     }
 
     public bool getIsGrabing()
@@ -111,8 +115,26 @@ public class MyGrabable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        dropaudioSource.pitch = Random.Range(0.9f, 1.1f);
-        dropaudioSource.Play();
+        if (collision.gameObject.tag != "Player"&& collision.gameObject.tag != "Weapon"&& FindTopParent(collision.gameObject).name!="Player")
+        {
+            Debug.Log(collision.gameObject.name);
+            dropaudioSource.pitch = Random.Range(0.9f, 1.1f);
+            dropaudioSource.Play();
+        }
+    }
+
+    public GameObject FindTopParent(GameObject child)
+    {
+        Transform currentTransform = child.transform;
+
+        // Traverse up the hierarchy until we reach the root
+        while (currentTransform.parent != null)
+        {
+            currentTransform = currentTransform.parent;
+        }
+
+        // Return the topmost parent GameObject
+        return currentTransform.gameObject;
     }
 
 }

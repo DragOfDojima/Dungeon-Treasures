@@ -157,6 +157,7 @@ namespace Oculus.Interaction.Input
             _holder.localPosition = Vector3.zero;
             _holder.localRotation = Quaternion.identity;
             _holder.gameObject.layer = 14;
+            _holder.tag = "Player";
             _holder.AddComponent<ToPlayer>();
             _holder.GetComponent<ToPlayer>().setplayer(GetComponentInParent<Player>());
 
@@ -260,7 +261,7 @@ namespace Oculus.Interaction.Input
             rigidbody.Sleep();
             rigidbody.gameObject.SetActive(false);
             rigidbody.gameObject.layer = _useLayer;
-
+            rigidbody.gameObject.tag = "Player";
             return rigidbody;
         }
 
@@ -284,7 +285,7 @@ namespace Oculus.Interaction.Input
             capsuleTransform.SetParent(holder, false);
             capsuleTransform.SetPositionAndRotation(from, boneRotation);
             collider.gameObject.layer = _useLayer;
-
+            collider.gameObject.tag = "Player";
             return collider;
         }
 

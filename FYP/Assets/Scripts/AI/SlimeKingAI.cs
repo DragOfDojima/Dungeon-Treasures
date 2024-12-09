@@ -111,6 +111,7 @@ public class SlimeKingAI : MonoBehaviour
         {
             atk = true;
             var id = Instantiate(impactDamage, gameObject.transform.position, Quaternion.identity) as GameObject;
+            id.GetComponent<SphereCollider>().radius=2.5f;
             id.GetComponent<DealDamage>().setDamage(damage);
         }
         if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Slime_jump2idel_baked")

@@ -23,7 +23,6 @@ public class PourDetector : MonoBehaviour
     {
 
         bool pourCheck = CalculatePourAngle() < pourThreshold;
-        Debug.Log("CalculatePourAngle:" + CalculatePourAngle());
         pourThreshold = 20 - 2*((100 - Mathf.FloorToInt(potion.Getcap()))/10);
 
         if(isPouring != pourCheck&& potion.Getcap() > 0 && potion.GetOpened())

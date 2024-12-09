@@ -23,7 +23,7 @@ public class WaveCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text = "WAVE "+wave.getWaveCount().ToString();
+        text = "WAVE "+(wave.getWaveCount()+1).ToString();
         textMeshPro.text = text;
     }
 }

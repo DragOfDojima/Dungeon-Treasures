@@ -12,7 +12,7 @@ public class DealDamage : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player"&&other.name=="Body")
         {
             other.GetComponent<ToPlayer>().getplayer().increaseHp(-dealDanage);
             Destroy(gameObject);
