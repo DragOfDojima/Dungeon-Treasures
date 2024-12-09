@@ -21312,6 +21312,7 @@ MonoBehaviour:
   normalOffset: 0
   maxSpawn: 5
   ChestRespawnTime: 10
+  wave: {fileID: 245128836}
 --- !u!4 &1252246812
 Transform:
   m_ObjectHideFlags: 0

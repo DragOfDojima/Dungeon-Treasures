@@ -23,6 +23,7 @@ public class CheckChest : MonoBehaviour
         if (hc)
         {
             haveChest=true;
+            waitSpawn=false;
         }
         else
         {
@@ -39,11 +40,17 @@ public class CheckChest : MonoBehaviour
     {
         yield return new WaitForSeconds(WaitTime);
         haveChest=false;
+        waitSpawn=false;
     }
 
     public bool getHaveChest()
     {
         return haveChest;
+    }
+
+    public void setHaveChest(bool value)
+    {
+        haveChest=value;
     }
 
     public void setWaitTime(float t)

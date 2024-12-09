@@ -1,3 +1,4 @@
+using Oculus.Interaction.HandGrab;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Wave : MonoBehaviour
     private int waveCount = 0;
     GameObject WaveMenu;
     Button button;
+    bool rest = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,14 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(mobspawner.getSpawnCount() == 0)
+        {
+            rest = true;
+        }
+        else
+        {
+            rest = false;
+        }
         if (WaveMenu == null)
         {
             WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
@@ -67,5 +77,35 @@ public class Wave : MonoBehaviour
         {
             script.kys();
         }
+
+        chest[] scripts2 = FindObjectsOfType<chest>();
+        foreach (chest script in scripts2)
+        {
+            script.closeChest();
+        }
+
+        HandGrabInteractor[] scripts3 = FindObjectsOfType<HandGrabInteractor>();
+        foreach (HandGrabInteractor script in scripts3)
+        {
+            script.Unselect();
+        }
+
+        CustomSocket[] scripts5 = FindObjectsOfType<CustomSocket>();
+        foreach (CustomSocket script in scripts5)
+        {
+            script.Objectgrabed();
+        }
+
+        MyGrabable[] scripts4 = FindObjectsOfType<MyGrabable>();
+        foreach (MyGrabable script in scripts4)
+        {
+            Destroy(script.gameObject);
+        }
+
+    }
+
+    public bool isRest()
+    {
+        return rest;
     }
 }

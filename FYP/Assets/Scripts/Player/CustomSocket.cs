@@ -38,15 +38,7 @@ public class CustomSocket : MonoBehaviour
             //If Target Object is grabbed and not actual in soket ( it would activate itself )
             if (Target.GetComponentInParent<MyGrabable>().getIsGrabing()&& wasInSoket == true)
             {
-                count = 0;
-                SelectExit.Invoke();
-
-                if (Freeze == true)
-                {
-                    rig.constraints = RigidbodyConstraints.None;
-                }
-
-                wasInSoket = false;
+                Objectgrabed();
             }
 
             //If Target Object get released in target area
@@ -80,6 +72,22 @@ public class CustomSocket : MonoBehaviour
         }
     }
 
+    public void Objectgrabed()
+    {
+        if(wasInSoket)
+        {
+            count = 0;
+            SelectExit.Invoke();
+
+            if (Freeze == true)
+            {
+                rig.constraints = RigidbodyConstraints.None;
+            }
+
+            wasInSoket = false;
+        }
+        
+    }
 
     //Create an instance of the target Object
     private void HoverObject()

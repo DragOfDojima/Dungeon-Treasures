@@ -1,6 +1,7 @@
 using Meta.XR.MRUtilityKit;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class chestspawner : MonoBehaviour
@@ -15,36 +16,59 @@ public class chestspawner : MonoBehaviour
     public float normalOffset;
     public int maxSpawn=5;
     public float ChestRespawnTime;
+    CheckChest[] scripts;
+    [SerializeField] Wave wave;
     void Start()
     {
+        scripts = FindObjectsOfType<CheckChest>();
         
     }
     int spawnCount=0;
     bool spawned;
+    bool rest;
     // Update is called once per frame
     void Update()
     {
-        if (!spawned)
+        if(rest!= wave.isRest()&&!wave.isRest())
+        {
+            foreach (CheckChest script in scripts)
+            {
+                script.StopAllCoroutines();
+                script.setHaveChest(false);
+            }
+        }
+        rest = wave.isRest();
+        if(scripts == null)
+        {
+            scripts = FindObjectsOfType<CheckChest>();
+        }
+        if (!wave.isRest())
         {
             Spawn();
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            chest[] scripts = FindObjectsOfType<chest>();
+            foreach (chest script in scripts)
+            {
+                script.closeChest();
+            }
+        }
+
     }
 
     public void Spawn()
     {
-        GameObject[] chestSpawnerList = GameObject.FindGameObjectsWithTag("chestSpawn");
-        for(int i =0; i < chestSpawnerList.Length; i++)
+        foreach (CheckChest script in scripts)
         {
-            chestSpawnerList[i].GetComponent<CheckChest>().setWaitTime(ChestRespawnTime);
-
-            if (!chestSpawnerList[i].GetComponent<CheckChest>().getHaveChest())
-            {
-                Instantiate(prefabToSpawn, chestSpawnerList[i].transform.position, Quaternion.identity);
-                spawned = true;
-            }
             
+            if (!script.getHaveChest())
+            {
+                Instantiate(prefabToSpawn, script.transform.position, Quaternion.identity);
+            }
         }
+        
 
         /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
         room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
@@ -53,8 +77,4 @@ public class chestspawner : MonoBehaviour
         Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); */
     }
 
-    public void killedMob()
-    {
-        spawnCount--;
-    }
 }

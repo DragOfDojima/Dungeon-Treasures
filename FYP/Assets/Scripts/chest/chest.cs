@@ -38,6 +38,7 @@ public class chest : MonoBehaviour
     }
 
     // Update is called once per frame
+    bool closeed=false;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -46,7 +47,9 @@ public class chest : MonoBehaviour
         }
         
         if (spawnItem != null) {
-            if (spawnItem.GetComponent<MyGrabable>().getIsGrabing()) {
+            if (spawnItem.GetComponent<MyGrabable>().getIsGrabing()&&!closeed) 
+            {
+                closeed = true;
                 StartCoroutine(close());
             }
         }
@@ -85,6 +88,7 @@ public class chest : MonoBehaviour
 
     public IEnumerator close()
     {
+
         chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
         HideItem();
         isOpen = false;
@@ -93,7 +97,7 @@ public class chest : MonoBehaviour
         gameObject.SetActive(false);
         mr.materials = deadmatList;
         deadanimation.enabled = true;
-        Debug.Log("Chest Closed");
+        Destroy(transform.parent.gameObject,2);
     }
 
     public void HideItem()
@@ -130,5 +134,10 @@ public class chest : MonoBehaviour
     {
         open();
         Debug.Log("Next step executed.");
+    }
+
+    public void closeChest()
+    {
+        StartCoroutine(close());
     }
 }
