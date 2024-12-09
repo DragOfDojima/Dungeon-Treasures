@@ -115,7 +115,7 @@ public class MyGrabable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Player"&& collision.gameObject.tag != "Weapon"&& FindTopParent(collision.gameObject).name!="Player")
+        if (collision.gameObject.tag != "Player"&& collision.gameObject.tag != "Weapon"&& FindTopParent(collision.gameObject).name!="Player"&&!isgrabing)
         {
             Debug.Log(collision.gameObject.name);
             dropaudioSource.pitch = Random.Range(0.9f, 1.1f);

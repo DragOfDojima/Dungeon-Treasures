@@ -21,8 +21,8 @@ public class chest : MonoBehaviour
     GameObject spawnItem;
     AudioSource audioSource;
     [SerializeField] AudioClip opens;
+    GameObject theItem;
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -47,11 +47,16 @@ public class chest : MonoBehaviour
         }
         
         if (spawnItem != null) {
-            if (spawnItem.GetComponent<MyGrabable>().getIsGrabing()&&!closeed) 
+            theItem=spawnItem.GetComponent<itemSpawnAnimation>().getSpawnedItem();
+            if (theItem!=null)
             {
-                closeed = true;
-                StartCoroutine(close());
+                if (theItem.GetComponent<MyGrabable>().getIsGrabing() && !closeed)
+                {
+                    closeed = true;
+                    StartCoroutine(close());
+                }
             }
+            
         }
        
     }

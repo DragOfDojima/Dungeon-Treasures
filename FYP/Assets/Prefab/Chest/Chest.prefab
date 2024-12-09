@@ -1123,18 +1123,18 @@ MonoBehaviour:
   mr: {fileID: 801641781802999029}
   lootTable:
     list:
-    - item: {fileID: 924107273479502687, guid: 686160321286343498e1ddf1988371cb, type: 3}
+    - item: {fileID: 924107273479502687, guid: e2a7342df472a3d4c8b4aeac54a56666, type: 3}
       weight: 4
-    - item: {fileID: 2167045922365110862, guid: 47fdd03984ad9464f837d4ca611bf636,
+    - item: {fileID: 2167045922365110862, guid: 4f1fa04911fa96f46b73db505b14d928,
         type: 3}
       weight: 4
-    - item: {fileID: 6747764645238425707, guid: 0ef382d51dc11474d85cbd2561e3493e,
+    - item: {fileID: 6747764645238425707, guid: 522ddea4fe9593041a8032d6704f405f,
         type: 3}
       weight: 4
-    - item: {fileID: 7645453317984655240, guid: 0286066bef2062f4f830e26e968d2a95,
+    - item: {fileID: 7645453317984655240, guid: b7d47f1210ec58742ad947db1338bc26,
         type: 3}
       weight: 4
-    - item: {fileID: 5369234646297677814, guid: 60bce51fc72c41740ae942a8ff33ff3e,
+    - item: {fileID: 5369234646297677814, guid: ccb168f32d3039644828f46c1a9a009c,
         type: 3}
       weight: 4
   itemHolder: {fileID: 2031765016138311665}
