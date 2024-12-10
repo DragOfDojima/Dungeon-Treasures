@@ -46,8 +46,7 @@ public class chest : MonoBehaviour
             ShowItem();
         }
         
-        if (spawnItem != null) {
-            theItem=spawnItem.GetComponent<itemSpawnAnimation>().getSpawnedItem();
+        
             if (theItem!=null)
             {
                 if (theItem.GetComponent<MyGrabable>().getIsGrabing() && !closeed)
@@ -59,7 +58,7 @@ public class chest : MonoBehaviour
             
         }
        
-    }
+    
 
     public void OnTriggerEnter(Collider other)
     {
