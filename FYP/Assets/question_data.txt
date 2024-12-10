@@ -5,13 +5,13 @@ Which popular dish is Hong Kong famous for?,Dim Sum,Sushi,Tacos,Pasta
 What is the name of the famous harbor in Hong Kong?,Victoria Harbour,Port of Tokyo,San Francisco Bay,New York Harbor
 Which city is Hong Kong's closest neighbor across the border?,Shenzhen,Guangzhou,Macau,Beijing
 What year did Hong Kong return to Chinese sovereignty?,1997,2000,1989,2005
-What is the popular shopping area known as in Hong Kong?,Causeway Bay,Champs-Élysées,Oxford Street,5th Avenue
+What is the popular shopping area known as in Hong Kong?,Causeway Bay,Champs,Oxford Street,5th Avenue
 Which mountain offers panoramic views of Hong Kong?,Victoria Peak,Mount Everest,Mount Fuji,Table Mountain
 What type of public transport is iconic in Hong Kong?,Tram,Subway,Bus,Train
 Which festival in Hong Kong involves lantern displays?,Mid-Autumn Festival,Eid al-Fitr,Halloween,Thanksgiving
 What is the name of the famous theme park in Hong Kong?,Hong Kong Disneyland,Universal Studios,SeaWorld,Legoland
 What is the currency used in Hong Kong?,Hong Kong Dollar,Yen,Won,US Dollar
-What is the famous street known for its night market?,Temple Street,Oxford Street,Times Square,Champs-Élysées
+What is the famous street known for its night market?,Temple Street,Oxford Street,Times Square,Champs
 Which bird species is a symbol of Hong Kong?,The Black-faced Spoonbill,The Bald Eagle,The Kiwi,The Sparrow
 What is the name of Hong Kong's iconic skyline feature?,The IFC Tower,Eiffel Tower,Big Ben,Empire State Building
 What is the popular dessert made with mango in Hong Kong?,Mango Pomelo Sago,Tiramisu,Cheesecake,Apple Pie
@@ -43,7 +43,7 @@ Which Hong Kong festival involves colorful parades and traditional performances?
 What is the name of the world-famous horse racing event in Hong Kong?,Hong Kong International Races,Melbourne Cup,Kentucky Derby,Ascot Racecourse
 What is the main ingredient in traditional Hong Kong egg tarts?,Eggs and Milk,Chocolate,Vanilla,Strawberries
 What significant event occurred on June 4, 1989, related to Hong Kong?,Tiananmen Square Protests,World War II End,Independence Day,The Great Depression
-Which iconic street is known for its neon signs in Hong Kong?,Nathan Road,Sunset Boulevard,Champs-Élysées,Oxford Street
+Which iconic street is known for its neon signs in Hong Kong?,Nathan Road,Sunset Boulevard,Champs,Oxford Street
 What is the name of Hong Kong's premier international airport?,Hong Kong International Airport,Heathrow,Los Angeles International Airport,Changi Airport
 What popular outdoor activity is enjoyed at Victoria Harbour?,Aqua Sports,Surfing,Jet Skiing,Fireworks Viewing
 What is the official flower of Hong Kong?,Bauhinia Blakensis,Rose,Lily,Tulip
