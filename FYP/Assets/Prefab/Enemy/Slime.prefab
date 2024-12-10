@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6942299054882623196}
-  speed: 2
+  speed: 1
   knockBackPower: 5
   animator: {fileID: 217682668731418747}
   sightRange: 3.5

@@ -16,7 +16,7 @@ public class StartMenuToCenter : MonoBehaviour
     {
         if (wallObjects.Count==0)
         {
-            wallObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag("Wall"));
+            wallObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag("chestSpawn"));
 
             // Ensure there are walls to calculate the center point
             if (wallObjects.Count == 0)

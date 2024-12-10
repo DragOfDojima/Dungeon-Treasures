@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7606077298109407756}
-  speed: 2
+  speed: 0.5
   knockBackPower: 20
   animator: {fileID: 670931566100160389}
   slimeKingAtk: {fileID: 1914554985611528609, guid: d77efee9576fe454f80f647f59f895da,
