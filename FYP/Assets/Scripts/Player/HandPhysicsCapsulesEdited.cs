@@ -286,6 +286,7 @@ namespace Oculus.Interaction.Input
             capsuleTransform.SetPositionAndRotation(from, boneRotation);
             collider.gameObject.layer = _useLayer;
             collider.gameObject.tag = "Player";
+            collider.isTrigger=true;
             return collider;
         }
 
