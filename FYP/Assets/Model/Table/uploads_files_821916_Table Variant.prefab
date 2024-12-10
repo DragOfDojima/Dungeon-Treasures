@@ -120,6 +120,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: uploads_files_821916_Table Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9152363913774390056, guid: 687b1ba2072de334cad23cd668794f93,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

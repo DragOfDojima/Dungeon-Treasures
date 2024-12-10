@@ -192,7 +192,7 @@ namespace Oculus.Interaction.Input
 
                 Hand.GetJointPose(currentJoint, out Pose jointPose);
 
-                CapsuleCollider collider = CreateCollider(boneName,
+               CapsuleCollider collider = CreateCollider(boneName,
                     body.transform, parentPose.position, jointPose.position, boneRadius, offset);
 
                 BoneCapsule capsule = new BoneCapsule(parentJoint, currentJoint, body, collider);

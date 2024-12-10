@@ -16306,7 +16306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 1513352136}
-  _ovrControllerHelper: {fileID: 1270674171}
+  _ovrControllerHelper: {fileID: 0}
 --- !u!1 &941005933
 GameObject:
   m_ObjectHideFlags: 0
@@ -30062,7 +30062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 969336639}
-  _ovrControllerHelper: {fileID: 1490646052}
+  _ovrControllerHelper: {fileID: 0}
 --- !u!1 &1908108176
 GameObject:
   m_ObjectHideFlags: 0

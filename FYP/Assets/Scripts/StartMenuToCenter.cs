@@ -9,7 +9,7 @@ public class StartMenuToCenter : MonoBehaviour
     List<GameObject> wallObjects = new List<GameObject>();
     void Start()
     {
-        
+
     }
 
     private void Update()
