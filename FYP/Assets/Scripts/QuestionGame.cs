@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections;
+using UnityEngine.Networking;
 
 public class QuestionGame : MonoBehaviour
 {
@@ -23,45 +25,79 @@ public class QuestionGame : MonoBehaviour
     [SerializeField] AudioClip wrong;
     private void Update()
     {
-        if (chest.QuestStart == true) { 
-            questionIndex++;
-            }
+        
 
     }
+    private string filePath;
 
     void Start()
     {
+        filePath = Path.Combine(Application.streamingAssetsPath, "question_data.txt");
+        RequestPermissions();
         audioSource = GetComponent<AudioSource>();
-        LoadQuestionData();
-        DisplayQuestion(questionIndex);
+        StartCoroutine(LoadQuestionData());
+        DisplayQuestion();
 
     }
 
-    void LoadQuestionData()
+    private IEnumerator LoadQuestionData()
     {
-        string filePath = Application.dataPath + "/question_data.txt";
-        questionsAndAnswers = new List<string[]>();
+        Debug.Log("File path: " + filePath);
 
+#if UNITY_EDITOR
+        // In the Editor, read directly from StreamingAssets
         if (File.Exists(filePath))
         {
-            string[] lines = File.ReadAllLines(filePath);
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                string[] data = lines[i].Split(',');
-                questionsAndAnswers.Add(data);
-            }
+            string data = File.ReadAllText(filePath);
+            Debug.Log("File content: " + data);
+            ParseData(data);
         }
         else
         {
-            Debug.LogError("Question data file not found!");
+            Debug.LogError("Question data file not found in the Editor!");
+        }
+#else
+        // On Android, use UnityWebRequest
+        using (UnityWebRequest request = UnityWebRequest.Get(filePath))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string data = request.downloadHandler.text;
+                Debug.Log("File content: " + data);
+                ParseData(data);
+            }
+            else
+            {
+                Debug.LogError("Error reading file: " + request.error);
+            }
+        }
+#endif
+
+        // Call DisplayQuestion after loading data
+        DisplayQuestion(); // Adjust the index as needed
+        yield return null;
+    }
+
+    private void ParseData(string data)
+    {
+        questionsAndAnswers = new List<string[]>();
+        string[] lines = data.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            string[] questionData = lines[i].Split(',');
+            questionsAndAnswers.Add(questionData);
         }
     }
 
-   
-        void DisplayQuestion(int index)
+
+    void DisplayQuestion()
     {
+        int index;
         int randomIndex = Random.Range(0, questionsAndAnswers.Count);
+        questionIndex = randomIndex;
         index = randomIndex;
         if (questionsAndAnswers == null || index >= questionsAndAnswers.Count)
         {
@@ -94,7 +130,7 @@ public class QuestionGame : MonoBehaviour
 
         if (selectedAnswer == questionsAndAnswers[questionIndex][1])
         {
-            DisplayQuestion(questionIndex);
+            DisplayQuestion();
             audioSource.clip = correct;
             audioSource.Play();
             QuestionP.SetActive(false);
@@ -122,6 +158,28 @@ public class QuestionGame : MonoBehaviour
             array[i] = array[randomIndex];
             array[randomIndex] = temp;
         }
+    }
+
+    private void RequestPermissions()
+    {
+#if UNITY_ANDROID
+        if (!HasPermissions())
+        {
+            // Request necessary permissions
+            UnityEngine.Android.Permission.RequestUserPermission("android.permission.READ_EXTERNAL_STORAGE");
+            UnityEngine.Android.Permission.RequestUserPermission("android.permission.WRITE_EXTERNAL_STORAGE");
+        }
+#endif
+    }
+
+    private bool HasPermissions()
+    {
+#if UNITY_ANDROID
+        return UnityEngine.Android.Permission.HasUserAuthorizedPermission("android.permission.READ_EXTERNAL_STORAGE") &&
+               UnityEngine.Android.Permission.HasUserAuthorizedPermission("android.permission.WRITE_EXTERNAL_STORAGE");
+#else
+        return true; // For other platforms, assume permission is granted
+#endif
     }
 
 }

@@ -15,6 +15,7 @@ public class MyGrabable : MonoBehaviour
     bool isIdel = true;
     bool ishover;
     [SerializeField] AudioSource dropaudioSource;
+    [SerializeField] GameObject fakeObject;
     void Start()
     {
         if(GetComponent<Animator>()!=null)
@@ -134,6 +135,13 @@ public class MyGrabable : MonoBehaviour
 
         // Return the topmost parent GameObject
         return currentTransform.gameObject;
+    }
+
+    public GameObject getfakeObject()
+    {
+        fakeObject.GetComponent<Animator>().enabled = false;
+        fakeObject.GetComponent<itemSpawnAnimation>().enabled = false;
+        return fakeObject;
     }
 
 }

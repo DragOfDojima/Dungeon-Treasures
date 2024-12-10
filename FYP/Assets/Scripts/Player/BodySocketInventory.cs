@@ -18,15 +18,27 @@ public class BodySocketInventory : MonoBehaviour
 
     private Vector3 _currentHMDlocalPosition;
     private Quaternion _currentHMDRotation;
+
+    private Vector3 _previousHMDlocalPosition;
+    private Quaternion _previousHMDRotation;
+
     void Update()
     {
         _currentHMDlocalPosition = HMD.transform.localPosition;
         _currentHMDRotation = HMD.transform.rotation;
-        foreach(var bodySocket in bodySockets)
+
+        if (_currentHMDlocalPosition != _previousHMDlocalPosition || _currentHMDRotation != _previousHMDRotation)
         {
-            UpdateBodySocketHeight(bodySocket);
+            foreach (var bodySocket in bodySockets)
+            {
+                UpdateBodySocketHeight(bodySocket);
+            }
+
+            UpdateSocketInventory();
+
+            _previousHMDlocalPosition = _currentHMDlocalPosition;
+            _previousHMDRotation = _currentHMDRotation;
         }
-        UpdateSocketInventory();
     }
 
     private void UpdateBodySocketHeight(bodySocket bodySocket)

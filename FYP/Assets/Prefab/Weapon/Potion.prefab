@@ -737,6 +737,8 @@ MonoBehaviour:
   - {fileID: 5565972068303649721}
   - {fileID: 3827226151508041414}
   dropaudioSource: {fileID: 8609689517776564390}
+  fakeObject: {fileID: 6618867102305552324, guid: 4f1fa04911fa96f46b73db505b14d928,
+    type: 3}
 --- !u!114 &2469614422630318541
 MonoBehaviour:
   m_ObjectHideFlags: 0

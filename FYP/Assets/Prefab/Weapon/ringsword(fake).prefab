@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6747764645238425707}
   - component: {fileID: 5866418396336568885}
   - component: {fileID: -2167139262458343004}
+  - component: {fileID: -7574840029647481740}
   m_Layer: 11
   m_Name: ringsword(fake)
   m_TagString: Weapon
@@ -68,6 +69,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toSpawn: {fileID: 8131515560754327304, guid: 0ef382d51dc11474d85cbd2561e3493e, type: 3}
+--- !u!114 &-7574840029647481740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8131515560754327304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd6de6cfabd6347bdab88ee49cdf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matObjects:
+  - {fileID: 7754683202178000342}
 --- !u!1001 &7448745532241942663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,6 +179,12 @@ PrefabInstance:
 --- !u!4 &6977760162156281708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a426eb4b6851b2c4ab5988301d7be4a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7448745532241942663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7754683202178000342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a426eb4b6851b2c4ab5988301d7be4a8,
     type: 3}
   m_PrefabInstance: {fileID: 7448745532241942663}
   m_PrefabAsset: {fileID: 0}

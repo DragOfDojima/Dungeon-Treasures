@@ -63,10 +63,20 @@ public class chestspawner : MonoBehaviour
     {
         foreach (CheckChest script in scripts)
         {
-            
+            Quaternion parentRotationWithOffset;
             if (!script.getHaveChest())
             {
-                Instantiate(prefabToSpawn, script.transform.position, Quaternion.identity);
+                if (script.transform.parent.localScale.z > script.transform.parent.localScale.x * 2)
+                {
+                     parentRotationWithOffset = Quaternion.Euler(0, -90, 0) * script.transform.parent.rotation;
+                }
+                else
+                {
+                    parentRotationWithOffset = Quaternion.Euler(0, 0, 0) * script.transform.parent.rotation;
+                }
+                 
+                Instantiate(prefabToSpawn, script.transform.position, parentRotationWithOffset);
+
             }
         }
         

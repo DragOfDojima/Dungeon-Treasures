@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 2167045922365110862}
   - component: {fileID: 1403331244539996703}
   - component: {fileID: -3996750817360210132}
+  - component: {fileID: -3371502348977237371}
   m_Layer: 12
   m_Name: Potion(fake)
   m_TagString: Weapon
@@ -368,6 +369,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toSpawn: {fileID: 6618867102305552324, guid: 47fdd03984ad9464f837d4ca611bf636, type: 3}
+--- !u!114 &-3371502348977237371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618867102305552324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd6de6cfabd6347bdab88ee49cdf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matObjects:
+  - {fileID: 7140885746025684531}
+  - {fileID: 3827226151508041414}
+  - {fileID: 5565972068303649721}
 --- !u!1 &7140885746025684531
 GameObject:
   m_ObjectHideFlags: 0

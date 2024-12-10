@@ -109,6 +109,11 @@ public class Mobspawner : MonoBehaviour
     public void WaveClear()
     {
         WaveMenu.SetActive(true);
+        chest[] scripts2 = FindObjectsOfType<chest>();
+        foreach (chest script in scripts2)
+        {
+            script.closeChest();
+        }
     }
 
     

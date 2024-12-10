@@ -1417,6 +1417,8 @@ MonoBehaviour:
   - {fileID: 1377650564810390371}
   - {fileID: 7076528491214052401}
   dropaudioSource: {fileID: -7794697176513024309}
+  fakeObject: {fileID: 6714941703360647938, guid: ccb168f32d3039644828f46c1a9a009c,
+    type: 3}
 --- !u!95 &2076876954563851095
 Animator:
   serializedVersion: 5

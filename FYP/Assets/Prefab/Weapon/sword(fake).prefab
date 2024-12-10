@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 924107273479502687}
   - component: {fileID: -3737225885313068184}
   - component: {fileID: -5936908592202164913}
+  - component: {fileID: -469900841082601694}
   m_Layer: 11
   m_Name: sword(fake)
   m_TagString: Weapon
@@ -642,7 +643,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8115955266104995264}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 161909c902bb0dc479d076a2cae00d23, type: 2}
   m_CullingMode: 0
@@ -662,9 +663,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8115955266104995264}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9d0668af49a0674fa6d88d904cecff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toSpawn: {fileID: 8115955266104995264, guid: 686160321286343498e1ddf1988371cb, type: 3}
+--- !u!114 &-469900841082601694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115955266104995264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd6de6cfabd6347bdab88ee49cdf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matObjects:
+  - {fileID: 5026385425549817729}
+  - {fileID: 4425251439965174382}
+  - {fileID: 3963938135213183147}
+  - {fileID: 3091407140633811279}
+  - {fileID: 4075258277959917041}
+  - {fileID: 256732113493819119}

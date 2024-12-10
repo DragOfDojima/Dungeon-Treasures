@@ -53,6 +53,7 @@ public class Wave : MonoBehaviour
         if(mobspawner.getSpawnCount() <= 0)
         {
             rest = true;
+            
         }
         else
         {
