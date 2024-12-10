@@ -9,7 +9,7 @@ public class itemSpawnAnimation : MonoBehaviour
     Animator animator;
     [SerializeField] GameObject toSpawn;
     GameObject spawned;
-
+    chest chest;
     private void Start()
     {
         animator = GetComponent<Animator>();
