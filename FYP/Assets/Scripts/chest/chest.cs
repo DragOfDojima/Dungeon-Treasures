@@ -122,7 +122,13 @@ public class chest : MonoBehaviour
         itemHolder.gameObject.SetActive(true);
         var s = Instantiate(item, new Vector3(itemHolder.position.x, itemHolder.position.y, itemHolder.position.z), Quaternion.identity);
         s.GetComponent<Animator>().enabled = true;
+        s.GetComponent<itemSpawnAnimation>().setChest(this);
         spawnItem = s.gameObject;
+    }
+
+    public void setTheItem(GameObject i)
+    {
+        theItem = i;
     }
 
     public IEnumerator WaitUntilTrue()
