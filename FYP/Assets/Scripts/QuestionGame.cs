@@ -61,6 +61,8 @@ public class QuestionGame : MonoBehaviour
    
         void DisplayQuestion(int index)
     {
+        int randomIndex = Random.Range(0, questionsAndAnswers.Count);
+        index = randomIndex;
         if (questionsAndAnswers == null || index >= questionsAndAnswers.Count)
         {
             Debug.LogError("No more questions available!");
