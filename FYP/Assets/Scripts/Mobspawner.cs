@@ -25,6 +25,7 @@ public class Mobspawner : MonoBehaviour
     public bool spwanedking;
     bool endWave;
     bool started;
+    bool waitmob;
     void Start()
     {
     }
@@ -33,20 +34,25 @@ public class Mobspawner : MonoBehaviour
     {
         WaveMenu = w;
     }
-    public void SetMobSpawn(int Slime, int kingSlime)
+    public IEnumerator SetMobSpawn(int Slime, int kingSlime)
     {
-        remain = Slime + kingSlime;
-        SlimeCount = Slime;
-        KingSlimeCount = kingSlime;
         endWave = false;
-        started = true;
+        waitmob=true;
         WIN.SetActive(false);
         GetComponent<AudioSource>().Stop();
         WaveCounter.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        remain = Slime + kingSlime;
+        SlimeCount = Slime;
+        KingSlimeCount = kingSlime;
+        started = true;
         //toBeSpawn = SlimeCount + KingSlimeCount;
 
     }
-
+    public bool getWaitmob()
+    {
+        return waitmob;
+    }
     int spawnCount=0;
     // Update is called once per frame
     void Update()
@@ -108,6 +114,8 @@ public class Mobspawner : MonoBehaviour
 
     public void WaveClear()
     {
+        waitmob=false;
+        started=false;
         WaveMenu.SetActive(true);
         chest[] scripts2 = FindObjectsOfType<chest>();
         foreach (chest script in scripts2)

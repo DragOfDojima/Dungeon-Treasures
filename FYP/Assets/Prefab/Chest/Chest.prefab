@@ -275,7 +275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: What is the capital of France?
+  m_text: ''''''''''''''''''';'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.3
+  m_fontSize: 0.75
   m_fontSizeBase: 0.6
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1149,7 +1149,7 @@ MonoBehaviour:
       weight: 4
     - item: {fileID: 2167045922365110862, guid: 4f1fa04911fa96f46b73db505b14d928,
         type: 3}
-      weight: 4
+      weight: 2
     - item: {fileID: 6747764645238425707, guid: 522ddea4fe9593041a8032d6704f405f,
         type: 3}
       weight: 4

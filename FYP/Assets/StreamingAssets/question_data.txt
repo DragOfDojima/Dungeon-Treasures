@@ -1,50 +1,50 @@
-What is the official language of Hong Kong?,Chinese and English,Spanish,French,Japanese
-What is the tallest building in Hong Kong?,One World Trade Center,Shanghai Tower,Petronas Towers,Empire State Building
-What major festival is celebrated in Hong Kong with dragon boat races?,Tuen Ng Festival,Christmas,Thanksgiving,Diwali
-Which popular dish is Hong Kong famous for?,Dim Sum,Sushi,Tacos,Pasta
-What is the name of the famous harbor in Hong Kong?,Victoria Harbour,Port of Tokyo,San Francisco Bay,New York Harbor
-Which city is Hong Kong's closest neighbor across the border?,Shenzhen,Guangzhou,Macau,Beijing
-What year did Hong Kong return to Chinese sovereignty?,1997,2000,1989,2005
-What is the popular shopping area known as in Hong Kong?,Causeway Bay,Champs,Oxford Street,5th Avenue
-Which mountain offers panoramic views of Hong Kong?,Victoria Peak,Mount Everest,Mount Fuji,Table Mountain
-What type of public transport is iconic in Hong Kong?,Tram,Subway,Bus,Train
-Which festival in Hong Kong involves lantern displays?,Mid-Autumn Festival,Eid al-Fitr,Halloween,Thanksgiving
-What is the name of the famous theme park in Hong Kong?,Hong Kong Disneyland,Universal Studios,SeaWorld,Legoland
-What is the currency used in Hong Kong?,Hong Kong Dollar,Yen,Won,US Dollar
-What is the famous street known for its night market?,Temple Street,Oxford Street,Times Square,Champs
-Which bird species is a symbol of Hong Kong?,The Black-faced Spoonbill,The Bald Eagle,The Kiwi,The Sparrow
-What is the name of Hong Kong's iconic skyline feature?,The IFC Tower,Eiffel Tower,Big Ben,Empire State Building
-What is the popular dessert made with mango in Hong Kong?,Mango Pomelo Sago,Tiramisu,Cheesecake,Apple Pie
-Which historic site is a UNESCO World Heritage Site in Hong Kong?,The Ten Thousand Buddhas Monastery,The Great Wall of China,Forbidden City,Stonehenge
-What is the name of the giant Buddha statue located on Lantau Island?,Tian Tan Buddha,Statue of Liberty,Christ the Redeemer,David
-Which movie featured Hong Kong's famous martial arts culture?,Enter the Dragon,The Godfather,Star Wars,The Matrix
-What popular beverage is associated with Hong Kong's tea culture?,Milk Tea,Green Tea,Chamomile Tea,Black Tea
-Which beach is known for its water sports in Hong Kong?,Repulse Bay,Copacabana Beach,Waikiki Beach,South Beach
-What is the name of the annual marathon event in Hong Kong?,Hong Kong Marathon,New York Marathon,Boston Marathon,London Marathon
-Which museum in Hong Kong focuses on Chinese culture?,Hong Kong Museum of History,British Museum,Louvre Museum,Metropolitan Museum
-What is the main goal of the Hong Kong Stock Exchange?,To facilitate trading of stocks,To provide loans,To sell real estate,To offer insurance
-Which cultural district in Hong Kong features art and design?,West Kowloon Cultural District,Silicon Valley,The Louvre,Theatre District
-What type of cuisine is not traditionally found in Hong Kong?,French Cuisine,Chinese Cuisine,Thai Cuisine,Indian Cuisine
-What is the name of the famous hilltop view in Hong Kong?,Victoria Peak,Mount Rushmore,Table Mountain,Mount Kilimanjaro
-Which public park is known for its beautiful gardens in Hong Kong?,Hong Kong Park,Central Park,Hyde Park,Golden Gate Park
-What is the name of the ferry service that connects Hong Kong Island and Kowloon?,Star Ferry,Water Taxi,TransLink,Ferry Express
-Which animal is featured in the Hong Kong flag?,A Bauhinia Flower,A Dragon,An Eagle,A Tiger
-What is the significance of July 1st in Hong Kong?,Handover Day,Independence Day,National Day,New Year's Day
-Which type of market is popular for bargaining in Hong Kong?,Street Market,Supermarket,Online Market,Warehouse Store
-What is one of the main tourist attractions on Lantau Island?,Ngong Ping 360,Niagara Falls,Great Wall of China,Grand Canyon
-Which shopping event is similar to Black Friday in Hong Kong?,11.11 Shopping Festival,Boxing Day,Christmas Eve,New Year's Day
-What is the traditional Hong Kong festival that features fire dragon dancing?,Yee Peng Festival,Diwali,Chinese New Year,Harbin Ice Festival
-What is the famous park in Hong Kong that is home to pandas?,Ocean Park,Victoria Park,Disneyland,Central Park
-What type of traditional Chinese architecture can be found in Wong Tai Sin Temple?,Buddhist Architecture,Islamic Architecture,Gothic Architecture,Romanesque Architecture
-What is the common name for the MTR system in Hong Kong?,Mass Transit Railway,Metro Transit System,CityRail,Subway System
-Which popular hiking trail offers views of the Hong Kong skyline?,Dragon's Back Trail,Appalachian Trail,Pacific Crest Trail,Inca Trail
-What type of transportation is the Peak Tram?,Funicular Railway,Elevator,Subway,Bus
-Which Hong Kong festival involves colorful parades and traditional performances?,Chinese New Year,Valentine's Day,Thanksgiving,Independence Day
-What is the name of the world-famous horse racing event in Hong Kong?,Hong Kong International Races,Melbourne Cup,Kentucky Derby,Ascot Racecourse
-What is the main ingredient in traditional Hong Kong egg tarts?,Eggs and Milk,Chocolate,Vanilla,Strawberries
-What significant event occurred on June 4, 1989, related to Hong Kong?,Tiananmen Square Protests,World War II End,Independence Day,The Great Depression
-Which iconic street is known for its neon signs in Hong Kong?,Nathan Road,Sunset Boulevard,Champs,Oxford Street
-What is the name of Hong Kong's premier international airport?,Hong Kong International Airport,Heathrow,Los Angeles International Airport,Changi Airport
-What popular outdoor activity is enjoyed at Victoria Harbour?,Aqua Sports,Surfing,Jet Skiing,Fireworks Viewing
-What is the official flower of Hong Kong?,Bauhinia Blakensis,Rose,Lily,Tulip
-Which annual event is celebrated with fireworks in Hong Kong?,New Year's Eve,Christmas,Thanksgiving,Valentine's Day
+What are Hong Kong's languages?,Chinese and English,Spanish,French,Japanese
+What is Hong Kong's money?,Hong Kong Dollar,Chinese Yuan,US Dollar,Euro
+When did Hong Kong return to China?,1997,1987,2000,1990
+What is Hong Kong's tallest building?,International Commerce Centre,Eiffel Tower,Burj Khalifa,Empire State Building
+What type of government does Hong Kong have?,Special Administrative Region,Monarchy,Republic,Dictatorship
+What is Hong Kong's famous harbor?,Victoria Harbour,Bay of Bengal,Marina Bay,Halong Bay
+What is Hong Kong's airport called?,Hong Kong International Airport,Beijing Airport,Changi Airport,Heathrow Airport
+Where can you see Hong Kong's skyline?,Victoria Peak,Mount Everest,The Alps,Table Mountain
+What is a common Hong Kong dish?,Dim Sum,Sushi,Pizza,Tacos
+What is Hong Kong's train system?,MTR,Subway,BART,MetroLink
+What is the main religion in Hong Kong?,Buddhism,Christianity,Hinduism,Islam
+What theme park is in Hong Kong?,Hong Kong Disneyland,Universal Studios,Ocean World,SeaWorld
+When was Hong Kong's Basic Law made?,1990,1995,1987,2000
+What is the street with celebrity statues?,Avenue of Stars,Hollywood Boulevard,Walk of Fame,Times Square
+What is the traditional Hong Kong boat?,Junk Boat,Cruise Ship,Fishing Trawler,Yacht
+What is Hong Kong's main business?,Finance,Agriculture,Oil Mining,Automobile Manufacturing
+When are dragon boat races held?,Dragon Boat Festival,Mid-Autumn Festival,Qingming Festival,New Year Festival
+What is Hong Kong's population (2023)?,7.5 million,3 million,12 million,20 million
+Where is Hong Kong's main shopping area?,Causeway Bay,Times Square,Oxford Street,Shibuya
+What is the famous street market?,Temple Street Night Market,Chinatown Night Market,Silk Market,Souk Market
+Which country ruled Hong Kong before 1997?,United Kingdom,France,Japan,United States
+What is the ferry in Hong Kong called?,Star Ferry,Golden Ferry,Blue Ferry,Dragon Ferry
+What is the big Buddha in Hong Kong called?,Tian Tan Buddha,Great Buddha,Statue of Liberty,Christ the Redeemer
+What is Hong Kong's finance area?,Central,Mid-Levels,Kowloon City,Stanley
+Where is Hong Kong's airport?,Lantau Island,Hong Kong Island,Kowloon,Cheung Chau
+What is the horse racing track?,Happy Valley Racecourse,Wembley Stadium,Epsom Downs Racecourse,Ascot
+What sea is near Hong Kong?,South China Sea,East China Sea,Yellow Sea,Philippine Sea
+What is Hong Kong's longest bridge?,Tsing Ma Bridge,Golden Gate Bridge,Tower Bridge,Brooklyn Bridge
+What do the stars on Hong Kong's flag stand for?,China,The United States,The British Empire,Europe
+What is Hong Kong's main transport?,MTR,Bus,Tram,Taxi
+What is Hong Kong's Chinese name?,Heung Gong,Shang Hai,Bei Jing,Cheng Du
+What does "Hong Kong" mean?,Fragrant Harbor,Beautiful Island,Golden City,Dragon Harbor
+What is Hong Kong's light show called?,Symphony of Lights,Northern Lights,Illuminations,Light Festival
+What is Hong Kong's largest island?,Lantau Island,Hong Kong Island,Cheung Chau,Lamma Island
+What is the famous temple in Hong Kong?,Man Mo Temple,Angkor Wat,Temple of Heaven,Sensoji Temple
+What is the drinking age in Hong Kong?,18,16,21,20
+What is Hong Kong's favorite sport?,Soccer,Cricket,Basketball,Baseball
+What is Hong Kong's big art event?,Hong Kong Arts Festival,Sydney Festival,Venice Biennale,Edinburgh Fringe Festival
+What is the outdoor escalator called?,Central–Mid-Levels Escalator,Systematic Escalators,City Escalator,Tsim Sha Tsui Escalator
+What is Hong Kong's weather?,Subtropical,Tropical,Arid,Mediterranean
+Where are Hong Kong's neon streets?,Mong Kok,Central,Mid-Levels,Stanley
+What is Hong Kong's famous hotel?,The Peninsula,The Ritz,The Plaza,Burj Al Arab
+What is Hong Kong's tech park?,Cyberport,Silicon Valley,Tech City,Smart City
+Where does Hong Kong get water?,Imported from China,Rainwater,Rivers,Groundwater
+What festival has lanterns?,Mid-Autumn Festival,Spring Festival,Dragon Boat Festival,Qingming Festival
+What animal is lucky in Hong Kong?,Dragon,Dolphin,Eagle,Elephant
+What is Hong Kong's famous hiking trail?,Dragon's Back,Appalachian Trail,Great Wall Trail,Inca Trail
+What is Hong Kong's biggest university?,The University of Hong Kong,Oxford University,Stanford University,National University of Singapore
+What is the floating restaurant called?,Jumbo Floating Restaurant,Golden Pavilion,Floating Palace,Seafood Paradise
+What is the famous clock tower?,Tsim Sha Tsui Clock Tower,Big Ben,Chinatown Clock,Victoria Clock
