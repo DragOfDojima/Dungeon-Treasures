@@ -31,11 +31,11 @@ public class Wave : MonoBehaviour
                 waveCount = 1;
                 break;
             case 1:
-                StartCoroutine(mobspawner.SetMobSpawn(5, 1));
+                StartCoroutine(mobspawner.SetMobSpawn(0, 1));
                 waveCount = 2;
                 break;
             case 2:
-                StartCoroutine(mobspawner.SetMobSpawn(0, 2));
+                StartCoroutine(mobspawner.SetMobSpawn(3, 1));
                 waveCount = 3;
                 break;
             default:
