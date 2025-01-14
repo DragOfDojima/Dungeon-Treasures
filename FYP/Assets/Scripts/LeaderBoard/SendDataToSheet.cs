@@ -1,22 +1,29 @@
-using Meta.WitAi.Attributes;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
 public class SendDataToSheet : MonoBehaviour
 {
-    public string data1;
-    public string data2;
-    public string data3;
-    public string data4;
+    public string name;
+    public string score;
+    public string time;
+    public string rate;
 
-    private string formUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfLh2I_Tug7Z0TayfYkmQReM56YtsH7c35IDDlzrrvudSIZGQ/formResponse\r\n";
+    public LeaderBoard leaderBoard;
 
-    [Button]
+    private string formUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfLh2I_Tug7Z0TayfYkmQReM56YtsH7c35IDDlzrrvudSIZGQ/formResponse";
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SubmitFeedback();
+            leaderBoard.Sync();
+        }
+    }
     public void SubmitFeedback()
     {
-        StartCoroutine(Post(data1,data2,data3,data4));
+        StartCoroutine(Post(name, score, time, rate));
     }
 
     private IEnumerator Post(string data1, string data2, string data3, string data4)
