@@ -27,8 +27,6 @@ public class Player : MonoBehaviour
     private Color originalColor;
     private Camera playerCamera;
 
-    [SerializeField] VisualEffect effect;
-
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -45,7 +43,6 @@ public class Player : MonoBehaviour
     {
         if (p < 0)
         {
-            effect.Play();
             audioSource.pitch = Random.Range(0.9f, 1.1f);
             audioSource.clip = damaged;
             if(!audioSource.isPlaying)

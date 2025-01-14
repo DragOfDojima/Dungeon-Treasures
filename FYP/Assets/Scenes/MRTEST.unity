@@ -2285,8 +2285,11 @@ MonoBehaviour:
   bodyHeightMax: 2
   lose: {fileID: 8300000, guid: db616b9a07411cc45a6bb21d0acaadf5, type: 3}
   damaged: {fileID: 8300000, guid: 6db8a9c16dae3ba4cb474e10a4aecfbf, type: 3}
+<<<<<<< HEAD
   winmusic: {fileID: 8300000, guid: 2f2609d029e54ad4682cd6e68e4ecf38, type: 3}
   effect: {fileID: 1287110843}
+=======
+>>>>>>> 0b2aece9d30045b9825fe0c5bff66fedba1dfc0b
 --- !u!82 &143374416
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3681,6 +3684,7 @@ GameObject:
   - component: {fileID: 245128836}
   - component: {fileID: 245128837}
   - component: {fileID: 245128838}
+  - component: {fileID: 245128839}
   m_Layer: 0
   m_Name: GameM
   m_TagString: Untagged
@@ -3854,6 +3858,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &245128839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245128832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d48b1d712e5f0749afcbd3d416ef77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  score: 
+  time: 
+  rate: 
+  leaderBoard: {fileID: 11400000, guid: 4242d624890fb984d84de470e0f134b1, type: 2}
 --- !u!1 &258293245
 GameObject:
   m_ObjectHideFlags: 0
