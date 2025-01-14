@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public Transform playerHead;
     public CapsuleCollider bodyCollider;
     [SerializeField] GameObject Gameover;
-    [SerializeField] GameObject WIN;
     public Wave wave;
 
     public float bodyHeightMin = 0.5f;
@@ -92,16 +91,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void win()
-    {
-        wave.resetWaveCount();
-        audioSource.Stop();
-        audioSource.clip = winmusic;
-        audioSource.pitch = 1;
-        audioSource.Play();
-        WIN.SetActive(true);
-        StartCoroutine(wait(3));
-    }
 
     IEnumerator wait(int time)
     {
