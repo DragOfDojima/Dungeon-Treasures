@@ -2279,12 +2279,13 @@ MonoBehaviour:
   playerHead: {fileID: 1726712780}
   bodyCollider: {fileID: 2071924933}
   Gameover: {fileID: 479097247}
+  WIN: {fileID: 0}
   wave: {fileID: 245128836}
   bodyHeightMin: 0.5
   bodyHeightMax: 2
   lose: {fileID: 8300000, guid: db616b9a07411cc45a6bb21d0acaadf5, type: 3}
   damaged: {fileID: 8300000, guid: 6db8a9c16dae3ba4cb474e10a4aecfbf, type: 3}
-  effect: {fileID: 1287110843}
+  winmusic: {fileID: 0}
 --- !u!82 &143374416
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3679,6 +3680,7 @@ GameObject:
   - component: {fileID: 245128836}
   - component: {fileID: 245128837}
   - component: {fileID: 245128838}
+  - component: {fileID: 245128839}
   m_Layer: 0
   m_Name: GameM
   m_TagString: Untagged
@@ -3738,6 +3740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobspawner: {fileID: 109250217}
+  player: {fileID: 0}
   nonCombat: {fileID: 8300000, guid: aa9cc7de3a8e2504d8339430b9b2483d, type: 3}
   inCombat: {fileID: 8300000, guid: d40bcf3aa49e374479a2af75de0a7cf2, type: 3}
   boss: {fileID: 8300000, guid: f5cd33e7b6c1d2e4891f863ff5ce0fa5, type: 3}
@@ -3851,6 +3854,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &245128839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245128832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d48b1d712e5f0749afcbd3d416ef77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  score: 
+  time: 
+  rate: 
+  leaderBoard: {fileID: 11400000, guid: 4242d624890fb984d84de470e0f134b1, type: 2}
 --- !u!1 &258293245
 GameObject:
   m_ObjectHideFlags: 0
@@ -14968,12 +14988,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1303291262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &1287110843 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 7322054838374075118, guid: a174989391227ef45b7d7f86740178dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1838840747}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287463041
 GameObject:
   m_ObjectHideFlags: 0
@@ -19871,6 +19885,11 @@ PrefabInstance:
       objectReference: {fileID: 109250217}
     - target: {fileID: 1325573764232926106, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325573764232926106, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 18.5
       objectReference: {fileID: 0}
@@ -19994,10 +20013,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6682075617479686380, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
+      propertyPath: m_Text
+      value: 'WAVE : 00   Enemy Remain : 00  Timer : 00:00'
+      objectReference: {fileID: 0}
     - target: {fileID: 8345630735157784978, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345630735157784978, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

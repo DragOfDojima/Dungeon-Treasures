@@ -21,11 +21,10 @@ public class Player : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip lose;
     [SerializeField] AudioClip damaged;
+    [SerializeField] AudioClip winmusic;
 
     private Color originalColor;
     private Camera playerCamera;
-
-    [SerializeField] VisualEffect effect;
 
     private void Start()
     {
@@ -43,7 +42,6 @@ public class Player : MonoBehaviour
     {
         if (p < 0)
         {
-            effect.Play();
             audioSource.pitch = Random.Range(0.9f, 1.1f);
             audioSource.clip = damaged;
             if(!audioSource.isPlaying)
@@ -92,6 +90,7 @@ public class Player : MonoBehaviour
             //Gameover.SetActive(false);
         }
     }
+
 
     IEnumerator wait(int time)
     {

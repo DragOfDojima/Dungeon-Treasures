@@ -1,6 +1,5 @@
 using Meta.XR.MRUtilityKit;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mobspawner : MonoBehaviour
@@ -26,6 +25,7 @@ public class Mobspawner : MonoBehaviour
     bool endWave;
     bool started;
     bool waitmob;
+
     void Start()
     {
     }
@@ -41,14 +41,15 @@ public class Mobspawner : MonoBehaviour
         WIN.SetActive(false);
         GetComponent<AudioSource>().Stop();
         WaveCounter.SetActive(true);
-        yield return new WaitForSeconds(10f);
         remain = Slime + kingSlime;
+        yield return new WaitForSeconds(10f);
         SlimeCount = Slime;
         KingSlimeCount = kingSlime;
         started = true;
         //toBeSpawn = SlimeCount + KingSlimeCount;
 
     }
+
     public bool getWaitmob()
     {
         return waitmob;

@@ -9,6 +9,8 @@ public class getText : MonoBehaviour
     [SerializeField] Mobspawner mobspawner; 
     int WaveCounter;
     int enemyRemain;
+    float timer;
+    string time;
     string text;
     [SerializeField] Text textshow;
 
@@ -26,9 +28,20 @@ public class getText : MonoBehaviour
 
         WaveCounter = wave.getWaveCount();
         enemyRemain = mobspawner.getSpawnCount();
+        timer = wave.getTimer();
 
-        text = "WAVE : " + WaveCounter + "   Enemy Remain : " + enemyRemain;
+        float minutes = Mathf.FloorToInt(timer / 60);
+        if (minutes > 99) { minutes=99; }
+        float seconds = Mathf.FloorToInt(timer % 60);
+
+        text = "WAVE : " + WaveCounter + "   Enemy Remain : " + enemyRemain + "   Timer : " + string.Format("{0:00}:{1:00}", minutes, seconds);
+        time = string.Format("{0:00}:{1:00}", minutes, seconds);
         textshow.text = text;
+        Debug.Log(text);
+    }
 
+    public string getTime()
+    {
+        return time;
     }
 }
