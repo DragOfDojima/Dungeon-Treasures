@@ -98,7 +98,6 @@ public class Player : MonoBehaviour
         hp = 100;
         dead = false;
         Gameover.SetActive(false);
-        WIN.SetActive(false);
     }
 
     
