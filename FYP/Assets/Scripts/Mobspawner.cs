@@ -41,22 +41,15 @@ public class Mobspawner : MonoBehaviour
         WIN.SetActive(false);
         GetComponent<AudioSource>().Stop();
         WaveCounter.SetActive(true);
-        fakeRemain = Slime + kingSlime;
-        yield return new WaitForSeconds(10f);
         remain = Slime + kingSlime;
+        yield return new WaitForSeconds(10f);
         SlimeCount = Slime;
         KingSlimeCount = kingSlime;
         started = true;
         //toBeSpawn = SlimeCount + KingSlimeCount;
 
     }
-    int fakeRemain;
 
-    public int getFakeRemain()
-    {
-        return fakeRemain;
-    }
-    
     public bool getWaitmob()
     {
         return waitmob;
