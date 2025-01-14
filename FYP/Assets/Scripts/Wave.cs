@@ -10,7 +10,6 @@ public class Wave : MonoBehaviour
     private int waveCount = 0;
     GameObject WaveMenu;
     Button button;
-    [SerializeField] Player player;
     bool rest = false;
     private float timer;
     AudioSource audioSource;
@@ -57,9 +56,6 @@ public class Wave : MonoBehaviour
         if(mobspawner.getSpawnCount() <= 0&&!mobspawner.getWaitmob())
         {
             rest = true;
-            if(waveCount == 3) {
-                player.win();
-            }
         }
         else
         {
