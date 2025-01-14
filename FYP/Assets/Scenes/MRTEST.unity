@@ -14992,12 +14992,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1303291262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &1287110843 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 7322054838374075118, guid: a174989391227ef45b7d7f86740178dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1838840747}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287463041
 GameObject:
   m_ObjectHideFlags: 0
