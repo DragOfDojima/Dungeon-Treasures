@@ -26,6 +26,7 @@ public class Mobspawner : MonoBehaviour
     bool endWave;
     bool started;
     bool waitmob;
+
     void Start()
     {
     }
