@@ -10,7 +10,9 @@ public class Wave : MonoBehaviour
     private int waveCount = 0;
     GameObject WaveMenu;
     Button button;
+    [SerializeField] Player player;
     bool rest = false;
+    private float timer;
     AudioSource audioSource;
     [SerializeField] AudioClip nonCombat;
     [SerializeField] AudioClip inCombat;
@@ -55,7 +57,9 @@ public class Wave : MonoBehaviour
         if(mobspawner.getSpawnCount() <= 0&&!mobspawner.getWaitmob())
         {
             rest = true;
-            
+            if(waveCount == 3) {
+                player.win();
+            }
         }
         else
         {
@@ -66,8 +70,12 @@ public class Wave : MonoBehaviour
             WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
             mobspawner.setWaveMenu(GetComponent<StartMenuToCenter>().getStartMenu());
         }
+        if (!rest)
+        {
+            timer+=Time.deltaTime;
+        }
 
-        if(Input.GetKeyDown(KeyCode.B)) {
+        if (Input.GetKeyDown(KeyCode.B)) {
             NpcStat[] scripts = FindObjectsOfType<NpcStat>();
             foreach (NpcStat script in scripts)
             {
@@ -80,6 +88,7 @@ public class Wave : MonoBehaviour
 
     public void resetWaveCount()
     {
+        timer = 0;
         waveCount = 0;
         NpcStat[] scripts = FindObjectsOfType<NpcStat>();
         foreach (NpcStat script in scripts)
@@ -143,5 +152,10 @@ public class Wave : MonoBehaviour
     public bool isRest()
     {
         return rest;
+    }
+
+    public float getTimer()
+    {
+        return timer;
     }
 }

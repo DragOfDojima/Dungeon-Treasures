@@ -19839,6 +19839,11 @@ PrefabInstance:
       objectReference: {fileID: 109250217}
     - target: {fileID: 1325573764232926106, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325573764232926106, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 18.5
       objectReference: {fileID: 0}
@@ -19962,10 +19967,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6682075617479686380, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
+      propertyPath: m_Text
+      value: 'WAVE : 00   Enemy Remain : 00  Timer : 00:00'
+      objectReference: {fileID: 0}
     - target: {fileID: 8345630735157784978, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345630735157784978, guid: 8ae3efedd11d36845bb35cfc303bd3c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
