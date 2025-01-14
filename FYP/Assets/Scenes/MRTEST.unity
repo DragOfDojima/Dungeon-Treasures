@@ -2279,11 +2279,13 @@ MonoBehaviour:
   playerHead: {fileID: 1726712780}
   bodyCollider: {fileID: 2071924933}
   Gameover: {fileID: 479097247}
+  WIN: {fileID: 235092093}
   wave: {fileID: 245128836}
   bodyHeightMin: 0.5
   bodyHeightMax: 2
   lose: {fileID: 8300000, guid: db616b9a07411cc45a6bb21d0acaadf5, type: 3}
   damaged: {fileID: 8300000, guid: 6db8a9c16dae3ba4cb474e10a4aecfbf, type: 3}
+  winmusic: {fileID: 8300000, guid: 2f2609d029e54ad4682cd6e68e4ecf38, type: 3}
   effect: {fileID: 1287110843}
 --- !u!82 &143374416
 AudioSource:
@@ -3738,6 +3740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobspawner: {fileID: 109250217}
+  player: {fileID: 143374415}
   nonCombat: {fileID: 8300000, guid: aa9cc7de3a8e2504d8339430b9b2483d, type: 3}
   inCombat: {fileID: 8300000, guid: d40bcf3aa49e374479a2af75de0a7cf2, type: 3}
   boss: {fileID: 8300000, guid: f5cd33e7b6c1d2e4891f863ff5ce0fa5, type: 3}
