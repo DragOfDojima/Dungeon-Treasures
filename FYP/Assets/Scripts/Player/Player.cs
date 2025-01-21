@@ -1,6 +1,7 @@
 using Oculus.Interaction.HandGrab;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -21,10 +22,10 @@ public class Player : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip lose;
     [SerializeField] AudioClip damaged;
-    [SerializeField] AudioClip winmusic;
 
     private Color originalColor;
     private Camera playerCamera;
+    [SerializeField] FullScreenEffect fullScreenEffect;
 
     private void Start()
     {
@@ -46,6 +47,8 @@ public class Player : MonoBehaviour
             audioSource.clip = damaged;
             if(!audioSource.isPlaying)
             audioSource.Play();
+            fullScreenEffect.Damage();
+
         }
         if(hp + p > 100)
         {
@@ -69,7 +72,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            hp=hp-15;
+            increaseHp(-15);
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
