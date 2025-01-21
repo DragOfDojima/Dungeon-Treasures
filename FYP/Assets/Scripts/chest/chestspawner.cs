@@ -1,4 +1,5 @@
 using Meta.XR.MRUtilityKit;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,7 +8,8 @@ using UnityEngine;
 public class chestspawner : MonoBehaviour
 {
     public float spawnTimer = 1;
-    public GameObject prefabToSpawn;
+    public GameObject normalChest;
+    public GameObject potionChest;
 
     private float timer;
 
@@ -18,12 +20,16 @@ public class chestspawner : MonoBehaviour
     public float ChestRespawnTime;
     CheckChest[] scripts;
     [SerializeField] Wave wave;
+    [SerializeField] int maxChest;
+    [SerializeField] int maxPotionChest;
+    [SerializeField] bool SpawnChestOnGround;
     void Start()
     {
         scripts = FindObjectsOfType<CheckChest>();
         
     }
     int spawnCount=0;
+    int potionSpawnCount = 0;
     bool spawned;
     bool rest;
     // Update is called once per frame
@@ -59,33 +65,132 @@ public class chestspawner : MonoBehaviour
 
     }
 
-    public void Spawn()
+    bool AllChestsHaveBeenTaken()
     {
-        foreach (CheckChest script in scripts)
+        foreach (var script in scripts)
         {
-            Quaternion parentRotationWithOffset;
             if (!script.getHaveChest())
             {
-                if (script.transform.parent.localScale.z > script.transform.parent.localScale.x * 2)
-                {
-                     parentRotationWithOffset = Quaternion.Euler(0, -90, 0) * script.transform.parent.rotation;
-                }
-                else
-                {
-                    parentRotationWithOffset = Quaternion.Euler(0, 0, 0) * script.transform.parent.rotation;
-                }
-                 
-                Instantiate(prefabToSpawn, script.transform.position, parentRotationWithOffset);
-
+                return false; // Return false if any script does not have a chest
             }
         }
-        
-
+        return true; // All scripts have a chest
+    }
+    public void Spawn()
+    {
+        spawnNormalChest();
+        spawnPotionChest();
         /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
         room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
         Vector3 randomPositionNormalOffset = pos + norm* normalOffset;
         randomPositionNormalOffset.y=0;
         Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); */
     }
+    public void chestClose()
+    {
+        spawnCount--;
+    }
+    public void potionChestClose()
+    {
+        potionSpawnCount--;
+    }
 
+    bool halfChance()
+    {
+        return UnityEngine.Random.value < 0.5f; // Returns true if successful
+    }
+
+    private void spawnNormalChest()
+    {
+        Quaternion parentRotationWithOffset;
+        //Spawn Chest On table 
+        for (int i = spawnCount; i < maxChest; i++)
+        {
+            if (SpawnChestOnGround)
+            {
+                if (halfChance())
+                {
+                    MRUKRoom room = MRUK.Instance.GetCurrentRoom();
+                    room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.FACING_UP, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
+                    Vector3 randomPositionNormalOffset = pos + norm * normalOffset;
+                    randomPositionNormalOffset.y = 0;
+                    if (spawnCount < maxChest)
+                    {
+                        Instantiate(normalChest, randomPositionNormalOffset, Quaternion.identity);
+                        spawnCount++;
+                        return;
+                    }
+                }
+            }
+                
+            int rand = UnityEngine.Random.Range(0, scripts.Length);
+            if (AllChestsHaveBeenTaken()) return;
+            while (scripts[rand].getHaveChest())
+            {
+                rand = UnityEngine.Random.Range(0, scripts.Length);
+            }
+
+            if (!scripts[rand].getHaveChest())
+            {
+                if (scripts[rand].transform.parent.localScale.z > scripts[rand].transform.parent.localScale.x * 2)
+                {
+                    parentRotationWithOffset = Quaternion.Euler(0, -90, 0) * scripts[rand].transform.parent.rotation;
+                }
+                else
+                {
+                    parentRotationWithOffset = Quaternion.Euler(0, 0, 0) * scripts[rand].transform.parent.rotation;
+                }
+
+                Instantiate(normalChest, scripts[rand].transform.position, parentRotationWithOffset);
+                scripts[rand].setHaveChest(true);
+                spawnCount++;
+            }
+        }
+        
+    }
+    private void spawnPotionChest()
+    {
+        Quaternion parentRotationWithOffset;
+
+        for (int i = potionSpawnCount; i < maxPotionChest; i++)
+        {
+            if (SpawnChestOnGround)
+            {
+                if (halfChance())
+                {
+                    MRUKRoom room = MRUK.Instance.GetCurrentRoom();
+                    room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.FACING_UP, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
+                    Vector3 randomPositionNormalOffset = pos + norm * normalOffset;
+                    randomPositionNormalOffset.y = 0;
+                    if (potionSpawnCount < maxPotionChest)
+                    {
+                        Instantiate(potionChest, randomPositionNormalOffset, Quaternion.identity);
+                        potionSpawnCount++;
+                        return;
+                    }
+                }
+            }
+            int rand = UnityEngine.Random.Range(0, scripts.Length);
+            if (AllChestsHaveBeenTaken()) return;
+            while (scripts[rand].getHaveChest())
+            {
+                rand = UnityEngine.Random.Range(0, scripts.Length);
+            }
+
+            if (!scripts[rand].getHaveChest())
+            {
+                if (scripts[rand].transform.parent.localScale.z > scripts[rand].transform.parent.localScale.x * 2)
+                {
+                    parentRotationWithOffset = Quaternion.Euler(0, -90, 0) * scripts[rand].transform.parent.rotation;
+                }
+                else
+                {
+                    parentRotationWithOffset = Quaternion.Euler(0, 0, 0) * scripts[rand].transform.parent.rotation;
+                }
+                Instantiate(potionChest, scripts[rand].transform.position, parentRotationWithOffset);
+                scripts[rand].setHaveChest(true);
+                potionSpawnCount++;
+            }
+        }
+    }
 }

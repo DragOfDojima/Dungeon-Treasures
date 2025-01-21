@@ -297,7 +297,6 @@ public class ReadGoogleSheets
                     line.Add(data[j, i]);
                 listStr.Add(line);
             }
-
             callBack(listStr);
         });
     }
@@ -343,7 +342,6 @@ public class ReadGoogleSheets
                 outputGrid[x, y] = outputGrid[x, y].Replace("\"\"", "\"");
             }
         }
-
         return outputGrid;
     }
 
@@ -449,7 +447,7 @@ public class ReadGoogleSheets
 
     private static List<Texture> GetAllTextureAssetsAtPath(string path)
     {
-#if UNITY_EDITOR
+#if UNITY_EDITOR    
         string[] paths = {path};
         var assets = UnityEditor.AssetDatabase.FindAssets("t:texture", paths);
         var assetsObj = assets.Select(s =>

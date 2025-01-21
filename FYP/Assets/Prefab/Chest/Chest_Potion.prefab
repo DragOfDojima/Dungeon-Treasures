@@ -592,7 +592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7778362061807031888}
   m_Layer: 8
-  m_Name: Chest
+  m_Name: Chest_Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1066,7 +1066,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 370222450dd06474dbee897a63b09f75, type: 2}
+  - {fileID: 2100000, guid: 4c9ac6b297976fa4bb1c9a80802a2c9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1145,17 +1145,9 @@ MonoBehaviour:
   mr: {fileID: 801641781802999029}
   lootTable:
     list:
-    - item: {fileID: 924107273479502687, guid: e2a7342df472a3d4c8b4aeac54a56666, type: 3}
-      weight: 4
-    - item: {fileID: 6747764645238425707, guid: 522ddea4fe9593041a8032d6704f405f,
+    - item: {fileID: 2167045922365110862, guid: 4f1fa04911fa96f46b73db505b14d928,
         type: 3}
-      weight: 4
-    - item: {fileID: 7645453317984655240, guid: b7d47f1210ec58742ad947db1338bc26,
-        type: 3}
-      weight: 4
-    - item: {fileID: 5369234646297677814, guid: ccb168f32d3039644828f46c1a9a009c,
-        type: 3}
-      weight: 4
+      weight: 2
   itemHolder: {fileID: 2031765016138311665}
   deadanimation: {fileID: 7022405614622995346}
   deadMat: {fileID: 2100000, guid: b3b691dc909091240836c64e28945e36, type: 2}
@@ -1165,6 +1157,7 @@ MonoBehaviour:
   QuestStart: 0
   SG: 0
   opens: {fileID: 8300000, guid: 5b6991a677e47804fbf7662af33e67e0, type: 3}
+  isPotionChest: 1
 --- !u!54 &7705891800575543956
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2340,7 +2333,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 370222450dd06474dbee897a63b09f75, type: 2}
+  - {fileID: 2100000, guid: 4c9ac6b297976fa4bb1c9a80802a2c9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

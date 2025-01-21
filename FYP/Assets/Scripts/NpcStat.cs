@@ -19,6 +19,7 @@ public class NpcStat : MonoBehaviour
     SkinnedMeshRenderer smr;
     Material[] deadmatList;
     public GameObject NPC;
+    [SerializeField] private int Score;
 
     private void Update()
     {
@@ -65,8 +66,6 @@ public class NpcStat : MonoBehaviour
                 StartCoroutine(iframeEnd());
             }
         }
-        
-        
     }
     IEnumerator iframeEnd()
     {
@@ -130,5 +129,10 @@ public class NpcStat : MonoBehaviour
     public void kys()
     {
         Damage(CurrentHP);
+    }
+
+    public int getScore()
+    {
+        return Score;
     }
 }

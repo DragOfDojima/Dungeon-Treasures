@@ -22,11 +22,13 @@ public class chest : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip opens;
     GameObject theItem;
-
+    chestspawner chestspawner;
+    [SerializeField] bool isPotionChest;
 
     // Start is called before the first frame update
     void Start()
     {
+        chestspawner = GameObject.Find("chestSpawner").GetComponent<chestspawner>();
         audioSource = GetComponent<AudioSource>();
         chestLid = GetComponent<Animator>();
         deadmatList = mr.materials;
@@ -92,7 +94,6 @@ public class chest : MonoBehaviour
 
     public IEnumerator close()
     {
-
         chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
         HideItem();
         isOpen = false;
@@ -146,6 +147,10 @@ public class chest : MonoBehaviour
 
     public void closeChest()
     {
+        if(isPotionChest)
+        chestspawner.potionChestClose();
+        else
+        chestspawner.chestClose();
         StartCoroutine(close());
     }
 }

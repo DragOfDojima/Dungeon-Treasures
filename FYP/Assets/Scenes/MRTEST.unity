@@ -2279,7 +2279,6 @@ MonoBehaviour:
   playerHead: {fileID: 1726712780}
   bodyCollider: {fileID: 2071924933}
   Gameover: {fileID: 479097247}
-  WIN: {fileID: 0}
   wave: {fileID: 245128836}
   bodyHeightMin: 0.5
   bodyHeightMax: 2
@@ -3740,7 +3739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobspawner: {fileID: 109250217}
-  player: {fileID: 0}
   nonCombat: {fileID: 8300000, guid: aa9cc7de3a8e2504d8339430b9b2483d, type: 3}
   inCombat: {fileID: 8300000, guid: d40bcf3aa49e374479a2af75de0a7cf2, type: 3}
   boss: {fileID: 8300000, guid: f5cd33e7b6c1d2e4891f863ff5ce0fa5, type: 3}
@@ -14558,14 +14556,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 1
-  prefabToSpawn: {fileID: 2090820957469814555, guid: 3ef509772f69db245b5ee46d3b4373ce,
+  normalChest: {fileID: 2090820957469814555, guid: 3ef509772f69db245b5ee46d3b4373ce,
+    type: 3}
+  potionChest: {fileID: 2090820957469814555, guid: adf635c6842f2d54bb642302bb272fcb,
     type: 3}
   minEdgeDistance: 0.3
-  spawnLabels: 0
+  spawnLabels: 1
   normalOffset: 0
   maxSpawn: 5
   ChestRespawnTime: 10
   wave: {fileID: 245128836}
+  maxChest: 7
+  maxPotionChest: 1
+  SpawnChestOnGround: 0
 --- !u!4 &1252246812
 Transform:
   m_ObjectHideFlags: 0
