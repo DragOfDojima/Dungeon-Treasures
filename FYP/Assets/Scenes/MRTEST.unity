@@ -2922,6 +2922,7 @@ MonoBehaviour:
   bodyHeightMax: 2
   lose: {fileID: 8300000, guid: db616b9a07411cc45a6bb21d0acaadf5, type: 3}
   damaged: {fileID: 8300000, guid: 6db8a9c16dae3ba4cb474e10a4aecfbf, type: 3}
+  fullScreenEffect: {fileID: 0}
 --- !u!82 &143374416
 AudioSource:
   m_ObjectHideFlags: 0

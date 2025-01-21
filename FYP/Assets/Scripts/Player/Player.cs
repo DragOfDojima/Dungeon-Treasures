@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
             audioSource.clip = damaged;
             if(!audioSource.isPlaying)
             audioSource.Play();
-            fullScreenEffect.damage();
+            fullScreenEffect.Damage();
 
         }
         if(hp + p > 100)
