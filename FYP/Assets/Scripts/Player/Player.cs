@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip lose;
     [SerializeField] AudioClip damaged;
-    [SerializeField] AudioClip winmusic;
 
     private Color originalColor;
     private Camera playerCamera;
