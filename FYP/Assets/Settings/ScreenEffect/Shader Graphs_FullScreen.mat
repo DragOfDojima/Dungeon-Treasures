@@ -46,8 +46,13 @@ Material:
     - _Fullscreen_DstColorBlend: 10
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 5
+<<<<<<< HEAD
     - _VignetteIntensity: 4
     - _VignettePower: 3
+=======
+    - _VignetteIntensity: 3
+    - _VignettePower: 11
+>>>>>>> 5045544ba8c5e4eb375bac911836a515166a0eb3
     m_Colors:
     - _Color: {r: 1, g: 0.0990566, b: 0.0990566, a: 1}
   m_BuildTextureStacks: []
