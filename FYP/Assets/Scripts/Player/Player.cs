@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     private Camera playerCamera;
     [SerializeField] FullScreenEffect fullScreenEffect;
 
+    private int Score;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
