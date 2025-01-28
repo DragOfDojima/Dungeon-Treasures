@@ -28,7 +28,9 @@ public class Player : MonoBehaviour
     [SerializeField] FullScreenEffect fullScreenEffect;
 
     private int Score;
-
+    private float TotalDamage;
+    private int TotalEnemySlayed;
+    private int TotalAnswerCorrect;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -105,5 +107,23 @@ public class Player : MonoBehaviour
         Gameover.SetActive(false);
     }
 
-    
+    public void addDealDamage(float dd)
+    {
+        TotalDamage += dd;
+    }
+
+    public void addEnermySlayed(int es)
+    {
+        TotalEnemySlayed += es;
+    }
+
+    public void addScore(int s)
+    {
+        Score += s;
+    }
+
+    public void addCorrectAnswer(int ca)
+    {
+        TotalAnswerCorrect += ca;
+    }
 }

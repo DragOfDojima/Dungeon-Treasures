@@ -10,6 +10,7 @@ TagManager:
   - Arrow
   - Wall
   - Weapon
+  - PlayerGO
   layers:
   - Default
   - TransparentFX

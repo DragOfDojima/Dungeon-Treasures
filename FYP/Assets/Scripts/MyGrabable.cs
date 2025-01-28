@@ -24,8 +24,13 @@ public class MyGrabable : MonoBehaviour
     }
 
     bool isgrabing;
+    bool firstTouched;
     bool setup;
     bool setup2;
+
+    //item pop up if no one grab
+    float timer = 10f;
+    bool timerEnd = false;
     private void Update()
     {
 
@@ -54,6 +59,21 @@ public class MyGrabable : MonoBehaviour
                 Setup();
             }
         }
+        //item pop up if no one grab
+        if(!timerEnd)
+        {
+            timer -= Time.deltaTime;
+        }
+        if (timer <= 0&& !timerEnd)
+        {
+            timer = 0;
+            timerEnd = true;
+            Setup();
+            isgrabing = true;
+            isgrabing = false;
+            rb.AddForce(Vector3.up * 250);
+        }
+
     }
 
     public bool getIdel()
@@ -62,11 +82,13 @@ public class MyGrabable : MonoBehaviour
     }
     void setIdel()
     {
+        if(!isgrabing)
         isIdel = true;
     }
 
     void Setup()
     {
+        firstTouched = true;
         animator.enabled = false;
         //animator.SetBool("end", true);
         rb.isKinematic = false;
@@ -144,4 +166,13 @@ public class MyGrabable : MonoBehaviour
         return fakeObject;
     }
 
+    public void setfakeObject(GameObject fo)
+    {
+        fakeObject = fo;
+    }
+
+    public bool getFirstTouch()
+    {
+        return firstTouched;
+    }
 }

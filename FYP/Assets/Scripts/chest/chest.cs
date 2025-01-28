@@ -51,7 +51,7 @@ public class chest : MonoBehaviour
         
             if (theItem!=null)
             {
-                if (theItem.GetComponent<MyGrabable>().getIsGrabing() && !closeed)
+                if (theItem.GetComponent<MyGrabable>().getFirstTouch() && !closeed)
                 {
                     closeed = true;
                     StartCoroutine(close());

@@ -1165,6 +1165,7 @@ MonoBehaviour:
   QuestStart: 0
   SG: 0
   opens: {fileID: 8300000, guid: 5b6991a677e47804fbf7662af33e67e0, type: 3}
+  isPotionChest: 0
 --- !u!54 &7705891800575543956
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2290,6 +2291,7 @@ GameObject:
   - component: {fileID: 45957947340336008}
   - component: {fileID: 408031070386907121}
   - component: {fileID: 4492365869782980877}
+  - component: {fileID: 5079516141827867929}
   m_Layer: 8
   m_Name: TreasureChest_Lid
   m_TagString: Untagged
@@ -2410,6 +2412,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5079516141827867929
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551813898504229501}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.1887565, y: 2.119311, z: 0.6542524}
+  m_Center: {x: 0, y: -1.0521607, z: 0.3271258}
 --- !u!1 &8147954146382496216
 GameObject:
   m_ObjectHideFlags: 0

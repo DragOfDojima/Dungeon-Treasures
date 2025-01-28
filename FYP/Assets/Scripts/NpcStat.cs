@@ -15,6 +15,7 @@ public class NpcStat : MonoBehaviour
     [SerializeField] private Material deadMat;
     [SerializeField] private GameObject MainObject;
     [SerializeField] private Animator deadanimation;
+    [SerializeField] private Collider[] colliders;
     private float knockbackPower;
     SkinnedMeshRenderer smr;
     Material[] deadmatList;
@@ -83,6 +84,10 @@ public class NpcStat : MonoBehaviour
     IEnumerator Dead()
     {
         deaded=true;
+        foreach(Collider c in colliders)
+        {
+            c.enabled = false;
+        }
         healthBar.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.2f);
         smr.materials = deadmatList;
