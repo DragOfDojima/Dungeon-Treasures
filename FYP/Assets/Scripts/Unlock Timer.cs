@@ -32,11 +32,11 @@ public class UnlockTimer : MonoBehaviour
                 
             }
             else { 
-                Debug.Log("answer unlock");
                 TimeLeft = 10f;
                 TimerOn = false;
-                QuestionP.SetActive(true);
+                QuestionP.SetActive(false);
                 WrongP.SetActive(false);
+                gameObject.GetComponent<QuestionGame>().AnswerWrong();
             }
             float seconds = Mathf.FloorToInt(TimeLeft%60);
         TimerTXT.text = "Wrong Answer!\r\nChest Locked" + "\n" + "Unlock Time: " + seconds;

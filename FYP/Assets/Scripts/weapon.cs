@@ -18,10 +18,13 @@ public class weapon : MonoBehaviour
     private GameObject owner;
     [SerializeField] private GameObject[] allPlayer;
 
+
+
     private void Start()
     {
         audioSource=GetComponent<AudioSource>();
         allPlayer = GameObject.FindGameObjectsWithTag("PlayerGO");
+        owner = allPlayer[0];
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -35,8 +38,8 @@ public class weapon : MonoBehaviour
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.Play();
                 float dealDamage = WeaponDamage + combo * ComboBouns;
+                other.GetComponent<NpcStat>().setHitByWho(owner);
                 other.GetComponent<NpcStat>().Damage(dealDamage);
-                owner.GetComponent<Player>().addDealDamage(dealDamage);
                 if(combo<MaxCombo)
                 combo++;
                 timer=3;
@@ -45,21 +48,26 @@ public class weapon : MonoBehaviour
     }
     float timer=3;
     Vector3 lastPosition = Vector3.zero;
+
     private void Update()
     {
-
-        GameObject nearestPlayer = allPlayer[0];
-        float distanceToNearest = Vector3.Distance(transform.position, nearestPlayer.transform.position);
-        for(int i = 1; i < allPlayer.Length; i++)
+        if (gameObject.GetComponent<MyGrabable>().getIsGrabing())
         {
-            float distanceToCurrent = Vector3.Distance(transform.position, allPlayer[i].transform.position);
-            if(distanceToCurrent < distanceToNearest)
+            GameObject nearestPlayer = allPlayer[0];
+            float distanceToNearest = Vector3.Distance(transform.position, nearestPlayer.transform.position);
+            for (int i = 0; i < allPlayer.Length; i++)
             {
-                nearestPlayer = allPlayer[i];
-                owner = allPlayer[i];
-                distanceToNearest = distanceToCurrent;
+                float distanceToCurrent = Vector3.Distance(transform.position, allPlayer[i].transform.position);
+                if (distanceToCurrent < distanceToNearest)
+                {
+                    nearestPlayer = allPlayer[i];
+                    distanceToNearest = distanceToCurrent;
+                }
             }
+            owner = nearestPlayer;
         }
+        
+
         //Debug.Log("c=" + combo);
         if (combo > 0)
         {

@@ -230,8 +230,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7621607, y: 10.484687, z: 1}
-  m_Center: {x: -0.38107994, y: -0.7031604, z: 0}
+  m_Size: {x: 2.854082, y: 10.484687, z: 1.8395053}
+  m_Center: {x: -0.92704016, y: -0.7031604, z: -0.02665192}
 --- !u!1 &622934136288567654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1392,7 @@ MonoBehaviour:
     type: 3}
   arrowSpawnPoint: {fileID: 7364896104056851787}
   arrowMaxSpeed: 10
+  allPlayer: []
   bowReleaseAudioSource: {fileID: 4443131598115762451}
 --- !u!114 &3767289163640198305
 MonoBehaviour:

@@ -182,4 +182,9 @@ public class QuestionGame : MonoBehaviour
 #endif
     }
 
+    public void AnswerWrong()
+    {
+        chest.answerWrong();
+    }
+
 }

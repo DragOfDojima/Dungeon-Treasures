@@ -19,6 +19,7 @@ public class LeaderBoard : ScriptableObject
             lb= list;
             ReadGoogleSheets.SetDirty(this);
         });
+        sortByScore();
     }
     [ContextMenu("OpenSheet")]
     private void Open()
@@ -30,13 +31,34 @@ public class LeaderBoard : ScriptableObject
     {
         lb.Sort((a, b) =>
         {
-            int scoreComparison = b.Score.CompareTo(a.Score); // Descending score
+            // Parse scores from strings to integers for comparison
+            int scoreA = int.TryParse(a.Score, out var parsedScoreA) ? parsedScoreA : 0;
+            int scoreB = int.TryParse(b.Score, out var parsedScoreB) ? parsedScoreB : 0;
+
+            // Compare scores in descending order
+            int scoreComparison = scoreB.CompareTo(scoreA);
+
+            // If scores are equal, compare times (parse the string to TimeSpan)
             if (scoreComparison == 0)
             {
-                return a.Time.CompareTo(b.Time); // Ascending time if scores are equal
+                TimeSpan timeA = ParseTime(a.Time);
+                TimeSpan timeB = ParseTime(b.Time);
+                return timeA.CompareTo(timeB); // Ascending order for time
             }
-            return scoreComparison;
+
+            return scoreComparison; // Return the score comparison result
         });
+    }
+    private TimeSpan ParseTime(string time)
+    {
+        var parts = time.Split(':');
+        if (parts.Length == 2 &&
+            int.TryParse(parts[0], out int minutes) &&
+            int.TryParse(parts[1], out int seconds))
+        {
+            return new TimeSpan(0, minutes, seconds);
+        }
+        return TimeSpan.Zero; // Default value if parsing fails
     }
 }
 
@@ -44,7 +66,7 @@ public class LeaderBoard : ScriptableObject
 public class leaderboard
 {
     public string Name;
-    public float Score;
-    public float Time;
+    public string Score;
+    public string Time;
     public string Rate;
 }

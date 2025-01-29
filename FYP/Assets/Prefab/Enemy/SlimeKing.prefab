@@ -473,7 +473,7 @@ MonoBehaviour:
   colliders:
   - {fileID: 485476644767039675}
   NPC: {fileID: 8400659593540927824}
-  Score: 200
+  Score: 250
 --- !u!1 &5055138497070097503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e4a7ca81ac529a44d92472de0213fffd,

@@ -22,6 +22,7 @@ public class NpcStat : MonoBehaviour
     public GameObject NPC;
     [SerializeField] private int Score;
 
+    private Player hitByWho;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
@@ -57,9 +58,11 @@ public class NpcStat : MonoBehaviour
                 floatdam.GetComponent<floattext>().setText(Damage);
                 floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
                 healthBar.UpdateHealthBar(CurrentHP, Hp);
+                hitByWho.addDealDamage(Damage);
                 if (CurrentHP <= 0)
                 {
                     StartCoroutine(Dead());
+                    hitByWho.addScore(Score);
                     GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
                 }
                 NPC.GetComponent<NavMeshAgent>().enabled = false;
@@ -139,5 +142,10 @@ public class NpcStat : MonoBehaviour
     public int getScore()
     {
         return Score;
+    }
+
+    public void setHitByWho(GameObject hbw)
+    {
+        hitByWho = hbw.GetComponent<Player>();
     }
 }

@@ -9,6 +9,14 @@ public class ArrowController : MonoBehaviour
     [SerializeField]
     private float arrowMaxSpeed = 10;
 
+    private GameObject owner;
+    [SerializeField] private GameObject[] allPlayer;
+
+    private void Start()
+    {
+        allPlayer = GameObject.FindGameObjectsWithTag("PlayerGO");
+        owner = allPlayer[0];
+    }
     public void PrepareArrow()
     {
         midPointVisual.SetActive(true);
@@ -24,5 +32,21 @@ public class ArrowController : MonoBehaviour
         arrow.transform.rotation = midPointVisual.transform.rotation;
         Rigidbody rb = arrow.GetComponent<Rigidbody>();
         rb.AddForce(midPointVisual.transform.right*strength*arrowMaxSpeed,ForceMode.Impulse);
+    }
+
+    private void Update()
+    {
+        GameObject nearestPlayer = allPlayer[0];
+        float distanceToNearest = Vector3.Distance(transform.position, nearestPlayer.transform.position);
+        for (int i = 0; i < allPlayer.Length; i++)
+        {
+            float distanceToCurrent = Vector3.Distance(transform.position, allPlayer[i].transform.position);
+            if (distanceToCurrent < distanceToNearest)
+            {
+                nearestPlayer = allPlayer[i];
+                distanceToNearest = distanceToCurrent;
+            }
+        }
+        owner = nearestPlayer;
     }
 }

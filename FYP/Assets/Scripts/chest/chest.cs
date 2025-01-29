@@ -7,7 +7,7 @@ public class chest : MonoBehaviour
     public MeshRenderer mr;
     Animator chestLid;
     Animator animator;
-    bool isOpen = false;
+    private bool isOpen = false;
     public WeightedRandomList<Transform> lootTable;
     public Transform itemHolder;
     Material[] deadmatList;
@@ -25,6 +25,8 @@ public class chest : MonoBehaviour
     chestspawner chestspawner;
     [SerializeField] bool isPotionChest;
 
+    Player whoOpening;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,6 @@ public class chest : MonoBehaviour
         {
             deadmatList[i] = deadMat;
         }
-        StartCoroutine(WaitUntilTrue());
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class chest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            ShowItem();
+            open();
         }
         
         
@@ -68,8 +69,11 @@ public class chest : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
+                if (other.gameObject.GetComponentInParent<Player>()!=null)
+                whoOpening = other.gameObject.GetComponentInParent<Player>();
                 if (SG == false) {
                     SG = true;
+                    StartCoroutine(WaitUntilTrue());
                     Question.SetActive(true);
                 }
             }
@@ -83,13 +87,9 @@ public class chest : MonoBehaviour
             audioSource.Play();
             chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
             ShowItem();
+            whoOpening.addCorrectAnswer(1);
             isOpen = true;
         }
-        else
-        {
-            
-        }
-
     }
 
     public IEnumerator close()
@@ -135,8 +135,14 @@ public class chest : MonoBehaviour
     {
         while (!QuestStart)
         {
+            if(!SG)
+            {
+                yield break;
+            }
+            Debug.Log("waiting");
             yield return null;
         }
+        Debug.Log("GOOOOOOOOOOOO");
         ProceedToNextStep();
     }
 
@@ -152,5 +158,11 @@ public class chest : MonoBehaviour
         else
         chestspawner.chestClose();
         StartCoroutine(close());
+    }
+
+    public void answerWrong()
+    {
+        SG = false;
+        whoOpening = null;
     }
 }

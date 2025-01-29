@@ -338,7 +338,7 @@ MonoBehaviour:
   colliders:
   - {fileID: 2375462413707438636}
   NPC: {fileID: 4199268874010373268}
-  Score: 20
+  Score: 60
 --- !u!1 &8667496203025191869
 GameObject:
   m_ObjectHideFlags: 0

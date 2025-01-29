@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
 
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private float Damage;
+    GameObject shotByWho;
     private void OnTriggerEnter(Collider other)
     {
 
@@ -17,7 +18,12 @@ public class Arrow : MonoBehaviour
             var hitPoint = other.ClosestPoint(transform.position);
             Instantiate(hitEffect, hitPoint, Quaternion.identity);
             other.GetComponent<NpcStat>().Damage(Damage);
-
+            other.GetComponent<NpcStat>().setHitByWho(shotByWho);
         }
+    }
+
+    public void setShotByWho(GameObject sbw)
+    {
+        shotByWho = sbw;
     }
 }

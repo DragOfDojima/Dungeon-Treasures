@@ -20,14 +20,13 @@ public class ReadGoogleSheets
         {
             var type = typeof(T);
             List<T> lst = new List<T>();
-            for (int i = 2; i < arr.Count; i++)
+            for (int i = 1; i < arr.Count; i++)
             {
                 if (string.IsNullOrEmpty(arr[i][0]))
                     break;
                 var t = new T();
                 lst.Add(t);
             }
-
             var header = arr[0];
             for (int i = 0; i < header.Count; i++)
             {
@@ -39,9 +38,9 @@ public class ReadGoogleSheets
                     {
                         for (int j = 0; j < lst.Count; j++)
                         {
-                            if (arr[j + 2][i] == null)
-                                arr[j + 2][i] = string.Empty;
-                            var value = arr[j + 2][i].Replace("\r", string.Empty);
+                            if (arr[j + 1][i] == null)
+                                arr[j + 1][i] = string.Empty;
+                            var value = arr[j + 1][i].Replace("\r", string.Empty);
                             var x = property.FieldType;
                             if (!string.IsNullOrEmpty(value))
                             {
@@ -294,7 +293,9 @@ public class ReadGoogleSheets
             {
                 var line = new List<string>();
                 for (int j = 0; j < numRow - 1; j++)
+                {
                     line.Add(data[j, i]);
+                }
                 listStr.Add(line);
             }
             callBack(listStr);
@@ -317,7 +318,6 @@ public class ReadGoogleSheets
         WWW w = new WWW(id);
         while (!w.isDone)
             w.MoveNext();
-        Debug.Log(w.text);
         callBack(w.text);
     }
 
