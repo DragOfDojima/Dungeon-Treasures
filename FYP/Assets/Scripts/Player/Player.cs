@@ -1,6 +1,8 @@
+using Meta.XR.Editor.Tags;
 using Oculus.Interaction.HandGrab;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -27,10 +29,13 @@ public class Player : MonoBehaviour
     private Camera playerCamera;
     [SerializeField] FullScreenEffect fullScreenEffect;
 
+    public GameObject ScoreBoard;
+
     private int Score;
     private float TotalDamage;
     private int TotalEnemySlayed;
     private int TotalAnswerCorrect;
+    private string Time;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -83,8 +88,12 @@ public class Player : MonoBehaviour
             hp = hp +15;
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            spawnScoreBoard();
+        }
+
         if (hp<=0&&!dead) {
-            wave.resetWaveCount();
             dead = true;
             audioSource.Stop();
             audioSource.clip = lose;
@@ -101,10 +110,12 @@ public class Player : MonoBehaviour
 
     IEnumerator wait(int time)
     {
+        spawnScoreBoard();
         yield return new WaitForSeconds(time);
         hp = 100;
         dead = false;
         Gameover.SetActive(false);
+        resetData();
     }
 
     public void addDealDamage(float dd)
@@ -125,5 +136,31 @@ public class Player : MonoBehaviour
     public void addCorrectAnswer(int ca)
     {
         TotalAnswerCorrect += ca;
+    }
+
+    public void spawnScoreBoard()
+    {
+        float timer = wave.getTimer();
+
+        float minutes = Mathf.FloorToInt(timer / 60);
+        if (minutes > 99) { minutes = 99; }
+        float seconds = Mathf.FloorToInt(timer % 60);
+        Time = string.Format("{0:00}:{1:00}", minutes, seconds);
+        Vector3 forward = Camera.main.transform.forward;
+        forward.y = 0;
+        GameObject sb = Instantiate(ScoreBoard, transform.position+forward, Quaternion.identity);
+        sb.transform.LookAt(Camera.main.transform.position);
+        sb.transform.rotation = Quaternion.Euler(sb.transform.rotation.eulerAngles.x, sb.transform.rotation.eulerAngles.y+180f, sb.transform.rotation.eulerAngles.z);
+        sb.GetComponent<ScoreBoard>().setData(Score, TotalDamage, TotalEnemySlayed, TotalAnswerCorrect, Time);
+        wave.resetWaveCount();
+    }
+
+    void resetData()
+    {
+        Score = 0;
+        TotalDamage = 0;
+        TotalEnemySlayed = 0;
+        TotalAnswerCorrect = 0;
+        Time = null;
     }
 }

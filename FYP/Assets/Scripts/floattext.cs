@@ -11,7 +11,8 @@ public class floattext : MonoBehaviour
     void Start()
     {
         DText = GetComponent<TMP_Text>();
-        DText.text = i.ToString();
+        DText.text = i;
+        DText.fontSize = s;
         Destroy(gameObject,3f);
         transform.position = transform.position + -Camera.main.transform.forward *o ;
     }
@@ -23,14 +24,25 @@ public class floattext : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y+Time.deltaTime/2, transform.position.z);
         
     }
-    int i=0;
+    string i;
+    float s;
     public void setText(int i)
     {
-        this.i=i;
+        this.i=i.ToString();
     }
     float o = 0;
     public void setOffset(float o)
     {
         this.o = o;
     }
+
+    public void setText(string i)
+    {
+        this.i = i;
+    }
+
+    public void setSize(float s)
+    {
+        this.s = s;
+    } 
 }

@@ -392,7 +392,10 @@ public class ReadGoogleSheets
 
     public static void OpenUrl(string sheetId, string gridId)
     {
+        
         Application.OpenURL($"https://docs.google.com/spreadsheets/d/{sheetId}/edit#gid={gridId}");
+        
+        
     }
 
     private static List<Material> GetAllMaterialAssetsAtPath(string path)

@@ -133,6 +133,7 @@ public class Mobspawner : MonoBehaviour
         WaveCounter.SetActive(false);
         if (wave.getWaveCount() == 3)
         {
+            GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>().spawnScoreBoard();
             WIN.SetActive(true);
             GetComponent<AudioSource>().Play();
             StartCoroutine(endWin());

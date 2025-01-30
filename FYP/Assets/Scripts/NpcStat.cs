@@ -58,12 +58,15 @@ public class NpcStat : MonoBehaviour
                 floatdam.GetComponent<floattext>().setText(Damage);
                 floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
                 healthBar.UpdateHealthBar(CurrentHP, Hp);
+                if (hitByWho == null)
+                {
+                    hitByWho = GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>();
+                }
                 hitByWho.addDealDamage(Damage);
                 if (CurrentHP <= 0)
                 {
                     StartCoroutine(Dead());
-                    hitByWho.addScore(Score);
-                    GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
+
                 }
                 NPC.GetComponent<NavMeshAgent>().enabled = false;
                 MainObject.GetComponent<Animator>().enabled = false;
@@ -86,7 +89,14 @@ public class NpcStat : MonoBehaviour
     bool deaded;
     IEnumerator Dead()
     {
-        deaded=true;
+        if (hitByWho == null)
+        {
+            hitByWho = GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>();
+        }
+        hitByWho.addScore(Score);
+        hitByWho.addEnermySlayed(1);
+        GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
+        deaded =true;
         foreach(Collider c in colliders)
         {
             c.enabled = false;
