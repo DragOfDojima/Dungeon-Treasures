@@ -15,23 +15,59 @@ MonoBehaviour:
   sheetId: 1-PgLaKeIoLKrJMvNmGyUAiF3vHid0VMyNnsRcFo__t0
   gridId: 1345602234
   lb:
-  - Name: Tom
-    Score: 231
-    Time: 10:50
+  - Name: me
+    Score: 3120
+    Time: 00:32
+    Rate: E
+  - Name: asd
+    Score: 3000
+    Time: asd
+    Rate: asd
+  - Name: asd
+    Score: 3000
+    Time: asd
+    Rate: asd
+  - Name: asd
+    Score: 3000
+    Time: asd
+    Rate: asd
+  - Name: asd
+    Score: 3000
+    Time: asd
+    Rate: asd
+  - Name: John
+    Score: 3000
+    Time: 00:01
+    Rate: F
+  - Name: bob
+    Score: 3000
+    Time: 00:34
+    Rate: E
+  - Name: gojo
+    Score: 3000
+    Time: 01:05
+    Rate: D
+  - Name: Peter
+    Score: 3000
+    Time: 05:03
     Rate: C
   - Name: Alex
-    Score: 100
+    Score: 3000
     Time: 09:00
     Rate: A
   - Name: Ken
-    Score: 100
+    Score: 3000
     Time: 09:10
     Rate: A
-  - Name: Peter
-    Score: 30
-    Time: 05:03
+  - Name: Tom
+    Score: 3000
+    Time: 10:50
     Rate: C
-  - Name: John
-    Score: 1
-    Time: 00:01
-    Rate: F
+  - Name: joke
+    Score: 1120
+    Time: 00:31
+    Rate: E
+  - Name: kk
+    Score: 
+    Time: 
+    Rate: 

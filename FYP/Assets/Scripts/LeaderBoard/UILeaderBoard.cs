@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class UILeaderBoard : MonoBehaviour
 {
@@ -13,10 +14,16 @@ public class UILeaderBoard : MonoBehaviour
 
     public GameObject mainLeaderBoard;
     public GameObject noInternet;
+    List<leaderboard> thisLeaderboard;
+
+    string pName;
+    string pTime;
+    string pScore;
+    string pRate;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        setLB(leaderBoard.lb);
         
     }
 
@@ -26,6 +33,18 @@ public class UILeaderBoard : MonoBehaviour
         
     }
 
+    void setLB(List<leaderboard> lb)
+    {
+        thisLeaderboard = lb;
+    }
+
+    public void setPdata(string n, string t, string s, string r)
+    {
+        pName = n;
+        pTime = t;
+        pScore = s;
+        pRate = r;
+    }
     void printLeaderBoard()
     {
         for(int i = 0; i < 10; i++)
@@ -39,13 +58,31 @@ public class UILeaderBoard : MonoBehaviour
             else
             {
                 TextMeshProUGUI[] tmp = lbs[i].gameObject.GetComponentsInChildren<TextMeshProUGUI>();
-                tmp[1].text = leaderBoard.lb[i].Name;
-                tmp[2].text = leaderBoard.lb[i].Time;
-                tmp[3].text = leaderBoard.lb[i].Score;
-                tmp[4].text = leaderBoard.lb[i].Rate;
+                tmp[1].text = thisLeaderboard[i].Name;
+                tmp[2].text = thisLeaderboard[i].Time;
+                tmp[3].text = thisLeaderboard[i].Score;
+                tmp[4].text = thisLeaderboard[i].Rate;
             }
         }
-        
+
+        int j = FindPlayerPlacement(pName, pTime, pScore);
+        if (j > 10)
+        {
+            line.SetActive(true);
+            lbs[10].SetActive(true);
+            TextMeshProUGUI[] tmp = lbs[10].gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+            tmp[0].text = j.ToString();
+            tmp[1].text = thisLeaderboard[j - 1].Name;
+            tmp[2].text = thisLeaderboard[j - 1].Time;
+            tmp[3].text = thisLeaderboard[j - 1].Score;
+            tmp[4].text = thisLeaderboard[j - 1].Rate;
+        }
+        else
+        {
+            line.SetActive(false);
+            lbs[10].SetActive(false);
+        }
+
     }
 
     public void getLeaderBoard()
@@ -69,5 +106,19 @@ public class UILeaderBoard : MonoBehaviour
             noInternet.SetActive(true);
             Debug.Log("GetLeaderBoardError:" + e);
         }
+    }
+
+    public int FindPlayerPlacement(string name, string time, string score)
+    {
+        // Find the player's rank in the already sorted list
+        for (int i = 0; i < thisLeaderboard.Count; i++)
+        {
+            if (thisLeaderboard[i].Name == name && thisLeaderboard[i].Time == time && thisLeaderboard[i].Score == score)
+            {
+                return i + 1; // Return 1-based rank
+            }
+        }
+
+        return -1; // Player not found
     }
 }

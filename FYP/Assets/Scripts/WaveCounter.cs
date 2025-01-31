@@ -18,6 +18,13 @@ public class WaveCounter : MonoBehaviour
 
     public void StartWave()
     {
+        if (GameObject.FindGameObjectsWithTag("ScoreBoard") != null)
+        {
+            foreach(GameObject g in GameObject.FindGameObjectsWithTag("ScoreBoard"))
+            {
+                Destroy(g);
+            }
+        }
         wave.waveStart();
     }
     // Update is called once per frame

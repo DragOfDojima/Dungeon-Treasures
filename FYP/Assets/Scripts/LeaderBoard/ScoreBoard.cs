@@ -46,6 +46,7 @@ public class ScoreBoard : MonoBehaviour
         totalScore.GetComponent<TextMeshProUGUI>().text = Score.ToString();
         rank.GetComponent<TextMeshProUGUI>().text = CalculateRating(Score,2300);
 
+        sdts.setData(Score.ToString(), Time, rank.GetComponent<TextMeshProUGUI>().text);
     }
 
     string CalculateRating(int score, int maxScore)

@@ -97,6 +97,7 @@ public class SendDataToSheet : MonoBehaviour
             }
             leaderboard.SetActive(true);
             inputName.SetActive(false);
+            leaderboard.GetComponent<UILeaderBoard>().setPdata(data1, data3, data2, data4);
             leaderboard.GetComponent<UILeaderBoard>().getLeaderBoard();
         }
         else
@@ -113,5 +114,10 @@ public class SendDataToSheet : MonoBehaviour
         main.SetActive(false);
     }
 
-
+    public void setData(string s, string t, string r)
+    {
+        score = s;
+        time = t;
+        rate = r;
+    }
 }
