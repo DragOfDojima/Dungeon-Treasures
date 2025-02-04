@@ -4598,6 +4598,7 @@ GameObject:
   - component: {fileID: 245128837}
   - component: {fileID: 245128838}
   - component: {fileID: 245128840}
+  - component: {fileID: 245128841}
   m_Layer: 0
   m_Name: GameM
   m_TagString: Untagged
@@ -4787,6 +4788,20 @@ MonoBehaviour:
   fullScreenDamage: {fileID: 4761303061765141331, guid: 707360a9c581a4bd7aa53bfeb1429f71,
     type: 2}
   _material: {fileID: 2100000, guid: 1d5ba7abf5efb084f8478d42256ae204, type: 2}
+--- !u!114 &245128841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245128832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23435dcf5c9a5b042aa470be7de2b217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 1931428328}
+  menu: {fileID: 479097247}
 --- !u!1 &258293245
 GameObject:
   m_ObjectHideFlags: 0
@@ -30447,7 +30462,7 @@ PrefabInstance:
     - target: {fileID: 3613868102660323786, guid: c2e00db6d2dfa42ac8d821db8d493a44,
         type: 3}
       propertyPath: SceneSettings.DataSource
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3613868102660323786, guid: c2e00db6d2dfa42ac8d821db8d493a44,
         type: 3}
