@@ -14,6 +14,7 @@ public class UILeaderBoard : MonoBehaviour
 
     public GameObject mainLeaderBoard;
     public GameObject noInternet;
+    public GameObject nointernetText;
     List<leaderboard> thisLeaderboard;
 
     string pName;
@@ -47,7 +48,10 @@ public class UILeaderBoard : MonoBehaviour
     }
     void printLeaderBoard()
     {
-        for(int i = 0; i < 10; i++)
+
+        setLB(leaderBoard.lb);
+
+        for (int i = 0; i < 10; i++)
         {
             if (i>leaderBoard.lb.Count-1)
             {
@@ -57,6 +61,7 @@ public class UILeaderBoard : MonoBehaviour
             }
             else
             {
+                Debug.Log("BUG"+ thisLeaderboard.Count);
                 TextMeshProUGUI[] tmp = lbs[i].gameObject.GetComponentsInChildren<TextMeshProUGUI>();
                 tmp[1].text = thisLeaderboard[i].Name;
                 tmp[2].text = thisLeaderboard[i].Time;
@@ -104,6 +109,7 @@ public class UILeaderBoard : MonoBehaviour
         {
             mainLeaderBoard.SetActive(false);
             noInternet.SetActive(true);
+            nointernetText.SetActive(true);
             Debug.Log("GetLeaderBoardError:" + e);
         }
     }

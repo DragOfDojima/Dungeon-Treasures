@@ -76,6 +76,8 @@ public class SendDataToSheet : MonoBehaviour
     {
         if (!Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
+            leaderboard.SetActive(true);
+            inputName.SetActive(false);
             WWWForm form = new WWWForm();
             form.AddField("entry.1502373272", data1);
             form.AddField("entry.133371990", data2);
@@ -95,8 +97,6 @@ public class SendDataToSheet : MonoBehaviour
                     Debug.Log("Error: " + www.error);
                 }
             }
-            leaderboard.SetActive(true);
-            inputName.SetActive(false);
             leaderboard.GetComponent<UILeaderBoard>().setPdata(data1, data3, data2, data4);
             leaderboard.GetComponent<UILeaderBoard>().getLeaderBoard();
         }

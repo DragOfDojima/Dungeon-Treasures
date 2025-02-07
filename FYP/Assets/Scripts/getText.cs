@@ -37,7 +37,7 @@ public class getText : MonoBehaviour
         text = "WAVE : " + WaveCounter + "   Enemy Remain : " + enemyRemain + "   Timer : " + string.Format("{0:00}:{1:00}", minutes, seconds);
         time = string.Format("{0:00}:{1:00}", minutes, seconds);
         textshow.text = text;
-        Debug.Log(text);
+        //Debug.Log(text);
     }
 
     public string getTime()
