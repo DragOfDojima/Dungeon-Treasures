@@ -5429,6 +5429,7 @@ GameObject:
   - component: {fileID: 292091812}
   - component: {fileID: 292091811}
   - component: {fileID: 292091810}
+  - component: {fileID: 292091815}
   m_Layer: 0
   m_Name: '[BuildingBlock] Player Name Tag'
   m_TagString: Untagged
@@ -5528,6 +5529,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &292091815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292091809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7046bc62962ec34c9858eefc97c94d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &294845095
 GameObject:
   m_ObjectHideFlags: 0
@@ -30792,7 +30805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805b891e426e2074a99e3e98c221b432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisableRuntimeGUIAlerts: 0
+  DisableRuntimeGUIAlerts: 1
   AlertViewHUDPrefab: {fileID: 392890655966002909, guid: 6b52d78c79420c0459b75a3dfcbb746b,
     type: 3}
 --- !u!114 &1835565033

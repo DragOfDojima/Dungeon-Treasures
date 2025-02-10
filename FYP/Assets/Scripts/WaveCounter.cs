@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Netcode;
+
 
 public class WaveCounter : MonoBehaviour
 {
@@ -18,15 +20,28 @@ public class WaveCounter : MonoBehaviour
 
     public void StartWave()
     {
+        ServerStartWave();
+    }
+
+    [ServerRpc]
+    private void ServerStartWave()
+    {
+        ClientStartWave();
+    }
+    [ClientRpc]
+    private void ClientStartWave()
+    {
         if (GameObject.FindGameObjectsWithTag("ScoreBoard") != null)
         {
-            foreach(GameObject g in GameObject.FindGameObjectsWithTag("ScoreBoard"))
+            foreach (GameObject g in GameObject.FindGameObjectsWithTag("ScoreBoard"))
             {
                 Destroy(g);
             }
         }
+        Debug.Log("WORK-----------------------------------------------------------------------------------");
         wave.waveStart();
     }
+
     // Update is called once per frame
     void Update()
     {
