@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public Toggle toggle;
     public TextMeshProUGUI chest;
     public TextMeshProUGUI potionChest;
+    public GameObject wavecounter;
 
 
     public void GameRuleDone()

@@ -649,6 +649,19 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             UpdateCaretPosition(m_CaretPosition);
         }
 
+        public void ClearInputField()
+        {
+            InputField.text = string.Empty;
+            /*
+            string text = string.Empty; // Clear the text in the input field
+            m_CaretPosition = InputField.caretPosition;
+
+            InputField.text = InputField.text.Insert(m_CaretPosition, text);
+            m_CaretPosition += text.Length;
+
+            UpdateCaretPosition(m_CaretPosition);*/
+        }
+
         /// <summary>
         /// Trigger specific keyboard functionality.
         /// </summary>

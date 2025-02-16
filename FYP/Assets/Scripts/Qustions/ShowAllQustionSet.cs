@@ -12,11 +12,18 @@ public class ShowAllQustionSet : MonoBehaviour
     private string filePath;
     List<List<string>> qustionsData;
 
-    
+
     private void Start()
     {
         filePath = Path.Combine(Application.streamingAssetsPath, "questionStat.txt");
 
+        ClearAllContent();
+        StartCoroutine(LoadQuestionStat());
+        SpawnQuestionSets(qustionsData);
+    }
+
+    public void updateQuestions()
+    {
         ClearAllContent();
         StartCoroutine(LoadQuestionStat());
         SpawnQuestionSets(qustionsData);

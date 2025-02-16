@@ -41,7 +41,7 @@ public class StartMenuToCenter : MonoBehaviour
 
             // Create a 3D canvas at the center point
             StartMenu = Instantiate(canvasPrefab, centerPoint, Quaternion.identity);
-            StartMenu.GetComponent<WaveCounter>().wave = GetComponent<Wave>();
+            StartMenu.GetComponent<MainMenu>().wavecounter.GetComponent<WaveCounter>().wave = GetComponent<Wave>();
         }
     }
 

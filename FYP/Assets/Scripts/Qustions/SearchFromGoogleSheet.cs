@@ -26,6 +26,9 @@ public class SearchFromGoogleSheet : MonoBehaviour
 
     public GameObject selectQuestion;
     public GameObject selectGameRule;
+    public GameObject enterName;
+    public GameObject typeAdd;
+
 
     [Serializable]
     public class QuizData
@@ -119,6 +122,8 @@ public class SearchFromGoogleSheet : MonoBehaviour
         }
         main.SetActive(true);
         setName.SetActive(false);
+        typeAdd.SetActive(false);
+        gameObject.GetComponent<ShowAllQustionSet>().updateQuestions();
     }
 
     
@@ -201,7 +206,11 @@ public class SearchFromGoogleSheet : MonoBehaviour
 
     public void UpdateFeedbackText(string errorCode)
     {
-        if (errorCode == "OK: Format valid") return;
+        if (errorCode == "OK: Format valid")
+        {
+            enterName.SetActive(true);
+            return;
+        }
         Search.SetActive(false);
         Error.SetActive(true);
         switch (errorCode)
