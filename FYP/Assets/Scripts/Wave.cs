@@ -16,6 +16,13 @@ public class Wave : MonoBehaviour
     [SerializeField] AudioClip nonCombat;
     [SerializeField] AudioClip inCombat;
     [SerializeField] AudioClip boss;
+
+    string dungeon;
+    string questionFileName;
+
+    bool chestSpawnOnGround;
+    int chestCount;
+    int potionChestCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -153,5 +160,21 @@ public class Wave : MonoBehaviour
     public float getTimer()
     {
         return timer;
+    }
+
+    public void setDungeon(string d)
+    {
+        dungeon = d;
+    }
+    public void setQuestionFileName(string q)
+    {
+        questionFileName = q;
+    }
+
+    public void setGameRule(bool s,int c, int pc)
+    {
+        chestSpawnOnGround = s;
+        chestCount = c;
+        potionChestCount = pc;
     }
 }

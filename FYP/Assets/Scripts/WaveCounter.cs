@@ -27,6 +27,8 @@ public class WaveCounter : MonoBehaviour
         }
         wave.waveStart();
     }
+
+    
     // Update is called once per frame
     void Update()
     {

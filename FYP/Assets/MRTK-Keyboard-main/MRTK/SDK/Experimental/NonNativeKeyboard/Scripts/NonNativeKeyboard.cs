@@ -3,10 +3,12 @@
 
 //using Microsoft.MixedReality.Toolkit.Input;
 //using Microsoft.MixedReality.Toolkit.Utilities;
+using Meta.XR.ImmersiveDebugger.UserInterface;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Microsoft.MixedReality.Toolkit.Experimental.UI
 {
@@ -633,6 +635,20 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             UpdateCaretPosition(m_CaretPosition);
         }
 
+        public void PasteText()
+        {
+            // Get text from the clipboard
+            string clipboardText = GUIUtility.systemCopyBuffer;
+
+            // Set the text of the input field to the clipboard text
+            m_CaretPosition = InputField.caretPosition;
+
+            InputField.text = InputField.text.Insert(m_CaretPosition, clipboardText);
+            m_CaretPosition += clipboardText.Length;
+
+            UpdateCaretPosition(m_CaretPosition);
+        }
+
         /// <summary>
         /// Trigger specific keyboard functionality.
         /// </summary>
@@ -1073,5 +1089,12 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
                 Close();
             }
         }
+
+        public void UpdateInputField(TMP_InputField newIF)
+        {
+            InputField = newIF;
+        }
+
+        
     }
 }

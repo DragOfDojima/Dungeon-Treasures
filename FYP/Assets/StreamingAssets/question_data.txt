@@ -36,7 +36,7 @@ What is the famous temple in Hong Kong?,Man Mo Temple,Angkor Wat,Temple of Heave
 What is the drinking age in Hong Kong?,18,16,21,20
 What is Hong Kong's favorite sport?,Soccer,Cricket,Basketball,Baseball
 What is Hong Kong's big art event?,Hong Kong Arts Festival,Sydney Festival,Venice Biennale,Edinburgh Fringe Festival
-What is the outdoor escalator called?,Central–Mid-Levels Escalator,Systematic Escalators,City Escalator,Tsim Sha Tsui Escalator
+What is the outdoor escalator called?,Centralï¿½Mid-Levels Escalator,Systematic Escalators,City Escalator,Tsim Sha Tsui Escalator
 What is Hong Kong's weather?,Subtropical,Tropical,Arid,Mediterranean
 Where are Hong Kong's neon streets?,Mong Kok,Central,Mid-Levels,Stanley
 What is Hong Kong's famous hotel?,The Peninsula,The Ritz,The Plaza,Burj Al Arab
