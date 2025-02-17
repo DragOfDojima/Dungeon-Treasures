@@ -114,6 +114,7 @@ public class SearchFromGoogleSheet : MonoBehaviour
         try
         {
             File.WriteAllText(filePath, Qdata);
+            if (!DoesSheetIdExist(SheetId))
             File.AppendAllText(QStatPath,SheetId + "," + GridId + "," + name  + "\n");
         }
         catch (IOException ex)
@@ -239,5 +240,32 @@ public class SearchFromGoogleSheet : MonoBehaviour
         selectQuestion.SetActive(false);
     }
 
+    public bool DoesSheetIdExist(string sheetID)
+    {
+        string QStatPath = Path.Combine(Application.streamingAssetsPath, "questionStat.txt");
 
+        // Check if the file exists
+        if (!File.Exists(QStatPath))
+        {
+            return false; // File does not exist, so the ID can't exist
+        }
+
+        // Read all lines from the file
+        string[] lines = File.ReadAllLines(QStatPath);
+
+        // Loop through each line to check for the sheetID
+        foreach (string line in lines)
+        {
+            // Split the line by commas
+            string[] parts = line.Split(',');
+
+            // Check if the first part (sheetID) matches the given sheetID
+            if (parts.Length > 0 && parts[0].Trim() == sheetID)
+            {
+                return true; // Found the sheetID
+            }
+        }
+
+        return false; // sheetID not found
+    }
 }
