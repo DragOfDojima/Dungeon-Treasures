@@ -1,0 +1,52 @@
+What is 7 + 5?,12,10,15,13
+What is the square root of 64?,8,6,10,7
+What is 15% of 200?,30,25,35,40
+What is the value of π (pi) to two decimal places?,3.14,3,3.5,3.25
+Solve for x: 2x + 3 = 11.,4,5,3,6
+What is 9 x 8?,72,64,80,70
+What is the area of a triangle with a base of 10 and height of 5?,25,50,30,20
+"If a = 3 and b = 4, what is a² + b²?",25,20,30,15
+What is the perimeter of a square with side length 4?,16,12,20,10
+What is 100 ÷ 4?,25,20,30,15
+What is the sum of angles in a triangle?,180,90,360,270
+What is 5²?,25,20,30,15
+What is the equation of a line with slope 2 and y-intercept 3?,y = 2x + 3,y = 2x - 3,y = x + 3,y = 3x + 2
+"If x = 10, what is 3x - 5?",25,20,30,15
+What is the value of 3! (3 factorial)?,6,3,9,12
+What is the circumference of a circle with radius 5?,31.4,25,15.7,20
+What is 12 - 8?,4,2,6,8
+What is 6 x 7?,42,36,48,56
+What is the value of sin(30°)?,0.5,0.75,1,0.25
+What is 3 + 3 x 3?,12,18,9,6
+What is the greatest common divisor of 8 and 12?,4,2,6,8
+"What is the slope of the line passing through (1, 2) and (3, 4)?",1,2,0,-1
+What is 2³?,8,6,9,4
+"What is the median of the set {1, 3, 3, 6, 7, 8, 9}?",6,5,4,7
+What is 20% of 50?,10,15,20,25
+What is the value of log(100)?,2,3,1,4
+"What is the next number in the sequence: 2, 4, 8, 16?",32,24,48,20
+What is the quadratic formula?,x = (-b ± √(b² - 4ac)) / 2a,x = (b ± √(b² + 4ac)) / 2a,x = (-b ± √(b² + 4ac)) / 2a,x = (2a ± √(b² - 4ac)) / b
+What is the area of a circle with radius 3?,28.26,9.42,18.84,12.56
+What is 15 + 6 x 2?,27,21,24,30
+What is 100 - 25 x 4?,0,25,50,75
+What is the probability of rolling a 3 on a six-sided die?,1/6,1/3,1/2,1/4
+What is the value of tan(45°)?,1,0,2,0.5
+What is the sum of the first ten positive integers?,55,50,60,45
+What is 4 x 4 + 2?,18,16,20,14
+What is the value of 2π (to two decimal places)?,6.28,3.14,12.56,1.57
+What is 9 - 3²?,0,6,3,9
+"If the angle is 90°, what type of triangle is it?",Right,Acute,Obtuse,Scalene
+What is the hypotenuse of a right triangle with sides 3 and 4?,5,7,6,8
+What is 10 ÷ 2 + 3?,8,7,6,5
+What is the least common multiple of 3 and 5?,15,10,5,30
+What is the value of 5 + 5 x 0?,5,0,10,15
+What is the area of a rectangle with length 5 and width 3?,15,20,10,25
+"If a triangle has angles of 60° and 90°, what is the third angle?",30°,60°,45°,90°
+What is 8 - 2 x 3?,2,4,6,0
+What is the value of 3² + 4²?,25,20,30,15
+What is the sum of the interior angles of a hexagon?,720°,360°,540°,600°
+What is 50 ÷ 5 + 2?,12,10,8,15
+What is the distance formula?,d = √((x2 - x1)² + (y2 - y1)²),d = (x2 - x1) + (y2 - y1),d = (x2 + x1)² + (y2 + y1)²,d = (x2 - x1) - (y2 - y1)
+What is the value of 1/2 + 1/4?,3/4,1/2,1/4,1
+What is 2^4?,16,8,4,2
+What is the volume of a cube with side length 3?,27,9,18,12
