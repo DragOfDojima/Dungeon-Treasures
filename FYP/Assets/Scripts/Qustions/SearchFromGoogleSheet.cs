@@ -209,6 +209,7 @@ public class SearchFromGoogleSheet : MonoBehaviour
     {
         if (errorCode == "OK: Format valid")
         {
+            main.SetActive(false);
             enterName.SetActive(true);
             return;
         }

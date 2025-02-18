@@ -26,7 +26,6 @@ public class ShowAllQustionSet : MonoBehaviour
     {
         ClearAllContent();
         StartCoroutine(LoadQuestionStat());
-        SpawnQuestionSets(qustionsData);
     }
     public void ClearAllContent()
     {
@@ -104,7 +103,7 @@ public class ShowAllQustionSet : MonoBehaviour
             }
         }
 #endif
-
+        SpawnQuestionSets(qustionsData);
         yield return null;
     }
 
