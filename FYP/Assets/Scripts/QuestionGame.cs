@@ -15,7 +15,7 @@ public class QuestionGame : MonoBehaviour
     public UnlockTimer UL;
     public chest chest;
 
-
+    string questionFileName;
 
     private List<string[]> questionsAndAnswers;
     private int questionIndex;
@@ -32,7 +32,8 @@ public class QuestionGame : MonoBehaviour
 
     void Start()
     {
-        filePath = Path.Combine(Application.streamingAssetsPath, "question_data.txt");
+        questionFileName = GameObject.Find("GameM").GetComponent<Wave>().getQuestionFileName();
+        filePath = Path.Combine(Application.streamingAssetsPath, questionFileName);
         RequestPermissions();
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(LoadQuestionData());

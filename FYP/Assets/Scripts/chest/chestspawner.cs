@@ -78,6 +78,9 @@ public class chestspawner : MonoBehaviour
     }
     public void Spawn()
     {
+        spawnCount = wave.getChestCount();
+        potionSpawnCount = wave.getPotionChestCount();
+        SpawnChestOnGround = wave.getChestSpawnOnGround();
         spawnNormalChest();
         spawnPotionChest();
         /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();

@@ -171,10 +171,30 @@ public class Wave : MonoBehaviour
         questionFileName = q;
     }
 
+    public string getQuestionFileName()
+    {
+        return questionFileName;
+    }
+
     public void setGameRule(bool s,int c, int pc)
     {
         chestSpawnOnGround = s;
         chestCount = c;
         potionChestCount = pc;
+    }
+
+    public bool getChestSpawnOnGround()
+    {
+        return chestSpawnOnGround;
+    }
+
+    public int getChestCount()
+    {
+        return chestCount;
+    }
+
+    public int getPotionChestCount()
+    {
+        return potionChestCount;
     }
 }
