@@ -21,7 +21,6 @@ public class ChatController : MonoBehaviour {
         ChatInputField.onSubmit.RemoveListener(AddToChatOutput);
     }
 
-
     void AddToChatOutput(string newText)
     {
         // Clear Input Field
