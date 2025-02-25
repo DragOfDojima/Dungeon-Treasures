@@ -53,10 +53,10 @@ namespace Convai.Scripts.Runtime.Features
             switch (_frameType)
             {
                 case FrameType.Visemes:
-                    npc.convaiLipSync.ConvaiLipSyncApplicationBase.EnqueueQueue(new Queue<VisemesData>(_visemesFrames));
+                    //npc.convaiLipSync.ConvaiLipSyncApplicationBase.EnqueueQueue(new Queue<VisemesData>(_visemesFrames));
                     break;
                 case FrameType.Blendshape:
-                    npc.convaiLipSync.ConvaiLipSyncApplicationBase.EnqueueQueue(new Queue<ARKitBlendShapes>(_blendShapeFrames));
+                    //npc.convaiLipSync.ConvaiLipSyncApplicationBase.EnqueueQueue(new Queue<ARKitBlendShapes>(_blendShapeFrames));
                     break;
             }
 

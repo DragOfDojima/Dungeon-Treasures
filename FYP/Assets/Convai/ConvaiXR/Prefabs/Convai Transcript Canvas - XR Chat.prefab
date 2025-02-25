@@ -2763,7 +2763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Send
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36571,7 +36571,7 @@ PrefabInstance:
     - target: {fileID: 1332244378739031441, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000933277
+      value: -0.0040876814
       objectReference: {fileID: 0}
     - target: {fileID: 1651916490960708757, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
@@ -36581,12 +36581,12 @@ PrefabInstance:
     - target: {fileID: 1973107165984357815, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999309
+      value: 0.999971
       objectReference: {fileID: 0}
     - target: {fileID: 1973107165984357815, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2089742539808965564, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
@@ -36856,8 +36856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lerpSpeed: 6.5
-  _offset: {x: -0.65, y: 1, z: 0.15}
-  _cameraDistanceThreshold: 5
+  _offset: {x: 0, y: 0, z: 0}
+  _cameraDistanceThreshold: 0
 --- !u!114 &3139697206276273399
 MonoBehaviour:
   m_ObjectHideFlags: 0

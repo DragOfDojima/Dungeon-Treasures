@@ -10,6 +10,8 @@ namespace Convai.Scripts.Runtime.Core
     [DefaultExecutionOrder(-101)]
     public class ConvaiNPCManager : MonoBehaviour
     {
+        public GameObject npc;
+
         private static readonly RaycastHit[] RaycastHits = new RaycastHit[1];
 
         [Tooltip("Length of the ray used for detecting NPCs.")] [SerializeField]
@@ -47,9 +49,10 @@ namespace Convai.Scripts.Runtime.Core
             _mainCamera = Camera.main;
         }
 
-        private void LateUpdate()
+        private void Update()
         {
-            Ray ray = new(_mainCamera.transform.position, _mainCamera.transform.forward);
+            UpdateActiveNPC(GetConvaiNPC(npc));
+            /*Ray ray = new(_mainCamera.transform.position, _mainCamera.transform.forward);
             bool foundConvaiNPC = false;
 
             if (Physics.RaycastNonAlloc(ray, RaycastHits, rayLength) > 0)
@@ -80,7 +83,7 @@ namespace Convai.Scripts.Runtime.Core
                     ConvaiLogger.DebugLog($"Player left {_lastHitNpc.gameObject.name}", ConvaiLogger.LogCategory.Character);
                     UpdateActiveNPC(null);
                 }
-            }
+            }*/
         }
 
         private void OnDrawGizmos()

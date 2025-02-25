@@ -456,11 +456,11 @@ namespace Convai.Scripts.Runtime.Core
 
         public void ResetCharacterAnimation()
         {
-            if (_characterAnimator != null)
-                _characterAnimator.SetBool(Talk, false);
+            //if (_characterAnimator != null)
+            //    _characterAnimator.SetBool(Talk, false);
 
-            if (convaiLipSync != null)
-                convaiLipSync.ConvaiLipSyncApplicationBase.ClearQueue();
+            //if (convaiLipSync != null)
+            //    convaiLipSync.ConvaiLipSyncApplicationBase.ClearQueue();
         }
 
         public void SetCharacterTalking(bool isTalking)
