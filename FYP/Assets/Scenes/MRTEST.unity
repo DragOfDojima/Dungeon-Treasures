@@ -22149,6 +22149,11 @@ PrefabInstance:
       propertyPath: damage
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6245170455459104861, guid: d9b29e0a925eb2c4b870c19daf56aa19,
+        type: 3}
+      propertyPath: enemyWeapon
+      value: 
+      objectReference: {fileID: 1528444659}
     - target: {fileID: 7602409143528416446, guid: d9b29e0a925eb2c4b870c19daf56aa19,
         type: 3}
       propertyPath: m_IsTrigger
