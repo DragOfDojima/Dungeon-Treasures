@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class KnightAI : MonoBehaviour
 {
+    public EnemyWeapon enemyWeapon;
     public NavMeshAgent agent;
     public float speed;
     [SerializeField] private float knockBackPower;
@@ -14,10 +15,9 @@ public class KnightAI : MonoBehaviour
     public float sightRange;
     public LayerMask whatIsPlayer;
     [SerializeField] private NpcStat npcStat;
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
     [SerializeField] private AudioClip deadSound;
     AudioSource audioSource;
-    bool jumpSound;
     bool dead;
     bool startup;
     float Lasthp;
@@ -29,7 +29,7 @@ public class KnightAI : MonoBehaviour
         agent.avoidancePriority = 10;
         Lasthp = npcStat.getHP();
         npcStat.SetKnockBack(knockBackPower);
-
+        enemyWeapon.setDamage(damage);
     }
     void OnDrawGizmosSelected()
     {
@@ -51,7 +51,6 @@ public class KnightAI : MonoBehaviour
             }
 
         }
-        Debug.Log("slimehp" + (Lasthp == npcStat.getHP()));
         if (!npcStat.getDead())
         {
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -63,21 +62,7 @@ public class KnightAI : MonoBehaviour
                 Lasthp = npcStat.getHP();
             }
             Lasthp = npcStat.getHP();
-            if (animator.enabled == true)
-            {
-                if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked")
-                {
-                    if (!jumpSound)
-                    {
-                        audioSource.Play();
-                        jumpSound = true;
-                    }
-                }
-                else
-                {
-                    jumpSound = false;
-                }
-            }
+            
         }
         else
         {
@@ -95,50 +80,47 @@ public class KnightAI : MonoBehaviour
     bool atk;
     private void ChasePlayer()
     {
+        animator.SetBool("idel", false);
         Vector3 targetPosition = Camera.main.transform.position;
-        playerInCloseRange = Physics.CheckSphere(transform.position, 1.2f, whatIsPlayer);
-        if (playerInCloseRange && agent.enabled == true && animator.enabled == true)
+        agent.SetDestination(targetPosition);
+        playerInCloseRange = Physics.CheckSphere(transform.position, 0.8f, whatIsPlayer);
+        if (playerInCloseRange && animator.enabled == true)
         {
+            int randomValue = UnityEngine.Random.Range(0, 100);
+
+            // Set animator parameters based on the random value
+            if (randomValue < 70) // 70% chance
+            {
+                animator.SetBool("atk1", true);
+                animator.SetBool("atk2", false);
+            }
+            else // 30% chance
+            {
+                animator.SetBool("atk1", false);
+                animator.SetBool("atk2", true);
+            }
             agent.updatePosition = false;
             agent.speed = 0;
             agent.updateRotation = false;
+            agent.enabled = false;
             FaceTarget(targetPosition);
-            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked" && !atk)
-            {
-                atk = true;
-            }
-            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Slime_jump2idel_baked")
-            {
-                atk = false;
-            }
         }
         else
         {
-            if (agent.enabled == true && animator.enabled == true)
+
+            animator.SetBool("atk1", false);
+            animator.SetBool("atk2", false);
+            Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name=="walk")
             {
+                agent.enabled = true;
                 agent.SetDestination(targetPosition);
                 agent.updateRotation = true;
                 agent.updatePosition = true;
-                if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_idel2jump_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_Idel_baked")
-                {
-                    agent.speed = 0;
-                }
-                else
-                {
-                    agent.speed = speed;
-                }
+                agent.speed = speed;
             }
-
-
-
         }
-
-        if (agent.enabled == true)
-        {
-            agent.SetDestination(targetPosition);
-        }
-        if (animator.enabled == true)
-            animator.SetBool("jump", true);
 
         if (!hurted)
         {
@@ -162,35 +144,8 @@ public class KnightAI : MonoBehaviour
     {
         if (agent.enabled == true)
             agent.speed = 0;
-        animator.SetBool("jump", false);
-        if (roll == false)
-        {
-            roll = true;
-            p = UnityEngine.Random.Range(0, 10);
-            Invoke("resetRoll", 2);
-        }
-        switch (p)
-        {
-            case 0:
-            case 1:
-
-
-                return;
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-                transform.Rotate(-Vector3.up * 0.08f);
-                return;
-            case 2:
-            case 7:
-            case 8:
-            case 9:
-                transform.Rotate(Vector3.up * 0.08f);
-                return;
-
-        }
-
+        animator.SetBool("idel", true);
+        
     }
     bool hurted;
     public void hurt()
