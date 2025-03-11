@@ -7,7 +7,7 @@ using Unity.EditorCoroutines.Editor;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
-
+/*
 namespace Convai.Scripts.Editor.Setup.CharacterImporter
 {
     public class CharacterImporterUI
@@ -92,3 +92,4 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
 #endif
     }
 }
+*/

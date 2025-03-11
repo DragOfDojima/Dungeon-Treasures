@@ -1,7 +1,5 @@
 using Newtonsoft.Json;
 #if READY_PLAYER_ME
-using ReadyPlayerMe.Core.Editor;
-using ReadyPlayerMe.Core;
 using System;
 using System.ComponentModel.Composition;
 using System.Net;
@@ -22,7 +20,7 @@ using Convai.Scripts.Runtime.UI;
 using UnityEngine;
 using System.IO;
 #endif
-
+/*
 namespace Convai.Scripts.Editor.Setup.CharacterImporter
 {
     public class CharacterImporterLogic
@@ -321,3 +319,4 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
 #endif
     }
 }
+*/

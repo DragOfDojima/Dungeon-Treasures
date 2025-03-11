@@ -73,7 +73,7 @@ public class ShowAllQustionSet : MonoBehaviour
     {
         Debug.Log("File path: " + filePath);
 
-#if UNITY_EDITOR
+
         // In the Editor, read directly from StreamingAssets
         if (File.Exists(filePath))
         {
@@ -85,24 +85,7 @@ public class ShowAllQustionSet : MonoBehaviour
         {
             Debug.LogError("Question data file not found in the Editor!");
         }
-#else
-        // On Android, use UnityWebRequest
-        using (UnityWebRequest request = UnityWebRequest.Get(filePath))
-        {
-            yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                string data = request.downloadHandler.text;
-                Debug.Log("File content: " + data);
-                qustionsData=ConvertStringToList(data);
-            }
-            else
-            {
-                Debug.LogError("Error reading file: " + request.error);
-            }
-        }
-#endif
         SpawnQuestionSets(qustionsData);
         yield return null;
     }
