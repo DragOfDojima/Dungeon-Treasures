@@ -103,7 +103,9 @@ public class NpcStat : MonoBehaviour
         }
         healthBar.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.2f);
+        if(smr!=null)
         smr.materials = deadmatList;
+        if(deadanimation!=null)
         deadanimation.enabled = true;
         yield return new WaitForSeconds(3f);
         Destroy(NPC);

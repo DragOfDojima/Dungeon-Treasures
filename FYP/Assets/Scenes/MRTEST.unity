@@ -22139,6 +22139,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 396521531676900032, guid: d9b29e0a925eb2c4b870c19daf56aa19,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ea773bf92979e64449e5fed6991c6422, type: 2}
+    - target: {fileID: 2063688039767608034, guid: d9b29e0a925eb2c4b870c19daf56aa19,
+        type: 3}
+      propertyPath: Hp
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5326636950184094637, guid: d9b29e0a925eb2c4b870c19daf56aa19,
         type: 3}
       propertyPath: m_IsTrigger
@@ -22154,6 +22164,11 @@ PrefabInstance:
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 1528444659}
+    - target: {fileID: 6245170455459104861, guid: d9b29e0a925eb2c4b870c19daf56aa19,
+        type: 3}
+      propertyPath: knockBackPower
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7602409143528416446, guid: d9b29e0a925eb2c4b870c19daf56aa19,
         type: 3}
       propertyPath: m_IsTrigger
@@ -22213,6 +22228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Knight Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072538448824412856, guid: d9b29e0a925eb2c4b870c19daf56aa19,
+        type: 3}
+      propertyPath: m_TagString
+      value: hitable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2893465315672203648, guid: d9b29e0a925eb2c4b870c19daf56aa19, type: 3}
@@ -24447,6 +24467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3489645609a0b4393078b190808562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownTime: 1
 --- !u!1 &1528717537
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class KnightAI : MonoBehaviour
 {
+
     public EnemyWeapon enemyWeapon;
     public NavMeshAgent agent;
     public float speed;
@@ -72,6 +73,8 @@ public class KnightAI : MonoBehaviour
                 gameObject.tag = "Untagged";
                 animator.enabled = false;
                 audioSource.clip = deadSound;
+                enemyWeapon.enemyDead();
+                animator.SetTrigger("dead");
                 audioSource.Play();
             }
         }
@@ -152,10 +155,12 @@ public class KnightAI : MonoBehaviour
     {
         sightRange = 100;
         hurted = true;
+        animator.SetTrigger("damage");
         Invoke("resetHurt", 2);
     }
     void resetHurt()
     {
         hurted = false;
+        animator.ResetTrigger("damage");
     }
 }
