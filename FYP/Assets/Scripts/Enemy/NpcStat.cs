@@ -38,11 +38,15 @@ public class NpcStat : MonoBehaviour
         CurrentHP = Hp;
         healthBar.UpdateHealthBar(CurrentHP, Hp);
         floatDam = Resources.Load("damageText");
-        deadmatList = smr.materials;
-        for (int i = 0; i < deadmatList.Length; i++)
+        if(smr != null)
         {
-            deadmatList[i] = deadMat;
+            deadmatList = smr.materials;
+            for (int i = 0; i < deadmatList.Length; i++)
+            {
+                deadmatList[i] = deadMat;
+            }
         }
+        
     }
     public void Damage(float dam)
     {

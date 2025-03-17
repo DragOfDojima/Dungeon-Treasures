@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Convai/ConvaiXR/ConvaiMR/Scenes/Convai Demo - MR.unity
-    guid: 7415a9bd0a867c7458d86c0bdd56cccb
+    path: Assets/Scenes/MRTEST.unity
+    guid: 13f72081a36e6f343b7f97110244576f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e27ab232aab67bd4ca9d68fa3af45caf,
       type: 2}

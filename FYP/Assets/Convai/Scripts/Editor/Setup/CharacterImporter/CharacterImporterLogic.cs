@@ -1,7 +1,5 @@
 using Newtonsoft.Json;
 #if READY_PLAYER_ME
-using ReadyPlayerMe.Core.Editor;
-using ReadyPlayerMe.Core;
 using System;
 using System.ComponentModel.Composition;
 using System.Net;
@@ -20,7 +18,6 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 using Convai.Scripts.Runtime.UI;
 using UnityEngine;
-using System.IO;
 #endif
 
 namespace Convai.Scripts.Editor.Setup.CharacterImporter
@@ -109,21 +106,22 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
                 string characterName = getResponseContent.CharacterName.Trim();
 
 
-                AvatarObjectLoader avatarLoader = new()
-                {
-                    AvatarConfig = Resources.Load<AvatarConfig>("ConvaiRPMAvatarConfig")
-                };
+                /* AvatarObjectLoader avatarLoader = new()
+                 {
+                     AvatarConfig = Resources.Load<AvatarConfig>("ConvaiRPMAvatarConfig")
+                 };
 
-                DirectoryUtility.DefaultAvatarFolder = $"Convai/Characters/Mesh Data/{characterName}";
+                 DirectoryUtility.DefaultAvatarFolder = $"Convai/Characters/Mesh Data/{characterName}";
 
-                CompletionEventArgs args = await LoadAvatarAsync(avatarLoader, modelLink, characterName);
+                 CompletionEventArgs args = await LoadAvatarAsync(avatarLoader, modelLink, characterName);
 
-                AvatarLoaderSettings avatarLoaderSettings = Resources.Load<AvatarLoaderSettings>("ConvaiAvatarLoaderSettings");
-                string path = $"{DirectoryUtility.GetRelativeProjectPath(args.Avatar.name, AvatarCache.GetAvatarConfigurationHash(avatarLoaderSettings.AvatarConfig))}/{args.Avatar.name}"; GameObject avatar = PrefabHelper.CreateAvatarPrefab(args.Metadata, path, avatarConfig: avatarLoaderSettings.AvatarConfig);
+                 AvatarLoaderSettings avatarLoaderSettings = Resources.Load<AvatarLoaderSettings>("ConvaiAvatarLoaderSettings");
+                 string path = $"{DirectoryUtility.GetRelativeProjectPath(args.Avatar.name, AvatarCache.GetAvatarConfigurationHash(avatarLoaderSettings.AvatarConfig))}/{args.Avatar.name}"; GameObject avatar = PrefabHelper.CreateAvatarPrefab(args.Metadata, path, avatarConfig: avatarLoaderSettings.AvatarConfig);
 
-                SetupCharacter(characterID, characterName, avatar, args);
+                 SetupCharacter(characterID, characterName, avatar, args);
 
-                ConvaiLogger.DebugLog($"Character '{characterName}' downloaded and set up successfully.", ConvaiLogger.LogCategory.Character);
+                 ConvaiLogger.DebugLog($"Character '{characterName}' downloaded and set up successfully.", ConvaiLogger.LogCategory.Character);
+                */
             }
             catch (WebException e)
             {
@@ -155,7 +153,7 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
             return JsonConvert.DeserializeObject<GetResponse>(responseContent);
         }
 
-        private async Task<CompletionEventArgs> LoadAvatarAsync(AvatarObjectLoader avatarLoader, string modelLink, string characterName)
+        /*private async Task<CompletionEventArgs> LoadAvatarAsync(AvatarObjectLoader avatarLoader, string modelLink, string characterName)
         {
             TaskCompletionSource<CompletionEventArgs> tcs = new();
 
@@ -179,7 +177,7 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
             avatarLoader.LoadAvatar(modelLink);
 
             return await tcs.Task;
-        }
+        }*/
 
         /// <summary>
         ///     Sets up the character in the scene with the downloaded character model.
@@ -188,7 +186,7 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
         /// <param name="characterName"> The name of the character.</param>
         /// <param name="avatar"> The avatar GameObject to set up.</param>
         /// <param name="args"> The completion event arguments.</param>
-        private void SetupCharacter(string characterID, string characterName, GameObject avatar, CompletionEventArgs args)
+        /*private void SetupCharacter(string characterID, string characterName, GameObject avatar, CompletionEventArgs args)
         {
             SetupCharacterMetadata(characterName, avatar);
             SetupCollision(avatar);
@@ -201,7 +199,7 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
             PrefabUtility.SaveAsPrefabAsset(avatar, $"Assets/Convai/Characters/Prefabs/{avatar.name}.prefab");
             Object.DestroyImmediate(args.Avatar, true);
             Selection.activeObject = avatar;
-        }
+        }*/
 
 
         /// <summary>Setups the lipsync.</summary>
@@ -233,7 +231,7 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
         /// </summary>
         /// <param name="args">The completion event arguments.</param>
         /// <param name="avatar">The avatar GameObject.</param>
-        private static void SetupAnimator(CompletionEventArgs args, GameObject avatar)
+        /*private static void SetupAnimator(CompletionEventArgs args, GameObject avatar)
         {
             AvatarAnimationHelper.SetupAnimator(args.Metadata, avatar);
             Animator animator = avatar.GetComponent<Animator>();
@@ -243,7 +241,7 @@ namespace Convai.Scripts.Editor.Setup.CharacterImporter
             // Set the appropriate animator controller
             string animatorPath = isMasculine ? "Masculine NPC Animator" : "Feminine NPC Animator";
             animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(animatorPath);
-        }
+        }*/
 
 
         /// <summary>

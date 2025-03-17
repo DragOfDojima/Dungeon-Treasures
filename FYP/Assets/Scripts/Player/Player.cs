@@ -1,11 +1,5 @@
-using Meta.XR.Editor.Tags;
-using Oculus.Interaction.HandGrab;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class Player : MonoBehaviour
 {
