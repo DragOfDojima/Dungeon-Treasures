@@ -1,83 +1,78 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class SlimeAI : MonoBehaviour
+using Photon.Pun;
+
+public class SlimeAI : MonoBehaviourPun, IPunObservable
 {
     public NavMeshAgent agent;
     public float speed;
     [SerializeField] private float knockBackPower;
     public Animator animator;
-    bool playerInSightRange;
-    bool playerInCloseRange;
+    private bool playerInSightRange;
+    private bool playerInCloseRange;
     public float sightRange;
     public LayerMask whatIsPlayer;
-    [SerializeField]private SkinnedMeshRenderer bodySkinnedMeshRenderer;
-    [SerializeField]private NpcStat npcStat;
-    [SerializeField] GameObject impactDamage;
-    string Smile = "smile";
-    string Hurt = "hurt";
-    string Dead = "dead";
+    [SerializeField] private SkinnedMeshRenderer bodySkinnedMeshRenderer;
+    [SerializeField] private NpcStat npcStat;
+    [SerializeField] private GameObject impactDamage;
+    private string smile = "smile";
+    private string hurt = "hurt";
+    private string dead = "dead";
     [SerializeField] private float damage;
     [SerializeField] private AudioClip deadSound;
-    AudioSource audioSource;
-    bool jumpSound;
-    bool dead;
-    bool startup;
-    float Lasthp;
-    // Start is called before the first frame update
+    private AudioSource audioSource;
+    private bool jumpSound;
+    private bool isDead;
+    private bool startup;
+    private float lastHp;
 
     void Start()
     {
-        audioSource=GetComponent<AudioSource>();
-        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 100);
+        audioSource = GetComponent<AudioSource>();
+        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(smile), 100);
         agent.avoidancePriority = 10;
-        Lasthp = npcStat.getHP();
+        lastHp = npcStat.getHP();
         npcStat.SetKnockBack(knockBackPower);
-
     }
+
     void OnDrawGizmosSelected()
     {
-        // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, sightRange);
     }
-    // Update is called once per frame
 
     void Update()
     {
         if (!startup)
         {
-            Lasthp = npcStat.getHP();
-            if(Lasthp == npcStat.getHP())
+            lastHp = npcStat.getHP();
+            if (lastHp == npcStat.getHP())
             {
                 startup = true;
                 return;
             }
-            
         }
-        Debug.Log("slimehp"+(Lasthp == npcStat.getHP()));
+
         if (!npcStat.getDead())
         {
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             if (playerInSightRange) ChasePlayer();
             else Patroling();
-            if (Lasthp != npcStat.getHP())
+
+            if (lastHp != npcStat.getHP())
             {
-                hurt();
-                Lasthp = npcStat.getHP();
+                Hurt();
+                lastHp = npcStat.getHP();
             }
-            Lasthp = npcStat.getHP();
-            if (animator.enabled == true)
+
+            lastHp = npcStat.getHP();
+            if (animator.enabled)
             {
-                if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked")
+                if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jumping_baked" && !jumpSound)
                 {
-                    if (!jumpSound)
-                    {
-                        audioSource.Play();
-                        jumpSound = true;
-                    }
+                    audioSource.Play();
+                    jumpSound = true;
                 }
                 else
                 {
@@ -87,77 +82,58 @@ public class SlimeAI : MonoBehaviour
         }
         else
         {
-            if (!dead)
+            if (!isDead)
             {
-                dead=true;
+                isDead = true;
                 gameObject.tag = "Untagged";
                 animator.enabled = false;
                 audioSource.clip = deadSound;
                 audioSource.Play();
-                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 0);
-                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 0);
-                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 100);
+                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(smile), 0);
+                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(hurt), 0);
+                bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(dead), 100);
             }
         }
+
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
-    bool atk;
+
     private void ChasePlayer()
     {
         Vector3 targetPosition = Camera.main.transform.position;
         playerInCloseRange = Physics.CheckSphere(transform.position, 1.2f, whatIsPlayer);
-        if (playerInCloseRange&& agent.enabled == true&& animator.enabled == true)
+        if (playerInCloseRange && agent.enabled && animator.enabled)
         {
             agent.updatePosition = false;
             agent.speed = 0;
             agent.updateRotation = false;
             FaceTarget(targetPosition);
-            if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked"&&!atk)
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked")
             {
-                atk=true;
-                var id = Instantiate(impactDamage,gameObject.transform.position, Quaternion.identity)as GameObject;
+                var id = Instantiate(impactDamage, transform.position, Quaternion.identity) as GameObject;
                 id.GetComponent<DealDamage>().setDamage(damage);
-            }
-            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Slime_jump2idel_baked")
-            {
-                atk=false;
             }
         }
         else
         {
-            if(agent.enabled == true&& animator.enabled == true)
+            if (agent.enabled && animator.enabled)
             {
                 agent.SetDestination(targetPosition);
                 agent.updateRotation = true;
                 agent.updatePosition = true;
-                if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_idel2jump_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_jump2idel_baked" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Slime_Idel_baked")
-                {
-                    agent.speed = 0;
-                }
-                else
-                {
-                    agent.speed = speed;
-                }
+                agent.speed = speed;
             }
-                
-            
-            
         }
 
-        if (agent.enabled == true)
+        if (agent.enabled)
         {
             agent.SetDestination(targetPosition);
         }
-        if(animator.enabled == true)
+
+        if (animator.enabled)
             animator.SetBool("jump", true);
-        
-        if (!hurted)
-        {
-            bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 0);
-            bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 0);
-            bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 0);
-        }
     }
+
     private void FaceTarget(Vector3 destination)
     {
         Vector3 lookPos = destination - transform.position;
@@ -165,62 +141,47 @@ public class SlimeAI : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.035f);
     }
-    int p;
-    bool roll=false;
-    void resetRoll()
-    {
-        roll = false;
-    }
+
     private void Patroling()
     {
-        if(agent.enabled == true)
-        agent.speed = 0;
-        animator.SetBool("jump", false);
-        
-        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile),100);
-        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 0);
-        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 0);
-        if (roll == false)
-        {
-            roll = true;
-            p = UnityEngine.Random.Range(0, 10);
-            Invoke("resetRoll",2);
-        }
-        switch (p)
-        {
-            case 0:
-            case 1:
-            
-            
-                return;
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-                transform.Rotate(-Vector3.up * 0.08f);
-                return;
-            case 2:
-            case 7:
-            case 8:
-            case 9:
-                transform.Rotate(Vector3.up * 0.08f);
-                return;
+        if (agent.enabled)
+            agent.speed = 0;
 
-        }
-        
+        animator.SetBool("jump", false);
+        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(smile), 100);
+        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(hurt), 0);
+        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(dead), 0);
     }
-    bool hurted;
-    public void hurt()
+
+    private bool hurted;
+    public void Hurt()
     {
         sightRange = 100;
-        hurted =true;
-        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Smile), 0);
-        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Hurt), 100);
-        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(Dead), 0);
-        Invoke("resetHurt",2);
+        hurted = true;
+        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(smile), 0);
+        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(hurt), 100);
+        bodySkinnedMeshRenderer.SetBlendShapeWeight(bodySkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(dead), 0);
+        Invoke("ResetHurt", 2);
     }
-    void resetHurt()
+
+    void ResetHurt()
     {
-        hurted=false;
+        hurted = false;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // Send data to other players
+            stream.SendNext(npcStat.getHP()); // Current health
+            stream.SendNext(isDead); // Dead status
+        }
+        else
+        {
+            // Receive data from other players
+            lastHp = (float)stream.ReceiveNext(); // Update health from other players
+            isDead = (bool)stream.ReceiveNext(); // Update dead status
+        }
     }
 }

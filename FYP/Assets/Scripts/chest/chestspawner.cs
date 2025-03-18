@@ -1,11 +1,9 @@
 using Meta.XR.MRUtilityKit;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using Photon.Pun;
 
-public class chestspawner : MonoBehaviour
+public class chestspawner : MonoBehaviourPun
 {
     public float spawnTimer = 1;
     public GameObject normalChest;
@@ -16,30 +14,34 @@ public class chestspawner : MonoBehaviour
     public float minEdgeDistance = 0.3f;
     public MRUKAnchor.SceneLabels spawnLabels;
     public float normalOffset;
-    public int maxSpawn=5;
+    public int maxSpawn = 5;
     public float ChestRespawnTime;
     CheckChest[] scripts;
     [SerializeField] Wave wave;
     [SerializeField] int maxChest;
     [SerializeField] int maxPotionChest;
     [SerializeField] bool SpawnChestOnGround;
+
     void Start()
     {
         scripts = FindObjectsOfType<CheckChest>();
-        
     }
-    int spawnCount=0;
+
+    int spawnCount = 0;
     int potionSpawnCount = 0;
     bool spawned;
     bool rest;
-    // Update is called once per frame
+
     void Update()
     {
+        if (!PhotonNetwork.IsMasterClient) return; // Only the master client spawns chests
+
         if (scripts.Length == 0)
         {
             scripts = FindObjectsOfType<CheckChest>();
         }
-        if (rest!= wave.isRest()&&!wave.isRest())
+
+        if (rest != wave.isRest() && !wave.isRest())
         {
             foreach (CheckChest script in scripts)
             {
@@ -48,21 +50,11 @@ public class chestspawner : MonoBehaviour
             }
         }
         rest = wave.isRest();
-        
+
         if (!wave.isRest())
         {
             Spawn();
         }
-
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            chest[] scripts = FindObjectsOfType<chest>();
-            foreach (chest script in scripts)
-            {
-                script.closeChest();
-            }
-        }
-
     }
 
     bool AllChestsHaveBeenTaken()
@@ -71,11 +63,12 @@ public class chestspawner : MonoBehaviour
         {
             if (!script.getHaveChest())
             {
-                return false; // Return false if any script does not have a chest
+                return false;
             }
         }
-        return true; // All scripts have a chest
+        return true;
     }
+
     public void Spawn()
     {
         spawnCount = wave.getChestCount();
@@ -83,16 +76,13 @@ public class chestspawner : MonoBehaviour
         SpawnChestOnGround = wave.getChestSpawnOnGround();
         spawnNormalChest();
         spawnPotionChest();
-        /*MRUKRoom room =MRUK.Instance.GetCurrentRoom();
-        room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
-        Vector3 randomPositionNormalOffset = pos + norm* normalOffset;
-        randomPositionNormalOffset.y=0;
-        Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); */
     }
+
     public void chestClose()
     {
         spawnCount--;
     }
+
     public void potionChestClose()
     {
         potionSpawnCount--;
@@ -100,13 +90,13 @@ public class chestspawner : MonoBehaviour
 
     bool halfChance()
     {
-        return UnityEngine.Random.value < 0.5f; // Returns true if successful
+        return UnityEngine.Random.value < 0.5f;
     }
 
     private void spawnNormalChest()
     {
         Quaternion parentRotationWithOffset;
-        //Spawn Chest On table 
+
         for (int i = spawnCount; i < maxChest; i++)
         {
             if (SpawnChestOnGround)
@@ -119,13 +109,13 @@ public class chestspawner : MonoBehaviour
                     randomPositionNormalOffset.y = 0;
                     if (spawnCount < maxChest)
                     {
-                        Instantiate(normalChest, randomPositionNormalOffset, Quaternion.identity);
+                        PhotonNetwork.Instantiate(normalChest.name, randomPositionNormalOffset, Quaternion.identity);
                         spawnCount++;
                         return;
                     }
                 }
             }
-                
+
             int rand = UnityEngine.Random.Range(0, scripts.Length);
             if (AllChestsHaveBeenTaken()) return;
             while (scripts[rand].getHaveChest())
@@ -144,13 +134,13 @@ public class chestspawner : MonoBehaviour
                     parentRotationWithOffset = Quaternion.Euler(0, 0, 0) * scripts[rand].transform.parent.rotation;
                 }
 
-                Instantiate(normalChest, scripts[rand].transform.position, parentRotationWithOffset);
+                PhotonNetwork.Instantiate(normalChest.name, scripts[rand].transform.position, parentRotationWithOffset);
                 scripts[rand].setHaveChest(true);
                 spawnCount++;
             }
         }
-        
     }
+
     private void spawnPotionChest()
     {
         Quaternion parentRotationWithOffset;
@@ -167,12 +157,13 @@ public class chestspawner : MonoBehaviour
                     randomPositionNormalOffset.y = 0;
                     if (potionSpawnCount < maxPotionChest)
                     {
-                        Instantiate(potionChest, randomPositionNormalOffset, Quaternion.identity);
+                        PhotonNetwork.Instantiate(potionChest.name, randomPositionNormalOffset, Quaternion.identity);
                         potionSpawnCount++;
                         return;
                     }
                 }
             }
+
             int rand = UnityEngine.Random.Range(0, scripts.Length);
             if (AllChestsHaveBeenTaken()) return;
             while (scripts[rand].getHaveChest())
@@ -190,7 +181,8 @@ public class chestspawner : MonoBehaviour
                 {
                     parentRotationWithOffset = Quaternion.Euler(0, 0, 0) * scripts[rand].transform.parent.rotation;
                 }
-                Instantiate(potionChest, scripts[rand].transform.position, parentRotationWithOffset);
+
+                PhotonNetwork.Instantiate(potionChest.name, scripts[rand].transform.position, parentRotationWithOffset);
                 scripts[rand].setHaveChest(true);
                 potionSpawnCount++;
             }

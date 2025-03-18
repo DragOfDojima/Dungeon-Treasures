@@ -1,8 +1,9 @@
 using Meta.XR.MRUtilityKit;
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
-public class Mobspawner : MonoBehaviour
+public class Mobspawner : MonoBehaviourPun
 {
     public float spawnTimer = 1;
     public GameObject prefabToSpawn_slime;
@@ -16,12 +17,11 @@ public class Mobspawner : MonoBehaviour
     public float minEdgeDistance = 0.3f;
     public MRUKAnchor.SceneLabels spawnLabels;
     public float normalOffset;
-    public int maxSpawn=3;
-    private int SlimeCount;
-    private int KingSlimeCount;
-    //private int toBeSpawn;
+    public int maxSpawn = 3;
+    private int slimeCount;
+    private int kingSlimeCount;
     private int remain;
-    public bool spwanedking;
+    public bool spawnedKing;
     bool endWave;
     bool started;
     bool waitmob;
@@ -34,28 +34,28 @@ public class Mobspawner : MonoBehaviour
     {
         WaveMenu = w;
     }
-    public IEnumerator SetMobSpawn(int Slime, int kingSlime)
+
+    public IEnumerator SetMobSpawn(int slime, int kingSlime)
     {
         endWave = false;
-        waitmob=true;
+        waitmob = true;
         WIN.SetActive(false);
         GetComponent<AudioSource>().Stop();
         WaveCounter.SetActive(true);
-        remain = Slime + kingSlime;
+        remain = slime + kingSlime;
         yield return new WaitForSeconds(10f);
-        SlimeCount = Slime;
-        KingSlimeCount = kingSlime;
+        slimeCount = slime;
+        kingSlimeCount = kingSlime;
         started = true;
-        //toBeSpawn = SlimeCount + KingSlimeCount;
-
     }
 
     public bool getWaitmob()
     {
-        return waitmob;
+        return waitmob; // Ensure this method is present
     }
-    int spawnCount=0;
-    // Update is called once per frame
+
+    int spawnCount = 0;
+
     void Update()
     {
         if (WaveMenu == null)
@@ -63,30 +63,31 @@ public class Mobspawner : MonoBehaviour
             return;
         }
 
-        if (remain <= 0&&!endWave&&started)
+        if (remain <= 0 && !endWave && started)
         {
             endWave = true;
             StartCoroutine(wait());
         }
-        
 
-        if (!MRUK.Instance&&!MRUK.Instance.IsInitialized)
+        if (!MRUK.Instance && !MRUK.Instance.IsInitialized)
             return;
-        if(spawnCount >= maxSpawn)
+
+        if (spawnCount >= maxSpawn)
             return;
-        timer+=Time.deltaTime;
-        if(timer > spawnTimer)
+
+        timer += Time.deltaTime;
+        if (timer > spawnTimer)
         {
-            if(SlimeCount > 0) {
+            if (slimeCount > 0)
+            {
                 Spawn(prefabToSpawn_slime);
-                SlimeCount-=1;
-                //toBeSpawn-=1;
+                slimeCount -= 1;
             }
-            else if(KingSlimeCount > 0) { 
+            else if (kingSlimeCount > 0)
+            {
                 Spawn(prefabToSpawn_KingSlime);
-                spwanedking = true;
-                KingSlimeCount-=1;
-                //toBeSpawn -= 1;
+                spawnedKing = true;
+                kingSlimeCount -= 1;
             }
             timer -= spawnTimer;
         }
@@ -94,12 +95,16 @@ public class Mobspawner : MonoBehaviour
 
     public void Spawn(GameObject prefabToSpawn)
     {
-        MRUKRoom room =MRUK.Instance.GetCurrentRoom();
-        room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
-        Vector3 randomPositionNormalOffset = pos + norm* normalOffset;
-        randomPositionNormalOffset.y=0;
-        Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); 
-        spawnCount++;
+        if (PhotonNetwork.IsConnected && PhotonNetwork.IsMasterClient)
+        {
+            MRUKRoom room = MRUK.Instance.GetCurrentRoom();
+            room.GenerateRandomPositionOnSurface(MRUK.SurfaceType.VERTICAL, minEdgeDistance, LabelFilter.Included(spawnLabels), out Vector3 pos, out Vector3 norm);
+            Vector3 randomPositionNormalOffset = pos + norm * normalOffset;
+            randomPositionNormalOffset.y = 0;
+
+            GameObject mob = PhotonNetwork.Instantiate(prefabToSpawn.name, randomPositionNormalOffset, Quaternion.identity);
+            spawnCount++;
+        }
     }
 
     public void killedMob()
@@ -110,13 +115,13 @@ public class Mobspawner : MonoBehaviour
 
     public int getSpawnCount()
     {
-        return remain; 
+        return remain;
     }
 
     public void WaveClear()
     {
-        waitmob=false;
-        started=false;
+        waitmob = false;
+        started = false;
         WaveMenu.SetActive(true);
         chest[] scripts2 = FindObjectsOfType<chest>();
         foreach (chest script in scripts2)
@@ -125,21 +130,19 @@ public class Mobspawner : MonoBehaviour
         }
     }
 
-    
-    //WIN
+    // WIN
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
         WaveCounter.SetActive(false);
         if (wave.getWaveCount() == 3)
         {
-            GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>().spawnScoreBoard();
+            GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>().SpawnScoreBoard();
             WIN.SetActive(true);
             GetComponent<AudioSource>().Play();
             StartCoroutine(endWin());
             yield return new WaitForSeconds(3);
             wave.resetWaveCount();
-            
         }
         WaveClear();
     }

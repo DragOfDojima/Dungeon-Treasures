@@ -1,44 +1,36 @@
 using System.Collections;
-
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-
-public class NpcStat : MonoBehaviour
+public class NpcStat : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] private float Hp;
     private float CurrentHP;
     private Object floatDam;
-    [SerializeField] private float floatDamOffset=0.5f;
-    bool iframe= false;
+    [SerializeField] private float floatDamOffset = 0.5f;
+    private bool iframe = false;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private Material deadMat;
     [SerializeField] private GameObject MainObject;
     [SerializeField] private Animator deadanimation;
     [SerializeField] private Collider[] colliders;
     private float knockbackPower;
-    SkinnedMeshRenderer smr;
-    Material[] deadmatList;
+    private SkinnedMeshRenderer smr;
+    private Material[] deadmatList;
     public GameObject NPC;
     [SerializeField] private int Score;
-
     private Player hitByWho;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            StartCoroutine(Dead());
-        }
-    }
+    private bool deaded;
+
     private void Start()
     {
         smr = MainObject.GetComponent<SkinnedMeshRenderer>();
-        //deadanimation.enabled = true;
-        //Destroy(MainObject.GetComponent<SkinnedMeshRenderer>().material);
         CurrentHP = Hp;
         healthBar.UpdateHealthBar(CurrentHP, Hp);
         floatDam = Resources.Load("damageText");
-        if(smr != null)
+
+        if (smr != null)
         {
             deadmatList = smr.materials;
             for (int i = 0; i < deadmatList.Length; i++)
@@ -46,38 +38,68 @@ public class NpcStat : MonoBehaviour
                 deadmatList[i] = deadMat;
             }
         }
-        
     }
+
     public void Damage(float dam)
     {
-        if (!deaded)
+        if (!deaded && photonView.IsMine) // Only the master client handles damage
         {
             if (!iframe)
             {
                 int Damage = (int)Mathf.Ceil(dam);
-                StartCoroutine(ApplyKnockback(transform.forward*knockbackPower));
+                StartCoroutine(ApplyKnockback(transform.forward * knockbackPower));
                 iframe = true;
                 CurrentHP -= Damage;
                 var floatdam = Instantiate(floatDam, transform.position, transform.rotation) as GameObject;
                 floatdam.GetComponent<floattext>().setText(Damage);
                 floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
                 healthBar.UpdateHealthBar(CurrentHP, Hp);
+
                 if (hitByWho == null)
                 {
                     hitByWho = GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>();
                 }
-                hitByWho.addDealDamage(Damage);
+                hitByWho.AddDealDamage(Damage);
+
                 if (CurrentHP <= 0)
                 {
-                    StartCoroutine(Dead());
-
+                    photonView.RPC("DeadRPC", RpcTarget.All);
                 }
+
                 NPC.GetComponent<NavMeshAgent>().enabled = false;
                 MainObject.GetComponent<Animator>().enabled = false;
                 StartCoroutine(iframeEnd());
             }
         }
     }
+
+    [PunRPC]
+    void DeadRPC()
+    {
+        if (hitByWho == null)
+        {
+            hitByWho = GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>();
+        }
+        hitByWho.AddScore(Score);
+        hitByWho.AddEnemySlayed(1);
+        GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
+        deaded = true;
+
+        foreach (Collider c in colliders)
+        {
+            c.enabled = false;
+        }
+        healthBar.gameObject.SetActive(false);
+
+        if (smr != null)
+            smr.materials = deadmatList;
+
+        if (deadanimation != null)
+            deadanimation.enabled = true;
+
+        Destroy(NPC, 3f); // Destroy after 3 seconds
+    }
+
     IEnumerator iframeEnd()
     {
         yield return new WaitForSeconds(0.6f);
@@ -85,60 +107,28 @@ public class NpcStat : MonoBehaviour
         MainObject.GetComponent<Animator>().enabled = true;
         iframe = false;
     }
-    public float getHP()
-    {
-        return CurrentHP;
-    }
-    
-    bool deaded;
-    IEnumerator Dead()
-    {
-        if (hitByWho == null)
-        {
-            hitByWho = GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>();
-        }
-        hitByWho.addScore(Score);
-        hitByWho.addEnermySlayed(1);
-        GameObject.Find("MobSpawner").GetComponent<Mobspawner>().killedMob();
-        deaded =true;
-        foreach(Collider c in colliders)
-        {
-            c.enabled = false;
-        }
-        healthBar.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.2f);
-        if(smr!=null)
-        smr.materials = deadmatList;
-        if(deadanimation!=null)
-        deadanimation.enabled = true;
-        yield return new WaitForSeconds(3f);
-        Destroy(NPC);
-    }
 
-  
-    public bool getDead()
-    {
-        return deaded;
-    }
+    public float getHP() => CurrentHP;
+    public bool getDead() => deaded;
+
     private IEnumerator ApplyKnockback(Vector3 force)
     {
         yield return null;
         NPC.GetComponent<NavMeshAgent>().enabled = false;
-        NPC.GetComponent<Rigidbody>().useGravity = true;
-        NPC.GetComponent<Rigidbody>().isKinematic = false;
-        NPC.GetComponent<Rigidbody>().AddForce(force);
+        Rigidbody rb = NPC.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.isKinematic = false;
+        rb.AddForce(force);
 
         yield return new WaitForFixedUpdate();
         float knockbackTime = Time.time;
-        yield return new WaitUntil(
-            () => NPC.GetComponent<Rigidbody>().velocity.magnitude < 0.05f || Time.time > knockbackTime + 0.5f
-        );
+        yield return new WaitUntil(() => rb.velocity.magnitude < 0.05f || Time.time > knockbackTime + 0.5f);
         yield return new WaitForSeconds(0.25f);
 
-        NPC.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        NPC.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        NPC.GetComponent<Rigidbody>().useGravity = false;
-        NPC.GetComponent<Rigidbody>().isKinematic = true;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.useGravity = false;
+        rb.isKinematic = true;
         NPC.GetComponent<NavMeshAgent>().Warp(transform.position);
         NPC.GetComponent<NavMeshAgent>().enabled = true;
 
@@ -155,13 +145,24 @@ public class NpcStat : MonoBehaviour
         Damage(CurrentHP);
     }
 
-    public int getScore()
-    {
-        return Score;
-    }
+    public int getScore() => Score;
 
     public void setHitByWho(GameObject hbw)
     {
         hitByWho = hbw.GetComponent<Player>();
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(CurrentHP);
+            stream.SendNext(deaded);
+        }
+        else
+        {
+            CurrentHP = (float)stream.ReceiveNext();
+            deaded = (bool)stream.ReceiveNext();
+        }
     }
 }

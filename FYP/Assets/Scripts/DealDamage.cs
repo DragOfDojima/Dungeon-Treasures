@@ -14,7 +14,7 @@ public class DealDamage : MonoBehaviour
     {
         if (other.tag == "Player"&&other.name=="Body")
         {
-            other.GetComponent<ToPlayer>().getplayer().increaseHp(-dealDanage);
+            other.GetComponent<ToPlayer>().getplayer().IncreaseHp(-dealDanage);
             Destroy(gameObject);
         }else
             Destroy(gameObject);

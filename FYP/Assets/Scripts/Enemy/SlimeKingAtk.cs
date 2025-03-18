@@ -1,41 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class SlimeKingAtk : MonoBehaviour
+public class SlimeKingAtk : MonoBehaviourPun
 {
-    // Start is called before the first frame update
-    Rigidbody rb;
-    bool trigger;
+    private Rigidbody rb;
+    private bool trigger;
+
     void Start()
     {
-        rb= GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward   * 5);
-        Invoke("startTrigger", 0.2f);
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 5);
+        Invoke("StartTrigger", 0.2f);
         Destroy(gameObject, 5f);
-    
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void startTrigger()
+    private void StartTrigger()
     {
         trigger = true;
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(trigger)
+        if (trigger)
         {
-            if (other.tag == "Player")
+            if (other.CompareTag("Player"))
             {
-                other.GetComponent<ToPlayer>().getplayer().increaseHp(-15);
+                // Ensure only the master client handles damage
+                if (photonView.IsMine)
+                {
+                    other.GetComponent<ToPlayer>().getplayer().IncreaseHp(-15);
+                }
             }
-            if (other.tag != "hitable" || other.name != "impactDamage" || other.name != "Bone")
+
+            // Adjust the conditions to destroy the object
+            if (other.CompareTag("hitable") && other.name != "impactDamage" && other.name != "Bone")
+            {
                 Destroy(gameObject);
+            }
         }
-        
     }
 }

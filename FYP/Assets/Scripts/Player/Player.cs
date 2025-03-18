@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-    // Start is called before the first frame update
     public Transform playerHead;
     public CapsuleCollider bodyCollider;
     [SerializeField] GameObject Gameover;
@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
     public float bodyHeightMax = 2f;
 
     private float hp = 100;
-    bool dead;
+    private bool dead;
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
     [SerializeField] AudioClip lose;
     [SerializeField] AudioClip damaged;
 
@@ -30,40 +30,27 @@ public class Player : MonoBehaviour
     private int TotalEnemySlayed;
     private int TotalAnswerCorrect;
     private string Time;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         playerCamera = Camera.main;
         originalColor = playerCamera.backgroundColor;
+
+        if (!photonView.IsMine)
+        {
+            Destroy(GetComponent<AudioSource>());
+            Destroy(bodyCollider);
+            return;
+        }
     }
+
     private void FixedUpdate()
     {
-        bodyCollider.height=Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin,bodyHeightMax);
-        bodyCollider.center = new Vector3(playerHead.localPosition.x,bodyCollider.height/2,playerHead.localPosition.z);
-    }
+        if (!photonView.IsMine) return;
 
-    public void increaseHp(float p)
-    {
-        if (p < 0)
-        {
-            audioSource.pitch = Random.Range(0.9f, 1.1f);
-            audioSource.clip = damaged;
-            if(!audioSource.isPlaying)
-            audioSource.Play();
-            fullScreenEffect.Damage();
-
-        }
-        if(hp + p > 100)
-        {
-            hp = 100;
-        }else
-        if (hp + p < 0)
-        {
-            hp=0;
-            
-        }
-        else
-        hp=hp+p;
+        bodyCollider.height = Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin, bodyHeightMax);
+        bodyCollider.center = new Vector3(playerHead.localPosition.x, bodyCollider.height / 2, playerHead.localPosition.z);
     }
 
     public float getHp()
@@ -71,90 +58,127 @@ public class Player : MonoBehaviour
         return hp;
     }
 
-    private void Update()
+    public float getMaxHp()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        return 100; // Adjust this if your maximum health changes
+    }
+
+    public void IncreaseHp(float p)
+    {
+        if (!photonView.IsMine) return;
+
+        if (p < 0)
         {
-            increaseHp(-15);
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            hp = hp +15;
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.clip = damaged;
+            if (!audioSource.isPlaying)
+                audioSource.Play();
+            fullScreenEffect.Damage();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            spawnScoreBoard();
-        }
+        hp = Mathf.Clamp(hp + p, 0, 100);
 
-        if (hp<=0&&!dead) {
+        if (hp <= 0 && !dead)
+        {
             dead = true;
-            audioSource.Stop();
-            audioSource.clip = lose;
-            audioSource.pitch = 1;
-            audioSource.Play();
-            Gameover.SetActive(true);
-            StartCoroutine (wait(3));
-
-            //hp = 100;
-            //Gameover.SetActive(false);
+            photonView.RPC("GameOver", RpcTarget.All);
         }
     }
 
-
-    IEnumerator wait(int time)
+    [PunRPC]
+    void GameOver()
     {
-        spawnScoreBoard();
+        audioSource.Stop();
+        audioSource.clip = lose;
+        audioSource.pitch = 1;
+        audioSource.Play();
+        Gameover.SetActive(true);
+        StartCoroutine(WaitForRespawn(3));
+    }
+
+    private IEnumerator WaitForRespawn(int time)
+    {
+        SpawnScoreBoard();
         yield return new WaitForSeconds(time);
         hp = 100;
         dead = false;
         Gameover.SetActive(false);
-        resetData();
+        ResetData();
     }
 
-    public void addDealDamage(float dd)
+    public void AddDealDamage(float dd)
     {
+        if (!photonView.IsMine) return;
         TotalDamage += dd;
     }
 
-    public void addEnermySlayed(int es)
+    public void AddEnemySlayed(int es)
     {
+        if (!photonView.IsMine) return;
         TotalEnemySlayed += es;
     }
 
-    public void addScore(int s)
+    public void AddScore(int s)
     {
+        if (!photonView.IsMine) return;
         Score += s;
     }
 
-    public void addCorrectAnswer(int ca)
+    public void AddCorrectAnswer(int ca)
     {
+        if (!photonView.IsMine) return;
         TotalAnswerCorrect += ca;
     }
 
-    public void spawnScoreBoard()
+    public void SpawnScoreBoard()
     {
-        float timer = wave.getTimer();
+        if (!photonView.IsMine) return; // Only the local player can spawn their own scoreboard
+
+        float timer = wave.getTimer(); // Ensure wave has a method getTimer()
 
         float minutes = Mathf.FloorToInt(timer / 60);
         if (minutes > 99) { minutes = 99; }
         float seconds = Mathf.FloorToInt(timer % 60);
-        Time = string.Format("{0:00}:{1:00}", minutes, seconds);
+        string timeFormatted = string.Format("{0:00}:{1:00}", minutes, seconds);
+
         Vector3 forward = Camera.main.transform.forward;
         forward.y = 0;
-        GameObject sb = Instantiate(ScoreBoard, transform.position+forward, Quaternion.identity);
+        GameObject sb = Instantiate(ScoreBoard, transform.position + forward, Quaternion.identity);
         sb.transform.LookAt(Camera.main.transform.position);
-        sb.transform.rotation = Quaternion.Euler(sb.transform.rotation.eulerAngles.x, sb.transform.rotation.eulerAngles.y+180f, sb.transform.rotation.eulerAngles.z);
-        sb.GetComponent<ScoreBoard>().setData(Score, TotalDamage, TotalEnemySlayed, TotalAnswerCorrect, Time);
-        wave.resetWaveCount();
+        sb.transform.rotation = Quaternion.Euler(sb.transform.rotation.eulerAngles.x, sb.transform.rotation.eulerAngles.y + 180f, sb.transform.rotation.eulerAngles.z);
+        sb.GetComponent<ScoreBoard>().setData(Score, TotalDamage, TotalEnemySlayed, TotalAnswerCorrect, timeFormatted);
+        wave.resetWaveCount(); // Make sure wave has this method
     }
 
-    void resetData()
+    private void ResetData()
     {
+        if (!photonView.IsMine) return;
         Score = 0;
         TotalDamage = 0;
         TotalEnemySlayed = 0;
         TotalAnswerCorrect = 0;
         Time = null;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(hp);
+            stream.SendNext(Score);
+            stream.SendNext(TotalDamage);
+            stream.SendNext(TotalEnemySlayed);
+            stream.SendNext(TotalAnswerCorrect);
+            stream.SendNext(Time);
+        }
+        else
+        {
+            hp = (float)stream.ReceiveNext();
+            Score = (int)stream.ReceiveNext();
+            TotalDamage = (float)stream.ReceiveNext();
+            TotalEnemySlayed = (int)stream.ReceiveNext();
+            TotalAnswerCorrect = (int)stream.ReceiveNext();
+            Time = (string)stream.ReceiveNext();
+        }
     }
 }

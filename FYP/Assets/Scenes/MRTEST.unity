@@ -1814,7 +1814,7 @@ MonoBehaviour:
   spawnLabels: 4
   normalOffset: 1
   maxSpawn: 5
-  spwanedking: 0
+  spawnedKing: 0
 --- !u!4 &109250218
 Transform:
   m_ObjectHideFlags: 0
@@ -4645,6 +4645,7 @@ GameObject:
   - component: {fileID: 245128838}
   - component: {fileID: 245128840}
   - component: {fileID: 245128841}
+  - component: {fileID: 245128842}
   m_Layer: 0
   m_Name: GameM
   m_TagString: Untagged
@@ -4848,6 +4849,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 1931428328}
   menu: {fileID: 479097247}
+--- !u!114 &245128842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245128832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86a0da73919c984e93d8b9cf04a2a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 2154732414334583281, guid: 23dbf8e62735bd04f949a793ec3f2de4,
+    type: 3}
 --- !u!1 &258293245
 GameObject:
   m_ObjectHideFlags: 0
@@ -23954,7 +23969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad003366d0eeef443996e73ea2a51a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 143374414}
+  player: {fileID: 0}
   smoothSpeed: 5
 --- !u!1 &1457179346
 GameObject:

@@ -1,29 +1,28 @@
 using Oculus.Interaction.HandGrab;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Wave : MonoBehaviour
+public class Wave : MonoBehaviourPun
 {
     public Mobspawner mobspawner;
     private int waveCount = 0;
-    GameObject WaveMenu;
-    Button button;
-    bool rest = false;
+    private GameObject WaveMenu;
+    private bool rest = false;
     private float timer;
-    AudioSource audioSource;
-    [SerializeField] AudioClip nonCombat;
-    [SerializeField] AudioClip inCombat;
-    [SerializeField] AudioClip boss;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip nonCombat;
+    [SerializeField] private AudioClip inCombat;
+    [SerializeField] private AudioClip boss;
 
-    string dungeon;
-    string questionFileName;
+    private string dungeon;
+    private string questionFileName;
 
-    bool chestSpawnOnGround;
-    int chestCount;
-    int potionChestCount;
-    // Start is called before the first frame update
+    private bool chestSpawnOnGround;
+    private int chestCount;
+    private int potionChestCount;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -31,9 +30,10 @@ public class Wave : MonoBehaviour
 
     public void waveStart()
     {
-        rest=false;
+        rest = false;
         WaveMenu.SetActive(false);
-        switch (waveCount) { 
+        switch (waveCount)
+        {
             case 0:
                 StartCoroutine(mobspawner.SetMobSpawn(5, 0));
                 waveCount = 1;
@@ -50,17 +50,16 @@ public class Wave : MonoBehaviour
                 Debug.Log("Invalid Wave");
                 break;
         }
-
     }
 
     public int getWaveCount()
     {
         return waveCount;
     }
-    // Update is called once per frame
+
     void Update()
     {
-        if(mobspawner.getSpawnCount() <= 0&&!mobspawner.getWaitmob())
+        if (mobspawner.getSpawnCount() <= 0 && !mobspawner.getWaitmob())
         {
             rest = true;
         }
@@ -68,17 +67,20 @@ public class Wave : MonoBehaviour
         {
             rest = false;
         }
+
         if (WaveMenu == null)
         {
             WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
-            mobspawner.setWaveMenu(GetComponent<StartMenuToCenter>().getStartMenu());
-        }
-        if (!rest)
-        {
-            timer+=Time.deltaTime;
+            mobspawner.setWaveMenu(WaveMenu);
         }
 
-        if (Input.GetKeyDown(KeyCode.B)) {
+        if (!rest)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
             NpcStat[] scripts = FindObjectsOfType<NpcStat>();
             foreach (NpcStat script in scripts)
             {
@@ -122,20 +124,17 @@ public class Wave : MonoBehaviour
         {
             Destroy(script.gameObject);
         }
-
     }
+
     private void UpdateAudioState()
     {
-        
-  
-
         AudioClip newClip;
 
         if (rest)
         {
             newClip = nonCombat;
         }
-        else if (mobspawner.spwanedking)
+        else if (mobspawner.spawnedKing) // Updated from spwaneding to spawnedKing
         {
             newClip = boss;
         }
@@ -166,6 +165,7 @@ public class Wave : MonoBehaviour
     {
         dungeon = d;
     }
+
     public void setQuestionFileName(string q)
     {
         questionFileName = q;
@@ -176,7 +176,7 @@ public class Wave : MonoBehaviour
         return questionFileName;
     }
 
-    public void setGameRule(bool s,int c, int pc)
+    public void setGameRule(bool s, int c, int pc)
     {
         chestSpawnOnGround = s;
         chestCount = c;
@@ -196,5 +196,11 @@ public class Wave : MonoBehaviour
     public int getPotionChestCount()
     {
         return potionChestCount;
+    }
+
+    [PunRPC]
+    public void ResetWaveCountRPC()
+    {
+        resetWaveCount();
     }
 }

@@ -75,11 +75,11 @@ public class Stream : MonoBehaviour
                 heal = true;
                 if (hit.collider.gameObject.GetComponent<ToPlayer>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<ToPlayer>().getplayer().increaseHp(2f);
+                    hit.collider.gameObject.GetComponent<ToPlayer>().getplayer().IncreaseHp(2f);
                 }
                 else
                 {
-                    hit.collider.gameObject.GetComponentInParent<ToPlayer>().getplayer().increaseHp(2f);
+                    hit.collider.gameObject.GetComponentInParent<ToPlayer>().getplayer().IncreaseHp(2f);
                 }
                 
                 StartCoroutine(healcolddown());

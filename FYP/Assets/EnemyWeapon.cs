@@ -16,7 +16,7 @@ public class EnemyWeapon : MonoBehaviour
         Debug.Log("collided"+other.gameObject.name);
         if (other.tag == "Player" && canDealDamage)
         {
-            other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);
+            other.GetComponent<ToPlayer>().getplayer().IncreaseHp(-Damage);
             StartCoroutine(DamageCooldown());
 
         }

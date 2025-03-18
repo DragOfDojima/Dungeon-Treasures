@@ -1,8 +1,8 @@
-
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
-public class chest : MonoBehaviour
+public class chest : MonoBehaviourPun
 {
     public MeshRenderer mr;
     Animator chestLid;
@@ -17,7 +17,7 @@ public class chest : MonoBehaviour
     public GameObject Question;
     public QuestionGame QuestionGame;
     public bool QuestStart = false;
-    public bool SG=false;
+    public bool SG = false;
     GameObject spawnItem;
     AudioSource audioSource;
     [SerializeField] AudioClip opens;
@@ -27,7 +27,6 @@ public class chest : MonoBehaviour
 
     Player whoOpening;
 
-    // Start is called before the first frame update
     void Start()
     {
         chestspawner = GameObject.Find("chestSpawner").GetComponent<chestspawner>();
@@ -40,38 +39,32 @@ public class chest : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    bool closeed=false;
+    bool closeed = false;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (!photonView.IsMine) return; // Only the local player interacts with chests
+
+        if (theItem != null)
         {
-            open();
-        }
-        
-        
-            if (theItem!=null)
+            if (theItem.GetComponent<MyGrabable>().getFirstTouch() && !closeed)
             {
-                if (theItem.GetComponent<MyGrabable>().getFirstTouch() && !closeed)
-                {
-                    closeed = true;
-                    StartCoroutine(close());
-                }
+                closeed = true;
+                photonView.RPC("CloseChestRPC", RpcTarget.All);
             }
-            
         }
-       
-    
+    }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (isOpen == false)
+        if (!photonView.IsMine) return; // Only the local player interacts with chests
+
+        if (isOpen == false && other.gameObject.tag == "Player")
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.GetComponentInParent<Player>() != null)
             {
-                if (other.gameObject.GetComponentInParent<Player>()!=null)
                 whoOpening = other.gameObject.GetComponentInParent<Player>();
-                if (SG == false) {
+                if (SG == false)
+                {
                     SG = true;
                     StartCoroutine(WaitUntilTrue());
                     Question.SetActive(true);
@@ -80,19 +73,27 @@ public class chest : MonoBehaviour
         }
     }
 
-    public void open() {
+    [PunRPC]
+    public void OpenChestRPC()
+    {
         if (isOpen == false)
         {
             audioSource.clip = opens;
             audioSource.Play();
             chestLid.Play("TreasureChest_OPEN", 0, 0.1f);
             ShowItem();
-            whoOpening.addCorrectAnswer(1);
+            whoOpening.AddCorrectAnswer(1);
             isOpen = true;
         }
     }
 
-    public IEnumerator close()
+    [PunRPC]
+    public void CloseChestRPC()
+    {
+        StartCoroutine(CloseChestCoroutine());
+    }
+
+    IEnumerator CloseChestCoroutine()
     {
         chestLid.Play("TreasureChest_CLOSE", 0, 0.1f);
         HideItem();
@@ -102,18 +103,16 @@ public class chest : MonoBehaviour
         gameObject.SetActive(false);
         mr.materials = deadmatList;
         deadanimation.enabled = true;
-        Destroy(transform.parent.gameObject,2);
+        Destroy(transform.parent.gameObject, 2);
     }
 
     public void HideItem()
     {
         itemHolder.gameObject.SetActive(false);
-
         foreach (Transform child in itemHolder)
         {
             Destroy(child.gameObject);
         }
-
     }
 
     public void ShowItem()
@@ -135,29 +134,27 @@ public class chest : MonoBehaviour
     {
         while (!QuestStart)
         {
-            if(!SG)
+            if (!SG)
             {
                 yield break;
             }
-            Debug.Log("waiting");
             yield return null;
         }
-        Debug.Log("GOOOOOOOOOOOO");
         ProceedToNextStep();
     }
 
     public void ProceedToNextStep()
     {
-        open();
+        photonView.RPC("OpenChestRPC", RpcTarget.All);
     }
 
     public void closeChest()
     {
-        if(isPotionChest)
-        chestspawner.potionChestClose();
+        if (isPotionChest)
+            chestspawner.potionChestClose();
         else
-        chestspawner.chestClose();
-        StartCoroutine(close());
+            chestspawner.chestClose();
+        photonView.RPC("CloseChestRPC", RpcTarget.All);
     }
 
     public void answerWrong()
