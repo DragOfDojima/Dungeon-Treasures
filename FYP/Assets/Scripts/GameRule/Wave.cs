@@ -11,7 +11,7 @@ public class Wave : MonoBehaviour
     private int waveCount = 0;
     GameObject WaveMenu;
     Button button;
-    bool rest = false;
+    bool rest = true;
     private float timer;
     AudioSource audioSource;
     [SerializeField] AudioClip nonCombat;
