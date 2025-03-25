@@ -5,23 +5,23 @@ using Photon.Pun;
 
 public class NpcStat : MonoBehaviourPun, IPunObservable
 {
-    [SerializeField] private float Hp;
-    private float CurrentHP;
+    [SerializeField] private float Hp; // Maximum health
+    private float CurrentHP; // Current health
     private Object floatDam;
     [SerializeField] private float floatDamOffset = 0.5f;
-    private bool iframe = false;
-    [SerializeField] private HealthBar healthBar;
-    [SerializeField] private Material deadMat;
-    [SerializeField] private GameObject MainObject;
-    [SerializeField] private Animator deadanimation;
-    [SerializeField] private Collider[] colliders;
-    private float knockbackPower;
-    private SkinnedMeshRenderer smr;
-    private Material[] deadmatList;
-    public GameObject NPC;
-    [SerializeField] private int Score;
-    private Player hitByWho;
-    private bool deaded;
+    private bool iframe = false; // Invincibility frame flag
+    [SerializeField] private HealthBar healthBar; // Health bar UI
+    [SerializeField] private Material deadMat; // Material for dead NPC
+    [SerializeField] private GameObject MainObject; // Main object of the NPC
+    [SerializeField] private Animator deadanimation; // Animator for death animation
+    [SerializeField] private Collider[] colliders; // Colliders to disable on death
+    private float knockbackPower; // Knockback force
+    private SkinnedMeshRenderer smr; // Renderer for NPC
+    private Material[] deadmatList; // List of materials for dead NPC
+    public GameObject NPC; // NPC GameObject reference
+    [SerializeField] private int Score; // Score for killing this NPC
+    private Player hitByWho; // Player who hit the NPC
+    private bool deaded; // Is the NPC dead?
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class NpcStat : MonoBehaviourPun, IPunObservable
 
     public void Damage(float dam)
     {
-        if (!deaded && photonView.IsMine) // Only the master client handles damage
+        if (!deaded && photonView.IsMine) // Only process damage if not dead and this is the master client
         {
             if (!iframe)
             {
@@ -50,7 +50,9 @@ public class NpcStat : MonoBehaviourPun, IPunObservable
                 StartCoroutine(ApplyKnockback(transform.forward * knockbackPower));
                 iframe = true;
                 CurrentHP -= Damage;
-                var floatdam = Instantiate(floatDam, transform.position, transform.rotation) as GameObject;
+
+                // Display damage text
+                var floatdam = Instantiate(floatDam, transform.position, Quaternion.identity) as GameObject;
                 floatdam.GetComponent<floattext>().setText(Damage);
                 floatdam.GetComponent<floattext>().setOffset(floatDamOffset);
                 healthBar.UpdateHealthBar(CurrentHP, Hp);
