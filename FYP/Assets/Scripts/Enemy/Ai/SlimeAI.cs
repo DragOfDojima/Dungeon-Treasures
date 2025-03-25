@@ -57,7 +57,6 @@ public class SlimeAI : MonoBehaviour
             }
             
         }
-        Debug.Log("slimehp"+(Lasthp == npcStat.getHP()));
         if (!npcStat.getDead())
         {
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);

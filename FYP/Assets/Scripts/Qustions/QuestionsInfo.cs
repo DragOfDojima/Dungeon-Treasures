@@ -30,7 +30,7 @@ public class QuestionsInfo : MonoBehaviour
     {
         Debug.Log("File path: " + filePath);
 
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
         // In the Editor, read directly from StreamingAssets
         if (File.Exists(filePath))
         {
@@ -42,8 +42,8 @@ public class QuestionsInfo : MonoBehaviour
         {
             Debug.LogError("Question data file not found in the Editor!");
         }
-/*#else
-        // On Android, use UnityWebRequest
+#else
+       // On Android, use UnityWebRequest
         using (UnityWebRequest request = UnityWebRequest.Get(filePath))
         {
             yield return request.SendWebRequest();
@@ -59,7 +59,7 @@ public class QuestionsInfo : MonoBehaviour
                 Debug.LogError("Error reading file: " + request.error);
             }
         }
-#endif*/
+#endif
         yield return null;
     }
 

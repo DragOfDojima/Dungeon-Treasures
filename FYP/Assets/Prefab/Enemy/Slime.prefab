@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1490408870118793288}
   m_Layer: 13
   m_Name: Slime
-  m_TagString: hitable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 217682668731418747}
   m_Layer: 13
   m_Name: slime Variant
-  m_TagString: hitable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

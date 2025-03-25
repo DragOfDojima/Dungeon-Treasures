@@ -1782,6 +1782,7 @@ GameObject:
   - component: {fileID: 109250218}
   - component: {fileID: 109250217}
   - component: {fileID: 109250219}
+  - component: {fileID: 109250220}
   m_Layer: 0
   m_Name: MobSpawner
   m_TagString: Untagged
@@ -1926,6 +1927,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &109250220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109250216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efde263aa7d8e545be093ae753ca8d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobspawner: {fileID: 109250217}
+  protalRed: {fileID: 8004477704909088713, guid: 59a4bf1b98b3028439d84010531bac3a,
+    type: 3}
+  protalBlue: {fileID: 7449703093722814516, guid: fd84f35632132d0428f5d581d4b2c255,
+    type: 3}
+  slime: {fileID: 4199268874010373268, guid: 93a84a0e4bfde6f4aa40f00a61c82710, type: 3}
+  slimeKing: {fileID: 8400659593540927824, guid: 650e92e73ef4f3640afe3172ec6d97b9,
+    type: 3}
+  knight: {fileID: 9072538448824412856, guid: d9b29e0a925eb2c4b870c19daf56aa19, type: 3}
+  magician: {fileID: 2248871412813806974, guid: c23fa7f0e1b07694c93fa3007ba8394b,
+    type: 3}
+  spawnLabels: 4
+  dungeon: slime
 --- !u!1 &109837279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4704,6 +4730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobspawner: {fileID: 109250217}
+  wets: {fileID: 109250220}
   nonCombat: {fileID: 8300000, guid: aa9cc7de3a8e2504d8339430b9b2483d, type: 3}
   inCombat: {fileID: 8300000, guid: d40bcf3aa49e374479a2af75de0a7cf2, type: 3}
   boss: {fileID: 8300000, guid: f5cd33e7b6c1d2e4891f863ff5ce0fa5, type: 3}
@@ -38369,6 +38396,8 @@ RectTransform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 245128834}
+  - {fileID: 109250218}
   - {fileID: 474993869}
   - {fileID: 143374414}
   - {fileID: 1186908164}
@@ -38376,9 +38405,7 @@ SceneRoots:
   - {fileID: 12269379}
   - {fileID: 738818789}
   - {fileID: 433241227}
-  - {fileID: 245128834}
   - {fileID: 478319270}
-  - {fileID: 109250218}
   - {fileID: 112695317}
   - {fileID: 573328033}
   - {fileID: 1252246812}

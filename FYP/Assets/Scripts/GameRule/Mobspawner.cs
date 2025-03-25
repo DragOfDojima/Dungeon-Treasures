@@ -65,8 +65,8 @@ public class Mobspawner : MonoBehaviour
 
         if (remain <= 0&&!endWave&&started)
         {
-            endWave = true;
-            StartCoroutine(wait());
+            //endWave = true;
+            //StartCoroutine(wait());
         }
         
 
@@ -74,7 +74,7 @@ public class Mobspawner : MonoBehaviour
             return;
         if(spawnCount >= maxSpawn)
             return;
-        timer+=Time.deltaTime;
+        /*timer+=Time.deltaTime;
         if(timer > spawnTimer)
         {
             if(SlimeCount > 0) {
@@ -89,9 +89,16 @@ public class Mobspawner : MonoBehaviour
                 //toBeSpawn -= 1;
             }
             timer -= spawnTimer;
-        }
+        }*/
     }
-
+    int maxWave=0;
+    public void endedWave(int max)
+    {
+        wave.setRest(true);
+        maxWave = max;
+        endWave = true;
+        StartCoroutine(wait());
+    }
     public void Spawn(GameObject prefabToSpawn)
     {
         MRUKRoom room =MRUK.Instance.GetCurrentRoom();
@@ -131,7 +138,7 @@ public class Mobspawner : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         WaveCounter.SetActive(false);
-        if (wave.getWaveCount() == 3)
+        if (wave.getWaveCount() == maxWave)
         {
             GameObject.FindGameObjectWithTag("PlayerGO").GetComponent<Player>().spawnScoreBoard();
             WIN.SetActive(true);

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Wave : MonoBehaviour
 {
     public Mobspawner mobspawner;
+    public WhatEnemyToSpawn wets;
     private int waveCount = 0;
     GameObject WaveMenu;
     Button button;
@@ -33,24 +34,8 @@ public class Wave : MonoBehaviour
     {
         rest=false;
         WaveMenu.SetActive(false);
-        switch (waveCount) { 
-            case 0:
-                StartCoroutine(mobspawner.SetMobSpawn(5, 0));
-                waveCount = 1;
-                break;
-            case 1:
-                StartCoroutine(mobspawner.SetMobSpawn(0, 1));
-                waveCount = 2;
-                break;
-            case 2:
-                StartCoroutine(mobspawner.SetMobSpawn(3, 1));
-                waveCount = 3;
-                break;
-            default:
-                Debug.Log("Invalid Wave");
-                break;
-        }
-
+        wets.StartWave(waveCount);
+        waveCount++;
     }
 
     public int getWaveCount()
@@ -60,14 +45,14 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mobspawner.getSpawnCount() <= 0&&!mobspawner.getWaitmob())
+        /*(if(mobspawner.getSpawnCount() <= 0&&!mobspawner.getWaitmob())
         {
             rest = true;
         }
         else
         {
             rest = false;
-        }
+        }*/
         if (WaveMenu == null)
         {
             WaveMenu = GetComponent<StartMenuToCenter>().getStartMenu();
@@ -157,6 +142,11 @@ public class Wave : MonoBehaviour
         return rest;
     }
 
+    public void setRest(bool r)
+    {
+        rest = r;
+    }
+
     public float getTimer()
     {
         return timer;
@@ -165,6 +155,7 @@ public class Wave : MonoBehaviour
     public void setDungeon(string d)
     {
         dungeon = d;
+        wets.setDungeon(d);
     }
     public void setQuestionFileName(string q)
     {
