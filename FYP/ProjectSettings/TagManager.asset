@@ -12,6 +12,14 @@ TagManager:
   - Weapon
   - PlayerGO
   - ScoreBoard
+  - Character
+  - SenderTMP
+  - PassThroughButton
+  - PassThrough
+  - Locomotion
+  - LocoButton
+  - LocoText
+  - SamplesInfoPanel
   layers:
   - Default
   - TransparentFX
@@ -28,7 +36,7 @@ TagManager:
   - Potion
   - Enemy
   - Hand
-  - 
+  - katana
   - 
   - 
   - 
