@@ -80,8 +80,8 @@ public class chestspawner : MonoBehaviour
     }
     public void Spawn()
     {
-        spawnCount = wave.getChestCount();
-        potionSpawnCount = wave.getPotionChestCount();
+        maxChest = wave.getChestCount();
+        maxPotionChest = wave.getPotionChestCount();
         SpawnChestOnGround = wave.getChestSpawnOnGround();
         spawnNormalChest();
         spawnPotionChest();
