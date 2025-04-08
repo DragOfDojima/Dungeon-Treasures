@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI chest;
     public TextMeshProUGUI potionChest;
     public GameObject wavecounter;
+    [SerializeField] GameObject WaveCount;
+    [SerializeField] GameObject Menu;
 
 
     public void GameRuleDone()
@@ -21,5 +23,11 @@ public class MainMenu : MonoBehaviour
     public void setDungeon(string s)
     {
         GameObject.Find("GameM").GetComponent<Wave>().setDungeon(s);
+    }
+
+    public void Reset()
+    {
+        WaveCount.SetActive(false);
+        Menu.SetActive(true);
     }
 }

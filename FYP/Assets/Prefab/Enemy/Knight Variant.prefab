@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: e69f42df-68d7-4f4e-8a2e-f048bcd007aa
+  instanceId: 710c147b-c157-45b0-90d2-b6f8f4f7f634
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -1542,6 +1542,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5295282159521591789}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ab1d5eade25a61b4682c93bc1a982397,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2667129926396168714}
     - targetCorrespondingSourceObject: {fileID: -7596534155637171779, guid: ab1d5eade25a61b4682c93bc1a982397,
         type: 3}
       insertIndex: -1
@@ -1798,6 +1802,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &2667129926396168714
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072538448824412856}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &9127194835778115233
 PrefabInstance:
   m_ObjectHideFlags: 0

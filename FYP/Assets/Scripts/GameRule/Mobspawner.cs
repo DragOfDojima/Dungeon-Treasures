@@ -17,8 +17,8 @@ public class Mobspawner : MonoBehaviour
     public MRUKAnchor.SceneLabels spawnLabels;
     public float normalOffset;
     public int maxSpawn=3;
-    private int SlimeCount;
-    private int KingSlimeCount;
+    //private int SlimeCount;
+    //private int KingSlimeCount;
     //private int toBeSpawn;
     private int remain;
     public bool spwanedking;
@@ -34,7 +34,7 @@ public class Mobspawner : MonoBehaviour
     {
         WaveMenu = w;
     }
-    public IEnumerator SetMobSpawn(int Slime, int kingSlime)
+    /*public IEnumerator SetMobSpawn(int Slime, int kingSlime)
     {
         endWave = false;
         waitmob=true;
@@ -53,8 +53,8 @@ public class Mobspawner : MonoBehaviour
     public bool getWaitmob()
     {
         return waitmob;
-    }
-    int spawnCount=0;
+    }*/
+    int spawnCount =0;
     // Update is called once per frame
     void Update()
     {
@@ -99,6 +99,7 @@ public class Mobspawner : MonoBehaviour
         endWave = true;
         StartCoroutine(wait());
     }
+    /*
     public void Spawn(GameObject prefabToSpawn)
     {
         MRUKRoom room =MRUK.Instance.GetCurrentRoom();
@@ -107,7 +108,7 @@ public class Mobspawner : MonoBehaviour
         randomPositionNormalOffset.y=0;
         Instantiate(prefabToSpawn, randomPositionNormalOffset, Quaternion.identity); 
         spawnCount++;
-    }
+    }*/
 
     public void killedMob()
     {
@@ -124,6 +125,7 @@ public class Mobspawner : MonoBehaviour
     {
         waitmob=false;
         started=false;
+        if(wave.getWaveCount()!=0)
         WaveMenu.SetActive(true);
         chest[] scripts2 = FindObjectsOfType<chest>();
         foreach (chest script in scripts2)

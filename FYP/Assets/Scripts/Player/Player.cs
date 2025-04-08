@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
             audioSource.pitch = 1;
             audioSource.Play();
             Gameover.SetActive(true);
-            StartCoroutine (wait(3));
+            StartCoroutine(wait(3));
 
             //hp = 100;
             //Gameover.SetActive(false);

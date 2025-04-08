@@ -6,6 +6,8 @@ public class PanelController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(mainCamera == null)
+        mainCamera = Camera.main;
 
         Vector3 cameraPosition = mainCamera.transform.position;
         Vector3 cameraForward = mainCamera.transform.forward;

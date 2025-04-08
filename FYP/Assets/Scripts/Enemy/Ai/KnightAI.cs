@@ -85,6 +85,7 @@ public class KnightAI : MonoBehaviour
     {
         animator.SetBool("idel", false);
         Vector3 targetPosition = Camera.main.transform.position;
+        if(agent.isActiveAndEnabled)
         agent.SetDestination(targetPosition);
         playerInCloseRange = Physics.CheckSphere(transform.position, 0.8f, whatIsPlayer);
         if (playerInCloseRange && animator.enabled == true)

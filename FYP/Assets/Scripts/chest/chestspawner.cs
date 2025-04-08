@@ -48,11 +48,8 @@ public class chestspawner : MonoBehaviour
             }
         }
         rest = wave.isRest();
-        Debug.Log("I");
         if (!wave.isRest())
         {
-            Debug.Log("I am working");
-
             Spawn();
         }
 

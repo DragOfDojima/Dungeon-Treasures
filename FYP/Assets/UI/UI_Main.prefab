@@ -40706,6 +40706,8 @@ MonoBehaviour:
   chest: {fileID: 5504560151647677213}
   potionChest: {fileID: 4935494817419542431}
   wavecounter: {fileID: 5411503971561781759}
+  WaveCount: {fileID: 4528684162252443785}
+  Menu: {fileID: 6453585592202056670}
 --- !u!1 &3445156475300258443
 GameObject:
   m_ObjectHideFlags: 0
