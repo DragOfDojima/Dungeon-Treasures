@@ -36571,7 +36571,7 @@ PrefabInstance:
     - target: {fileID: 1332244378739031441, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0040876814
+      value: 0.013881123
       objectReference: {fileID: 0}
     - target: {fileID: 1651916490960708757, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
@@ -36586,7 +36586,7 @@ PrefabInstance:
     - target: {fileID: 1973107165984357815, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2089742539808965564, guid: 2a227c28daac328438a90156a33eda44,
         type: 3}
@@ -36824,6 +36824,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3139697206276273399}
+    - targetCorrespondingSourceObject: {fileID: 7250611778303013844, guid: 2a227c28daac328438a90156a33eda44,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7411802304706173899}
   m_SourcePrefab: {fileID: 100100000, guid: 2a227c28daac328438a90156a33eda44, type: 3}
 --- !u!224 &1923822232247760509 stripped
 RectTransform:
@@ -36871,3 +36875,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 7905566664893105454}
+--- !u!114 &7411802304706173899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487712917535926455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
