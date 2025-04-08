@@ -483,7 +483,8 @@ MonoBehaviour:
   WeaponDamage: 19
   ComboBouns: 1.01
   MaxCombo: 2
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 1244083371172940659, guid: 252c9f36ed7dd684594786e9cfcf77c3,
+    type: 3}
   allPlayer: []
 --- !u!82 &2331371070037662231
 AudioSource:
