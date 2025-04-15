@@ -142,7 +142,8 @@ public class Player : MonoBehaviour
         Time = string.Format("{0:00}:{1:00}", minutes, seconds);
         Vector3 forward = Camera.main.transform.forward;
         forward.y = 0;
-        GameObject sb = Instantiate(ScoreBoard, transform.position+forward, Quaternion.identity);
+        Vector3 position = GameObject.Find("GameM").GetComponent<StartMenuToCenter>().getCenterOfRoom();
+        GameObject sb = Instantiate(ScoreBoard, position, Quaternion.identity);
         sb.transform.LookAt(Camera.main.transform.position);
         sb.transform.rotation = Quaternion.Euler(sb.transform.rotation.eulerAngles.x, sb.transform.rotation.eulerAngles.y+180f, sb.transform.rotation.eulerAngles.z);
         sb.GetComponent<ScoreBoard>().setData(Score, TotalDamage, TotalEnemySlayed, TotalAnswerCorrect, Time);

@@ -4748,6 +4748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasPrefab: {fileID: 3372193876021508423, guid: ead29a34e355f3248b3a1b7eb5f23560,
     type: 3}
+  CenterOfRoom: {x: 0, y: 0, z: 0}
 --- !u!82 &245128838
 AudioSource:
   m_ObjectHideFlags: 0

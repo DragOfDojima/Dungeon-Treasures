@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6757464165815796696}
   - component: {fileID: 3373828518749639370}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HandGrabPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351898176135801858}
   - component: {fileID: 4723337743303997573}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: '[BuildingBlock] HandGrab_mirror'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,9 +434,9 @@ GameObject:
   - component: {fileID: 3404872695592472684}
   - component: {fileID: 2331371070037662231}
   - component: {fileID: 8090362224381061699}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: greatSword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -745,6 +745,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreatSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2063d03a98cf80478533fa49f63c05b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b2063d03a98cf80478533fa49f63c05b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

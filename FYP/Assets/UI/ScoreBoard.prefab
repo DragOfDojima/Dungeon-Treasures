@@ -5787,7 +5787,6 @@ GameObject:
   - component: {fileID: 5840468593367115637}
   - component: {fileID: 3311931722626996803}
   - component: {fileID: 3566628912732055856}
-  - component: {fileID: 399886466681351438}
   m_Layer: 5
   m_Name: ScoreBoard
   m_TagString: Untagged
@@ -5804,7 +5803,7 @@ RectTransform:
   m_GameObject: {fileID: 3934887024792880596}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.031500276}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 601144723791442154}
@@ -6014,20 +6013,6 @@ MonoBehaviour:
   time: {fileID: 3082618540314416297}
   totalScore: {fileID: 4568217869310726060}
   rank: {fileID: 871183476084088107}
---- !u!114 &399886466681351438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3934887024792880596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4c3f7d7d356c54d89514103a4392b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  offset: 1.5
 --- !u!1 &4329291903578199830
 GameObject:
   m_ObjectHideFlags: 0

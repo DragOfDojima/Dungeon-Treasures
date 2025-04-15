@@ -7,6 +7,7 @@ public class StartMenuToCenter : MonoBehaviour
     public GameObject canvasPrefab; // Reference to the 3D canvas prefab
     GameObject StartMenu;
     List<GameObject> wallObjects = new List<GameObject>();
+    private Vector3 CenterOfRoom;
     void Start()
     {
 
@@ -38,11 +39,16 @@ public class StartMenuToCenter : MonoBehaviour
             Vector3 centerPoint = new Vector3(centroid.x, cameraPosition.y, centroid.z);
 
             Debug.Log("Center Point of the Room: " + centerPoint);
-
+            CenterOfRoom = centerPoint;
             // Create a 3D canvas at the center point
             StartMenu = Instantiate(canvasPrefab, centerPoint, Quaternion.identity);
             StartMenu.GetComponent<MainMenu>().wavecounter.GetComponent<WaveCounter>().wave = GetComponent<Wave>();
         }
+    }
+
+    public Vector3 getCenterOfRoom()
+    {
+        return CenterOfRoom;
     }
 
     public GameObject getStartMenu()

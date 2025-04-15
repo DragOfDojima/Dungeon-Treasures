@@ -4,6 +4,7 @@ public class PanelController : MonoBehaviour
 {
     public Camera mainCamera;
     public float offset=1;
+   
     private void LateUpdate()
     {
         if(mainCamera == null)

@@ -85,6 +85,8 @@ public class ScoreBoard : MonoBehaviour
 
     public void Close()
     {
+        GameObject.Find("GameM").GetComponent<StartMenuToCenter>().getStartMenu().SetActive(true);
         Destroy(gameObject);
+
     }
 }
