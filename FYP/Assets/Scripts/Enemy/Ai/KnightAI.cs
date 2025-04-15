@@ -87,7 +87,7 @@ public class KnightAI : MonoBehaviour
         Vector3 targetPosition = Camera.main.transform.position;
         if(agent.isActiveAndEnabled)
         agent.SetDestination(targetPosition);
-        playerInCloseRange = Physics.CheckSphere(transform.position, 1.2f, whatIsPlayer);
+        playerInCloseRange = Physics.CheckSphere(transform.position, 1.4f, whatIsPlayer);
         if (playerInCloseRange && animator.enabled == true)
         {
             enemyWeapon.hitedShield=false;

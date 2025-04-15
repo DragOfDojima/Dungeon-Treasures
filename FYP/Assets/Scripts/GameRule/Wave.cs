@@ -35,6 +35,7 @@ public class Wave : MonoBehaviour
         rest=false;
         WaveMenu.SetActive(false);
         wets.StartWave(waveCount);
+        GameObject.Find("MobSpawner").GetComponent<Mobspawner>().GetWaveCounter().SetActive(true);
         waveCount++;
     }
 

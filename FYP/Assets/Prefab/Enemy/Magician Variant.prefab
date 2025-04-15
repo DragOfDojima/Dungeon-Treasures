@@ -15081,7 +15081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267b9122875a97e49bd58dfe039a5e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
+  Hp: 150
   floatDamOffset: 0.5
   healthBar: {fileID: 5766657003669333196}
   deadMat: {fileID: 0}
@@ -15090,7 +15090,7 @@ MonoBehaviour:
   colliders:
   - {fileID: 3865532090399916492}
   NPC: {fileID: 2248871412813806974}
-  Score: 200
+  Score: 500
 --- !u!114 &8382897188713649939
 MonoBehaviour:
   m_ObjectHideFlags: 0

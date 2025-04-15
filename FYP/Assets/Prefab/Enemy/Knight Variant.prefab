@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   cooldownTime: 1
+  hitedShield: 0
 --- !u!1 &1201990323723995056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1660,7 @@ MonoBehaviour:
   colliders:
   - {fileID: 5165460374452507761}
   NPC: {fileID: 9072538448824412856}
-  Score: 50
+  Score: 100
 --- !u!195 &8537779656689156055
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1704,7 +1705,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   npcStat: {fileID: 2063688039767608034}
-  damage: 30
+  damage: 25
   deadSound: {fileID: 0}
 --- !u!82 &5295282159521591789
 AudioSource:

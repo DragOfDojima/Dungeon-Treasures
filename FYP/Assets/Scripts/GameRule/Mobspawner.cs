@@ -158,4 +158,9 @@ public class Mobspawner : MonoBehaviour
         yield return new WaitForSeconds(26);
         WIN.SetActive(false);
     }
+
+    public GameObject GetWaveCounter()
+    {
+        return WaveCounter;
+    }
 }
