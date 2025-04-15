@@ -1697,7 +1697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyWeapon: {fileID: 5772034267222810013}
   agent: {fileID: 8537779656689156055}
-  speed: 1
+  speed: 0.6
   knockBackPower: 20
   animator: {fileID: 3592278250975114275}
   sightRange: 5

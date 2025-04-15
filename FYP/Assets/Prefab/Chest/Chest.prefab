@@ -1156,6 +1156,18 @@ MonoBehaviour:
     - item: {fileID: 5369234646297677814, guid: ccb168f32d3039644828f46c1a9a009c,
         type: 3}
       weight: 4
+    - item: {fileID: 5226376596580320986, guid: 8d24def7bfa2eaf4097a2833dd8d203c,
+        type: 3}
+      weight: 4
+    - item: {fileID: 4470500012775175612, guid: 5f6f0974c3eefaf458b28d18aedbb6e9,
+        type: 3}
+      weight: 4
+    - item: {fileID: 1380665803376885059, guid: 05e449625f68afa4f92ed585768ef909,
+        type: 3}
+      weight: 4
+    - item: {fileID: 3370477518300715752, guid: 7d105999c31de86498e6811d22da3521,
+        type: 3}
+      weight: 4
   itemHolder: {fileID: 2031765016138311665}
   deadanimation: {fileID: 7022405614622995346}
   deadMat: {fileID: 2100000, guid: b3b691dc909091240836c64e28945e36, type: 2}

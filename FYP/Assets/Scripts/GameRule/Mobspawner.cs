@@ -95,6 +95,7 @@ public class Mobspawner : MonoBehaviour
     public void endedWave(int max)
     {
         wave.setRest(true);
+        GameObject.Find("Player").GetComponent<Player>().increaseHp(30);
         maxWave = max;
         endWave = true;
         StartCoroutine(wait());
