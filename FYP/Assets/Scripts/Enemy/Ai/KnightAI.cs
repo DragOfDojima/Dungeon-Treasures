@@ -88,11 +88,11 @@ public class KnightAI : MonoBehaviour
         if(agent.isActiveAndEnabled)
         agent.SetDestination(targetPosition);
         playerInCloseRange = Physics.CheckSphere(transform.position, 1.4f, whatIsPlayer);
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("slash1")|| animator.GetCurrentAnimatorStateInfo(0).IsName("slash2"))
+        enemyWeapon.hitedShield = false;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("slash1")|| animator.GetCurrentAnimatorStateInfo(0).IsName("slash2"))
             return;
         if (playerInCloseRange && animator.enabled == true)
         {
-            enemyWeapon.hitedShield=false;
             agent.updatePosition = false;
             agent.speed = 0;
             agent.updateRotation = false;
