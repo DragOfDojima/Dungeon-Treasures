@@ -87,9 +87,13 @@ public class KnightAI : MonoBehaviour
         Vector3 targetPosition = Camera.main.transform.position;
         if(agent.isActiveAndEnabled)
         agent.SetDestination(targetPosition);
-        playerInCloseRange = Physics.CheckSphere(transform.position, 0.8f, whatIsPlayer);
+        playerInCloseRange = Physics.CheckSphere(transform.position, 1.2f, whatIsPlayer);
         if (playerInCloseRange && animator.enabled == true)
         {
+            agent.updatePosition = false;
+            agent.speed = 0;
+            agent.updateRotation = false;
+            agent.enabled = false;
             int randomValue = UnityEngine.Random.Range(0, 100);
 
             // Set animator parameters based on the random value
@@ -103,10 +107,6 @@ public class KnightAI : MonoBehaviour
                 animator.SetBool("atk1", false);
                 animator.SetBool("atk2", true);
             }
-            agent.updatePosition = false;
-            agent.speed = 0;
-            agent.updateRotation = false;
-            agent.enabled = false;
             FaceTarget(targetPosition);
         }
         else
@@ -156,12 +156,14 @@ public class KnightAI : MonoBehaviour
     {
         sightRange = 100;
         hurted = true;
+        agent.speed = 0;
         animator.SetTrigger("damage");
         Invoke("resetHurt", 2);
     }
     void resetHurt()
     {
         hurted = false;
+        agent.speed = speed;
         animator.ResetTrigger("damage");
     }
 }
