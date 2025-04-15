@@ -158,8 +158,12 @@ public class KnightAI : MonoBehaviour
         sightRange = 100;
         hurted = true;
         agent.speed = 0;
-        animator.SetTrigger("damage");
-        Invoke("resetHurt", 2);
+        if (hurted == false)
+        {
+            animator.SetTrigger("damage");
+            Invoke("resetHurt", 2);
+        }
+        
     }
     void resetHurt()
     {
