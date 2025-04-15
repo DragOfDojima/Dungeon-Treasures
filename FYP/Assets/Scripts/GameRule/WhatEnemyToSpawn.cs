@@ -21,6 +21,7 @@ public class WhatEnemyToSpawn : MonoBehaviour
     int maxMobOnMap=4;
     bool isFighting=false;
     bool isSpawning = false;
+    int remainMob=0;
 
     private void Update()
     {
@@ -93,7 +94,7 @@ public class WhatEnemyToSpawn : MonoBehaviour
 
     public void StartWave(int waveCount)
     {
-        
+        remainMob = waveMobCount[waveCount].Count;
         StartCoroutine(SpawnWave(waveCount));
     }
 
@@ -142,5 +143,15 @@ public class WhatEnemyToSpawn : MonoBehaviour
     public void setIsFighting()
     {
         isFighting=true;
+    }
+
+    public int getRemainMobCount()
+    {
+        return remainMob;
+    }
+
+    public void killedMob()
+    {
+        remainMob--;
     }
 }

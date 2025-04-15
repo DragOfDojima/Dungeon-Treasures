@@ -31,7 +31,7 @@ public class weapon : MonoBehaviour
         
         if (other.tag == "hitable")
         {
-            if (speed > 2)
+            if (speed > 2.5)
             {
                 var hitPoint = other.ClosestPoint(transform.position);
                 Instantiate(hitEffect, hitPoint, Quaternion.identity);

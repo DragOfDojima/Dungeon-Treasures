@@ -188,4 +188,9 @@ public class Wave : MonoBehaviour
     {
         return potionChestCount;
     }
+
+    public WhatEnemyToSpawn GetWhatEnemyToSpawn()
+    {
+        return wets;
+    }
 }

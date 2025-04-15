@@ -112,6 +112,7 @@ public class Mobspawner : MonoBehaviour
 
     public void killedMob()
     {
+        gameObject.GetComponent<WhatEnemyToSpawn>().killedMob();
         spawnCount--;
         remain--;
     }

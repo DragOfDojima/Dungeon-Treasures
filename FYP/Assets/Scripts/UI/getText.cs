@@ -27,7 +27,7 @@ public class getText : MonoBehaviour
     {
 
         WaveCounter = wave.getWaveCount();
-        enemyRemain = mobspawner.getSpawnCount();
+        enemyRemain = wave.GetWhatEnemyToSpawn().getRemainMobCount();
         timer = wave.getTimer();
 
         float minutes = Mathf.FloorToInt(timer / 60);
