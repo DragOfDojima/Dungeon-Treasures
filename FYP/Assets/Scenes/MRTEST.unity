@@ -8601,8 +8601,8 @@ RectTransform:
   m_GameObject: {fileID: 479097247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1827496116}
   m_Father: {fileID: 1856892010}
@@ -24552,18 +24552,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00616638, y: -0.029108923, z: -0.018820617}
     m_Extent: {x: 0.033926036, y: 0.042694185, z: 0.05639166}
   m_DirtyAABB: 0
---- !u!114 &1514806742 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8823476865091786979, guid: a157633bbdb1ffb46910bf9e00030ba3,
-    type: 3}
-  m_PrefabInstance: {fileID: 8964384427113280972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb7085c111fcb44493d57d4e336d3fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1523026684
 GameObject:
   m_ObjectHideFlags: 0
@@ -38734,11 +38722,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8085940273029426196, guid: a157633bbdb1ffb46910bf9e00030ba3,
-        type: 3}
-      propertyPath: _twoGrabTransformer
-      value: 
-      objectReference: {fileID: 1514806742}
     - target: {fileID: 8474521089953206330, guid: a157633bbdb1ffb46910bf9e00030ba3,
         type: 3}
       propertyPath: m_Name

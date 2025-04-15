@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {
     public int Damage;
-    public float cooldownTime = 1f; // Cooldown time in seconds
+    public float cooldownTime = 1.5f; // Cooldown time in seconds
     private bool canDealDamage = true;
-
+    public bool hitedShield=false;
    
     void Start()
     {
@@ -18,12 +18,17 @@ public class EnemyWeapon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collided"+other.gameObject.name);
-        if(other.tag== "Shield")return;
+        if(other.tag== "Shield")
+        {
+            hitedShield=true;
+        }
         if (other.tag == "Player" && canDealDamage)
         {
-            other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);
-            StartCoroutine(DamageCooldown());
-
+            if (hitedShield == false)
+            {
+                other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);
+                StartCoroutine(DamageCooldown());
+            }
         }
 
     }
