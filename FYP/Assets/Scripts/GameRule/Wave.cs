@@ -109,7 +109,7 @@ public class Wave : MonoBehaviour
             Destroy(script.gameObject);
         }
         WaveMenu.GetComponent<MainMenu>().Reset();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 
     }
     private void UpdateAudioState()
