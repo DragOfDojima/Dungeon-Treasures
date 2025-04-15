@@ -55,7 +55,7 @@ public class NpcStat : MonoBehaviour
             if (!iframe)
             {
                 int Damage = (int)Mathf.Ceil(dam);
-                StartCoroutine(ApplyKnockback(-transform.forward*knockbackPower));
+                StartCoroutine(ApplyKnockback(transform.forward*knockbackPower));
                 iframe = true;
                 CurrentHP -= Damage;
                 var floatdam = Instantiate(floatDam, transform.position, transform.rotation) as GameObject;
