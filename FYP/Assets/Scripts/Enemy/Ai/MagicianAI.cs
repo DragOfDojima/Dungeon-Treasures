@@ -131,7 +131,7 @@ public class MagicianAI : MonoBehaviour
         {
             spawnPosition = Camera.main.transform.position; // Spawn at camera position for other skills
         }
-
+        spawnPosition.y = 0;
         GameObject prefabToSpawn = null;
 
         // Select the correct prefab based on the index
