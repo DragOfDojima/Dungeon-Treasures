@@ -18,6 +18,7 @@ public class EnemyWeapon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collided"+other.gameObject.name);
+        if(other.tag== "Shield")return;
         if (other.tag == "Player" && canDealDamage)
         {
             other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);

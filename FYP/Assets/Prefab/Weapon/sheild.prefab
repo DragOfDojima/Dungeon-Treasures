@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _surface: {fileID: 0}
-  _relativeTo: {fileID: 0}
+  _relativeTo: {fileID: 3139169344317611553}
   _usesHandPose: 1
   _handPose:
     _handedness: 0

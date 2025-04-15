@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 1664964096571382636}
   - component: {fileID: 3693443723469123632}
   m_Layer: 11
-  m_Name: Katana
+  m_Name: katana
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5502767394844064832}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0029997826, y: 0.806, z: -0.21200004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -436,14 +436,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5810502172003495743}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.72070193, y: -0.037317067, z: 0.056882977, w: 0.68989897}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.058933068, y: -0.67169785, z: -0.7089812, w: -0.20662673}
+  m_LocalPosition: {x: -0.0055, y: 0.00027382374, z: -0.002000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 845850424520491350}
   m_Father: {fileID: 5739509780252231959}
-  m_LocalEulerAnglesHint: {x: -2.385, y: -7.678, z: 1.749}
+  m_LocalEulerAnglesHint: {x: -102.367, y: -115.05499, z: -86.72}
 --- !u!114 &1082298363224579972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,14 +721,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8523327563121430768}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.9996711, w: -0.02564579}
-  m_LocalPosition: {x: 0.002, y: -0.04983586, z: 0}
+  m_LocalRotation: {x: -0.98893684, y: 0.1104709, z: 0.098174006, w: -0.01272655}
+  m_LocalPosition: {x: -0.0052390783, y: -0.04868543, z: 0.006713927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6949944062790622988}
   m_Father: {fileID: 5739509780252231959}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 182.939}
+  m_LocalEulerAnglesHint: {x: 0.199, y: -168.639, z: 192.768}
 --- !u!114 &4458256332107078678
 MonoBehaviour:
   m_ObjectHideFlags: 0

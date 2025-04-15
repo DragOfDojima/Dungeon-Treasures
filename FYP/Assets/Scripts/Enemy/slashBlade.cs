@@ -17,6 +17,7 @@ public class slashBlade : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collided" + other.gameObject.name);
+        if(other.tag == "Shield") Destroy(gameObject);
         if (other.tag == "Player" )
         {
             other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);
