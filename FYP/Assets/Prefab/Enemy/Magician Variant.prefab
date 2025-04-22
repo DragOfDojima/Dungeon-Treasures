@@ -14571,17 +14571,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9a848ceceffce9a4eb41c2496389504b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.018
+      value: 2.2904239
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a848ceceffce9a4eb41c2496389504b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000011920929
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a848ceceffce9a4eb41c2496389504b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.277731
+      value: 0.5104313
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a848ceceffce9a4eb41c2496389504b,
         type: 3}
@@ -15105,7 +15105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2750270507594425206}
   npcStat: {fileID: 1400917866783211930}
-  deadSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: 884e9fb426b5a82499eadb0dc137ca8b, type: 3}
+  audioSource: {fileID: 3593870742115254942}
   redOrb: {fileID: 3271470793546514353, guid: c2a517cb4027ded40b0cca01e2f37808, type: 3}
   aoe: {fileID: 1111022106468712728, guid: 3e7bcf80b5cdfc4409ca3d029c7e40bb, type: 3}
   slash: {fileID: 7803777201417820264, guid: 8354e42d56bdf74419095c8d810c204d, type: 3}

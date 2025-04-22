@@ -20,11 +20,6 @@ public class Setting : MonoBehaviour
     }
 
     // Method to update sound volume and text
-    void UpdateSound(float volume)
-    {
-        AudioListener.volume = volume; // Set the audio volume
-        UpdateSoundText(volume);        // Update the text display
-    }
 
     // Method to update the sound text display
     public void UpdateSoundText(float sliderValue)
@@ -35,7 +30,8 @@ public class Setting : MonoBehaviour
 
         // Evaluate the curve using the slider value as the input
         // Normalize the slider value (0 to 200) to fit the curve
-        float mixerValue = volumeCurve.Evaluate(sliderValue / 2000); // Get mixer value from curve
+        float mixerValue = (volumeCurve.Evaluate(sliderValue / 200))*100; // Get mixer value from curve
+        Debug.Log(mixerValue);
         audioMixer.SetFloat("Volume", mixerValue); // Set the audio mixer volume
     }
 

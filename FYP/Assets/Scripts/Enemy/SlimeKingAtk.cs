@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SlimeKingAtk : MonoBehaviour
@@ -34,7 +35,14 @@ public class SlimeKingAtk : MonoBehaviour
                 other.GetComponent<ToPlayer>().getplayer().increaseHp(-15);
             }
             if (other.tag != "hitable" || other.name != "impactDamage" || other.name != "Bone")
+            {
+                if (other.tag == "Shield")
+                {
+                    other.GetComponent<weapon>().shield();
+                }
                 Destroy(gameObject);
+            }
+                
         }
         
     }

@@ -8,9 +8,9 @@ public class MagicianAI : MonoBehaviour
 {
     public Animator animator;
     [SerializeField] private NpcStat npcStat;
-    [SerializeField] private AudioClip deadSound;
+    [SerializeField] private AudioClip hurtSound;
     private int lastSkillIndex = -1;
-    AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     bool dead;
     bool startup;
     float Lasthp;
@@ -23,7 +23,6 @@ public class MagicianAI : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         Lasthp = npcStat.getHP();
         StartCoroutine(AttackRoutine());
 
@@ -59,7 +58,7 @@ public class MagicianAI : MonoBehaviour
                 dead = true;
                 gameObject.tag = "Untagged";
                 animator.enabled = false;
-                audioSource.clip = deadSound;
+                audioSource.clip = hurtSound;
                 animator.SetTrigger("dead");
                 audioSource.Play();
             }
@@ -150,12 +149,23 @@ public class MagicianAI : MonoBehaviour
 
         if (prefabToSpawn != null)
         {
-            Instantiate(prefabToSpawn, spawnPosition, Quaternion.LookRotation(transform.forward));
+            //if(prefabToSpawn==slash)
+            //{
+                StartCoroutine(spawnSlash(prefabToSpawn, spawnPosition));
+            //}
+            //else
+            //Instantiate(prefabToSpawn, spawnPosition, Quaternion.LookRotation(transform.forward));
         }
         else
         {
             Debug.LogWarning("Invalid skill index: " + index);
         }
+    }
+
+    IEnumerator spawnSlash(GameObject prefabToSpawn,Vector3 spawnPosition)
+    {
+        yield return new WaitForSeconds(1f); ;
+        Instantiate(prefabToSpawn, spawnPosition, Quaternion.LookRotation(transform.forward));
     }
     private void FaceTarget(Vector3 destination)
     {
@@ -175,6 +185,8 @@ public class MagicianAI : MonoBehaviour
     {
         hurted = true;
         animator.SetTrigger("damage");
+        audioSource.clip = hurtSound;
+        audioSource.Play();
         Invoke("resetHurt", 2);
     }
     void resetHurt()

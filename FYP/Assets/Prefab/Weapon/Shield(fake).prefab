@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7522461810031616624}
   - component: {fileID: 8012354525816162357}
   m_Layer: 0
-  m_Name: sheild (fake)
+  m_Name: Shield(fake)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

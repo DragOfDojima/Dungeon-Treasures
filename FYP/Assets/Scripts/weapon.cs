@@ -12,7 +12,7 @@ public class weapon : MonoBehaviour
     [SerializeField] private int MaxCombo;
     [SerializeField] private GameObject hitEffect;
 
-    AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     private int combo = 0;
 
     private GameObject owner;
@@ -22,7 +22,6 @@ public class weapon : MonoBehaviour
 
     private void Start()
     {
-        audioSource=GetComponent<AudioSource>();
         allPlayer = GameObject.FindGameObjectsWithTag("PlayerGO");
         owner = allPlayer[0];
     }
@@ -87,6 +86,11 @@ public class weapon : MonoBehaviour
         speed = Vector3.Distance(transform.position, lastPosition) / Time.deltaTime;
         lastPosition = transform.position;
         
+    }
+
+    public void shield()
+    {
+        audioSource.Play();
     }
 
 }

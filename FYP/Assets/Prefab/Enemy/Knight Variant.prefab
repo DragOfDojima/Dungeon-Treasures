@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   cooldownTime: 1
-  hitedShield: 0
+  audioSource: {fileID: 607726140413412783}
 --- !u!1 &1201990323723995056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,17 +1230,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ab1d5eade25a61b4682c93bc1a982397,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.96054626
+      value: 3.199818
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab1d5eade25a61b4682c93bc1a982397,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000014305115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab1d5eade25a61b4682c93bc1a982397,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.778006
+      value: -1.9234014
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab1d5eade25a61b4682c93bc1a982397,
         type: 3}
@@ -1706,7 +1706,8 @@ MonoBehaviour:
     m_Bits: 128
   npcStat: {fileID: 2063688039767608034}
   damage: 25
-  deadSound: {fileID: 0}
+  impactSound: {fileID: 8300000, guid: 884e9fb426b5a82499eadb0dc137ca8b, type: 3}
+  walkSound: {fileID: 8300000, guid: 41eacdb4385a0154ea1acacba03b7fb0, type: 3}
 --- !u!82 &5295282159521591789
 AudioSource:
   m_ObjectHideFlags: 0

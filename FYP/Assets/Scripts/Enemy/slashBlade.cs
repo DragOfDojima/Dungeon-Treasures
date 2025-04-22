@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class slashBlade : MonoBehaviour
@@ -17,7 +18,14 @@ public class slashBlade : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collided" + other.gameObject.name);
-        if(other.tag == "Shield") Destroy(gameObject);
+        if (other.tag == "Shield")
+        {
+            if (other.tag == "Shield")
+            {
+                other.GetComponent<weapon>().shield();
+            }
+            Destroy(gameObject);
+        }
         if (other.tag == "Player" )
         {
             other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);

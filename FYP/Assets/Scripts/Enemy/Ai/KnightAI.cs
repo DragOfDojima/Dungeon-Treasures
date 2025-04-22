@@ -17,7 +17,8 @@ public class KnightAI : MonoBehaviour
     public LayerMask whatIsPlayer;
     [SerializeField] private NpcStat npcStat;
     [SerializeField] private int damage;
-    [SerializeField] private AudioClip deadSound;
+    [SerializeField] private AudioClip impactSound;
+    [SerializeField] private AudioClip walkSound;
     AudioSource audioSource;
     bool dead;
     bool startup;
@@ -72,33 +73,48 @@ public class KnightAI : MonoBehaviour
                 dead = true;
                 gameObject.tag = "Untagged";
                 animator.enabled = false;
-                audioSource.clip = deadSound;
+                audioSource.clip = impactSound;
                 enemyWeapon.enemyDead();
                 animator.SetTrigger("dead");
+                audioSource.loop = false;
                 audioSource.Play();
             }
         }
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
     bool atk;
+    bool played;
     private void ChasePlayer()
     {
         animator.SetBool("idel", false);
+        audioSource.clip = walkSound;
+        audioSource.loop = true;
+        if (!played)
+        {
+            audioSource.Play();
+            played = true;
+        }
         Vector3 targetPosition = Camera.main.transform.position;
         if(agent.isActiveAndEnabled)
         agent.SetDestination(targetPosition);
         playerInCloseRange = Physics.CheckSphere(transform.position, 1.4f, whatIsPlayer);
-        enemyWeapon.hitedShield = false;
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("slash1")|| animator.GetCurrentAnimatorStateInfo(0).IsName("slash2"))
-            return;
-        if (playerInCloseRange && animator.enabled == true)
+        enemyWeapon.setHitedShield();
+        //if (animator.GetCurrentAnimatorStateInfo(0).IsName("slash1")|| animator.GetCurrentAnimatorStateInfo(0).IsName("slash2"))
+        //  return;
+        if (playerInCloseRange)
+        {
+            audioSource.Pause();
+
+        }
+        
+        
+        if (playerInCloseRange && agent.enabled == true)
         {
             agent.updatePosition = false;
             agent.speed = 0;
             agent.updateRotation = false;
             agent.enabled = false;
             int randomValue = UnityEngine.Random.Range(0, 100);
-
             // Set animator parameters based on the random value
             if (randomValue < 70) // 70% chance
             {
@@ -114,13 +130,14 @@ public class KnightAI : MonoBehaviour
         }
         else
         {
-
             animator.SetBool("atk1", false);
             animator.SetBool("atk2", false);
             Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
 
             if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name=="walk")
             {
+                audioSource.UnPause();
+
                 agent.enabled = true;
                 agent.SetDestination(targetPosition);
                 agent.updateRotation = true;
@@ -128,6 +145,7 @@ public class KnightAI : MonoBehaviour
                 agent.speed = speed;
             }
         }
+        
 
         if (!hurted)
         {
@@ -160,6 +178,10 @@ public class KnightAI : MonoBehaviour
         sightRange = 100;
         hurted = true;
         agent.speed = 0;
+        audioSource.clip = impactSound;
+        audioSource.loop = false;
+        played = false;
+        audioSource.Play();
         if (hurted == false)
         {
             animator.SetTrigger("damage");
