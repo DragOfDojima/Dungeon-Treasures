@@ -200,7 +200,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6029472462173388447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +252,8 @@ MonoBehaviour:
   slider: {fileID: 3435205281692656856}
   fill: {fileID: 4865288753957726560}
   text: {fileID: 7440331068460251386}
+  player: {fileID: 0}
+  countDuration: 0.2
 --- !u!1 &3526867047916795958
 GameObject:
   m_ObjectHideFlags: 0
