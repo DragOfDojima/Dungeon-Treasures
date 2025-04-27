@@ -11,11 +11,13 @@ public class ShowAllQustionSet : MonoBehaviour
     public SearchFromGoogleSheet sfgs;
     private string filePath;
     List<List<string>> qustionsData;
-
+    private string persistentFilePath;
+    private bool isFirstLoad = true;
 
     private void Start()
     {
         filePath = Path.Combine(Application.streamingAssetsPath, "questionStat.txt");
+        persistentFilePath = Path.Combine(Application.persistentDataPath, "questionStat.txt"); // Set the persistent path
 
         ClearAllContent();
         StartCoroutine(LoadQuestionStat());
@@ -26,6 +28,8 @@ public class ShowAllQustionSet : MonoBehaviour
     {
         ClearAllContent();
         StartCoroutine(LoadQuestionStat());
+        SpawnQuestionSets(qustionsData);
+
     }
     public void ClearAllContent()
     {
@@ -69,6 +73,7 @@ public class ShowAllQustionSet : MonoBehaviour
             }
         }
     }
+    /*
     private IEnumerator LoadQuestionStat()
     {
         Debug.Log("File path: " + filePath);
@@ -80,6 +85,7 @@ public class ShowAllQustionSet : MonoBehaviour
             string data = File.ReadAllText(filePath);
             Debug.Log("File content: " + data);
             qustionsData=ConvertStringToList(data);
+
         }
         else
         {
@@ -96,6 +102,7 @@ public class ShowAllQustionSet : MonoBehaviour
                 string data = request.downloadHandler.text;
                 Debug.Log("File content: " + data);
                 qustionsData=ConvertStringToList(data);
+                WriteToPersistentData(data);
             }
             else
             {
@@ -103,6 +110,55 @@ public class ShowAllQustionSet : MonoBehaviour
             }
         }
 #endif
+        SpawnQuestionSets(qustionsData);
+        yield return null;
+    }*/
+
+    private IEnumerator LoadQuestionStat()
+    {
+        // Try reading from persistent file path first
+        if (File.Exists(persistentFilePath))
+        {
+            string data = File.ReadAllText(persistentFilePath);
+            Debug.Log("File content from persistent path: " + data);
+            qustionsData = ConvertStringToList(data);
+        }
+        else
+        {
+#if UNITY_EDITOR
+            // Read from StreamingAssets in the Editor
+            if (File.Exists(filePath))
+            {
+                string data = File.ReadAllText(filePath);
+                Debug.Log("File content: " + data);
+                qustionsData = ConvertStringToList(data);
+                WriteToPersistentData(data); // Copy to persistent data
+            }
+            else
+            {
+                Debug.LogError("Question data file not found in the Editor!");
+            }
+#else
+        // Read from StreamingAssets on mobile
+        using (UnityWebRequest request = UnityWebRequest.Get(filePath))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string data = request.downloadHandler.text;
+                Debug.Log("File content from StreamingAssets: " + data);
+                qustionsData = ConvertStringToList(data);
+                WriteToPersistentData(data); // Copy to persistent data
+            }
+            else
+            {
+                Debug.LogError("Error reading file: " + request.error);
+            }
+        }
+#endif
+        }
+
         SpawnQuestionSets(qustionsData);
         yield return null;
     }
@@ -143,5 +199,9 @@ public class ShowAllQustionSet : MonoBehaviour
 
         return result;
     }
-
+    private void WriteToPersistentData(string data)
+    {
+        File.WriteAllText(persistentFilePath, data);
+        Debug.Log($"Data written to {persistentFilePath}");
+    }
 }

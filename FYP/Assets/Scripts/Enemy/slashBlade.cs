@@ -28,6 +28,8 @@ public class slashBlade : MonoBehaviour
         }
         if (other.tag == "Player" )
         {
+            if (other.name == "HandOverAll") return;
+
             other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);
 
         }

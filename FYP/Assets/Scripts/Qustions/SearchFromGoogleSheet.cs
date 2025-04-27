@@ -29,7 +29,6 @@ public class SearchFromGoogleSheet : MonoBehaviour
     public GameObject enterName;
     public GameObject typeAdd;
 
-
     [Serializable]
     public class QuizData
     {
@@ -66,7 +65,7 @@ public class SearchFromGoogleSheet : MonoBehaviour
         });
     }
 
-    public void updateData(string sheetId, string gridId, string name)
+    /*public void updateData(string sheetId, string gridId, string name)
     {
         string data="";
         LoadWebClient(sheetId, gridId, s =>
@@ -94,12 +93,47 @@ public class SearchFromGoogleSheet : MonoBehaviour
             }
         });
 
+    }*/
+
+    public void updateData(string sheetId, string gridId, string name)
+    {
+        string data = "";
+        LoadWebClient(sheetId, gridId, s =>
+        {
+            data = RemoveFirstLine(s);
+            Debug.Log(data);
+            if (ValidateFormat(data) == "OK: Format valid")
+            {
+                try
+                {
+                    string filePath;
+
+#if UNITY_EDITOR
+                    filePath = Path.Combine(Application.streamingAssetsPath, name); // Use StreamingAssets in Editor
+#else
+                filePath = Path.Combine(Application.persistentDataPath, name); // Use persistent path
+#endif
+
+                    File.WriteAllText(filePath, data); // Write to appropriate path
+                }
+                catch (IOException ex)
+                {
+                    Debug.LogError($"Failed to create file: {ex.Message}");
+                }
+            }
+            else
+            {
+                var FloatText = Instantiate(floatText, transform.position, transform.rotation) as GameObject;
+                FloatText.GetComponent<floattext>().setText("Google sheet format wrong");
+                FloatText.GetComponent<floattext>().setSize(0.95f);
+            }
+        });
     }
 
-    public void SubmitName()
+    /*public void SubmitName()
     {
         string name = nameInput.text;
-        string QStatPath= Path.Combine(Application.streamingAssetsPath, "questionStat.txt");
+        string QStatPath = Path.Combine(Application.streamingAssetsPath, "questionStat.txt");
         if (!IsValidFileName(name))
         {
             var FloatText = Instantiate(floatText, transform.position, transform.rotation) as GameObject;
@@ -124,10 +158,57 @@ public class SearchFromGoogleSheet : MonoBehaviour
         main.SetActive(true);
         setName.SetActive(false);
         typeAdd.SetActive(false);
+        selectQuestion.SetActive(true);
+        gameObject.GetComponent<ShowAllQustionSet>().updateQuestions();
+    }*/
+
+    public void SubmitName()
+    {
+        string name = nameInput.text;
+        string QStatPath;
+
+#if UNITY_EDITOR
+        QStatPath = Path.Combine(Application.streamingAssetsPath, "questionStat.txt"); // Use StreamingAssets in Editor
+#else
+    QStatPath = Path.Combine(Application.persistentDataPath, "questionStat.txt"); // Use persistent path
+#endif
+
+        if (!IsValidFileName(name))
+        {
+            var FloatText = Instantiate(floatText, transform.position, transform.rotation) as GameObject;
+            FloatText.GetComponent<floattext>().setText("Name invalid");
+            FloatText.GetComponent<floattext>().setSize(0.95f);
+            return;
+        }
+
+        name = name + ".txt";
+        string filePath;
+
+#if UNITY_EDITOR
+        filePath = Path.Combine(Application.streamingAssetsPath, name); // Use StreamingAssets in Editor
+#else
+    filePath = Path.Combine(Application.persistentDataPath, name); // Use persistent path
+#endif
+
+        try
+        {
+            File.WriteAllText(filePath, Qdata); // Write to appropriate path
+            if (!DoesSheetIdExist(SheetId))
+                File.AppendAllText(QStatPath, SheetId + "," + GridId + "," + name + "\n");
+        }
+        catch (IOException ex)
+        {
+            Debug.LogError($"Failed to create file: {ex.Message}");
+        }
+
+        main.SetActive(true);
+        setName.SetActive(false);
+        typeAdd.SetActive(false);
+        selectQuestion.SetActive(true);
         gameObject.GetComponent<ShowAllQustionSet>().updateQuestions();
     }
 
-    
+
 
     private bool IsValidFileName(string fileName)
     {
@@ -241,9 +322,42 @@ public class SearchFromGoogleSheet : MonoBehaviour
         selectQuestion.SetActive(false);
     }
 
-    public bool DoesSheetIdExist(string sheetID)
+    /*public bool DoesSheetIdExist(string sheetID)
     {
         string QStatPath = Path.Combine(Application.streamingAssetsPath, "questionStat.txt");
+
+        // Check if the file exists
+        if (!File.Exists(QStatPath))
+        {
+            return false; // File does not exist, so the ID can't exist
+        }
+
+        // Read all lines from the file
+        string[] lines = File.ReadAllLines(QStatPath);
+
+        // Loop through each line to check for the sheetID
+        foreach (string line in lines)
+        {
+            // Split the line by commas
+            string[] parts = line.Split(',');
+
+            // Check if the first part (sheetID) matches the given sheetID
+            if (parts.Length > 0 && parts[0].Trim() == sheetID)
+            {
+                return true; // Found the sheetID
+            }
+        }
+
+        return false; // sheetID not found
+    }
+    */
+    public bool DoesSheetIdExist(string sheetID)
+    {
+        string QStatPath = Path.Combine(Application.persistentDataPath, "questionStat.txt"); // Use persistent path
+
+#if UNITY_EDITOR
+        QStatPath = Path.Combine(Application.streamingAssetsPath, "questionStat.txt"); // Use StreamingAssets in Editor
+#endif
 
         // Check if the file exists
         if (!File.Exists(QStatPath))

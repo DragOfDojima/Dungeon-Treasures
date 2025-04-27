@@ -10491,7 +10491,7 @@ MonoBehaviour:
   m_MoveDeadzone: 0.6
   m_RepeatDelay: 0.5
   m_RepeatRate: 0.1
-  m_TrackedDeviceDragThresholdMultiplier: 2
+  m_TrackedDeviceDragThresholdMultiplier: 4
   m_TrackedScrollDeltaMultiplier: 5
   m_ActiveInputMode: 1
   m_EnableXRInput: 1
@@ -38391,6 +38391,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611212884371032210, guid: 1bc70a1d39c02a94793f13818d918622,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

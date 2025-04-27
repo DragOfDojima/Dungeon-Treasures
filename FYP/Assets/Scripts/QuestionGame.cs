@@ -33,7 +33,7 @@ public class QuestionGame : MonoBehaviour
     void Start()
     {
         questionFileName = GameObject.Find("GameM").GetComponent<Wave>().getQuestionFileName();
-        filePath = Path.Combine(Application.streamingAssetsPath, questionFileName);
+        filePath = Path.Combine(Application.persistentDataPath, questionFileName);
         RequestPermissions();
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(LoadQuestionData());
@@ -59,13 +59,14 @@ public class QuestionGame : MonoBehaviour
         }
 #else
         // On Android, use UnityWebRequest
-        using (UnityWebRequest request = UnityWebRequest.Get(filePath))
+        /*using (UnityWebRequest request = UnityWebRequest.Get(filePath))
         {
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                string data = request.downloadHandler.text;
+                //string data = request.downloadHandler.text;
+                string data = File.ReadAllText(filePath);
                 Debug.Log("File content: " + data);
                 ParseData(data);
             }
@@ -73,7 +74,10 @@ public class QuestionGame : MonoBehaviour
             {
                 Debug.LogError("Error reading file: " + request.error);
             }
-        }
+        }*/
+        string data = File.ReadAllText(filePath);
+                Debug.Log("File content: " + data);
+                ParseData(data);
 #endif
 
         // Call DisplayQuestion after loading data

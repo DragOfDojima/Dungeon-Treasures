@@ -79,11 +79,9 @@ public class Wave : MonoBehaviour
     {
         timer = 0;
         waveCount = 0;
-        NpcStat[] scripts = FindObjectsOfType<NpcStat>();
-        foreach (NpcStat script in scripts)
-        {
-            script.kys();
-        }
+        killallenemy();
+        Invoke("killallenemy", 1);
+        Invoke("killallenemy", 2);
 
         chest[] scripts2 = FindObjectsOfType<chest>();
         foreach (chest script in scripts2)
@@ -108,9 +106,18 @@ public class Wave : MonoBehaviour
         {
             Destroy(script.gameObject);
         }
+        wets.StopAllCoroutines();
         WaveMenu.GetComponent<MainMenu>().Reset();
         //gameObject.SetActive(false);
 
+    }
+    private void killallenemy()
+    {
+        NpcStat[] scripts = FindObjectsOfType<NpcStat>();
+        foreach (NpcStat script in scripts)
+        {
+            script.kys();
+        }
     }
     private void UpdateAudioState()
     {

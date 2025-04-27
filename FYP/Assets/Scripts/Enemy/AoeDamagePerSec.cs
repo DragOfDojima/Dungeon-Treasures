@@ -32,6 +32,7 @@ public class AoeDamagePerSec : MonoBehaviour
         Debug.Log("collided" + other.gameObject.name);
         if (other.tag == "Player" && canDealDamage)
         {
+            if (other.name == "HandOverAll") return;
             other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);
             StartCoroutine(DamageCooldown());
 

@@ -5787,6 +5787,7 @@ GameObject:
   - component: {fileID: 5840468593367115637}
   - component: {fileID: 3311931722626996803}
   - component: {fileID: 3566628912732055856}
+  - component: {fileID: 7986863561328131875}
   m_Layer: 5
   m_Name: ScoreBoard
   m_TagString: Untagged
@@ -5861,7 +5862,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1609552065695909820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6014,6 +6015,18 @@ MonoBehaviour:
   time: {fileID: 3082618540314416297}
   totalScore: {fileID: 4568217869310726060}
   rank: {fileID: 871183476084088107}
+--- !u!114 &7986863561328131875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934887024792880596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127fea7fa514e014e825a92d6fcc8564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4329291903578199830
 GameObject:
   m_ObjectHideFlags: 0

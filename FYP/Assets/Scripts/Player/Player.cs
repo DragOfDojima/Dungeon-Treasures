@@ -158,4 +158,5 @@ public class Player : MonoBehaviour
         TotalAnswerCorrect = 0;
         Time = null;
     }
+
 }

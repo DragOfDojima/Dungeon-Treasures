@@ -32,6 +32,7 @@ public class SlimeKingAtk : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                if (other.name == "HandOverAll") return;
                 other.GetComponent<ToPlayer>().getplayer().increaseHp(-15);
             }
             if (other.tag != "hitable" || other.name != "impactDamage" || other.name != "Bone")

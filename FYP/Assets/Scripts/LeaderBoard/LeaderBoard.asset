@@ -15,6 +15,10 @@ MonoBehaviour:
   sheetId: 1-PgLaKeIoLKrJMvNmGyUAiF3vHid0VMyNnsRcFo__t0
   gridId: 1345602234
   lb:
+  - Name: bbbb
+    Score: 1938
+    Time: 01:10
+    Rate: A
   - Name: Alex
     Score: 1650
     Time: 01:43
@@ -26,4 +30,12 @@ MonoBehaviour:
   - Name: peter
     Score: 1120
     Time: 00:27
+    Rate: E
+  - Name: nh
+    Score: 1000
+    Time: 00:00
+    Rate: E
+  - Name: bbbbb
+    Score: 1000
+    Time: 00:16
     Rate: E

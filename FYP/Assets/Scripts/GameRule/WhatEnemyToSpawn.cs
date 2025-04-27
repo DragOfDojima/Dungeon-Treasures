@@ -112,7 +112,6 @@ public class WhatEnemyToSpawn : MonoBehaviour
                 yield return null; // Wait until the next frame
                 curentMobCount = GameObject.FindGameObjectsWithTag("hitable").Length; // Update current mob count
             }
-
             // Spawn the enemy
             if (waveMobCount[waveCount][i] == slimeKing || waveMobCount[waveCount][i] == magician)
             {
