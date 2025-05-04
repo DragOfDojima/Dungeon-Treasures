@@ -21,10 +21,14 @@ public class CustomSocket : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if ((Layer.value & (1 << other.transform.gameObject.layer)) > 0)
+        if ((Layer & (1 << other.gameObject.layer)) != 0)
         {
-            Target = other.gameObject;
-            HoverObject();
+            if(!wasInSoket)
+            {
+                Target = other.gameObject;
+                HoverObject();
+            }
+            
 
             if (Target.GetComponentInParent<MyGrabable>() != null)
             {
@@ -47,9 +51,15 @@ public class CustomSocket : MonoBehaviour
         {
             DestroyHoverObject();
 
+            // Reset the local scale and position
+            Target.transform.localPosition = Vector3.zero;
+            Target.transform.localRotation = Quaternion.identity;
+
             Target.transform.parent = Attach.transform;
             Target.transform.rotation = Attach.transform.rotation;
             Target.transform.position = Attach.transform.position;
+
+            Target.GetComponent<Collider>().isTrigger=true;
 
             if (Freeze)
             {

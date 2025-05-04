@@ -37,6 +37,7 @@ public class MyGrabable : MonoBehaviour
         if (grabbable.SelectingPoints.Count > 0)
         {
             transform.localScale = Vector3.one;
+            GetComponent<Collider>().isTrigger = false;
 
             isIdel = false;
             isgrabing = true;
@@ -64,7 +65,7 @@ public class MyGrabable : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        if (timer <= 0&& !timerEnd)
+        if (timer <= 0&& !timerEnd && setup ==false)
         {
             timer = 0;
             timerEnd = true;

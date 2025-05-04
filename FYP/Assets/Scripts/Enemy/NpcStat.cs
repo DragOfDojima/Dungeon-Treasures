@@ -38,7 +38,8 @@ public class NpcStat : MonoBehaviour
         CurrentHP = Hp;
         healthBar.UpdateHealthBar(CurrentHP, Hp);
         floatDam = Resources.Load("damageText");
-        if(smr != null)
+
+        if (smr != null)
         {
             deadmatList = smr.materials;
             for (int i = 0; i < deadmatList.Length; i++)
