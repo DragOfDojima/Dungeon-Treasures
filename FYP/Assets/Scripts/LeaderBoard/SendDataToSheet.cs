@@ -86,7 +86,7 @@ public class SendDataToSheet : MonoBehaviour
 
             using (UnityWebRequest www = UnityWebRequest.Post(formUrl, form))
             {
-                yield return www.SendWebRequest();
+                www.SendWebRequest();
 
                 if (www.result == UnityWebRequest.Result.Success)
                 {
@@ -96,15 +96,17 @@ public class SendDataToSheet : MonoBehaviour
                 {
                     Debug.Log("Error: " + www.error);
                 }
+                leaderboard.GetComponent<UILeaderBoard>().setPdata(data1, data3, data2, data4);
+                leaderboard.GetComponent<UILeaderBoard>().getLeaderBoard();
             }
-            leaderboard.GetComponent<UILeaderBoard>().setPdata(data1, data3, data2, data4);
-            leaderboard.GetComponent<UILeaderBoard>().getLeaderBoard();
+            
         }
         else
         {
             Debug.Log("No internet connection. Please check your network settings.");
             HandleNoInternet();
         }
+        yield return true;
     }
 
     private void HandleNoInternet()

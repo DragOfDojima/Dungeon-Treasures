@@ -48,7 +48,7 @@ public class UILeaderBoard : MonoBehaviour
     }
     void printLeaderBoard()
     {
-
+        Debug.Log("printedddddd");
         setLB(leaderBoard.lb);
 
         for (int i = 0; i < 10; i++)
@@ -95,13 +95,14 @@ public class UILeaderBoard : MonoBehaviour
         try
         {
             leaderBoard.Sync();
+            printLeaderBoard();
+
             if (leaderBoard.lb.Count <= 0)
             {
                 mainLeaderBoard.SetActive(false);
                 noInternet.SetActive(true);
                 return;
             }
-            printLeaderBoard();
             mainLeaderBoard.SetActive(true);
             noInternet.SetActive(false);
         }

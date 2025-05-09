@@ -29,7 +29,7 @@ public class EnemyWeapon : MonoBehaviour
         {
             if (hitedShield == false)
             {
-                if (other.name == "HandOverAll") return;
+                if (other.name != "Body") return;
                 other.GetComponent<ToPlayer>().getplayer().increaseHp(-Damage);
                 audioSource.Play();
                 StartCoroutine(DamageCooldown());
